@@ -1,5 +1,4 @@
 四川卫视,http://ipipip/udp/239.93.0.169:5140
-四川卫视,http://ipipip/udp/239.93.1.188:5140
 四川康巴卫视,http://ipipip/udp/239.93.0.41:5140
 四川公共乡村,http://ipipip/udp/239.93.0.52:5140
 四川妇女儿童,http://ipipip/udp/239.93.0.219:5140
@@ -97,6 +96,7 @@ CDTV-8,http://ipipip/udp/239.93.0.22:1252
 上海纪实,http://ipipip/udp/239.93.1.137:5140
 金鹰纪实,http://ipipip/udp/239.93.0.130:5140
 CETV-1,http://ipipip/udp/239.93.1.111:5140
+中录动漫4K,http://ipipip/udp/239.93.1.188:5140
 熊猫新闻,http://ipipip/udp/239.93.1.112:5140
 熊猫体娱,http://ipipip/udp/239.93.0.94:5140
 熊猫少儿,http://ipipip/udp/239.93.1.189:5140
