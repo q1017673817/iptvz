@@ -183,17 +183,19 @@ cat "result/result_fofa_${city}.txt"
 ip1=$(head -n 1 result/result_fofa_${city}.txt | awk '{print $2}')
 ip2=$(head -n 2 result/result_fofa_${city}.txt | tail -n 1 | awk '{print $2}')
 ip3=$(head -n 3 result/result_fofa_${city}.txt | tail -n 1 | awk '{print $2}')
+ip4=$(head -n 4 result/result_fofa_${city}.txt | tail -n 1 | awk '{print $2}')
 rm -f speedtest_${city}_$time.log
 
-# 用 3 个最快 ip 生成对应城市的 txt 文件
+# 用 4 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"
 
 sed "s/ipipip/$ip1/g" $program > tmp1.txt
 sed "s/ipipip/$ip2/g" $program > tmp2.txt
 sed "s/ipipip/$ip3/g" $program > tmp3.txt
-cat tmp1.txt tmp2.txt tmp3.txt > txt/fofa_${city}.txt
+sed "s/ipipip/$ip4/g" $program > tmp4.txt
+cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt > txt/fofa_${city}.txt
 
-rm -rf tmp1.txt tmp2.txt tmp3.txt
+rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt
 rm -f $only_good_ip
 #--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
 
