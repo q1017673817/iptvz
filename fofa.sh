@@ -1,13 +1,9 @@
-#!/bin/bash
-# cd /root/iptv
 # read -p "确定要运行脚本吗？(y/n): " choice
-
 # 判断用户的选择，如果不是"y"则退出脚本
 # if [ "$choice" != "y" ]; then
 #     echo "脚本已取消."
 #     exit 0
 # fi
-
 pwd
 time=$(date +%m%d%H%M)
 i=0
@@ -47,7 +43,7 @@ case $city_choice in
         ;;
     2)
         city="Zhejiang_120"
-        stream="rtp/233.50.201.100:5140"
+        stream="rtp/233.50.201.63:5140"
         channel_key="浙江电信"
         url_fofa=$(echo  '"udpxy" && city="Hangzhou" && protocol="http" || "udpxy" && city="Taizhou" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
@@ -61,7 +57,7 @@ case $city_choice in
         ;;
     4)
         city="Guangdong_332"
-        stream="udp/239.77.1.98:5146"
+        stream="udp/239.77.1.152:5146"
         channel_key="广东电信"
         url_fofa=$(echo  '"udpxy" && city="Shenzhen" && protocol="http" || "udpxy" && city="Guangzhou" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
@@ -82,21 +78,21 @@ case $city_choice in
         ;;
     7)
         city="Hubei_90"
-        stream="rtp/239.254.96.115:8664"
+        stream="rtp/239.69.1.249:11136"
         channel_key="湖北电信"
         url_fofa=$(echo  '"udpxy" && region="Hubei" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     8)
         city="Fujian_114"
-        stream="rtp/239.61.2.183:9086"
+        stream="rtp/239.61.2.132:8708"
         channel_key="福建电信"
         url_fofa=$(echo  '"udpxy" && region="Fujian" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     9)
         city="Hunan_282"
-        stream="udp/239.76.245.115:1234"
+        stream="udp/239.76.253.100:9000"
         channel_key="湖南电信"
         url_fofa=$(echo  '"udpxy" && city="Changsha" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
