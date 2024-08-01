@@ -24,17 +24,17 @@ fi
 case $city_choice in
     1)
         city="Guangdong_332"
-        stream="udp/239.77.1.98:5146"
+        stream="udp/239.77.1.152:5146"
         channel_key="广东电信"
         ;;
     2)
         city="Hunan_282"
-        stream="udp/239.76.245.115:1234"
+        stream="udp/239.76.253.100:9000"
         channel_key="湖南电信"
         ;; 
     3)
         city="Fujian_114"
-        stream="rtp/239.61.2.183:9086"
+        stream="rtp/239.61.2.132:8708"
         channel_key="福建电信"
         ;;
     0)
