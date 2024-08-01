@@ -42,73 +42,70 @@ case $city_choice in
         city="Sichuan_333"
         stream="udp/239.93.0.169:5140"
         channel_key="四川电信"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Sichuan" && city="Chengdu" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && city="Chengdu" && protocol="http" || "udpxy" && city="Mianyang" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     2)
         city="Zhejiang_120"
         stream="rtp/233.50.201.100:5140"
         channel_key="浙江电信"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Zhejiang" && city="Ningbo" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
-      #url_fofa=$(echo  '"udpxy" && country="CN" && region="Zhejiang" && city="Hangzhou" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && city="Hangzhou" && protocol="http" || "udpxy" && city="Taizhou" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     3)
         city="Jiangsu"
         stream="udp/239.49.8.16:9602"
         channel_key="江苏"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Jiangsu" && city="nantong" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
-      #url_fofa=$(echo  '"udpxy" && country="CN" && region="Jiangsu" && city="suzhou" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && city="Nantong" && protocol="http" || "udpxy" && city="Nanjing" && protocol="http" || "udpxy" && city="Suzhou" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     4)
         city="Guangdong_332"
         stream="udp/239.77.1.98:5146"
         channel_key="广东电信"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Guangdong" && city="Shenzhen" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
-      #url_fofa=$(echo  '"udpxy" && country="CN" && region="Guangdong" && city="Guangzhou" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && city="Shenzhen" && protocol="http" || "udpxy" && city="Guangzhou" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     5)
         city="Henan_327"
         stream="rtp/239.16.20.21:10210"
         channel_key="河南电信"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Henan" && city="Zhengzhou" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && region="Henan" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     6)
         city="Tianjin_160"
         stream="udp/225.1.1.111:5002"
         channel_key="天津联通"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Tianjin" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && region="Tianjin" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     7)
         city="Hubei_90"
         stream="rtp/239.254.96.115:8664"
         channel_key="湖北电信"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Hubei" && city="Wuhan" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && region="Hubei" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     8)
         city="Fujian_114"
         stream="rtp/239.61.2.183:9086"
         channel_key="福建电信"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Fujian" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && region="Fujian" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     9)
         city="Hunan_282"
         stream="udp/239.76.245.115:1234"
         channel_key="湖南电信"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Hunan" && city="Changsha" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && city="Changsha" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     10)
         city="Hebei_313"
         stream="rtp/239.253.92.154:6011"
         channel_key="河北联通"
-        url_fofa=$(echo '"udpxy" && country="CN" && region="Hebei" && org="CHINA UNICOM China169 Backbone" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo '"udpxy" && region="Hebei" && org="CHINA UNICOM China169 Backbone" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     0)
