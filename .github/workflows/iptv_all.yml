@@ -1,0 +1,48 @@
+name: iptv_all
+
+on:
+#  schedule:
+#    - cron: "5 22 * * *"
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+   
+    - name: Install Dependencies
+      run: |
+        pip install selenium==4.19.0 requests==2.31.0 futures==3.0.5 eventlet==0.36.1
+        sudo apt-get update
+        sudo apt-get install -y yt-dlp sed nmap
+        
+    - name: run iptv_py
+      run: python ${{ github.workspace }}/iptv.py   
+
+#    - name: Install Dependencies
+#        sudo apt-get update
+#        sudo apt-get install -y yt-dlp sed nmap
+      
+    - name: Run Multitest Script
+#      working-directory: iptv/speedtest
+      run: |
+        cd $GITHUB_WORKSPACE
+        bash ./multi_test.sh
+        bash ./fofa.sh
+
+    - name: 提交更改
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Update results"
+        git push
