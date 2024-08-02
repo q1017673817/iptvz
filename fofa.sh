@@ -204,11 +204,11 @@ echo "江苏,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Jiangsu.txt >>zubo_fofa.txt
 echo "天津联通,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Tianjin_160.txt >>zubo_fofa.txt
-echo "河南电信,#genre#" >>zubo_fofa.txt
-cat txt/fofa_Henan_327.txt >>zubo_fofa.txt
 echo "四川电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Sichuan_333.txt >>zubo_fofa.txt
 echo "浙江电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Zhejiang_120.txt >>zubo_fofa.txt
 echo "河北联通,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Hebei_313.txt >>zubo_fofa.txt
+echo "河南电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Henan_327.txt >>zubo_fofa.txt
