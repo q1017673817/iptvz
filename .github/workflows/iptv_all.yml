@@ -1,4 +1,4 @@
-name: iptv_all
+name: Update all
 
 on:
 #  schedule:
@@ -21,22 +21,26 @@ jobs:
     - name: Install Dependencies
       run: |
         pip install selenium==4.19.0 requests==2.31.0 futures==3.0.5 eventlet==0.36.1
-        sudo apt-get update
-        sudo apt-get install -y yt-dlp sed nmap
         
     - name: run iptv_py
       run: python ${{ github.workspace }}/iptv.py   
 
-#    - name: Install Dependencies
-#        sudo apt-get update
-#        sudo apt-get install -y yt-dlp sed nmap
+    - name: run ZHGXTV_py
+      run: python ${{ github.workspace }}/ZHGXTV.py
+
+    - name: Install Dependencies
+        sudo apt-get update
+        sudo apt-get install -y yt-dlp sed nmap
       
     - name: Run Multitest Script
-#      working-directory: iptv/speedtest
+#      working-directory: iptv
       run: |
         cd $GITHUB_WORKSPACE
-        bash ./multi_test.sh
         bash ./fofa.sh
+        bash ./multi_test.sh
+
+    - name: run 去重_py
+      run: python ${{ github.workspace }}/去重.py
 
     - name: 提交更改
       run: |
