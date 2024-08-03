@@ -230,7 +230,7 @@ echo "河南电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Henan_327.txt >>zubo_fofa.txt
 cat txt/河南电信.txt >>zubo_fofa.txt
 echo "山东电信,#genre#" >>zubo_fofa.txt
-cat txt/fofa_Shandong_279.txt >>zubo_fofa
+cat txt/fofa_Shandong_279.txt >>zubo_fofa.txt
 cat txt/山东电信.txt >>zubo_fofa.txt
 echo "江西电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Jiangxi_105.txt >>zubo_fofa.txt
