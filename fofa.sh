@@ -160,10 +160,10 @@ while IFS= read -r ip; do
         echo "$output" | grep "succeeded" | awk -v ip="$ip" '{print ip}' >> "$only_good_ip"
     fi
 done < "$ipfile
+
 rm -f $ipfile
 
 echo "===============检索完成================="
-
 # 检查文件是否存在
 if [ ! -f "$only_good_ip" ]; then
     echo "错误：文件 $only_good_ip 不存在。"
@@ -221,8 +221,10 @@ echo "四川电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Sichuan_333.txt >>zubo_fofa.txt
 echo "浙江电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Zhejiang_120.txt >>zubo_fofa.txt
+cat txt/浙江电信.txt >>zubo_fofa.txt
 echo "河北联通,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Hebei_313.txt >>zubo_fofa.txt
+cat txt/河北联通.txt>>zubo_fofa.txt
 echo "河南电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Henan_327.txt >>zubo_fofa.txt
 cat txt/河南电信.txt >>zubo_fofa.txt
