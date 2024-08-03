@@ -4,6 +4,7 @@ import concurrent.futures
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import requests
+import threading
 import re
 ###urls城市根据自己所处地理位置修改
 urls = [
@@ -12,8 +13,6 @@ urls = [
     "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iY2hhbmdzaGEi", #湖南changsha
     "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iemhlbmd6aG91IiB8fCAiWkhHWFRWIiAmJiBjaXR5PSJsdW9oZSIgfHwgIlpIR1hUViIgJiYgY2l0eT0ieGlueWFuZyI%3D", #河南
     "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iWGknYW4i", #陕西Xi'an
-    
-
 ]
 
 def modify_urls(url):
@@ -146,6 +145,7 @@ for url in urls:
                                 name = name.replace("CCTV4国际", "CCTV4")
                                 name = name.replace("CCTV4中文国际", "CCTV4")
                                 name = name.replace("CCTV4欧洲", "CCTV4")
+                                name = name.replace("CCTC14少儿", "CCTV14")
                                 name = name.replace("CCTV5体育", "CCTV5")
                                 name = name.replace("CCTV6电影", "CCTV6")
                                 name = name.replace("CCTV7军事", "CCTV7")
@@ -209,19 +209,29 @@ channels.sort(key=lambda x: channel_key(x[0]))
 
 # 生成iptv_list.txt文件
 with open('ZHGXTV.txt', 'w', encoding='utf-8') as file:
-    file.write('央视频道,#genre#\n')
+    file.write('央视频道2,#genre#\n')
     for channel, address in channels:
         if 'cctv' in channel.lower():
             file.write(f'{channel},{address}\n')
-    file.write('卫视频道,#genre#\n')
+    file.write('卫视频道2,#genre#\n')
     for channel, address in channels:
         if '卫视' in channel:
             file.write(f'{channel},{address}\n')
-    file.write('其他频道,#genre#\n')
+    file.write('其他频道2,#genre#\n')
     for channel, address in channels:
         if 'cctv' not in channel.lower() and '卫视' not in channel:
             file.write(f'{channel},{address}\n')
 
+file_contents = []
+file_paths = ["itv.txt", "ZHGXTV.txt"]  # 替换为实际的文件路径列表
+for file_path in file_paths:
+    with open(file_path, 'r', encoding="utf-8") as file:
+        content = file.read()
+        file_contents.append(content)
+
+# 写入合并后的文件
+with open("iptv.txt", "w", encoding="utf-8") as output:
+    output.write('\n'.join(file_contents))
 os.remove("ZHGXTV0.txt")
-
-
+os.remove("ZHGXTV.txt")
+os.remove("itv.txt")
