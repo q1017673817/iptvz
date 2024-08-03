@@ -17,3 +17,5 @@ for line in lines:
 # 将唯一的行写入新的文档 
 with open('zubo.txt', 'w', encoding="utf-8") as file:
  file.writelines(unique_lines)
+
+os.remove("zubo1.txt")
