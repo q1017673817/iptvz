@@ -1,9 +1,3 @@
-# read -p "确定要运行脚本吗？(y/n): " choice
-# 判断用户的选择，如果不是"y"则退出脚本
-# if [ "$choice" != "y" ]; then
-#     echo "脚本已取消."
-#     exit 0
-# fi
 pwd
 time=$(date +%m%d%H%M)
 i=0
@@ -20,8 +14,11 @@ if [ $# -eq 0 ]; then
   echo "8. 福建电信（Fujian_114）"
   echo "9. 湖南电信（Hunan_282）"
   echo "10. 河北联通（Hebei_313）"
+  echo "11. 贵州电信（Guizhou_153）"
+  echo "12. 山东电信（Shandong_279）"
+  echo "13. 江西电信（Jiangxi_105）"
   echo "0. 全部"
-  read -t 3 -p "输入选择或在10秒内无输入将默认选择全部: " city_choice
+  read -t 3 -p "输入选择或在3秒内无输入将默认选择全部: " city_choice
 
   if [ -z "$city_choice" ]; then
       echo "未检测到输入，自动选择全部选项..."
@@ -104,9 +101,30 @@ case $city_choice in
         url_fofa=$(echo '"udpxy" && region="Hebei" && org="CHINA UNICOM China169 Backbone" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
+    11)
+        city="Guizhou_153"
+        stream="rtp/238.255.2.1:5999"
+        channel_key="贵州电信"
+        url_fofa=$(echo '"udpxy" && region="Guizhou" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa="https://fofa.info/result?qbase64="$url_fofa
+        ;;
+    12)
+        city="Shandong_279"
+        stream="udp/239.21.1.52:5002"
+        channel_key="山东电信"
+        url_fofa=$(echo '"udpxy" && region="Shandong" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa="https://fofa.info/result?qbase64="$url_fofa
+        ;;
+    13)
+        city="Jiangxi_105"
+        stream="udp/239.252.220.63:5140"
+        channel_key="江西电信"
+        url_fofa=$(echo '"udpxy" && region="Jiangxi" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa="https://fofa.info/result?qbase64="$url_fofa
+        ;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..10}; do
+        for option in {1..13}; do
           bash  ./fofa.sh $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -117,8 +135,6 @@ case $city_choice in
         exit 1
         ;;
 esac
-
-
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
 ipfile="${city}.ip"
@@ -143,7 +159,7 @@ while IFS= read -r ip; do
         # 使用 awk 提取 IP 地址和端口号对应的字符串，并保存到输出文件中
         echo "$output" | grep "succeeded" | awk -v ip="$ip" '{print ip}' >> "$only_good_ip"
     fi
-done < "$ipfile"
+done < "$ipfile
 rm -f $ipfile
 echo "===============检索完成================="
 
@@ -152,7 +168,6 @@ if [ ! -f "$only_good_ip" ]; then
     echo "错误：文件 $only_good_ip 不存在。"
     exit 1
 fi
-
 lines=$(cat "$only_good_ip" | wc -l)
 echo "【$only_good_ip】内 ip 共计 $lines 个"
 
@@ -165,7 +180,6 @@ while read line; do
     echo $url
     curl $url --connect-timeout 3 --max-time 10 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)
-
     echo "第 $i/$lines 个：$ip $a"
     echo "$ip $a" >> "speedtest_${city}_$time.log"
 done < "$only_good_ip"
@@ -176,22 +190,18 @@ cat "result/result_fofa_${city}.txt"
 ip1=$(head -n 1 result/result_fofa_${city}.txt | awk '{print $2}')
 ip2=$(head -n 2 result/result_fofa_${city}.txt | tail -n 1 | awk '{print $2}')
 ip3=$(head -n 3 result/result_fofa_${city}.txt | tail -n 1 | awk '{print $2}')
-ip4=$(head -n 4 result/result_fofa_${city}.txt | tail -n 1 | awk '{print $2}')
 rm -f speedtest_${city}_$time.log
 
-# 用 4 个最快 ip 生成对应城市的 txt 文件
+# 用 3 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"
-
 sed "s/ipipip/$ip1/g" $program > tmp1.txt
 sed "s/ipipip/$ip2/g" $program > tmp2.txt
 sed "s/ipipip/$ip3/g" $program > tmp3.txt
-sed "s/ipipip/$ip4/g" $program > tmp4.txt
-cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt > txt/fofa_${city}.txt
-
-rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt
+cat tmp1.txt tmp2.txt tmp3.txt > txt/fofa_${city}.txt
+rm -rf tmp1.txt tmp2.txt tmp3.txt
 rm -f $only_good_ip
-#--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
 
+#--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
 echo "广东电信,#genre#" >zubo_fofa.txt
 cat txt/fofa_Guangdong_332.txt >>zubo_fofa.txt
 echo "湖南电信,#genre#" >>zubo_fofa.txt
@@ -212,3 +222,9 @@ echo "河北联通,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Hebei_313.txt >>zubo_fofa.txt
 echo "河南电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Henan_327.txt >>zubo_fofa.txt
+echo "山东电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Shandong_279.txt >>zubo_fofa.txt
+echo "江西电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Jiangxi_105.txt >>zubo_fofa.txt
+echo "贵州电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Guizhou_153.txt >>zubo_fofa.txt
