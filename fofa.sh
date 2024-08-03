@@ -165,7 +165,6 @@ rm -f $ipfile
 echo "===============检索完成================="
 
 # 检查文件是否存在
-
 if [ ! -f "$only_good_ip" ]; then
     echo "错误：文件 $only_good_ip 不存在。"
     exit 1
@@ -197,6 +196,7 @@ rm -f speedtest_${city}_$time.log
 
 # 用 3 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"
+
 sed "s/ipipip/$ip1/g" $program >tmp1.txt
 sed "s/ipipip/$ip2/g" $program >tmp2.txt
 sed "s/ipipip/$ip3/g" $program >tmp3.txt
