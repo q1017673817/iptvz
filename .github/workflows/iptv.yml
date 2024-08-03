@@ -1,4 +1,4 @@
-name: iptv1
+name: iptv
 on:
 #  schedule:
 #    - cron: '5 21 */3 * *'       
@@ -21,10 +21,12 @@ jobs:
         run: |
               pip install selenium==4.19.0 requests==2.31.0 futures==3.0.5 eventlet==0.36.1
 
-      - name: run py
-        run: python ${{ github.workspace }}/iptv.py     #这里更改要运行的py
+      - name: run iptvpy
+        run: python ${{ github.workspace }}/iptv.py
+        
+      - name: run gxtvpy
+        run: python ${{ github.workspace }}/ZHGXTV.py
            
-
       - name: 提交更改
         run: |
           git config --local user.email "action@github.com"
