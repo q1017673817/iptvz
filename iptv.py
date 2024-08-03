@@ -231,7 +231,7 @@ def channel_key(channel):
 channels.sort(key=lambda x: channel_key(x[0]))
 
 # 生成iptv_list.txt文件
-with open('iptv.txt', 'w', encoding='utf-8') as file:
+with open('itv.txt', 'w', encoding='utf-8') as file:
     file.write('央视频道,#genre#\n')
     for channel, address in channels:
         if 'cctv' in channel.lower():
@@ -246,4 +246,3 @@ with open('iptv.txt', 'w', encoding='utf-8') as file:
             file.write(f'{channel},{address}\n')
 
 os.remove("itv0.txt")
-
