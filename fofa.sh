@@ -110,7 +110,7 @@ case $city_choice in
         ;;
     12)
         city="Shandong_279"
-        stream="udp/239.21.1.52:5002"
+        stream="udp/239.21.1.87:5002"
         channel_key="山东电信"
         url_fofa=$(echo '"udpxy" && region="Shandong" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
