@@ -111,7 +111,6 @@ cat "result/result_${city}.txt"
 ip1=$(head -n 1 result/result_${city}.txt | awk '{print $2}')
 ip2=$(head -n 2 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
 ip3=$(head -n 3 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
-ip4=$(head -n 4 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
 rm -f speedtest_${city}_$time.log  "$ipfile"
 
 #----------------------用4个最快ip生成对应城市的txt文件---------------------------
@@ -125,18 +124,43 @@ program="template/template_${city}.txt"
 sed "s/ipipip/$ip1/g" $program >tmp1.txt
 sed "s/ipipip/$ip2/g" $program >tmp2.txt
 sed "s/ipipip/$ip3/g" $program >tmp3.txt
-sed "s/ipipip/$ip4/g" $program >tmp4.txt
-cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt >txt/${city}.txt
+cat tmp1.txt tmp2.txt tmp3.txt >txt/${city}.txt
 
-rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt
+rm -rf tmp1.txt tmp2.txt tmp3.txt
 
 #--------------------合并所有城市的txt文件为:   zubo.txt-----------------------------------------
 
 echo "广东电信,#genre#" >zubo.txt
 cat txt/Guangdong_332.txt >>zubo.txt
+cat txt/fofa_Guangdong_332.txt >>zubo_fofa.txt
 echo "湖南电信,#genre#" >>zubo.txt
 cat txt/Hunan_282.txt >>zubo.txt
+cat txt/fofa_Hunan_282.txt >>zubo_fofa.txt
 echo "福建电信,#genre#" >>zubo.txt
 cat txt/Fujian_114.txt >>zubo.txt
+cat txt/fofa_Fujian_114.txt >>zubo_fofa.txt
+echo "湖北电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Hubei_90.txt >>zubo_fofa.txt
+echo "江苏,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Jiangsu.txt >>zubo_fofa.txt
+echo "天津联通,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Tianjin_160.txt >>zubo_fofa.txt
+echo "四川电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Sichuan_333.txt >>zubo_fofa.txt
+echo "浙江电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Zhejiang_120.txt >>zubo_fofa.txt
+cat txt/浙江电信.txt >>zubo_fofa.txt
+echo "河北联通,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Hebei_313.txt >>zubo_fofa.txt
+cat txt/河北联通 >>zubo_fofa.txt
 cat txt/zubo.txt >>zubo.txt
-
+echo "河南电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Henan_327.txt >>zubo_fofa.txt
+cat txt/河南电信.txt >>zubo_fofa.txt
+echo "山东电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Shandong_279.txt >>zubo_fofa.txt
+cat txt/山东电信.txt >>zubo_fofa.txt
+echo "江西电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Jiangxi_105.txt >>zubo_fofa.txt
+echo "贵州电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Guizhou_153.txt >>zubo_fofa.txt
