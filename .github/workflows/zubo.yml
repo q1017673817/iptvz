@@ -13,11 +13,6 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
       
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.x
-      
     - name: Install Dependencies
       run: |
         sudo apt-get update
@@ -30,7 +25,12 @@ jobs:
         bash ./fofa.sh
         bash ./multi_test.sh
 
-    - name: run 去重py
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+
+    - name: run 去重
       run: python ${{ github.workspace }}/去重.py
 
     - name: Update Results
