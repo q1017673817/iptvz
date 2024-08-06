@@ -8,10 +8,11 @@ import threading
 import re
 ###urls城市根据自己所处地理位置修改
 urls = [
-    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iSmluYW4iIHx8ICJaSEdYVFYiICYmIGNpdHk9IldlaWZhbmci", #山东jinan weifang
+#    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iSmluYW4iIHx8ICJaSEdYVFYiICYmIGNpdHk9IldlaWZhbmci", #山东jinan weifang
+    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iV2VpZmFuZyI%3D", #山东weifang
     "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT1IdWFpbmFu", #安徽huaian
-    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iY2hhbmdzaGEi", #湖南changsha
-    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iemhlbmd6aG91IiB8fCAiWkhHWFRWIiAmJiBjaXR5PSJsdW9oZSIgfHwgIlpIR1hUViIgJiYgY2l0eT0ieGlueWFuZyI%3D", #河南
+#    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iY2hhbmdzaGEi", #湖南changsha
+    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iWmhlbmd6aG91Ig%3D%3D", #河南zhengzhou
     "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iWGknYW4i", #陕西Xi'an
 ]
 
