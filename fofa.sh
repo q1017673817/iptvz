@@ -17,6 +17,8 @@ if [ $# -eq 0 ]; then
   echo "11. 贵州电信（Guizhou_153）"
   echo "12. 山东电信（Shandong_279）"
   echo "13. 江西电信（Jiangxi_105）"
+  echo "14. 山西电信（Shanxi_117）"
+  echo "15. 陕西电信（Shanxi_123）"
   echo "0. 全部"
   read -t 3 -p "输入选择或在3秒内无输入将默认选择全部: " city_choice
 
@@ -122,9 +124,23 @@ case $city_choice in
         url_fofa=$(echo '"udpxy" && region="Jiangxi" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
+    14)
+        city="Shanxi_117"
+        stream="udp/239.1.1.1:8001"
+        channel_key="山西电信"
+        url_fofa=$(echo '"udpxy" && region="Shanxi" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa="https://fofa.info/result?qbase64="$url_fofa
+        ;;
+    15)
+        city="Shaanxi_123"
+        stream="rtp/239.111.205.35:5140"
+        channel_key="陕西电信"
+        url_fofa=$(echo '"udpxy" && region="Shaanxi" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa="https://fofa.info/result?qbase64="$url_fofa
+        ;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..13}; do
+        for option in {1..15}; do
           bash  ./fofa.sh $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -236,3 +252,7 @@ echo "江西电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Jiangxi_105.txt >>zubo_fofa.txt
 echo "贵州电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Guizhou_153.txt >>zubo_fofa.txt
+echo "山西电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Shanxi_117.txt >>zubo_fofa.txt
+echo "陕西电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Shaanxi_123.txt >>zubo_fofa.txt
