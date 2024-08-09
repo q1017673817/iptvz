@@ -8,12 +8,11 @@ import threading
 import re
 ###urls城市根据自己所处地理位置修改
 urls = [
-#    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iSmluYW4iIHx8ICJaSEdYVFYiICYmIGNpdHk9IldlaWZhbmci", #山东jinan weifang
-    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iV2VpZmFuZyI%3D", #山东weifang
+    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iSmluYW4iIHx8ICJaSEdYVFYiICYmIGNpdHk9IldlaWZhbmci", #山东jinan weifang
     "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT1IdWFpbmFu", #安徽huaian
-#    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iY2hhbmdzaGEi", #湖南changsha
+    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iY2hhbmdzaGEi", #湖南changsha
     "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iWmhlbmd6aG91Ig%3D%3D", #河南zhengzhou
-    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iWGknYW4i", #陕西Xi'an
+    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgcmVnaW9uPSJTaGFhbnhpIg%3D%3D", #陕西
 ]
 
 def modify_urls(url):
@@ -34,7 +33,7 @@ def modify_urls(url):
 
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=2)
+        response = requests.get(url, timeout=3)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
@@ -106,7 +105,7 @@ for url in urls:
             try:
                 # 发送GET请求获取JSON文件，设置超时时间为0.5秒
                 json_url = f"{url}"
-                response = requests.get(json_url, timeout=1)
+                response = requests.get(json_url, timeout=1.5)
                 json_data = response.content.decode('utf-8')
                 try:
                     # 按行分割数据
