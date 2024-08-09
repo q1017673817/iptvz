@@ -234,19 +234,23 @@ cat txt/fofa_Hunan_282.txt >>zubo_fofa.txt
 echo "福建电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Fujian_114.txt >>zubo_fofa.txt
 echo "湖北电信,#genre#" >>zubo_fofa.txt
+cat txt/湖北电信.txt >>zubo_fofa.txt
 cat txt/fofa_Hubei_90.txt >>zubo_fofa.txt
 echo "江苏,#genre#" >>zubo_fofa.txt
+cat txt/江苏.txt >>zubo_fofa.txt
 cat txt/fofa_Jiangsu.txt >>zubo_fofa.txt
 echo "天津联通,#genre#" >>zubo_fofa.txt
+cat txt/天津联通.txt >>zubo_fofa.txt
 cat txt/fofa_Tianjin_160.txt >>zubo_fofa.txt
 echo "四川电信,#genre#" >>zubo_fofa.txt
+cat txt/四川电信.txt >>zubo_fofa.txt
 cat txt/fofa_Sichuan_333.txt >>zubo_fofa.txt
 echo "浙江电信,#genre#" >>zubo_fofa.txt
-cat txt/fofa_Zhejiang_120.txt >>zubo_fofa.txt
 cat txt/浙江电信.txt >>zubo_fofa.txt
+cat txt/fofa_Zhejiang_120.txt >>zubo_fofa.txt
 echo "河北联通,#genre#" >>zubo_fofa.txt
+cat txt/河北联通.txt >>zubo_fofa.txt
 cat txt/fofa_Hebei_313.txt >>zubo_fofa.txt
-cat txt/河北联通.txt>>zubo_fofa.txt
 echo "河南电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Henan_327.txt >>zubo_fofa.txt
 cat txt/河南电信.txt >>zubo_fofa.txt
@@ -258,6 +262,7 @@ cat txt/fofa_Jiangxi_105.txt >>zubo_fofa.txt
 echo "贵州电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Guizhou_153.txt >>zubo_fofa.txt
 echo "山西电信,#genre#" >>zubo_fofa.txt
+cat txt/山西电信.txt >>zubo_fofa.txt
 cat txt/fofa_Shanxi_117.txt >>zubo_fofa.txt
 echo "陕西电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Shaanxi_123.txt >>zubo_fofa.txt
