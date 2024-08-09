@@ -53,7 +53,8 @@ case $city_choice in
         city="Jiangsu"
         stream="udp/239.49.8.16:9602"
         channel_key="江苏"
-        url_fofa=$(echo  '"udpxy" && city="Nantong" && protocol="http" || "udpxy" && city="Nanjing" && protocol="http" || "udpxy" && city="Suzhou" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && city="Nanjing" && protocol="http" || "udpxy" && city="Suzhou" && protocol="http"' | base64 |tr -d '\n')
+#        url_fofa=$(echo  '"udpxy" && city="Nantong" && protocol="http" || "udpxy" && city="Nanjing" && protocol="http" || "udpxy" && city="Suzhou" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     4)
