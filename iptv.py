@@ -7,8 +7,8 @@ import requests
 import re
 
 urls = [
-    "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY2l0eT0iU29uZ3l1YW4iIHx8ICJpcHR2L2xpdmUvemhfY24uanMiICYmIGNpdHk9IkNoYW5nY2h1biI%3D", #吉林
-    "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgaXA9IjExMS4yMjUuMS4xLzE2Ig%3D%3D", #河北
+    "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY2l0eT0iU29uZ3l1YW4iIHx8ICJpcHR2L2xpdmUvemhfY24uanMiICYmIGNpdHk9IkNoYW5nY2h1biI%3D&page=1&page_size=20", #吉林
+    "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgaXA9IjExMS4yMjUuMS4xLzE2Ig%3D%3D&page=1&page_size=20", #河北
     #"https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgaXA9IjExMS4yMjUuMTEyLjEvMjQiIHx8ICJpcHR2L2xpdmUvemhfY24uanMiICYmIGlwPSIxMTEuMjI1LjExMy4xLzI0Ig%3D%3D", #河北
     #"https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgaXA9IjExMS4yMjUuMTE1LjEvMjQiIHx8ICJpcHR2L2xpdmUvemhfY24uanMiICYmIGlwPSIxMTEuMjI1LjExNC4xLzI0Ig%3D%3D", #河北
     #"https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0i5rmW5YyXIg%3D%3D", #湖北
@@ -37,7 +37,7 @@ def modify_urls(url):
 
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=1.5)
+        response = requests.get(url, timeout=3)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
