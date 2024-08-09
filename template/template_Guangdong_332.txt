@@ -16,7 +16,6 @@
 广东少儿,http://ipipip/udp/239.77.0.250:5146
 嘉佳卡通,http://ipipip/udp/239.77.0.179:5146
 广东卫视,http://ipipip/udp/239.77.0.2:5146
-广东卫视,http://ipipip/udp/239.77.1.2:5146
 广东珠江,http://ipipip/udp/239.77.0.3:5146
 广东珠江,http://ipipip/udp/239.77.1.94:5146
 广东新闻,http://ipipip/udp/239.77.0.4:5146
