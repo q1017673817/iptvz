@@ -146,9 +146,7 @@ CETV-4,http://ipipip/rtp/239.253.92.200:6137
 四海钓鱼,http://ipipip/rtp/239.253.93.243:6421
 优优宝贝,http://ipipip/rtp/239.253.93.244:6422
 生态环境,http://ipipip/rtp/239.253.93.245:6423
-家庭理财,http://ipipip/rtp/239.253.93.246:6424
 财富天下,http://ipipip/rtp/239.253.93.247:6425
 中华美食,http://ipipip/rtp/239.253.93.248:6426
 早期教育,http://ipipip/rtp/239.253.93.164:6440
-
 
