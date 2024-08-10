@@ -209,7 +209,7 @@ while IFS= read -r line; do
     ip="$line"
     url="http://$ip/$stream"
     echo "$url"
-    curl "$url" --connect-timeout 3 --max-time 10 -o /dev/null >zubo.tmp 2>&1
+    curl "$url" --connect-timeout 5 --max-time 12 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)
 
     echo "第 $i/$lines 个：$ip $a"
@@ -240,32 +240,32 @@ rm -f $ipfile $only_good_ip
 echo "北京电信,#genre#" >zubo_fofa.txt
 cat txt/fofa_Beijing_dianxin_186.txt >>zubo_fofa.txt
 echo "湖北电信,#genre#" >>zubo_fofa.txt
-cat txt/湖北电信.txt >>zubo_fofa.txt
 cat txt/fofa_Hubei_90.txt >>zubo_fofa.txt
-echo "江苏,#genre#" >>zubo_fofa.txt
-cat txt/江苏.txt >>zubo_fofa.txt
-cat txt/fofa_Jiangsu.txt >>zubo_fofa.txt
-echo "天津联通,#genre#" >>zubo_fofa.txt
-cat txt/天津联通.txt >>zubo_fofa.txt
-cat txt/fofa_Tianjin_160.txt >>zubo_fofa.txt
-echo "四川电信,#genre#" >>zubo_fofa.txt
-cat txt/四川电信.txt >>zubo_fofa.txt
-cat txt/fofa_Sichuan_333.txt >>zubo_fofa.txt
+cat txt/湖北电信.txt >>zubo_fofa.txt
 echo "浙江电信,#genre#" >>zubo_fofa.txt
-cat txt/浙江电信.txt >>zubo_fofa.txt
 cat txt/fofa_Zhejiang_120.txt >>zubo_fofa.txt
+cat txt/浙江电信.txt >>zubo_fofa.txt
+echo "江苏,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Jiangsu.txt >>zubo_fofa.txt
+cat txt/江苏.txt >>zubo_fofa.txt
+echo "天津联通,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Tianjin_160.txt >>zubo_fofa.txt
+cat txt/天津联通.txt >>zubo_fofa.txt
+echo "四川电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Sichuan_333.txt >>zubo_fofa.txt
+cat txt/四川电信.txt >>zubo_fofa.txt
 echo "河北联通,#genre#" >>zubo_fofa.txt
-cat txt/河北联通.txt >>zubo_fofa.txt
 cat txt/fofa_Hebei_313.txt >>zubo_fofa.txt
+cat txt/河北联通.txt >>zubo_fofa.txt
 echo "河南电信,#genre#" >>zubo_fofa.txt
-cat txt/河南电信.txt >>zubo_fofa.txt
 cat txt/fofa_Henan_327.txt >>zubo_fofa.txt
+cat txt/河南电信.txt >>zubo_fofa.txt
 echo "山东电信,#genre#" >>zubo_fofa.txt
-cat txt/山东电信.txt >>zubo_fofa.txt
 cat txt/fofa_Shandong_279.txt >>zubo_fofa.txt
+cat txt/山东电信.txt >>zubo_fofa.txt
 echo "江西电信,#genre#" >>zubo_fofa.txt
-cat txt/江西电信.txt >>zubo_fofa.txt
 cat txt/fofa_Jiangxi_105.txt >>zubo_fofa.txt
+cat txt/江西电信.txt >>zubo_fofa.txt
 echo "山西电信,#genre#" >>zubo_fofa.txt
-cat txt/山西电信.txt >>zubo_fofa.txt
 cat txt/fofa_Shanxi_117.txt >>zubo_fofa.txt
+cat txt/山西电信.txt >>zubo_fofa.txt
