@@ -113,7 +113,7 @@ ip2=$(head -n 2 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
 ip3=$(head -n 3 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
 rm -f speedtest_${city}_$time.log  "$ipfile"
 
-#----------------------用4个最快ip生成对应城市的txt文件---------------------------
+#----------------------用2个最快ip生成对应城市的txt文件---------------------------
 
 # if [ $city = "Shanghai_103" ]; then
 program="template/template_${city}.txt"
@@ -123,23 +123,26 @@ program="template/template_${city}.txt"
 
 sed "s/ipipip/$ip1/g" $program >tmp1.txt
 sed "s/ipipip/$ip2/g" $program >tmp2.txt
-sed "s/ipipip/$ip3/g" $program >tmp3.txt
-cat tmp1.txt tmp2.txt tmp3.txt >txt/${city}.txt
+cat tmp1.txt tmp2.txt >txt/${city}.txt
 
-rm -rf tmp1.txt tmp2.txt tmp3.txt
+rm -rf tmp1.txt tmp2.txt
 
 #--------------------合并所有城市的txt文件为:   zubo.txt-----------------------------------------
 
 echo "广东电信,#genre#" >zubo1.txt
 cat txt/广东电信.txt >>zubo1.txt
-cat txt/Guangdong_332.txt >>zubo1.txt
 cat txt/fofa_Guangdong_332.txt >>zubo1.txt
+cat txt/Guangdong_332.txt >>zubo1.txt
 echo "湖南电信,#genre#" >>zubo1.txt
-cat txt/Hunan_282.txt >>zubo1.txt
 cat txt/fofa_Hunan_282.txt >>zubo1.txt
+cat txt/Hunan_282.txt >>zubo1.txt
 echo "福建电信,#genre#" >>zubo1.txt
 cat txt/福建电信.txt >>zubo1.txt
-cat txt/Fujian_114.txt >>zubo1.txt
 cat txt/fofa_Fujian_114.txt >>zubo1.txt
-cat txt/zubo.txt >>zubo1.txt
+cat txt/Fujian_114.txt >>zubo1.txt
 cat zubo_fofa.txt >>zubo1.txt
+cat txt/zubo.txt >>zubo1.txt
+echo "贵州电信,#genre#" >>zubo1.txt
+cat txt/fofa_Guizhou_153.txt >>zubo1.txt
+echo "陕西电信,#genre#" >>zubo1.txt
+cat txt/fofa_Shaanxi_123.txt >>zubo1.txt
