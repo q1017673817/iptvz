@@ -37,7 +37,7 @@ case $city_choice in
         city="Sichuan_333"
         stream="udp/239.93.0.169:5140"
         channel_key="四川电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PSJDaGVuZ2R1IiAmJiBwcm90b2NvbD0iaHR0cCIgJiYgb3JnPSJDaGluYW5ldCI%3D&page=1&page_size=20"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PSJDaGVuZ2R1IiAmJiBwcm90b2NvbD0iaHR0cCIgJiYgb3JnPSJDaGluYW5ldCI%3D"
 #        url_fofa=$(echo  '"udpxy" && city="Chengdu" && protocol="http" && org="Chinanet"' | base64 |tr -d '\n')
 #        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
@@ -45,7 +45,7 @@ case $city_choice in
         city="Zhejiang_120"
         stream="rtp/233.50.201.63:5140"
         channel_key="浙江电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PSJIYW5nemhvdSIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=20"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PSJIYW5nemhvdSIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi"
 #        url_fofa=$(echo  '"udpxy" && city="Hangzhou" && protocol="http" && org="Chinanet"' | base64 |tr -d '\n')
 #        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
@@ -69,7 +69,7 @@ case $city_choice in
         city="Henan_327"
         stream="rtp/239.16.20.21:10210"
         channel_key="河南电信"
-#        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PSJaaGVuZ3pob3UiICYmIHByb3RvY29sPSJodHRwIiAmJiBvcmc9IkNoaW5hbmV0Ig%3D%3D&page=1&page_size=20"
+#        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PSJaaGVuZ3pob3UiICYmIHByb3RvY29sPSJodHRwIiAmJiBvcmc9IkNoaW5hbmV0Ig%3D%3D"
         url_fofa=$(echo  '"udpxy" && region="Henan" && protocol="http" && org="Chinanet"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
@@ -91,7 +91,7 @@ case $city_choice in
         city="Fujian_114"
         stream="rtp/239.61.2.132:8708"
         channel_key="福建电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkZ1amlhbiIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAiIA%3D%3D&page=1&page_size=20"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkZ1amlhbiIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAiIA%3D%3D"
 #        url_fofa=$(echo  '"udpxy" && city="Xiamen" && protocol="http" && org="Chinanet"' | base64 |tr -d '\n')
 #        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
@@ -107,7 +107,7 @@ case $city_choice in
         city="Hebei_313"
         stream="rtp/239.253.92.154:6011"
         channel_key="河北联通"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkhlYmVpIiAmJiBvcmc9IkNISU5BIFVOSUNPTSBDaGluYTE2OSBCYWNrYm9uZSIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=20"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkhlYmVpIiAmJiBvcmc9IkNISU5BIFVOSUNPTSBDaGluYTE2OSBCYWNrYm9uZSIgJiYgcHJvdG9jb2w9Imh0dHAi"
 #        url_fofa=$(echo '"udpxy" && city="Shijiazhuang" && org="CHINA UNICOM China169 Backbone" && protocol="http"' | base64 |tr -d '\n')
 #        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
@@ -115,7 +115,7 @@ case $city_choice in
         city="Beijing_dianxin_186"
         stream="udp/225.1.8.21:8002"
         channel_key="北京电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkJlaWppbmciICYmIG9yZz0iQ2hpbmEgTmV0d29ya3MgSW50ZXItRXhjaGFuZ2UiICYmIHByb3RvY29sPSJodHRwIg%3D%3D&page=1&page_size=20"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkJlaWppbmciICYmIG9yZz0iQ2hpbmEgTmV0d29ya3MgSW50ZXItRXhjaGFuZ2UiICYmIHByb3RvY29sPSJodHRwIg%3D%3D"
 #        url_fofa=$(echo '"udpxy" && region="Beijing" && org="China Networks Inter-Exchange" && protocol="http"' | base64 |tr -d '\n')
 #        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
@@ -123,7 +123,7 @@ case $city_choice in
         city="Shandong_279"
         stream="udp/239.21.1.87:5002"
         channel_key="山东电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IlNoYW5kb25nIiAmJiBvcmc9IkNoaW5hbmV0IiAmJiBwcm90b2NvbD0iaHR0cCIg&page=1&page_size=20"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IlNoYW5kb25nIiAmJiBvcmc9IkNoaW5hbmV0IiAmJiBwcm90b2NvbD0iaHR0cCIg"
 #        url_fofa=$(echo '"udpxy" && city="Jinan" && org="Chinanet" && protocol="http" || "udpxy" && city="Qingdao" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
 #        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
@@ -131,7 +131,7 @@ case $city_choice in
         city="Jiangxi_105"
         stream="udp/239.252.220.63:5140"
         channel_key="江西电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkppYW5neGkiICAmJiBvcmc9IkNoaW5hbmV0IiAmJiBwcm90b2NvbD0iaHR0cCI%3D&page=1&page_size=20"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkppYW5neGkiICAmJiBvcmc9IkNoaW5hbmV0IiAmJiBwcm90b2NvbD0iaHR0cCI%3D"
 #        url_fofa=$(echo '"udpxy" && city="Jiujiang" && protocol="http" || "udpxy" && city="Shangrao" && protocol="http"' | base64 |tr -d '\n')
 #        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
@@ -139,7 +139,7 @@ case $city_choice in
         city="Shanxi_117"
         stream="udp/239.1.1.1:8001"
         channel_key="山西电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PXRhaXl1YW4gJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=20"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PXRhaXl1YW4gJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi"
 #        url_fofa=$(echo '"udpxy" && region="Shanxi" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
 #        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
@@ -259,7 +259,6 @@ cat txt/fofa_Hebei_313.txt >>zubo_fofa.txt
 cat txt/河北联通.txt >>zubo_fofa.txt
 echo "河南电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Henan_327.txt >>zubo_fofa.txt
-cat txt/河南电信.txt >>zubo_fofa.txt
 echo "山东电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Shandong_279.txt >>zubo_fofa.txt
 cat txt/山东电信.txt >>zubo_fofa.txt
