@@ -265,7 +265,6 @@ cat txt/fofa_Shandong_279.txt >>zubo_fofa.txt
 cat txt/山东电信.txt >>zubo_fofa.txt
 echo "江西电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Jiangxi_105.txt >>zubo_fofa.txt
-cat txt/江西电信.txt >>zubo_fofa.txt
 echo "山西电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Shanxi_117.txt >>zubo_fofa.txt
 cat txt/山西电信.txt >>zubo_fofa.txt
