@@ -221,7 +221,6 @@ awk '/M|k/{print $2"  "$1}' "speedtest_${city}_$time.log" | sort -n -r >"result/
 cat "result/result_fofa_${city}.txt"
 ip1=$(awk 'NR==1{print $2}' result/result_fofa_${city}.txt)
 ip2=$(awk 'NR==2{print $2}' result/result_fofa_${city}.txt)
-ip3=$(awk 'NR==3{print $2}' result/result_fofa_${city}.txt)
 rm -f "speedtest_${city}_$time.log"
 
 # 用 3 个最快 ip 生成对应城市的 txt 文件
@@ -229,10 +228,9 @@ program="template/template_${city}.txt"
 
 sed "s/ipipip/$ip1/g" "$program" > tmp1.txt
 sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
-sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
-cat tmp1.txt tmp2.txt tmp3.txt > "txt/fofa_${city}.txt"
+cat tmp1.txt tmp2.txt > "txt/fofa_${city}.txt"
 
-rm -rf tmp1.txt tmp2.txt tmp3.txt
+rm -rf tmp1.txt tmp2.txt
 rm -f $ipfile $only_good_ip
 
 #--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
@@ -241,19 +239,15 @@ echo "北京电信,#genre#" >zubo_fofa.txt
 cat txt/fofa_Beijing_dianxin_186.txt >>zubo_fofa.txt
 echo "湖北电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Hubei_90.txt >>zubo_fofa.txt
-cat txt/湖北电信.txt >>zubo_fofa.txt
 echo "浙江电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Zhejiang_120.txt >>zubo_fofa.txt
-cat txt/浙江电信.txt >>zubo_fofa.txt
 echo "江苏,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Jiangsu.txt >>zubo_fofa.txt
-cat txt/江苏.txt >>zubo_fofa.txt
 echo "天津联通,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Tianjin_160.txt >>zubo_fofa.txt
 cat txt/天津联通.txt >>zubo_fofa.txt
 echo "四川电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Sichuan_333.txt >>zubo_fofa.txt
-cat txt/四川电信.txt >>zubo_fofa.txt
 echo "河北联通,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Hebei_313.txt >>zubo_fofa.txt
 cat txt/河北联通.txt >>zubo_fofa.txt
@@ -261,7 +255,6 @@ echo "河南电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Henan_327.txt >>zubo_fofa.txt
 echo "山东电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Shandong_279.txt >>zubo_fofa.txt
-cat txt/山东电信.txt >>zubo_fofa.txt
 echo "江西电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Jiangxi_105.txt >>zubo_fofa.txt
 echo "山西电信,#genre#" >>zubo_fofa.txt
