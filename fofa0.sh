@@ -123,9 +123,9 @@ rm -f $ipfile $only_good_ip
 
 #--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
 
-echo "广东电信,#genre#" >zubo_fofa1.txt
-cat txt/fofa_Guangdong_332.txt >>zubo_fofa1.txt
-echo "福建电信,#genre#" >>zubo_fofa1.txt
-cat txt/fofa_Fujian_114.txt >>zubo_fofa1.txt
-echo "湖南电信,#genre#" >>zubo_fofa1.txt
-cat txt/fofa_Hunan_282.txt >>zubo_fofa1.txt
+echo "广东电信,#genre#" >zubo_fofa.txt
+cat txt/fofa_Guangdong_332.txt >>zubo_fofa.txt
+echo "福建电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Fujian_114.txt >>zubo_fofa.txt
+echo "湖南电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Hunan_282.txt >>zubo_fofa.txt
