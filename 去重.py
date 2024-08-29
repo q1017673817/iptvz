@@ -19,4 +19,4 @@ with open('zubo.txt', 'w', encoding="utf-8") as file:
  file.writelines(unique_lines)
 
 os.remove("zubo1.txt")
-os.remove("zubo_fofa.txt")
+os.remove("zubo_fofa1.txt")
