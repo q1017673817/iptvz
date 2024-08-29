@@ -8,11 +8,11 @@ import threading
 import re
 ###urls城市根据自己所处地理位置修改
 urls = [
-    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iSmluYW4iIHx8ICJaSEdYVFYiICYmIGNpdHk9IldlaWZhbmci", #山东jinan weifang
-    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT1IdWFpbmFu", #安徽huaian
-    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iY2hhbmdzaGEi", #湖南changsha
+    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iSmluYW4i", #山东jinan 
+    #"https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT1IdWFpbmFu", #安徽huaian
+    #"https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iY2hhbmdzaGEi", #湖南changsha
     "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iWmhlbmd6aG91Ig%3D%3D", #河南zhengzhou
-    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgcmVnaW9uPSJTaGFhbnhpIg%3D%3D", #陕西
+    #"https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgcmVnaW9uPSJTaGFhbnhpIg%3D%3D", #陕西
 ]
 
 def modify_urls(url):
