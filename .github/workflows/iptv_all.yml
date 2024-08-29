@@ -1,4 +1,4 @@
-name: Update all
+name: 每日更新
 
 on:
 #  schedule:
