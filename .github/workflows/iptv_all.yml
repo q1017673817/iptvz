@@ -2,7 +2,7 @@ name: Update all
 
 on:
   schedule:
-    - cron: 55 9 1/1 * *
+    - cron: 55 8 1/1 * *
   workflow_dispatch:
 
 jobs:
@@ -37,7 +37,7 @@ jobs:
 #      working-directory: iptv
       run: |
         cd $GITHUB_WORKSPACE
-        bash ./fofa1.sh
+        bash ./fofa0.sh
         bash ./multi_test.sh
 
     - name: run 去重_py
