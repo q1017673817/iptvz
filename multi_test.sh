@@ -110,7 +110,6 @@ cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sor
 cat "result/result_${city}.txt"
 ip1=$(head -n 1 result/result_${city}.txt | awk '{print $2}')
 ip2=$(head -n 2 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
-ip3=$(head -n 3 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
 rm -f speedtest_${city}_$time.log  "$ipfile"
 
 #----------------------用2个最快ip生成对应城市的txt文件---------------------------
@@ -138,7 +137,5 @@ cat txt/Hunan_282.txt >>zubo1.txt
 echo "福建电信,#genre#" >>zubo1.txt
 cat txt/fofa_Fujian_114.txt >>zubo1.txt
 cat txt/Fujian_114.txt >>zubo1.txt
-cat zubo_fofa.txt >>zubo1.txt
+cat txt/zubo_fofa.txt >>zubo1.txt
 cat txt/zubo.txt >>zubo1.txt
-echo "陕西电信,#genre#" >>zubo1.txt
-cat txt/fofa_Shaanxi_123.txt >>zubo1.txt
