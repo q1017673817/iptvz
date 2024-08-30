@@ -102,7 +102,7 @@ case $city_choice in
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
         for option in {1..11}; do
-          bash  ./fofa.sh $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
+          bash  ./zubo_fofa.sh $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
         ;;
