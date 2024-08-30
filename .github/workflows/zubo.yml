@@ -22,7 +22,7 @@ jobs:
       #working-directory: iptv/speedtest
       run: |
         cd $GITHUB_WORKSPACE
-        bash ./fofa.sh
+        bash ./zubo_fofa.sh
 
     - name: Update Results
       run: |
