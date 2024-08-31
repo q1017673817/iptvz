@@ -1,8 +1,8 @@
-name: fofa
+name: zubo_fofa
 
 on:
   schedule:
-    - cron: '1 9 1/3 * *'
+    - cron: '1 9 1/2 * *'
   workflow_dispatch:
 
 jobs:
