@@ -1,8 +1,8 @@
 name: zubo_fofa
 
 on:
-  schedule:
-    - cron: '40 9 * * *'
+#  schedule:
+#    - cron: '40 9 * * *'
   workflow_dispatch:
 
 jobs:
