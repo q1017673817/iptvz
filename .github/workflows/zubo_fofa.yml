@@ -2,7 +2,7 @@ name: zubo_fofa
 
 on:
   schedule:
-    - cron: '1 9 1/2 * *'
+    - cron: '40 9 * * *'
   workflow_dispatch:
 
 jobs:
@@ -23,6 +23,16 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         bash ./zubo_fofa.sh
+        bash ./fofa0.sh
+        bash ./multi_test.sh
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
+        
+    - name: run 去重_py
+      run: python ${{ github.workspace }}/去重.py
 
     - name: Update Results
       run: |
