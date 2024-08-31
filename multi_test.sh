@@ -131,6 +131,8 @@ rm -rf tmp1.txt tmp2.txt
 echo "广东电信,#genre#" >zubo1.txt
 cat txt/fofa_Guangdong_332.txt >>zubo1.txt
 cat txt/Guangdong_332.txt >>zubo1.txt
+cat txt/北京联通.txt >>zubo1.txt
+cat txt/上海电信.txt >>zubo1.txt
 echo "湖南电信,#genre#" >>zubo1.txt
 cat txt/fofa_Hunan_282.txt >>zubo1.txt
 cat txt/Hunan_282.txt >>zubo1.txt
@@ -138,4 +140,6 @@ echo "福建电信,#genre#" >>zubo1.txt
 cat txt/fofa_Fujian_114.txt >>zubo1.txt
 cat txt/Fujian_114.txt >>zubo1.txt
 cat txt/zubo_fofa.txt >>zubo1.txt
-cat txt/zubo.txt >>zubo1.txt
+cat txt/重庆电信.txt >>zubo1.txt
+cat txt/广西电信.txt >>zubo1.txt
+cat txt/河南联通.txt >>zubo1.txt
