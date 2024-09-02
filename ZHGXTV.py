@@ -10,7 +10,7 @@ import re
 urls = [
     "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iSmluYW4i", #山东jinan 
     #"https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT1IdWFpbmFu", #安徽huaian
-    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iY2hhbmdzaGEi", #湖南changsha
+    #"https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iY2hhbmdzaGEi", #湖南changsha
     "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iWmhlbmd6aG91Ig%3D%3D", #河南zhengzhou
     #"https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgcmVnaW9uPSJTaGFhbnhpIg%3D%3D", #陕西
 ]
