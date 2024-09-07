@@ -8,11 +8,8 @@ import threading
 import re
 ###urls城市根据自己所处地理位置修改
 urls = [
-    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iSmluYW4iIA%3D%3D", #山东jinan     
-    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY2l0eT0iWmhlbmd6aG91Ig%3D%3D", #河南zhengzhou
     "https://www.zoomeye.org/searchResult?q=ZHGXTV%20%2Bcity%3A%22changsha%22", #湖南changsha
     "https://www.zoomeye.org/searchResult?q=ZHGXTV%20%2Bcity%3A%22zhengzhou%22",#河南zhengzhou
-    "https://www.zoomeye.org/searchResult?q=ZHGXTV%20%2Bsubdivisions%3A%22hebei%22", #河北
     "https://www.zoomeye.org/searchResult?q=ZHGXTV%20%2Bcity%3A%22jinan%22", #山东jinan
 ]
 
