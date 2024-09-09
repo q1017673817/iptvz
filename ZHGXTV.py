@@ -197,7 +197,7 @@ with open('ZHGXTV0.txt', 'r', encoding='utf-8') as file, open('ZHGXTV1.txt', 'w'
          a.write(line)  # 将该行写入输出文件 
 
 file_contents = []
-file_paths = ["itv.txt", "ZHGXTV1.txt", "iptvlist"]  # 替换为实际的文件路径列表
+file_paths = ["itv.txt", "ZHGXTV1.txt", "iptvlist.txt"]  # 替换为实际的文件路径列表
 for file_path in file_paths:
     with open(file_path, 'r', encoding="utf-8") as file:
         content = file.read()
