@@ -196,8 +196,36 @@ with open('ZHGXTV0.txt', 'r', encoding='utf-8') as file, open('ZHGXTV1.txt', 'w'
         if re.search(pattern, line):  # 如果行中有任意关键字
          a.write(line)  # 将该行写入输出文件 
 
+file_contents = []
+file_paths = ["itv.txt", "ZHGXTV1.txt", "iptvlist"]  # 替换为实际的文件路径列表
+for file_path in file_paths:
+    with open(file_path, 'r', encoding="utf-8") as file:
+        content = file.read()
+        file_contents.append(content)
+
+# 写入合并后的文件
+with open("iptv0.txt", "w", encoding="utf-8") as output:
+    output.write('\n'.join(file_contents))
+
+with open('iptv0.txt', 'r', encoding="utf-8") as file:
+ lines = file.readlines()
+ 
+# 使用列表来存储唯一的行的顺序 
+ unique_lines = [] 
+ seen_lines = set() 
+
+# 遍历每一行，如果是新的就加入unique_lines 
+for line in lines:
+ if line not in seen_lines:
+  unique_lines.append(line)
+  seen_lines.add(line)
+
+# 将唯一的行写入新的文档 
+with open('iptv1.txt', 'w', encoding="utf-8") as file:
+ file.writelines(unique_lines)
+
 channels = []
-with open('ZHGXTV1.txt', 'r', encoding='utf-8') as file:
+with open('iptv1.txt', 'r', encoding='utf-8') as file:
     for line in file:
         line = line.strip()
         if line:
@@ -216,32 +244,24 @@ def channel_key(channel):
 # 对频道进行排序
 channels.sort(key=lambda x: channel_key(x[0]))
 
-# 生成iptv_list.txt文件
-with open('ZHGXTV.txt', 'w', encoding='utf-8') as file:
-    file.write('央视频道2,#genre#\n')
+# 生成iptv.txt文件
+with open('iptv.txt', 'w', encoding='utf-8') as file:
+    file.write('央视频道,#genre#\n')
     for channel, address in channels:
         if 'cctv' in channel.lower():
             file.write(f'{channel},{address}\n')
-    file.write('卫视频道2,#genre#\n')
+    file.write('卫视频道,#genre#\n')
     for channel, address in channels:
         if '卫视' in channel:
             file.write(f'{channel},{address}\n')
-    file.write('其他频道2,#genre#\n')
+    file.write('其他频道,#genre#\n')
     for channel, address in channels:
         if 'cctv' not in channel.lower() and '卫视' not in channel:
             file.write(f'{channel},{address}\n')
 
-file_contents = []
-file_paths = ["itv.txt", "ZHGXTV.txt"]  # 替换为实际的文件路径列表
-for file_path in file_paths:
-    with open(file_path, 'r', encoding="utf-8") as file:
-        content = file.read()
-        file_contents.append(content)
 
-# 写入合并后的文件
-with open("iptv.txt", "w", encoding="utf-8") as output:
-    output.write('\n'.join(file_contents))
 os.remove("ZHGXTV0.txt")
 os.remove("ZHGXTV1.txt")
-os.remove("ZHGXTV.txt")
 os.remove("itv.txt")
+os.remove("iptv0.txt")
+os.remove("iptv1.txt")
