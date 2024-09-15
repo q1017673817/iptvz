@@ -75,7 +75,7 @@ CCTV5+,http://111.225.113.230:9901/tsfile/live/0016_1.m3u8?key=txiptv&playlive=1
 CCTV5+,http://111.225.113.53:9901/tsfile/live/0016_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV5+,http://111.225.51.2:9901/tsfile/live/0016_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV5+,http://144.7.38.224:808/hls/61/index.m3u8
-CCTV5综合体育,http://111.225.51.2:9901/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&authid=0
+CCTV5,http://111.225.51.2:9901/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV6,http://111.225.112.166:9901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV6,http://111.225.112.190:808/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV6,http://111.225.112.239:9901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0
@@ -268,7 +268,6 @@ CCTV17,http://144.7.38.195:808/hls/93/index.m3u8
 北京卫视,http://61.52.156.202:808/hls/33/index.m3u8
 北京卫视,http://61.52.156.249:808/hls/33/index.m3u8
 北京卫视,http://61.52.158.166:808/hls/33/index.m3u8
-卫视频道,#genre#
 吉林卫视,http://111.225.112.190:808/tsfile/live/1028_1.m3u8?key=txiptv&playlive=1&authid=0
 四川卫视,http://111.225.112.166:9901/tsfile/live/0123_1.m3u8?key=txiptv&playlive=1&authid=0
 四川卫视,http://111.225.112.190:808/tsfile/live/1020_1.m3u8?key=txiptv&playlive=1&authid=0
@@ -542,7 +541,6 @@ CGTN,http://111.225.113.53:9901/tsfile/live/1004_1.m3u8?key=txiptv&playlive=1&au
 公共,http://61.52.156.202:808/hls/23/index.m3u8
 公共,http://61.52.156.249:808/hls/23/index.m3u8
 公共,http://61.52.156.33:808/hls/23/index.m3u8
-其他频道,#genre#
 军事,http://171.8.244.91:808/hls/68/index.m3u8
 军事,http://171.8.247.168:808/hls/68/index.m3u8
 军事,http://61.52.156.202:808/hls/68/index.m3u8
@@ -558,7 +556,6 @@ CGTN,http://111.225.113.53:9901/tsfile/live/1004_1.m3u8?key=txiptv&playlive=1&au
 嘉佳卡通,http://171.8.244.91:808/hls/63/index.m3u8
 嘉佳卡通,http://61.52.156.202:808/hls/63/index.m3u8
 嘉佳卡通,http://61.52.156.249:808/hls/63/index.m3u8
-央视频道,#genre#
 山东教育,http://111.225.112.190:808/tsfile/live/1030_1.m3u8?key=txiptv&playlive=1&authid=0
 收视指南,http://171.8.247.168:808/hls/62/index.m3u8
 收视指南,http://61.52.156.202:808/hls/62/index.m3u8
