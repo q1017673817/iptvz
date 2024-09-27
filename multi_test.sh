@@ -144,5 +144,8 @@ cat txt/重庆电信.txt >>zubo1.txt
 cat txt/广西电信.txt >>zubo1.txt
 cat txt/河南联通.txt >>zubo1.txt
 
-echo "安徽电信,#genre#" >iptvlist.txt
-cat txt/fofa_Anhui_191.txt >>iptvlist.txt
+echo "安徽电信,#genre#" >稳定源.txt
+cat txt/fofa_Anhui_191.txt >>稳定源.txt
+cat txt/重庆电信.txt >>稳定源.txt
+cat txt/上海电信.txt >>稳定源.txt
+cat txt/广西电信.txt >>稳定源.txt
