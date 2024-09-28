@@ -128,7 +128,10 @@ rm -rf tmp1.txt tmp2.txt
 
 #--------------------合并所有城市的txt文件为:   zubo.txt-----------------------------------------
 
-echo "广东电信,#genre#" >zubo1.txt
+
+echo "网络电视,#genre#" >zubo1.txt
+cat iptv.txt >>zubo1.txt
+echo "广东电信,#genre#" >>zubo1.txt
 cat txt/fofa_Guangdong_332.txt >>zubo1.txt
 cat txt/Guangdong_332.txt >>zubo1.txt
 cat txt/北京联通.txt >>zubo1.txt
@@ -143,9 +146,3 @@ cat txt/zubo_fofa.txt >>zubo1.txt
 cat txt/重庆电信.txt >>zubo1.txt
 cat txt/广西电信.txt >>zubo1.txt
 cat txt/河南联通.txt >>zubo1.txt
-
-echo "湖北电信,#genre#" >稳定源.txt
-cat txt/fofa_Hubei_90.txt >>稳定源.txt
-cat txt/上海电信.txt >>稳定源.txt
-cat txt/广西电信.txt >>稳定源.txt
-cat txt/重庆电信.txt >>稳定源.txt
