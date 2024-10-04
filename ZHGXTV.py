@@ -8,9 +8,9 @@ import threading
 import re
 ###urls城市根据自己所处地理位置修改
 urls = [
-    "https://www.zoomeye.org/searchResult?q=ZHGXTV%20%2Bcity%3A%22changsha%22", #湖南changsha
+#    "https://www.zoomeye.org/searchResult?q=ZHGXTV%20%2Bcity%3A%22changsha%22", #湖南changsha
     "https://www.zoomeye.org/searchResult?q=ZHGXTV%20%2Bcity%3A%22zhengzhou%22",#河南zhengzhou
-    "https://www.zoomeye.org/searchResult?q=ZHGXTV%20%2Bcity%3A%22jinan%22", #山东jinan
+#    "https://www.zoomeye.org/searchResult?q=ZHGXTV%20%2Bcity%3A%22jinan%22", #山东jinan
 ]
 
 def modify_urls(url):
