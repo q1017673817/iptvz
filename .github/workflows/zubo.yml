@@ -1,8 +1,8 @@
 name: zubo
 
 on:
-  schedule:
-    - cron: 5 23 * * *
+#  schedule:
+#    - cron: 5 23 * * *
   workflow_dispatch:
 
 jobs:
@@ -22,16 +22,7 @@ jobs:
 #      working-directory: iptv
       run: |
         cd $GITHUB_WORKSPACE
-        bash ./fofa0.sh
         bash ./multi_test.sh
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.x
-        
-    - name: run 去重_py
-      run: python ${{ github.workspace }}/去重.py
 
     - name: 提交更改
       run: |
