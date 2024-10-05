@@ -11,7 +11,7 @@ if [ $# -eq 0 ]; then
   echo "5. 湖北电信（Hubei_90）"
   echo "6. 安徽电信（Anhui_191）"
   echo "7. 河北联通（Hebei_313）"
-  echo "8. 山东电信（Shandong_279）"
+  echo "8. 重庆电信（Chongqing_161）"
   echo "9. 江西电信（Jiangxi_105）"
   echo "10. 山西电信（Shanxi_117）"
   echo "11. 陕西电信（Shanxi_123）"
@@ -78,10 +78,10 @@ case $city_choice in
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkhlYmVpIiAmJiBvcmc9IkNISU5BIFVOSUNPTSBDaGluYTE2OSBCYWNrYm9uZSIgJiYgcHJvdG9jb2w9Imh0dHAi"
         ;;
     8)
-        city="Shandong_279"
-        stream="udp/239.21.1.87:5002"
-        channel_key="山东电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IlNoYW5kb25nIiAmJiBvcmc9IkNoaW5hbmV0IiAmJiBwcm90b2NvbD0iaHR0cCIg"
+        city="Chongqing_161"
+        stream="rtp/235.254.196.249:1268"
+        channel_key="重庆电信"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IumHjeW6hiIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi"
         ;;
     9)
         city="Jiangxi_105"
@@ -217,7 +217,6 @@ cat txt/fofa_Jiangsu.txt >>zubo_fofa.txt
 echo "北京联通,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Beijing_liantong_145.txt >>zubo_fofa.txt
 cat txt/北京联通.txt >>zubo_fofa.txt
-cat txt/重庆电信.txt >>zubo_fofa.txt
 cat txt/广西电信.txt >>zubo_fofa.txt
 cat txt/河南联通.txt >>zubo_fofa.txt
 echo "天津联通,#genre#" >>zubo_fofa.txt
@@ -228,8 +227,8 @@ echo "安徽电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Anhui_191.txt >>zubo_fofa.txt
 echo "河北联通,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Hebei_313.txt >>zubo_fofa.txt
-echo "山东电信,#genre#" >>zubo_fofa.txt
-cat txt/fofa_Shandong_279.txt >>zubo_fofa.txt
+echo "重庆电信,#genre#" >>zubo_fofa.txt
+cat txt/fofa_Chongqing_161.txt >>zubo_fofa.txt
 echo "江西电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Jiangxi_105.txt >>zubo_fofa.txt
 echo "山西电信,#genre#" >>zubo_fofa.txt
