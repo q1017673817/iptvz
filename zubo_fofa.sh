@@ -158,6 +158,7 @@ while IFS= read -r ip; do
         echo "$output" | grep "succeeded" | awk -v ip="$ip" '{print ip}' >> "$only_good_ip"
     fi
 done < "$ipfile"
+rm -f "$ipfile"
 
 echo "===============检索完成================="
 
