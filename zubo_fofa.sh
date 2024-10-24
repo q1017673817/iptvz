@@ -205,7 +205,6 @@ rm -f $ipfile $only_good_ip
 
 echo "网络电视,#genre#" >zubo.txt
 cat iptv.txt >>zubo.txt
-cat txt/上海电信.txt >>zubo.txt
 echo "广东电信,#genre#" >>zubo.txt
 cat txt/fofa_Guangdong_332.txt >>zubo.txt
 echo "湖南电信,#genre#" >>zubo.txt
@@ -216,9 +215,6 @@ echo "江苏电信,#genre#" >>zubo.txt
 cat txt/fofa_Jiangsu.txt >>zubo.txt
 echo "北京联通,#genre#" >>zubo.txt
 cat txt/fofa_Beijing_liantong_145.txt >>zubo.txt
-cat txt/北京联通.txt >>zubo.txt
-cat txt/广西电信.txt >>zubo.txt
-cat txt/河南联通.txt >>zubo.txt
 echo "天津联通,#genre#" >>zubo.txt
 cat txt/fofa_Tianjin_160.txt >>zubo.txt
 echo "四川电信,#genre#" >>zubo.txt
@@ -233,7 +229,6 @@ echo "江西电信,#genre#" >>zubo.txt
 cat txt/fofa_Jiangxi_105.txt >>zubo.txt
 echo "山西电信,#genre#" >>zubo.txt
 cat txt/fofa_Shanxi_117.txt >>zubo.txt
-cat txt/山西电信.txt >>zubo.txt
 echo "浙江电信,#genre#" >>zubo.txt
 cat txt/fofa_Zhejiang_120.txt >>zubo.txt
 echo "陕西电信,#genre#" >>zubo.txt
