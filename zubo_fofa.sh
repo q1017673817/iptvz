@@ -106,11 +106,11 @@ case $city_choice in
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     12)
-       city="Guangdong_332"
-       stream="udp/239.77.1.152:5146"
-       channel_key="广东电信"
-       url_fofa=$(echo  '"udpxy" && region="Guangdong" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
-       url_fofa="https://fofa.info/result?qbase64="$url_fofa
+        city="Guangdong_332"
+        stream="udp/239.77.1.152:5146"
+        channel_key="广东电信"
+        url_fofa=$(echo  '"udpxy" && region="Guangdong" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     13)
         city="Hunan_282"
