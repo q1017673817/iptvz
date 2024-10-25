@@ -1,3 +1,4 @@
+
 pwd
 time=$(date +%m%d%H%M)
 i=0
@@ -11,12 +12,13 @@ if [ $# -eq 0 ]; then
   echo "5. 湖北电信（Hubei_90）"
   echo "6. 安徽电信（Anhui_191）"
   echo "7. 河北联通（Hebei_313）"
-  echo "8. 江西电信（Jiangxi_105）"
-  echo "9. 山西电信（Shanxi_117）"
-  echo "10. 陕西电信（Shanxi_123）"
-  echo "11. 北京联通（Beijing_liantong_145）"
-  echo "12. 广东电信（Guangdong_332）"
-  echo "13. 湖南电信（Hunan_282）"
+  echo "8. 重庆电信（Chongqing_161）"
+  echo "9. 江西电信（Jiangxi_105）"
+  echo "10. 山西电信（Shanxi_117）"
+  echo "11. 陕西电信（Shanxi_123）"
+  echo "12. 北京联通（Beijing_liantong_145）"
+  echo "13. 广东电信（Guangdong_332）"
+  echo "14. 湖南电信（Hunan_282）"
   echo "0. 全部"
   read -t 3 -p "输入选择或在3秒内无输入将默认选择全部: " city_choice
 
@@ -65,7 +67,7 @@ case $city_choice in
         ;;
     6)
         city="Anhui_191"
-        stream="rtp/238.1.78.166:7200"
+        stream="rtp/238.1.79.27:4328"
         channel_key="安徽电信"
         url_fofa=$(echo  '"udpxy" && region="Anhui" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
@@ -74,55 +76,54 @@ case $city_choice in
         city="Hebei_313"
         stream="rtp/239.253.92.154:6011"
         channel_key="河北联通"
-        url_fofa=$(echo  '"udpxy" && city="Shijiazhuang" && org="CHINA UNICOM China169 Backbone" && protocol="http"' | base64 |tr -d '\n')
-        url_fofa="https://fofa.info/result?qbase64="$url_fofa
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkhlYmVpIiAmJiBvcmc9IkNISU5BIFVOSUNPTSBDaGluYTE2OSBCYWNrYm9uZSIgJiYgcHJvdG9jb2w9Imh0dHAi"
         ;;
     8)
+        city="Chongqing_161"
+        stream="rtp/235.254.196.249:1268"
+        channel_key="重庆电信"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IumHjeW6hiIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi"
+        ;;
+    9)
         city="Jiangxi_105"
         stream="udp/239.252.220.63:5140"
         channel_key="江西电信"
-        url_fofa=$(echo  '"udpxy" && region="Jiangxi" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
-        url_fofa="https://fofa.info/result?qbase64="$url_fofa
-        ;;
-    9)
-        city="Shanxi_117"
-        stream="udp/239.1.1.7:8007"
-        channel_key="山西电信"
-        url_fofa=$(echo  '"udpxy" && region="Shanxi" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
-        url_fofa="https://fofa.info/result?qbase64="$url_fofa
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkppYW5neGkiICAmJiBvcmc9IkNoaW5hbmV0IiAmJiBwcm90b2NvbD0iaHR0cCI%3D"
         ;;
     10)
-        city="Shaanxi_123"
-        stream="rtp/239.112.205.78:5140"
-        channel_key="陕西电信"
-        url_fofa=$(echo  '"udpxy" && region="Shaanxi" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
-        url_fofa="https://fofa.info/result?qbase64="$url_fofa
+        city="Shanxi_117"
+        stream="udp/239.1.1.1:8001"
+        channel_key="山西电信"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PXRhaXl1YW4gJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi"
         ;;
     11)
-        city="Beijing_liantong_145"
-        stream="rtp/239.3.1.129:8008"
-        channel_key="北京联通"
-        url_fofa=$(echo  '"udpxy" && region="Beijing" && org="China Unicom Beijing Province Network" && protocol="http"' | base64 |tr -d '\n')
-        url_fofa="https://fofa.info/result?qbase64="$url_fofa
+        city="Shaanxi_123"
+        stream="rtp/239.111.205.35:5140"
+        channel_key="陕西电信"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IlNoYWFueGkiICYmIG9yZz0iQ2hpbmFuZXQiICYmIHByb3RvY29sPSJodHRwIg%3D%3D"
         ;;
     12)
-        city="Guangdong_332"
-        stream="udp/239.77.1.152:5146"
-        channel_key="广东电信"
-        url_fofa=$(echo  '"udpxy" && region="Guangdong" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
-        url_fofa="https://fofa.info/result?qbase64="$url_fofa
+        city="Beijing_liantong_145"
+        stream="rtp/239.3.1.241:8000"
+        channel_key="北京联通"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IuWMl%2BS6rCIgICYmIHByb3RvY29sPSJodHRwIg%3D%3D"
         ;;
     13)
+       city="Guangdong_332"
+       stream="udp/239.77.1.152:5146"
+       channel_key="广东电信"
+       url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PSJTaGVuemhlbiIgJiYgcHJvdG9jb2w9Imh0dHAiIHx8ICJ1ZHB4eSIgJiYgY2l0eT0iR3Vhbmd6aG91IiAmJiBwcm90b2NvbD0iaHR0cCI%3D"
+        ;;
+    14)
         city="Hunan_282"
-        stream="udp/239.76.246.151:1234"
+        stream="udp/239.76.253.100:9000"
         channel_key="湖南电信"
-        url_fofa=$(echo  '"udpxy" && region="Hunan" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
-        url_fofa="https://fofa.info/result?qbase64="$url_fofa
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Ikh1bmFuIiAmJiBwcm90b2NvbD0iaHR0cCIgJiYgb3JnPSJDaGluYW5ldCI%3D"
         ;;
 
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..13}; do
+        for option in {1..14}; do
           bash  ./zubo_fofa.sh $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -214,8 +215,6 @@ echo "湖北电信,#genre#" >>zubo.txt
 cat txt/fofa_Hubei_90.txt >>zubo.txt
 echo "江苏电信,#genre#" >>zubo.txt
 cat txt/fofa_Jiangsu.txt >>zubo.txt
-echo "浙江电信,#genre#" >>zubo.txt
-cat txt/fofa_Zhejiang_120.txt >>zubo.txt
 echo "北京联通,#genre#" >>zubo.txt
 cat txt/fofa_Beijing_liantong_145.txt >>zubo.txt
 echo "天津联通,#genre#" >>zubo.txt
@@ -226,9 +225,13 @@ echo "安徽电信,#genre#" >>zubo.txt
 cat txt/fofa_Anhui_191.txt >>zubo.txt
 echo "河北联通,#genre#" >>zubo.txt
 cat txt/fofa_Hebei_313.txt >>zubo.txt
+echo "重庆电信,#genre#" >>zubo.txt
+cat txt/fofa_Chongqing_161.txt >>zubo.txt
 echo "江西电信,#genre#" >>zubo.txt
 cat txt/fofa_Jiangxi_105.txt >>zubo.txt
 echo "山西电信,#genre#" >>zubo.txt
 cat txt/fofa_Shanxi_117.txt >>zubo.txt
+echo "浙江电信,#genre#" >>zubo.txt
+cat txt/fofa_Zhejiang_120.txt >>zubo.txt
 echo "陕西电信,#genre#" >>zubo.txt
 cat txt/fofa_Shaanxi_123.txt >>zubo.txt
