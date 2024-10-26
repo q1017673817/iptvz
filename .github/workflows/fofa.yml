@@ -1,8 +1,8 @@
 name: fofa
 
 on:
-  schedule:
-    - cron: '45 23 * * *'
+#  schedule:
+#    - cron: '45 23 * * *'
   workflow_dispatch:
 
 jobs:
