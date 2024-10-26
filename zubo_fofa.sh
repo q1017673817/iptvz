@@ -37,13 +37,13 @@ case $city_choice in
         city="Sichuan_333"
         stream="udp/239.93.0.169:5140"
         channel_key="四川电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PSJDaGVuZ2R1IiAmJiBwcm90b2NvbD0iaHR0cCIgJiYgb3JnPSJDaGluYW5ldCIgJiYgaXAhPTEyNS42OS41OC4xLzI0"
+        url_fofa="https://www.zoomeye.org/searchResult?q=app%3A%22udpxy%22%20%2Bcity%3A%22Chengdu%22%20%2Borg%3A%22Chinanet%22%20%2bservice:%22http%22"
         ;;
     2)
         city="Zhejiang_120"
         stream="rtp/233.50.201.63:5140"
         channel_key="浙江电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249InpoZWppYW5nIiAmJiBvcmc9IkNoaW5hbmV0IiAmJiBwcm90b2NvbD0iaHR0cCI%3D"
+        url_fofa="https://www.zoomeye.org/searchResult?q=app%3A%22udpxy%22%20%2Bsubdivisions%3A%22zhejiang%22%20%2Borg%3A%22Chinanet%22%20%2Bservice%3A%22http%22"
         ;;
     3)
         city="Jiangsu"
@@ -123,7 +123,7 @@ case $city_choice in
 
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..14}; do
+        for option in {1..2}; do
           bash  ./zubo_fofa.sh $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -207,31 +207,7 @@ rm -f $ipfile $only_good_ip
 
 echo "网络电视,#genre#" >zubo.txt
 cat iptv.txt >>zubo.txt
-echo "广东电信,#genre#" >>zubo.txt
-cat txt/fofa_Guangdong_332.txt >>zubo.txt
-echo "湖南电信,#genre#" >>zubo.txt
-cat txt/fofa_Hunan_282.txt >>zubo.txt
-echo "湖北电信,#genre#" >>zubo.txt
-cat txt/fofa_Hubei_90.txt >>zubo.txt
-echo "江苏电信,#genre#" >>zubo.txt
-cat txt/fofa_Jiangsu.txt >>zubo.txt
-echo "北京联通,#genre#" >>zubo.txt
-cat txt/fofa_Beijing_liantong_145.txt >>zubo.txt
-echo "天津联通,#genre#" >>zubo.txt
-cat txt/fofa_Tianjin_160.txt >>zubo.txt
 echo "四川电信,#genre#" >>zubo.txt
 cat txt/fofa_Sichuan_333.txt >>zubo.txt
-echo "安徽电信,#genre#" >>zubo.txt
-cat txt/fofa_Anhui_191.txt >>zubo.txt
-echo "河北联通,#genre#" >>zubo.txt
-cat txt/fofa_Hebei_313.txt >>zubo.txt
-echo "重庆电信,#genre#" >>zubo.txt
-cat txt/fofa_Chongqing_161.txt >>zubo.txt
-echo "江西电信,#genre#" >>zubo.txt
-cat txt/fofa_Jiangxi_105.txt >>zubo.txt
-echo "山西电信,#genre#" >>zubo.txt
-cat txt/fofa_Shanxi_117.txt >>zubo.txt
 echo "浙江电信,#genre#" >>zubo.txt
 cat txt/fofa_Zhejiang_120.txt >>zubo.txt
-echo "陕西电信,#genre#" >>zubo.txt
-cat txt/fofa_Shaanxi_123.txt >>zubo.txt
