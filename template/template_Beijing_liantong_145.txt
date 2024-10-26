@@ -7,9 +7,8 @@ BRTV生活,http://ipipip/rtp/239.3.1.117:8000
 BRTV青年,http://ipipip/# rtp/239.3.1.118:8000
 BRTV纪实科教,http://ipipip/rtp/239.3.1.115:8000
 BRTV卡酷少儿,http://ipipip/rtp/239.3.1.189:8000
-BRTV冬奥纪实,http://ipipip/# rtp/239.3.1.243:8000
-BRTV冬奥纪实[R],http://ipipip/# rtp/239.3.1.120:8000
-BRTV冬奥纪实,http://ipipip/# rtp/239.3.1.121:8000
+BRTV冬奥纪实,http://ipipip/rtp/239.3.1.243:8000
+BRTV冬奥纪实,http://ipipip/rtp/239.3.1.121:8000
 BRTV体育休闲,http://ipipip/rtp/239.3.1.243:8000
 BTV国际频道,http://ipipip/rtp/239.3.1.235:8000
 CCTV-1,http://ipipip/rtp/239.3.1.129:8008
@@ -28,7 +27,6 @@ CCTV-12,http://ipipip/rtp/239.3.1.64:8124
 CCTV-13,http://ipipip/rtp/239.3.1.124:8128
 CCTV-14,http://ipipip/rtp/239.3.1.65:8132
 CCTV-15,http://ipipip/rtp/239.3.1.153:8136
-CCTV-16,http://ipipip/rtp/239.3.1.183:8001
 CCTV-16,http://ipipip/rtp/239.3.1.184:8001
 CCTV-17,http://ipipip/rtp/239.3.1.151:8144
 CCTV-4 欧洲,http://ipipip/rtp/239.3.1.213:4220
@@ -71,7 +69,7 @@ CCTV-4 美洲,http://ipipip/rtp/239.3.1.214:4220
 爱上4K[超清],http://ipipip/rtp/239.3.1.236:2000
 4K超清[超清],http://ipipip/rtp/239.3.1.249:8001
 淘电影,http://ipipip/rtp/239.3.1.250:8001
-每日影院,http://ipipip/# rtp/239.3.1.111:8001
+每日影院,http://ipipip/rtp/239.3.1.111:8001
 星影,http://ipipip/rtp/239.3.1.94:4120
 动作影院,http://ipipip/rtp/239.3.1.92:4120
 光影,http://ipipip/rtp/239.3.1.84:4120
@@ -81,18 +79,17 @@ CCTV-4 美洲,http://ipipip/rtp/239.3.1.214:4220
 经典电影,http://ipipip/rtp/239.3.1.195:9024
 纪实人文,http://ipipip/rtp/239.3.1.212:8060
 金鹰纪实,http://ipipip/rtp/239.3.1.58:8156
-风尚生活,http://ipipip/# rtp/239.3.1.114:8001
+风尚生活,http://ipipip/rtp/239.3.1.114:8001
 地理,http://ipipip/rtp/239.3.1.71:4120
 淘剧场,http://ipipip/rtp/239.3.1.95:8001
-幸福剧场,http://ipipip/# rtp/239.3.1.112:8001
+幸福剧场,http://ipipip/rtp/239.3.1.112:8001
 淘娱乐,http://ipipip/rtp/239.3.1.100:8001
-幸福娱乐,http://ipipip/# rtp/239.3.1.113:8001
+幸福娱乐,http://ipipip/rtp/239.3.1.113:8001
 淘Baby,http://ipipip/rtp/239.3.1.238:8001
 萌宠TV,http://ipipip/rtp/239.3.1.102:8001
 中国交通,http://ipipip/rtp/239.3.1.188:8001
 朝阳融媒,http://ipipip/rtp/239.3.1.163:8001
 通州融媒,http://ipipip/rtp/239.3.1.221:8001
-密云电视台,http://ipipip/rtp/239.3.1.154:8001
 延庆电视台,http://ipipip/rtp/239.3.1.187:8001
 房山电视台,http://ipipip/rtp/239.3.1.96:8001
 CGTN 新闻,http://ipipip/rtp/239.3.1.215:4220
@@ -101,15 +98,9 @@ CGTN 西班牙语,http://ipipip/rtp/239.3.1.217:4220
 CGTN 法语,http://ipipip/rtp/239.3.1.218:4220
 CGTN 阿拉伯语,http://ipipip/rtp/239.3.1.219:4220
 CGTN 俄语,http://ipipip/rtp/239.3.1.220:4220
-睛彩竞技,http://ipipip/rtp/239.3.1.125:8001
-睛彩篮球,http://ipipip/rtp/239.3.1.126:8001
-睛彩羽毛球,http://ipipip/rtp/239.3.1.127:8001
-睛彩广场舞,http://ipipip/rtp/239.3.1.128:8001
 茶频道,http://ipipip/rtp/239.3.1.165:8001
-体育赛事,http://ipipip/rtp/239.3.1.157:8176
 淘精彩,http://ipipip/rtp/239.3.1.178:8001
 快乐垂钓,http://ipipip/rtp/239.3.1.164:8001
-大健康,http://ipipip/rtp/239.3.1.251:8001
 CETV1,http://ipipip/rtp/239.3.1.57:8152
 CETV2,http://ipipip/rtp/239.3.1.54:4120
 CETV3,http://ipipip/rtp/239.3.1.55:4120
@@ -143,7 +134,3 @@ CETV4,http://ipipip/rtp/239.3.1.56:4120
 音乐现场,http://ipipip/rtp/239.3.1.70:4120
 高网,http://ipipip/rtp/239.3.1.88:4120
 魅力时尚,http://ipipip/rtp/239.3.1.196:9012
-
-
-
-
