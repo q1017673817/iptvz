@@ -34,16 +34,18 @@ fi
 # 根据用户选择设置城市和相应的stream
 case $city_choice in
     1)
-        city="Sichuan_333"
-        stream="udp/239.93.0.169:5140"
-        channel_key="四川电信"
-        url_fofa="https://www.zoomeye.org/searchResult?q=app%3A%22udpxy%22%20%2Bcity%3A%22Chengdu%22%20%2Borg%3A%22Chinanet%22%20%2bservice:%22http%22"
+        city="Shanghai_103"
+        stream="udp/239.45.1.4:5140"
+	channel_key="上海"
+        url_fofa=$(echo  '"udpxy" && country="CN" && region="Shanghai" && org="China Telecom Group" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     2)
         city="Zhejiang_120"
         stream="rtp/233.50.201.63:5140"
         channel_key="浙江电信"
-        url_fofa="https://www.zoomeye.org/searchResult?q=app%3A%22udpxy%22%20%2Bsubdivisions%3A%22zhejiang%22%20%2Borg%3A%22Chinanet%22%20%2Bservice%3A%22http%22"
+        url_fofa=$(echo  '"udpxy" && country="CN" && region="Zhejiang" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     3)
         city="Jiangsu"
