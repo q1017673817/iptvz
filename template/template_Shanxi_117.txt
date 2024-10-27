@@ -27,7 +27,7 @@ CCTV-第一剧场,http://ipipip/udp/239.1.1.94:8094
 CCTV-怀旧剧场,http://ipipip/udp/239.1.1.95:8095
 湖南卫视,http://ipipip/udp/239.1.1.28:8028
 四川卫视,http://ipipip/udp/239.1.1.29:8029
-上海卫视,http://ipipip/udp/239.1.1.31:8031
+东方卫视,http://ipipip/udp/239.1.1.31:8031
 浙江卫视,http://ipipip/udp/239.1.1.38:8038
 深圳卫视,http://ipipip/udp/239.1.1.39:8039
 广西卫视,http://ipipip/udp/239.1.1.40:8040
