@@ -125,7 +125,7 @@ case $city_choice in
 
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..2}; do
+        for option in {1..14}; do
           bash  ./zubo_fofa.sh $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -209,7 +209,31 @@ rm -f $ipfile $only_good_ip
 
 echo "网络电视,#genre#" >zubo.txt
 cat iptv.txt >>zubo.txt
+echo "广东电信,#genre#" >>zubo.txt
+cat txt/fofa_Guangdong_332.txt >>zubo.txt
+echo "湖南电信,#genre#" >>zubo.txt
+cat txt/fofa_Hunan_282.txt >>zubo.txt
+echo "湖北电信,#genre#" >>zubo.txt
+cat txt/fofa_Hubei_90.txt >>zubo.txt
+echo "江苏电信,#genre#" >>zubo.txt
+cat txt/fofa_Jiangsu.txt >>zubo.txt
+echo "北京联通,#genre#" >>zubo.txt
+cat txt/fofa_Beijing_liantong_145.txt >>zubo.txt
+echo "天津联通,#genre#" >>zubo.txt
+cat txt/fofa_Tianjin_160.txt >>zubo.txt
 echo "四川电信,#genre#" >>zubo.txt
 cat txt/fofa_Sichuan_333.txt >>zubo.txt
+echo "安徽电信,#genre#" >>zubo.txt
+cat txt/fofa_Anhui_191.txt >>zubo.txt
+echo "河北联通,#genre#" >>zubo.txt
+cat txt/fofa_Hebei_313.txt >>zubo.txt
+echo "重庆电信,#genre#" >>zubo.txt
+cat txt/fofa_Chongqing_161.txt >>zubo.txt
+echo "江西电信,#genre#" >>zubo.txt
+cat txt/fofa_Jiangxi_105.txt >>zubo.txt
+echo "山西电信,#genre#" >>zubo.txt
+cat txt/fofa_Shanxi_117.txt >>zubo.txt
 echo "浙江电信,#genre#" >>zubo.txt
 cat txt/fofa_Zhejiang_120.txt >>zubo.txt
+echo "陕西电信,#genre#" >>zubo.txt
+cat txt/fofa_Shaanxi_123.txt >>zubo.txt
