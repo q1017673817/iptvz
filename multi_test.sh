@@ -154,8 +154,8 @@ cat txt/Tianjin_160.txt >>zubo1.txt
 echo "网络电视,#genre#" >iptvlist.txt
 cat iptv.txt >>iptvlist.txt
 cat txt/Beijing_liantong_145.txt >>iptvlist.txt
-cat txt/Zhejiang_120.txt >>iptvlist.txt
 cat txt/Tianjin_160.txt >>iptvlist.txt
+cat txt/Zhejiang_120.txt >>iptvlist.txt
 cat txt/Shanxi_117.txt >>iptvlist.txt
 cat txt/Henan_327.txt >>iptvlist.txt
 
