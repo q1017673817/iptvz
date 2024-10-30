@@ -30,7 +30,7 @@ case $city_choice in
         ;;
     2)
         city="Anhui_191"
-        stream="rtp/238.1.79.27:4328"
+        stream="rtp/238.1.78.150:7072"
         channel_key="安徽"
         ;;
     3)
