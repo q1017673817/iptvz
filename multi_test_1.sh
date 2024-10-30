@@ -40,7 +40,7 @@ case $city_choice in
         ;;
     4)
         city="Shanxi_184"
-        stream="rtp/226.0.2.153:9136"
+        stream="rtp/226.0.2.154:9144"
         channel_key="山西联通" 
         ;;
     0)
