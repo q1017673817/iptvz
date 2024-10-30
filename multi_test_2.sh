@@ -41,7 +41,7 @@ case $city_choice in
     4)
         city="Chongqing_77"
         stream="udp/225.0.4.74:7980"
-        channel_key="重庆" 
+        channel_key="重庆联通" 
         ;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
