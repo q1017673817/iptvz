@@ -220,3 +220,69 @@ with open("itv.txt", 'w', encoding='utf-8') as file:
         file.write(result + "\n")
         print(result)
 print("频道列表文件itv.txt获取完成！")
+
+with open('itv.txt', 'r', encoding="utf-8") as file:
+ lines = file.readlines()
+ 
+# 使用列表来存储唯一的行的顺序 
+ unique_lines = [] 
+ seen_lines = set() 
+
+# 遍历每一行，如果是新的就加入unique_lines 
+for line in lines:
+ if line not in seen_lines:
+  unique_lines.append(line)
+  seen_lines.add(line)
+
+# 将唯一的行写入新的文档 
+with open('iptv1.txt', 'w', encoding="utf-8") as file:
+ file.writelines(unique_lines)
+
+channels = []
+with open('iptv1.txt', 'r', encoding='utf-8') as file:
+    for line in file:
+        line = line.strip()
+        if line:
+            channel, address = line.split(',')
+            channels.append((channel, address))
+# 对频道进行排序
+channels.sort()
+# 自定义排序函数，提取频道名称中的数字并按数字排序
+def channel_key(channel):
+    match = re.search(r'\d+', channel)
+    if match:
+        return int(match.group())
+    else:
+        return float('inf')  # 返回一个无穷大的数字作为关键字
+
+# 对频道进行排序
+channels.sort(key=lambda x: channel_key(x[0]))
+
+# 生成iptv.txt文件
+with open('iptv.txt', 'w', encoding='utf-8') as file:
+    file.write('央视频道,#genre#\n')
+    for channel, address in channels:
+        if 'cctv' in channel.lower():
+            file.write(f'{channel},{address}\n')
+    file.write('卫视频道,#genre#\n')
+    for channel, address in channels:
+        if '卫视' in channel:
+            file.write(f'{channel},{address}\n')
+    file.write('其他频道,#genre#\n')
+    for channel, address in channels:
+        if 'cctv' not in channel.lower() and '卫视' not in channel:
+            file.write(f'{channel},{address}\n')
+
+os.remove("itv.txt")
+os.remove("iptv1.txt")
+os.remove("北京联通.txt")
+os.remove("四川电信.txt")
+os.remove("安徽电信.txt")
+os.remove("山西联通.txt")
+os.remove("江苏电信.txt")
+os.remove("浙江电信.txt")
+os.remove("湖北电信.txt")
+os.remove("重庆联通.txt")
+os.remove("zubo.txt")
+os.remove("zubo1.txt")
+os.remove("zubo2.txt")
