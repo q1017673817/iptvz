@@ -70,13 +70,13 @@ only_good_ip="${city}.onlygood.ip"
 
 echo "===============从tonkiang检索    $channel_key    最新ip================="
 /usr/bin/python3 hoteliptv.py $channel_key  >test.html
-grep -o "href='hotellist.html?s=[^']*'"  test.html > tempip.txt
-
-grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' tempip.txt > "$ipfile"
+#grep -o "href='hotellist.html?s=[^']*'"  test.html > tempip.txt
+echo "$ipfile"
+grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+$' test.html | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > "$ipfile"
 
 #sed -n "s/^.*href='hotellist.html?s=\([^:]*\):[0-9].*/\1/p" tempip.txt > tmp_onlyip
 #sort tmp_onlyip | uniq | sed '/^\s*$/d' > $onlyip
-rm -f test.html tempip.txt 
+rm -f test.html
 
 # 遍历ip和端口组合
 
