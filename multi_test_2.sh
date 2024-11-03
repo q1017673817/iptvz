@@ -92,7 +92,7 @@ while IFS= read -r ip; do
         echo "$output" | grep "succeeded" | awk -v ip="$ip" '{print ip}' >> "$only_good_ip"
     fi
 done < "$ipfile"
-rm -f "$ipfile"
+#rm -f "$ipfile"
 
 echo "===============检索完成================="
 
@@ -124,7 +124,7 @@ cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sor
 cat "result/result_${city}.txt"
 ip1=$(head -n 1 result/result_${city}.txt | awk '{print $2}')
 ip2=$(head -n 2 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
-rm -f speedtest_${city}_$time.log  $only_good_ip
+rm -f speedtest_${city}_$time.log 
 
 #----------------------用2个最快ip生成对应城市的txt文件---------------------------
 
