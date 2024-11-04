@@ -19,7 +19,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-              pip install selenium==4.19.0 requests==2.31.0 futures==3.0.5 eventlet==0.36.1
+             pip install selenium requests futures eventlet
+#            pip install selenium==4.19.0 requests==2.31.0 futures==3.0.5 eventlet==0.36.1
 
       - name: run iptvpy
         run: python ${{ github.workspace }}/iptv.py
