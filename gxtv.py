@@ -122,18 +122,7 @@ with open('ZHGXTV0.txt', 'r', encoding='utf-8') as file, open('ZHGXTV1.txt', 'w'
         if re.search(pattern, line):  # 如果行中有任意关键字
          a.write(line)  # 将该行写入输出文件 
 
-file_contents = []
-file_paths = ["iptv.txt", "ZHGXTV1.txt"]  # 替换为实际的文件路径列表
-for file_path in file_paths:
-    with open(file_path, 'r', encoding="utf-8") as file:
-        content = file.read()
-        file_contents.append(content)
-
-# 写入合并后的文件
-with open("iptv0.txt", "w", encoding="utf-8") as output:
-    output.write('\n'.join(file_contents))
-
-with open('iptv0.txt', 'r', encoding="utf-8") as file:
+with open('ZHGXTV1.txt', 'r', encoding="utf-8") as file:
  lines = file.readlines()
  
 # 使用列表来存储唯一的行的顺序 
@@ -188,5 +177,4 @@ with open('iptvlist.txt', 'w', encoding='utf-8') as file:
 
 os.remove("ZHGXTV0.txt")
 os.remove("ZHGXTV1.txt")
-os.remove("iptv0.txt")
 os.remove("iptv1.txt")
