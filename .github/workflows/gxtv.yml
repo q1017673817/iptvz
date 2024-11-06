@@ -25,7 +25,7 @@ jobs:
 #        run: python ${{ github.workspace }}/iptv.py
         
       - name: run gxtvpy
-        run: python ${{ github.workspace }}/ZHGXTV.py
+        run: python ${{ github.workspace }}/gxtv.py
            
       - name: 提交更改
         run: |
