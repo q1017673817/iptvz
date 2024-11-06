@@ -8,9 +8,11 @@ import threading
 import re
 ###urls城市根据自己所处地理位置修改
 urls = [
-#    "https://www.zoomeye.org/searchResult?q=ZHGXTV%20%2Bcity%3A%22changsha%22", #湖南changsha
+    "https://www.zoomeye.org/searchResult?q=ZHGXTV%20%2Bcity%3A%22changsha%22", #湖南changsha
     "https://www.zoomeye.org/searchResult?q=ZHGXTV%20%2Bcity%3A%22zhengzhou%22",#河南zhengzhou
     "https://www.zoomeye.org/searchResult?q=ZHGXTV%20%2Bcity%3A%22jinan%22", #山东jinan
+    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0iSGViZWki", #河北
+    "https://fofa.info/result?qbase64=IlpIR1hUViIgJiYgY291bnRyeT0iQ04iICYmIHJlZ2lvbj0iSGVuYW4i", #河南
 ]
 
 def modify_urls(url):
@@ -31,7 +33,7 @@ def modify_urls(url):
 
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=3)
+        response = requests.get(url, timeout=10)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
@@ -225,7 +227,7 @@ with open('ZHGXTV0.txt', 'r', encoding='utf-8') as file, open('ZHGXTV1.txt', 'w'
          a.write(line)  # 将该行写入输出文件 
 
 file_contents = []
-file_paths = ["itv.txt", "ZHGXTV1.txt"]  # 替换为实际的文件路径列表
+file_paths = ["iptv.txt", "ZHGXTV1.txt"]  # 替换为实际的文件路径列表
 for file_path in file_paths:
     with open(file_path, 'r', encoding="utf-8") as file:
         content = file.read()
@@ -273,7 +275,7 @@ def channel_key(channel):
 channels.sort(key=lambda x: channel_key(x[0]))
 
 # 生成iptv.txt文件
-with open('iptv.txt', 'w', encoding='utf-8') as file:
+with open('iptvlist.txt', 'w', encoding='utf-8') as file:
     file.write('央视频道,#genre#\n')
     for channel, address in channels:
         if 'cctv' in channel.lower():
@@ -290,6 +292,5 @@ with open('iptv.txt', 'w', encoding='utf-8') as file:
 
 os.remove("ZHGXTV0.txt")
 os.remove("ZHGXTV1.txt")
-os.remove("itv.txt")
 os.remove("iptv0.txt")
 os.remove("iptv1.txt")
