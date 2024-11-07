@@ -75,7 +75,7 @@ grep -o "href='hotellist.html?s=[^']*'"  test.html > tempip.txt
 
 sed -n "s/^.*href='hotellist.html?s=\([^:]*\):[0-9].*/\1/p" tempip.txt > tmp_onlyip
 sort tmp_onlyip | uniq | sed '/^\s*$/d' > $onlyip
-rm -f test.html tempip.txt tmp_onlyip $ipfile
+rm -f test.html tempip.txt tmp_onlyip 
 
 # 遍历ip和端口组合
 while IFS= read -r ip; do
@@ -91,10 +91,8 @@ while IFS= read -r ip; do
     done < "$onlyport"
 done < "$onlyip"
 
-
-rm -f $onlyip
 echo "===============检索完成================="
-
+rm -f $onlyip
 # 检查文件是否存在
 if [ ! -f "$ipfile" ]; then
     echo "错误：文件 $ipfile 不存在。"
@@ -110,14 +108,14 @@ while read line; do
     ip=$line
     url="http://$ip/$stream"
     echo $url
-    curl $url --connect-timeout 3 --max-time 10 -o /dev/null >zubo.tmp 2>&1
+    curl $url --connect-timeout 5 --max-time 15 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)  
 
     echo "第$i/$lines个：$ip    $a"
     echo "$ip    $a" >> "speedtest_${city}_$time.log"
 done < "$ipfile"
 
-rm -f zubo.tmp
+rm -f zubo.tmp 
 cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sort -n -r >"result/result_${city}.txt"
 cat "result/result_${city}.txt"
 ip1=$(head -n 1 result/result_${city}.txt | awk '{print $2}')
@@ -139,8 +137,8 @@ cat tmp1.txt tmp2.txt >txt/${city}.txt
 rm -rf tmp1.txt tmp2.txt
 
 #--------------------合并所有城市的txt文件为:   zubo.txt-----------------------------------------
-
-echo "北京联通,#genre#" >zubo1.txt
+cat iptv.txt >zubo1.txt
+echo "北京联通,#genre#" >>zubo1.txt
 cat txt/Beijing_liantong_145.txt >>zubo1.txt
 echo "浙江电信,#genre#" >>zubo1.txt
 cat txt/Zhejiang_120.txt >>zubo1.txt
@@ -150,12 +148,3 @@ echo "山西电信,#genre#" >>zubo1.txt
 cat txt/Shanxi_117.txt >>zubo1.txt
 echo "天津联通,#genre#" >>zubo1.txt
 cat txt/Tianjin_160.txt >>zubo1.txt
-
-echo "网络电视,#genre#" >iptvlist.txt
-cat iptv.txt >>iptvlist.txt
-cat txt/Beijing_liantong_145.txt >>iptvlist.txt
-cat txt/Tianjin_160.txt >>iptvlist.txt
-cat txt/Zhejiang_120.txt >>iptvlist.txt
-cat txt/Shanxi_117.txt >>iptvlist.txt
-cat txt/Henan_327.txt >>iptvlist.txt
-
