@@ -89,7 +89,7 @@ esac
 # 使用城市名作为默认文件名，格式为 CityName.ip
 ipfile="${city}.ip"
 only_good_ip="${city}.onlygood.ip"
-#rm -f $only_good_ip
+rm -f 安徽电信.txt 湖北电信.txt 浙江电信.txt 江苏电信.txt 四川电信.txt 北京联通.txt 山西联通.txt 重庆联通.txt
 # 搜索最新 IP
 echo "===============从 fofa 检索 ip+端口================="
 curl -o test.html "$url_fofa"
@@ -112,7 +112,7 @@ while IFS= read -r ip; do
 done < "$ipfile"
 
 echo "===============检索完成================="
-
+rm -f "$ipfile"
 # 检查文件是否存在
 if [ ! -f "$only_good_ip" ]; then
     echo "错误：文件 $only_good_ip 不存在。"
@@ -152,7 +152,7 @@ sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
 sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
 cat tmp1.txt tmp2.txt tmp3.txt > "txt/fofa_${city}.txt"
 
-rm -rf tmp1.txt tmp2.txt tmp3.txt $ipfile $only_good_ip 
+rm -rf tmp1.txt tmp2.txt tmp3.txt $only_good_ip 
 
 
 #--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
