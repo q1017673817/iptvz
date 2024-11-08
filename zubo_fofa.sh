@@ -19,10 +19,8 @@ if [ $# -eq 0 ]; then
   echo "3. 上海电信（Shanghai_103）"
   echo "4. 北京联通（Beijing_liantong_145）"
   echo "5. 浙江电信（Zhejiang_120）"
-
-
   echo "0. 全部"
-  read -t 10 -p "输入选择或在10秒内无输入将默认选择全部: " city_choice
+  read -t 1 -p "输入选择或在10秒内无输入将默认选择全部: " city_choice
 
   if [ -z "$city_choice" ]; then
       echo "未检测到输入，自动选择全部选项..."
@@ -38,7 +36,7 @@ case $city_choice in
     1)
         city="Jiangsu"
         stream="udp/239.49.8.19:9614"
-        channel_key="江苏"
+        channel_key="江苏电信"
         url_fofa=$(echo  '"udpxy" && country="CN" && region="Jiangsu" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
@@ -46,7 +44,7 @@ case $city_choice in
         city="Hubei_90"
         stream="rtp/239.254.96.96:8550"
         channel_key="湖北电信"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Hubei" && city="Wuhan" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && country="CN" && region="Hubei" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     3)
@@ -77,7 +75,6 @@ case $city_choice in
         done
         exit 0
         ;;
-
     *)
         echo "错误：无效的选择。"
         exit 1
@@ -129,14 +126,14 @@ while IFS= read -r line; do
     ip="$line"
     url="http://$ip/$stream"
     echo "$url"
-    curl "$url" --connect-timeout 3 --max-time 10 -o /dev/null >zubo.tmp 2>&1
+    curl "$url" --connect-timeout 5 --max-time 15 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)
 
     echo "第 $i/$lines 个：$ip $a"
     echo "$ip $a" >> "speedtest_${city}_$time.log"
 done < "$only_good_ip"
-
 rm -f zubo.tmp
+
 awk '/M|k/{print $2"  "$1}' "speedtest_${city}_$time.log" | sort -n -r >"result/result_fofa_${city}.txt"
 cat "result/result_fofa_${city}.txt"
 ip1=$(awk 'NR==1{print $2}' result/result_fofa_${city}.txt)
@@ -146,12 +143,11 @@ rm -f "speedtest_${city}_$time.log"
 
 # 用 3 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"
-
 sed "s/ipipip/$ip1/g" "$program" > tmp1.txt
 sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
 sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
 cat tmp1.txt tmp2.txt tmp3.txt > "txt/fofa_${city}.txt"
-
+sed -i ‘/[/]{3}/d’ "txt/fofa_${city}.txt"
 rm -rf tmp1.txt tmp2.txt tmp3.txt $only_good_ip 
 
 
