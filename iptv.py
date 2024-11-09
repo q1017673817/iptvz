@@ -1,5 +1,5 @@
 import time
-from time import datetime
+from datetime import datetime
 import os
 import concurrent.futures
 from selenium import webdriver
