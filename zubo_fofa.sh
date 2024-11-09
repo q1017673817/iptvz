@@ -86,7 +86,8 @@ esac
 # 使用城市名作为默认文件名，格式为 CityName.ip
 ipfile="${city}.ip"
 only_good_ip="${city}.onlygood.ip"
-
+cat iptv.txt >iptvall.txt
+cat zubo.txt >>iptvall.txt
 # 搜索最新 IP
 echo "===============从 fofa 检索 ip+端口================="
 curl -o test.html "$url_fofa"
@@ -164,6 +165,3 @@ echo "北京联通,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Beijing_liantong_145.txt >>zubo_fofa.txt
 echo "浙江电信,#genre#" >>zubo_fofa.txt
 cat txt/fofa_Zhejiang_120.txt >>zubo_fofa.txt
-
-cat iptv.txt >iptvall.txt
-cat zubo.txt >>iptvall.txt
