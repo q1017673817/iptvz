@@ -1,4 +1,4 @@
-<built-in method today of type object at 0x7f0566680000>更新,#genre#
+2024-11-09更新,#genre#
 央视频道,#genre#
 CCTV-1,http://111.225.113.15:808/home/storager/6bbc84c2-18fb-444e-a900-d7ed884a2731/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-1,http://171.8.138.151:85/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
