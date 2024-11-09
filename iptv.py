@@ -1,5 +1,5 @@
 import time
-from datetime import datetime
+import datetime
 import os
 import concurrent.futures
 from selenium import webdriver
@@ -222,25 +222,9 @@ with open("itv.txt", 'w', encoding='utf-8') as file:
         print(result)
 print("频道列表文件itv.txt获取完成！")
 
-with open('itv.txt', 'r', encoding="utf-8") as file:
- lines = file.readlines()
- 
-# 使用列表来存储唯一的行的顺序 
- unique_lines = [] 
- seen_lines = set() 
-
-# 遍历每一行，如果是新的就加入unique_lines 
-for line in lines:
- if line not in seen_lines:
-  unique_lines.append(line)
-  seen_lines.add(line)
-
-# 将唯一的行写入新的文档 
-with open('iptv1.txt', 'w', encoding="utf-8") as file:
- file.writelines(unique_lines)
 
 channels = []
-with open('iptv1.txt', 'r', encoding='utf-8') as file:
+with open('itv.txt', 'r', encoding='utf-8') as file:
     for line in file:
         line = line.strip()
         if line:
@@ -258,7 +242,7 @@ def channel_key(channel):
 
 # 对频道进行排序
 channels.sort(key=lambda x: channel_key(x[0]))
-
+now_today = datetime.date.today
 # 生成iptv.txt文件
 with open('iptv.txt', 'w', encoding='utf-8') as file:
     file.write(f"{now_today}更新,#genre#\n")
@@ -276,4 +260,3 @@ with open('iptv.txt', 'w', encoding='utf-8') as file:
             file.write(f'{channel},{address}\n')
 
 os.remove("itv.txt")
-os.remove("iptv1.txt")
