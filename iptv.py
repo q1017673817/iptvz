@@ -10,7 +10,7 @@ import re
 urls = [
     "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcity%3A%22baoding%22%20%2Bcidr%3A111.225.1.1%2F16", #河北baoding
     "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bsubdivisions%3A%22henan%22%20%2Bcity%3Azhengzhou", #河南zhengzhou
-    "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22shaanxi%22", #陕西    
+#    "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22shaanxi%22", #陕西    
        ]
 
 def modify_urls(url):
