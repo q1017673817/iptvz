@@ -1,5 +1,6 @@
 import time
-import datetime
+from datetime import datetime
+from zoneinfo import ZoneInfo
 import os
 import concurrent.futures
 from selenium import webdriver
@@ -242,8 +243,9 @@ def channel_key(channel):
 
 # 对频道进行排序
 channels.sort(key=lambda x: channel_key(x[0]))
-now = datetime.datetime.now(tz=+8)
-nowtime = now.strftime("%y/%m/%d %H:%M")
+beijing_time = ZoneInfo('Asia/Shanghai')
+now = datetime.datetime.now(beijing_time).strftime("%y/%m/%d %H:%M")
+
 # 生成iptv.txt文件
 with open('iptv.txt', 'w', encoding='utf-8') as file:
     file.write(f"央视频道{nowtime}更新,#genre#\n")
