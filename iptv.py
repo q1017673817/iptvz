@@ -243,9 +243,10 @@ def channel_key(channel):
 # 对频道进行排序
 channels.sort(key=lambda x: channel_key(x[0]))
 now = datetime.now(tz=+8)
+nowtime = now.strftime("%y/%m/%d %H:%M")
 # 生成iptv.txt文件
 with open('iptv.txt', 'w', encoding='utf-8') as file:
-    file.write(f"央视频道{now.strftime("%m-%d %H:%M")}更新,#genre#\n")
+    file.write(f"央视频道{nowtime}更新,#genre#\n")
     for channel, address in channels:
         if 'cctv' in channel.lower():
             file.write(f'{channel},{address}\n')
