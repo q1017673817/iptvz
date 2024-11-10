@@ -242,7 +242,7 @@ def channel_key(channel):
 
 # 对频道进行排序
 channels.sort(key=lambda x: channel_key(x[0]))
-now = datetime.now(tz=+8)
+now = datetime.datetime.now(tz=+8)
 nowtime = now.strftime("%y/%m/%d %H:%M")
 # 生成iptv.txt文件
 with open('iptv.txt', 'w', encoding='utf-8') as file:
