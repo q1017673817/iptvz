@@ -1,6 +1,5 @@
 import time
-from datetime import datetime
-from zoneinfo import ZoneInfo
+import datetime
 import os
 import concurrent.futures
 from selenium import webdriver
