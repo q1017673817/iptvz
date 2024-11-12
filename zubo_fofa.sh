@@ -149,7 +149,7 @@ sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
 sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
 #cat tmp1.txt tmp2.txt tmp3.txt > "txt/fofa_${city}.txt"
 cat tmp1.txt tmp2.txt tmp3.txt > tmp_all.txt
-grep -vE '\/{3}' tmp_all.txt > "txt/fofa_${city}.txt"
+grep -vE '/{3}' tmp_all.txt > "txt/fofa_${city}.txt"
 
 rm -rf tmp1.txt tmp2.txt tmp3.txt tmp_all.txt $only_good_ip 
 
