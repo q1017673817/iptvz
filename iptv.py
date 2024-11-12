@@ -42,6 +42,7 @@ def is_url_accessible(url):
         response = requests.get(url, headers=headers, timeout=15)
         if response.status_code == 200:
             return url
+            print(f" {url}  访问成功")
     except requests.exceptions.RequestException:
         pass
     return None
@@ -118,7 +119,7 @@ for url in urls:
                 url_x = f"{base_url}{ip_address}"
     
                 json_url = f"{url}"
-                response = requests.get(json_url, timeout=3)
+                response = requests.get(json_url, timeout=5)
                 json_data = response.json()
     
                 try:
