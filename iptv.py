@@ -14,11 +14,9 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'}
 
 urls = [
-    "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgIHJlZ2lvbj0iamlsaW4i", #吉林
     "https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgaXA9IjExMS4yMjUuMS4xLzE2Ig%3D%3D", #河北
     "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcity%3A%22baoding%22%20%2Bcidr%3A111.225.1.1%2F16", #河北baoding
-    "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bsubdivisions%3A%22henan%22%20%2Bcity%3Azhengzhou", #河南zhengzhou
-#    "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bcountry%3A%22CN%22%20%2Bsubdivisions%3A%22shaanxi%22", #陕西    
+    "https://www.zoomeye.org/searchResult?q=%2Fiptv%2Flive%2Fzh_cn.js%20%2Bsubdivisions%3A%22henan%22%20%2Bcity%3Azhengzhou", #河南zhengzhou 
        ]
 
 def modify_urls(url):
@@ -39,10 +37,9 @@ def modify_urls(url):
 
 def is_url_accessible(url):
     try:
-        response = requests.get(url, headers=headers, timeout=15)
+        response = requests.get(url, headers=headers, timeout=5)
         if response.status_code == 200:
             return url
-            print(f" {url}  访问成功")
     except requests.exceptions.RequestException:
         pass
     return None
@@ -61,7 +58,7 @@ for url in urls:
         driver = webdriver.Chrome(options=chrome_options)
         # 使用WebDriver访问网页
         driver.get(url)  # 将网址替换为你要访问的网页地址
-        time.sleep(20)
+        time.sleep(10)
         # 获取网页内容
         page_content = driver.page_source
     
