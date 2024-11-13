@@ -1,4 +1,3 @@
-y
 #!/bin/bash
 # cd /root/iptv
 # read -p "确定要运行脚本吗？(y/n): " choice
@@ -14,11 +13,11 @@ i=0
 
 if [ $# -eq 0 ]; then
   echo "请选择城市："
-  echo "1. 江苏（Jiangsu）"
-  echo "2. 湖北电信（Hubei_90）"
-  echo "3. 上海电信（Shanghai_103）"
-  echo "4. 北京联通（Beijing_liantong_145）"
-  echo "5. 浙江电信（Zhejiang_120）"
+  echo "1. 四川电信（Sichuan_333）"
+  echo "2. 天津联通（Tianjin_160）"
+  echo "3. 河北联通（Hebei_313）"
+  echo "4. 山西电信（Shanxi_117）"
+  echo "5. 安徽电信（Anhui_191）"
   echo "0. 全部"
   read -t 1 -p "输入选择或在10秒内无输入将默认选择全部: " city_choice
 
@@ -86,27 +85,30 @@ esac
 # 使用城市名作为默认文件名，格式为 CityName.ip
 ipfile="${city}.ip"
 only_good_ip="${city}.onlygood.ip"
-cat iptv.txt >iptvall.txt
+onlyport="template/${city}.port"
+
+echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall.txt
 cat zubo.txt >>iptvall.txt
 # 搜索最新 IP
 echo "===============从 fofa 检索 ip+端口================="
 curl -o test.html "$url_fofa"
 #echo $url_fofa
 echo "$ipfile"
-grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+$' test.html | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > "$ipfile"
-rm -f test.html
+grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+$' test.html | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' > tmp_onlyip
+sort tmp_onlyip | uniq | sed '/^\s*$/d' > $ipfile
+rm -f test.html tmp_onlyip
 # 遍历文件中的每个 IP 地址
 while IFS= read -r ip; do
-    # 尝试连接 IP 地址和端口号，并将输出保存到变量中
-    tmp_ip=$(echo -n "$ip" | sed 's/:/ /')
-    echo "nc -w 1 -v -z $tmp_ip 2>&1"
-    output=$(nc -w 1 -v -z $tmp_ip 2>&1)
-    echo $output    
-    # 如果连接成功，且输出包含 "succeeded"，则将结果保存到输出文件中
-    if [[ $output == *"succeeded"* ]]; then
-        # 使用 awk 提取 IP 地址和端口号对应的字符串，并保存到输出文件中
-        echo "$output" | grep "succeeded" | awk -v ip="$ip" '{print ip}' >> "$only_good_ip"
-    fi
+    while IFS= read -r port; do
+        # 尝试连接 IP 地址和端口号
+        # nc -w 1 -v -z $ip $port
+        output=$(nc -w 1 -v -z "$ip" "$port" 2>&1)
+        # 如果连接成功，且输出包含 "succeeded"，则将结果保存到输出文件中
+        if [[ $output == *"succeeded"* ]]; then
+            # 使用 awk 提取 IP 地址和端口号对应的字符串，并保存到输出文件中
+            echo "$output" | grep "succeeded" | awk -v ip="$ip" -v port="$port" '{print ip ":" port}' >> "$only_good_ip"
+      fi
+    done < "$onlyport"
 done < "$ipfile"
 
 echo "===============检索完成================="
@@ -157,13 +159,13 @@ rm -rf tmp1.txt tmp2.txt tmp3.txt tmp_all.txt $only_good_ip
 #--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
 
 
-echo "江苏电信,#genre#" >zubo_fofa.txt
-cat txt/fofa_Jiangsu.txt >>zubo_fofa.txt
-echo "湖北电信,#genre#" >>zubo_fofa.txt
-cat txt/fofa_Hubei_90.txt >>zubo_fofa.txt
-echo "上海电信,#genre#" >>zubo_fofa.txt
-cat txt/fofa_Shanghai_103.txt >>zubo_fofa.txt
-echo "北京联通,#genre#" >>zubo_fofa.txt
-cat txt/fofa_Beijing_liantong_145.txt >>zubo_fofa.txt
-echo "浙江电信,#genre#" >>zubo_fofa.txt
-cat txt/fofa_Zhejiang_120.txt >>zubo_fofa.txt
+echo "江苏电信,#genre#" >zubo_fofa2.txt
+cat txt/fofa_Jiangsu.txt >>zubo_fofa2.txt
+echo "湖北电信,#genre#" >>zubo_fofa2.txt
+cat txt/fofa_Hubei_90.txt >>zubo_fofa2.txt
+echo "上海电信,#genre#" >>zubo_fofa2.txt
+cat txt/fofa_Shanghai_103.txt >>zubo_fofa2.txt
+echo "北京联通,#genre#" >>zubo_fofa2.txt
+cat txt/fofa_Beijing_liantong_145.txt >>zubo_fofa2.txt
+echo "浙江电信,#genre#" >>zubo_fofa2.txt
+cat txt/fofa_Zhejiang_120.txt >>zubo_fofa2.txt
