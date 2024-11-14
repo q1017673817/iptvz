@@ -13,11 +13,11 @@ i=0
 
 if [ $# -eq 0 ]; then
   echo "请选择城市："
-  echo "1. 四川电信（Sichuan_333）"
-  echo "2. 天津联通（Tianjin_160）"
-  echo "3. 河北联通（Hebei_313）"
-  echo "4. 山西电信（Shanxi_117）"
-  echo "5. 安徽电信（Anhui_191）"
+  echo "1. 江苏电信（Jiangsu）"
+  echo "2. 湖北电信（Hubei_90）"
+  echo "3. 上海电信（Shanghai_103）"
+  echo "4. 北京联通（Beijing_liantong_145）"
+  echo "5. 浙江电信（Zhejiang_120）"
   echo "0. 全部"
   read -t 1 -p "输入选择或在10秒内无输入将默认选择全部: " city_choice
 
@@ -88,7 +88,7 @@ only_good_ip="${city}.onlygood.ip"
 onlyport="template/${city}.port"
 
 echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall.txt
-cat zubo.txt >>iptvall.txt
+cat zubo.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall.txt
 # 搜索最新 IP
 echo "===============从 fofa 检索 ip+端口================="
 curl -o test.html "$url_fofa"
@@ -159,13 +159,13 @@ rm -rf tmp1.txt tmp2.txt tmp3.txt tmp_all.txt $only_good_ip
 #--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
 
 
-echo "江苏电信,#genre#" >zubo_fofa2.txt
-cat txt/fofa_Jiangsu.txt >>zubo_fofa2.txt
-echo "湖北电信,#genre#" >>zubo_fofa2.txt
-cat txt/fofa_Hubei_90.txt >>zubo_fofa2.txt
-echo "上海电信,#genre#" >>zubo_fofa2.txt
-cat txt/fofa_Shanghai_103.txt >>zubo_fofa2.txt
-echo "北京联通,#genre#" >>zubo_fofa2.txt
-cat txt/fofa_Beijing_liantong_145.txt >>zubo_fofa2.txt
-echo "浙江电信,#genre#" >>zubo_fofa2.txt
-cat txt/fofa_Zhejiang_120.txt >>zubo_fofa2.txt
+echo "江苏电信,#genre#" >zubo_fofa1.txt
+cat txt/fofa_Jiangsu.txt >>zubo_fofa1.txt
+echo "湖北电信,#genre#" >>zubo_fofa1.txt
+cat txt/fofa_Hubei_90.txt >>zubo_fofa1.txt
+echo "上海电信,#genre#" >>zubo_fofa1.txt
+cat txt/fofa_Shanghai_103.txt >>zubo_fofa1.txt
+echo "北京联通,#genre#" >>zubo_fofa1.txt
+cat txt/fofa_Beijing_liantong_145.txt >>zubo_fofa1.txt
+echo "浙江电信,#genre#" >>zubo_fofa1.txt
+cat txt/fofa_Zhejiang_120.txt >>zubo_fofa1.txt
