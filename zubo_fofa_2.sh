@@ -88,7 +88,7 @@ only_good_ip="${city}.onlygood.ip"
 onlyport="template/${city}.port"
 
 echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall.txt
-cat zubo.txt zubo_fofa1.txt zubo_fofa2.txt>>iptvall.txt
+cat zubo.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall.txt
 # 搜索最新 IP
 echo "===============从 fofa 检索 ip+端口================="
 curl -o test.html "$url_fofa"
@@ -107,7 +107,7 @@ while IFS= read -r ip; do
         if [[ $output == *"succeeded"* ]]; then
             # 使用 awk 提取 IP 地址和端口号对应的字符串，并保存到输出文件中
             echo "$output" | grep "succeeded" | awk -v ip="$ip" -v port="$port" '{print ip ":" port}' >> "$only_good_ip"
-      fi
+        fi
     done < "$onlyport"
 done < "$ipfile"
 
