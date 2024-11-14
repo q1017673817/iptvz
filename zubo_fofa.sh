@@ -87,7 +87,7 @@ ipfile="${city}.ip"
 only_good_ip="${city}.onlygood.ip"
 onlyport="template/${city}.port"
 
-echo $(TZ=UTC+8 date +%Y-%m-%d" "%H:%M:%S) >iptvall.txt
+echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall.txt
 cat zubo.txt >>iptvall.txt
 # 搜索最新 IP
 echo "===============从 fofa 检索 ip+端口================="
