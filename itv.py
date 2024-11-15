@@ -42,8 +42,11 @@ def is_url_accessible(url):
 results = []
 
 with open('ip.txt', 'r', encoding='utf-8') as file:
-        content = file.read()
-        urls_all = content
+        lines = file.readlines()
+        for line in lines:
+            print(line)
+            url = line.strip()
+            urls_all.append(url)
         
         # urls = list(set(urls_all))  # 去重得到唯一的URL列表
         urls = set(urls_all)  # 去重得到唯一的URL列表
