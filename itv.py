@@ -181,7 +181,6 @@ with open('ip.txt', 'r', encoding='utf-8') as file:
                     continue
             except:
                 continue
-    except:
         continue
 
 results = set(results)   # 去重得到唯一的URL列表
