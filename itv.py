@@ -40,7 +40,7 @@ def is_url_accessible(url):
 
 
 results = []
-
+urls_all = []
 with open('ip.txt', 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
