@@ -31,7 +31,7 @@ def modify_urls(url):
 
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=2)
+        response = requests.get(url, timeout=5)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
@@ -43,6 +43,7 @@ results = []
 urls_all = []
 with open('ip.txt', 'r', encoding='utf-8') as file:
         lines = file.readlines()
+            print(lines)
         for line in lines:
             print(line)
             url = line.strip()
@@ -66,6 +67,7 @@ with open('ip.txt', 'r', encoding='utf-8') as file:
             x_url = f"{base_url}{modified_ip}{port}"
             x_urls.append(x_url)
         urls = set(x_urls)  # 去重得到唯一的URL列表
+        print(urls)
     
         valid_urls = []
         #   多线程获取可用url
@@ -74,6 +76,7 @@ with open('ip.txt', 'r', encoding='utf-8') as file:
             for url in urls:
                 url = url.strip()
                 modified_urls = modify_urls(url)
+                print(modified_urls)
                 for modified_url in modified_urls:
                     futures.append(executor.submit(is_url_accessible, modified_url))
     
@@ -81,6 +84,7 @@ with open('ip.txt', 'r', encoding='utf-8') as file:
                 result = future.result()
                 if result:
                     valid_urls.append(result)
+                print(valid_urls)
     
         for url in valid_urls:
             print(url)
@@ -96,7 +100,7 @@ with open('ip.txt', 'r', encoding='utf-8') as file:
                 url_x = f"{base_url}{ip_address}"
     
                 json_url = f"{url}"
-                response = requests.get(json_url, timeout=2)
+                response = requests.get(json_url, timeout=10)
                 json_data = response.json()
     
                 try:
