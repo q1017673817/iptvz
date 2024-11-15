@@ -43,7 +43,7 @@ results = []
 urls_all = []
 with open('ip.txt', 'r', encoding='utf-8') as file:
         lines = file.readlines()
-            print(lines)
+        print(lines)
         for line in lines:
             print(line)
             url = line.strip()
