@@ -13,7 +13,7 @@ i=0
 
 if [ $# -eq 0 ]; then
   echo "请选择城市："
-  echo "1. 江苏电信（Jiangsu）"
+  echo "1. 酒店源（baoding）"
   echo "2. 湖北电信（Hubei_90）"
   echo "3. 上海电信（Shanghai_103）"
   echo "4. 北京联通（Beijing_liantong_145）"
@@ -33,11 +33,11 @@ fi
 # 根据用户选择设置城市和相应的stream
 case $city_choice in
     1)
-        city="Jiangsu"
-        stream="udp/239.49.8.19:9614"
-        channel_key="江苏电信"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Jiangsu" && protocol="http"' | base64 |tr -d '\n')
-        url_fofa="https://fofa.info/result?qbase64="$url_fofa
+        city="baoding"
+        stream="tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0"
+        channel_key="酒店源"
+        url_fofa="https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgaXA9IjExMS4yMjUuMS4xLzE2Ig%3D%3D&page=1&page_size=30"
+
         ;;
     2)
         city="Hubei_90"
@@ -49,7 +49,7 @@ case $city_choice in
     3)
         city="Shanghai_103"
         stream="udp/239.45.1.4:5140"
-	channel_key="上海"
+	channel_key="上海电信"
         url_fofa=$(echo  '"udpxy" && country="CN" && region="Shanghai" && org="China Telecom Group" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
@@ -107,7 +107,7 @@ while IFS= read -r ip; do
         if [[ $output == *"succeeded"* ]]; then
             # 使用 awk 提取 IP 地址和端口号对应的字符串，并保存到输出文件中
             echo "$output" | grep "succeeded" | awk -v ip="$ip" -v port="$port" '{print ip ":" port}' >> "$only_good_ip"
-        fi
+      fi
     done < "$onlyport"
 done < "$ipfile"
 
@@ -159,13 +159,13 @@ rm -rf tmp1.txt tmp2.txt tmp3.txt tmp_all.txt $only_good_ip
 #--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
 
 
-echo "江苏电信,#genre#" >zubo_fofa1.txt
-cat txt/fofa_Jiangsu.txt >>zubo_fofa1.txt
-echo "湖北电信,#genre#" >>zubo_fofa1.txt
+echo "酒店源,#genre#" >zubo_fofa1.txt
+cat txt/fofa_baoding.txt >>zubo_fofa1.txt
+echo "湖北电信(备),#genre#" >>zubo_fofa1.txt
 cat txt/fofa_Hubei_90.txt >>zubo_fofa1.txt
-echo "上海电信,#genre#" >>zubo_fofa1.txt
+echo "上海电信(备),#genre#" >>zubo_fofa1.txt
 cat txt/fofa_Shanghai_103.txt >>zubo_fofa1.txt
-echo "北京联通,#genre#" >>zubo_fofa1.txt
+echo "北京联通(备),#genre#" >>zubo_fofa1.txt
 cat txt/fofa_Beijing_liantong_145.txt >>zubo_fofa1.txt
-echo "浙江电信,#genre#" >>zubo_fofa1.txt
+echo "浙江电信(备),#genre#" >>zubo_fofa1.txt
 cat txt/fofa_Zhejiang_120.txt >>zubo_fofa1.txt
