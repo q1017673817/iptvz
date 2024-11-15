@@ -11,6 +11,7 @@ import requests
 import eventlet
 import re
 
+urls = []
 
 def modify_urls(url):
     modified_urls = []
