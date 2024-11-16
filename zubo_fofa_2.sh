@@ -36,29 +36,29 @@ case $city_choice in
         city="Sichuan_333"
         stream="udp/239.93.0.184:5140"
         channel_key="四川电信"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Sichuan" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && region="Sichuan" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     2)
         city="Anhui_191"
         stream="rtp/238.1.78.166:7200"
         channel_key="安徽电信"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Anhui" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && region="Anhui" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
+        ;;
         ;;
     3)
         city="Hebei_313"
         stream="rtp/239.253.92.154:6011"
 	channel_key="河北联通"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Hebei" && org="CHINA UNICOM China169 Backbone" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && region="Hebei" && org="CHINA UNICOM China169 Backbone" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     4)
         city="Shanxi_117"
         stream="udp/239.1.1.7:8007"
         channel_key="山西电信"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Shanxi" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
-        url_fofa="https://fofa.info/result?qbase64="$url_fofa
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PXRhaXl1YW4gJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi"
         ;;
     5)
         city="Tianjin_160"
@@ -88,7 +88,7 @@ only_good_ip="${city}.onlygood.ip"
 onlyport="template/${city}.port"
 
 echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall.txt
-cat zubo.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall.txt
+cat iptv.txt zubo.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall.txt
 # 搜索最新 IP
 echo "===============从 fofa 检索 ip+端口================="
 curl -o test.html "$url_fofa"
