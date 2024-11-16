@@ -46,7 +46,6 @@ case $city_choice in
         url_fofa=$(echo  '"udpxy" && region="Anhui" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
-        ;;
     3)
         city="Hebei_313"
         stream="rtp/239.253.92.154:6011"
