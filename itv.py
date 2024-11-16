@@ -40,12 +40,12 @@ def is_url_accessible(url):
 
 
 results = []
+
 urls_all = []
+
 with open('ip.txt', 'r', encoding='utf-8') as file:
         lines = file.readlines()
-        print(lines)
         for line in lines:
-            print(line)
             url = line.strip()
             urls_all.append(url)
         
@@ -67,7 +67,6 @@ with open('ip.txt', 'r', encoding='utf-8') as file:
             x_url = f"{base_url}{modified_ip}{port}"
             x_urls.append(x_url)
         urls = set(x_urls)  # 去重得到唯一的URL列表
-        print(urls)
     
         valid_urls = []
         #   多线程获取可用url
@@ -76,7 +75,6 @@ with open('ip.txt', 'r', encoding='utf-8') as file:
             for url in urls:
                 url = url.strip()
                 modified_urls = modify_urls(url)
-                print(modified_urls)
                 for modified_url in modified_urls:
                     futures.append(executor.submit(is_url_accessible, modified_url))
     
@@ -84,7 +82,6 @@ with open('ip.txt', 'r', encoding='utf-8') as file:
                 result = future.result()
                 if result:
                     valid_urls.append(result)
-                print(valid_urls)
     
         for url in valid_urls:
             print(url)
