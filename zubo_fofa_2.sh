@@ -34,14 +34,14 @@ fi
 case $city_choice in
     1)
         city="Sichuan_333"
-        stream="udp/239.93.0.169:5140"
+        stream="udp/239.93.0.184:5140"
         channel_key="四川电信"
         url_fofa=$(echo  '"udpxy" && country="CN" && region="Sichuan" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     2)
         city="Anhui_191"
-        stream="rtp/238.1.79.27:4328"
+        stream="rtp/238.1.78.166:7200"
         channel_key="安徽电信"
         url_fofa=$(echo  '"udpxy" && country="CN" && region="Anhui" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
