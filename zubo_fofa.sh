@@ -13,7 +13,7 @@ i=0
 
 if [ $# -eq 0 ]; then
   echo "请选择城市："
-  echo "1. 酒店源（baoding）"
+  echo "1. 江苏电信（jiangsu）"
   echo "2. 湖北电信（Hubei_90）"
   echo "3. 上海电信（Shanghai_103）"
   echo "4. 北京联通（Beijing_liantong_145）"
@@ -33,11 +33,10 @@ fi
 # 根据用户选择设置城市和相应的stream
 case $city_choice in
     1)
-        city="baoding"
-        stream="tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0"
-        channel_key="酒店源"
-        url_fofa="https://fofa.info/result?qbase64=ImlwdHYvbGl2ZS96aF9jbi5qcyIgJiYgaXA9IjExMS4yMjUuMS4xLzE2Ig%3D%3D&page=1&page_size=30"
-
+        city="jiangsu"
+        stream="udp/239.49.8.19:9614"
+        channel_key="江苏电信"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PSJOYW5qaW5nIiAmJiBwcm90b2NvbD0iaHR0cCIgfHwgInVkcHh5IiAmJiBjaXR5PSJTdXpob3UiICYmIHByb3RvY29sPSJodHRwIg%3D%3D"
         ;;
     2)
         city="Hubei_90"
@@ -88,7 +87,7 @@ only_good_ip="${city}.onlygood.ip"
 onlyport="template/${city}.port"
 
 echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall.txt
-cat zubo.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall.txt
+cat iptv.txt zubo.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall.txt
 # 搜索最新 IP
 echo "===============从 fofa 检索 ip+端口================="
 curl -o test.html "$url_fofa"
@@ -159,8 +158,8 @@ rm -rf tmp1.txt tmp2.txt tmp3.txt tmp_all.txt $only_good_ip
 #--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
 
 
-echo "酒店源,#genre#" >zubo_fofa1.txt
-cat txt/fofa_baoding.txt >>zubo_fofa1.txt
+echo "江苏电信(备),#genre#" >zubo_fofa1.txt
+cat txt/fofa_jiangsu.txt >>zubo_fofa1.txt
 echo "湖北电信(备),#genre#" >>zubo_fofa1.txt
 cat txt/fofa_Hubei_90.txt >>zubo_fofa1.txt
 echo "上海电信(备),#genre#" >>zubo_fofa1.txt
