@@ -13,7 +13,7 @@ i=0
 
 if [ $# -eq 0 ]; then
   echo "请选择城市："
-  echo "1. 江苏电信（jiangsu）"
+  echo "1. 江苏电信（Jiangsu）"
   echo "2. 湖北电信（Hubei_90）"
   echo "3. 上海电信（Shanghai_103）"
   echo "4. 北京联通（Beijing_liantong_145）"
@@ -33,7 +33,7 @@ fi
 # 根据用户选择设置城市和相应的stream
 case $city_choice in
     1)
-        city="jiangsu"
+        city="Jiangsu"
         stream="udp/239.49.8.19:9614"
         channel_key="江苏电信"
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PSJOYW5qaW5nIiAmJiBwcm90b2NvbD0iaHR0cCIgfHwgInVkcHh5IiAmJiBjaXR5PSJTdXpob3UiICYmIHByb3RvY29sPSJodHRwIg%3D%3D"
