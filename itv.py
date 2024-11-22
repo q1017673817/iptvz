@@ -137,6 +137,7 @@ with open('ip.txt', 'r', encoding='utf-8') as file:
                                 name = name.replace("CCTV2财经", "CCTV2")
                                 name = name.replace("CCTV3综艺", "CCTV3")
                                 name = name.replace("CCTV4国际", "CCTV4")
+                                name = name.replace("CCTV4广电", "CCTV4")
                                 name = name.replace("CCTV4中文国际", "CCTV4")
                                 name = name.replace("CCTV4欧洲", "CCTV4")
                                 name = name.replace("CCTV5体育", "CCTV5")
@@ -155,11 +156,13 @@ with open('ip.txt', 'r', encoding='utf-8') as file:
                                 name = name.replace("CCTV13新闻", "CCTV13")
                                 name = name.replace("CCTV新闻", "CCTV13")
                                 name = name.replace("CCTV14少儿", "CCTV14")
+                                name = name.replace("CCTV少儿", "CCTV14")
                                 name = name.replace("CCTV15音乐", "CCTV15")
                                 name = name.replace("CCTV16奥林匹克", "CCTV16")
                                 name = name.replace("CCTV17农业农村", "CCTV17")
                                 name = name.replace("CCTV17农业", "CCTV17")
                                 name = name.replace("CCTV17军农", "CCTV17")
+                                name = name.replace("CCTV17军事", "CCTV17")
                                 name = name.replace("CCTV5+体育赛视", "CCTV5+")
                                 name = name.replace("CCTV5+体育赛事", "CCTV5+")
                                 name = name.replace("CCTV5+体育", "CCTV5+")
@@ -178,6 +181,7 @@ with open('ip.txt', 'r', encoding='utf-8') as file:
                                 name = name.replace("测试", "")
                                 name = name.replace("CCTV5卡", "CCTV5")
                                 name = name.replace("CCTV5赛事", "CCTV5")
+                                name = name.replace("CCTV教育", "CETV1")
                                 
 
                                 if 'udp' not in urld or 'rtp' not in urld:
@@ -193,9 +197,21 @@ with open("itv.txt", 'w', encoding='utf-8') as file:
     for result in results:
         file.write(result + "\n")
         print(result)
+        
+with open('itv.txt', 'r', encoding='utf-8') as file:
+#从整理好的文本中按类别进行特定关键词提取
+ keywords = ['tsfile']  # 需要提取的关键字列表
+ pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
+#pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
+with open('itv.txt', 'r', encoding='utf-8') as file, open('itv1.txt', 'w', encoding='utf-8') as a:    #####定义临时文件名
+    a.write('\n')                                                                  #####写入临时文件名
+    for line in file:
+      if 'genre' not in line:
+        if re.search(pattern, line):  # 如果行中有任意关键字
+         a.write(line)  # 将该行写入输出文件
 
 channels = []
-with open('itv.txt', 'r', encoding='utf-8') as file:
+with open('itv1.txt', 'r', encoding='utf-8') as file:
     for line in file:
         line = line.strip()
         if line:
@@ -232,3 +248,4 @@ with open('iptv.txt', 'w', encoding='utf-8') as file:
             file.write(f'{channel},{address}\n')
 
 os.remove("itv.txt")
+os.remove("itv1.txt")
