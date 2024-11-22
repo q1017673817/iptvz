@@ -36,7 +36,8 @@ case $city_choice in
         city="Jiangsu"
         stream="udp/239.49.8.19:9614"
         channel_key="江苏电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PSJOYW5qaW5nIiAmJiBwcm90b2NvbD0iaHR0cCIgfHwgInVkcHh5IiAmJiBjaXR5PSJTdXpob3UiICYmIHByb3RvY29sPSJodHRwIg%3D%3D"
+        url_fofa=$(echo  '"udpxy" && (city="Nanjing" || city="Suzhou") && protocol="http"' | base64 |tr -d '\n')
+        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     2)
         city="Hubei_90"
@@ -49,21 +50,21 @@ case $city_choice in
         city="Shanghai_103"
         stream="udp/239.45.1.4:5140"
 	channel_key="上海电信"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Shanghai" && org="China Telecom Group" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && region="Shanghai" && org="China Telecom Group" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     4)
         city="Beijing_liantong_145"
         stream="rtp/239.3.1.236:2000"
         channel_key="北京联通"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Beijing" && org="China Unicom Beijing Province Network" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && region="Beijing" && org="China Unicom Beijing Province Network" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     5)
         city="Zhejiang_120"
         stream="rtp/233.50.201.63:5140"
         channel_key="浙江电信"
-        url_fofa=$(echo  '"udpxy" && country="CN" && region="Zhejiang" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && region="Zhejiang" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     0)
@@ -87,7 +88,7 @@ only_good_ip="${city}.onlygood.ip"
 onlyport="template/${city}.port"
 
 echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall.txt
-cat iptv.txt zubo.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall.txt
+cat iptv.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall.txt
 # 搜索最新 IP
 echo "===============从 fofa 检索 ip+端口================="
 curl -o test.html "$url_fofa"
@@ -158,13 +159,13 @@ rm -rf tmp1.txt tmp2.txt tmp3.txt tmp_all.txt $only_good_ip
 #--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
 
 
-echo "江苏电信(备),#genre#" >zubo_fofa1.txt
+echo "江苏电信,#genre#" >zubo_fofa1.txt
 cat txt/fofa_jiangsu.txt >>zubo_fofa1.txt
-echo "湖北电信(备),#genre#" >>zubo_fofa1.txt
+echo "湖北电信,#genre#" >>zubo_fofa1.txt
 cat txt/fofa_Hubei_90.txt >>zubo_fofa1.txt
-echo "上海电信(备),#genre#" >>zubo_fofa1.txt
+echo "上海电信,#genre#" >>zubo_fofa1.txt
 cat txt/fofa_Shanghai_103.txt >>zubo_fofa1.txt
-echo "北京联通(备),#genre#" >>zubo_fofa1.txt
+echo "北京联通,#genre#" >>zubo_fofa1.txt
 cat txt/fofa_Beijing_liantong_145.txt >>zubo_fofa1.txt
-echo "浙江电信(备),#genre#" >>zubo_fofa1.txt
+echo "浙江电信,#genre#" >>zubo_fofa1.txt
 cat txt/fofa_Zhejiang_120.txt >>zubo_fofa1.txt
