@@ -23,7 +23,6 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         bash ./zubo_fofa.sh
-        bash ./zubo_fofa_2.sh
         
     - name: Update Results
       run: |
