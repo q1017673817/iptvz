@@ -14,7 +14,7 @@ i=0
 if [ $# -eq 0 ]; then
   echo "请选择城市："
   echo "1. 四川电信（Sichuan_333）"
-  echo "2. 安徽电信（Anhui_191）"
+  echo "2. 北京电信（Beijing_dianxin_186）"
   echo "3. 河北联通（Hebei_313）"
   echo "4. 山西电信（Shanxi_117）"
   echo "5. 天津联通（Tianjin_160）"
@@ -40,10 +40,10 @@ case $city_choice in
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     2)
-        city="Anhui_191"
-        stream="rtp/238.1.78.166:7200"
-        channel_key="安徽电信"
-        url_fofa=$(echo  '"udpxy" && region="Anhui" && protocol="http"' | base64 |tr -d '\n')
+        city="Beijing_dianxin_186"
+        stream="/udp/225.1.8.1:8008"
+        channel_key="北京电信"
+        url_fofa=$(echo  '"udpxy" && region="Beijing" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     3)
@@ -87,7 +87,7 @@ only_good_ip="${city}.onlygood.ip"
 onlyport="template/${city}.port"
 
 echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall.txt
-cat iptv.txt zubo.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall.txt
+cat iptv.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall.txt
 # 搜索最新 IP
 echo "===============从 fofa 检索 ip+端口================="
 curl -o test.html "$url_fofa"
@@ -158,8 +158,8 @@ rm -rf tmp1.txt tmp2.txt tmp3.txt tmp_all.txt $only_good_ip
 #--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
 
 
-echo "安徽电信,#genre#" >zubo_fofa2.txt
-cat txt/fofa_Anhui_191.txt >>zubo_fofa2.txt
+echo "北京电信,#genre#" >zubo_fofa2.txt
+cat txt/fofa_Beijing_dianxin_186.txt >>zubo_fofa2.txt
 echo "四川电信,#genre#" >>zubo_fofa2.txt
 cat txt/fofa_Sichuan_333.txt >>zubo_fofa2.txt
 echo "天津联通,#genre#" >>zubo_fofa2.txt
