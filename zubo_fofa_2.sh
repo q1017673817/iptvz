@@ -43,7 +43,7 @@ case $city_choice in
         city="Beijing_dianxin_186"
         stream="/udp/225.1.8.1:8008"
         channel_key="北京电信"
-        url_fofa=$(echo  '"udpxy" && region="Beijing" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
+        url_fofa=$(echo  '"udpxy" && region="Beijing" && org="China Networks Inter-Exchange" && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
     3)
