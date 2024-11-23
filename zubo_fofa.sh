@@ -160,7 +160,7 @@ rm -rf tmp1.txt tmp2.txt tmp3.txt tmp_all.txt $only_good_ip
 
 
 echo "江苏电信,#genre#" >zubo_fofa1.txt
-cat txt/fofa_jiangsu.txt >>zubo_fofa1.txt
+cat txt/fofa_Jiangsu.txt >>zubo_fofa1.txt
 echo "湖北电信,#genre#" >>zubo_fofa1.txt
 cat txt/fofa_Hubei_90.txt >>zubo_fofa1.txt
 echo "上海电信,#genre#" >>zubo_fofa1.txt
