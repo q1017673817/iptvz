@@ -1,4 +1,4 @@
-2024-11-25 03:19:32
+2024-11-25 03:44:01
 央视频道2024/11/22 17:55更新,#genre#
 CCTV1,http://1.198.73.63:9901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV1,http://1.199.234.121:9901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
