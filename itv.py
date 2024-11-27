@@ -31,7 +31,7 @@ def modify_urls(url):
 
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=5)
+        response = requests.get(url, timeout=3)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
@@ -97,7 +97,7 @@ with open('ip.txt', 'r', encoding='utf-8') as file:
                 url_x = f"{base_url}{ip_address}"
     
                 json_url = f"{url}"
-                response = requests.get(json_url, timeout=10)
+                response = requests.get(json_url, timeout=3)
                 json_data = response.json()
     
                 try:
@@ -182,6 +182,11 @@ with open('ip.txt', 'r', encoding='utf-8') as file:
                                 name = name.replace("CCTV5卡", "CCTV5")
                                 name = name.replace("CCTV5赛事", "CCTV5")
                                 name = name.replace("CCTV教育", "CETV1")
+                                name = name.replace("中国教育1", "CETV1")
+                                name = name.replace("CETV1中教", "CETV1")
+                                name = name.replace("中国教育2", "CETV2")
+                                name = name.replace("中国教育4", "CETV4")
+                                
                                 
 
                                 if 'udp' not in urld or 'rtp' not in urld:
