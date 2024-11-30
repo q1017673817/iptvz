@@ -51,8 +51,8 @@ only_good_ip="${city}.onlygood.ip"
 onlyport="${city}.port"
 # 搜索最新 IP
 echo "$ipfile"
-cat ip.txt
-grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' ip.txt | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' > "$only_good_ip"
+$ cat ip.txt | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > "$only_good_ip"
+
 rm -f $ipfile $onlyport
 lines=$(wc -l < "$only_good_ip")
 echo "【$only_good_ip】内 ip 共计 $lines 个"
