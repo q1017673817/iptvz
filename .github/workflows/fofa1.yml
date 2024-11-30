@@ -1,4 +1,4 @@
-name: fofa
+name: fofa1
 
 on:
   schedule:
@@ -22,7 +22,7 @@ jobs:
 #      working-directory: iptv/speedtest
       run: |
         cd $GITHUB_WORKSPACE
-        bash ./zubo_fofa.sh
+        bash ./zubo_fofa_1.sh
         
     - name: Update Results
       run: |
