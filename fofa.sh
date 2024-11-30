@@ -11,7 +11,7 @@ if [ $# -eq 0 ]; then
 
   if [ -z "$city_choice" ]; then
       echo "未检测到输入，自动选择全部选项..."
-      city_choice=1
+      city_choice=2
   fi
 
 else
@@ -48,7 +48,7 @@ esac
 # 使用城市名作为默认文件名，格式为 CityName.ip
 ipfile="${city}.ip"
 only_good_ip="${city}.onlygood.ip"
-onlyport="${city}.port"
+#onlyport="${city}.port"
 # 搜索最新 IP
 echo "$ipfile"
 cat ip.txt | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > "$only_good_ip"
@@ -64,7 +64,7 @@ while IFS= read -r line; do
     ip="$line"
     url="http://$ip/$stream"
     echo "$url"
-    curl "$url" --connect-timeout 5 --max-time 12 -o /dev/null >zubo.tmp 2>&1
+    curl "$url" --connect-timeout 3 --max-time 8 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)
 
     echo "第 $i/$lines 个：$ip $a"
@@ -89,13 +89,14 @@ sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
 sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
 sed "s/ipipip/$ip4/g" "$program" > tmp4.txt
 sed "s/ipipip/$ip5/g" "$program" > tmp5.txt
-cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt > "fofa_${city}.txt"
+cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt > "${channel_key}.txt"
 
 rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt
 rm -f $ipfile $only_good_ip
 
 #--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
 
-
-cat fofa_Hunan_100.txt >zubo_fofa.txt
+echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >zubo.txt
+echo "浙江电信,#genre#" >>zubo.txt
+cat 浙江电信.txt >>zubo.txt
 
