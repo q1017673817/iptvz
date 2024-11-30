@@ -51,7 +51,7 @@ only_good_ip="${city}.onlygood.ip"
 #onlyport="${city}.port"
 # 搜索最新 IP
 echo "$ipfile"
-cat ip.txt | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > "$only_good_ip"
+cat ${city}ip.txt | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > "$only_good_ip"
 
 rm -f $ipfile $onlyport
 lines=$(wc -l < "$only_good_ip")
@@ -82,7 +82,7 @@ ip5=$(awk 'NR==5{print $2}' result/result_fofa_${city}.txt)
 rm -f "speedtest_${city}_$time.log"
 
 # 用 3 个最快 ip 生成对应城市的 txt 文件
-program="template_${city}.txt"
+program="template/template_${city}.txt"
 
 sed "s/ipipip/$ip1/g" "$program" > tmp1.txt
 sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
