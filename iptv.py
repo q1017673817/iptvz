@@ -43,7 +43,7 @@ results = []
 
 urls_all = []
 
-with open('ip.txt', 'r', encoding='utf-8') as file:
+with open('酒店源ip.txt', 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
             url = line.strip()
