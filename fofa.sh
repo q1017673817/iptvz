@@ -52,30 +52,8 @@ only_good_ip="${city}.onlygood.ip"
 onlyport="${city}.port"
 # 搜索最新 IP
 echo "$ipfile"
-cat ip.txt > "$ipfile"
-cat port.txt > "$onlyport"
-# 遍历文件 A 中的每个 IP 地址
-while IFS= read -r ip; do
-    while IFS= read -r port; do
-        # 尝试连接 IP 地址和端口号
-        # nc -w 1 -v -z $ip $port
-        output=$(nc -w 1 -v -z "$ip" "$port" 2>&1)
-        # 如果连接成功，且输出包含 "succeeded"，则将结果保存到输出文件中
-        if [[ $output == *"succeeded"* ]]; then
-            # 使用 awk 提取 IP 地址和端口号对应的字符串，并保存到输出文件中
-            echo "$output" | grep "succeeded" | awk -v ip="$ip" -v port="$port" '{print ip ":" port}' >> "$only_good_ip"
-      fi
-    done < "$onlyport"
-done < "$ipfile"
-
-echo "===============检索完成================="
-
-# 检查文件是否存在
-if [ ! -f "$only_good_ip" ]; then
-    echo "错误：文件 $only_good_ip 不存在。"
-    exit 1
-fi
-
+cat ip.txt > "$only_good_ip"
+rm -f $ipfile $onlyport
 lines=$(wc -l < "$only_good_ip")
 echo "【$only_good_ip】内 ip 共计 $lines 个"
 
