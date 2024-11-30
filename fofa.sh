@@ -51,7 +51,7 @@ only_good_ip="${city}.onlygood.ip"
 onlyport="${city}.port"
 # 搜索最新 IP
 echo "$ipfile"
-$ cat ip.txt | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > "$only_good_ip"
+cat ip.txt | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > "$only_good_ip"
 
 rm -f $ipfile $onlyport
 lines=$(wc -l < "$only_good_ip")
