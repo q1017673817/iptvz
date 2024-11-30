@@ -52,6 +52,7 @@ only_good_ip="${city}.onlygood.ip"
 onlyport="${city}.port"
 # 搜索最新 IP
 echo "$ipfile"
+cat ip.txt > "$ipfile"
 cat port.txt > "$onlyport"
 # 遍历文件 A 中的每个 IP 地址
 while IFS= read -r ip; do
