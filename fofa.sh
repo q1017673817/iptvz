@@ -29,7 +29,6 @@ case $city_choice in
         city="Zhejiang_120"
         stream="rtp/233.50.201.63:5140"
         channel_key="浙江电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PSJIYW5nemhvdSIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi"
         ;;
 
     0)
@@ -52,7 +51,7 @@ only_good_ip="${city}.onlygood.ip"
 onlyport="${city}.port"
 # 搜索最新 IP
 echo "$ipfile"
-grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+/$' ip.txt | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' > "$only_good_ip"
+grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' ip.txt | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' > "$only_good_ip"
 rm -f $ipfile $onlyport
 lines=$(wc -l < "$only_good_ip")
 echo "【$only_good_ip】内 ip 共计 $lines 个"
@@ -76,6 +75,9 @@ awk '/M|k/{print $2"  "$1}' "speedtest_${city}_$time.log" | sort -n -r >"result/
 cat "result/result_fofa_${city}.txt"
 ip1=$(awk 'NR==1{print $2}' result/result_fofa_${city}.txt)
 ip2=$(awk 'NR==2{print $2}' result/result_fofa_${city}.txt)
+ip3=$(awk 'NR==3{print $2}' result/result_fofa_${city}.txt)
+ip4=$(awk 'NR==4{print $2}' result/result_fofa_${city}.txt)
+ip5=$(awk 'NR==5{print $2}' result/result_fofa_${city}.txt)
 rm -f "speedtest_${city}_$time.log"
 
 # 用 3 个最快 ip 生成对应城市的 txt 文件
@@ -83,9 +85,12 @@ program="template_${city}.txt"
 
 sed "s/ipipip/$ip1/g" "$program" > tmp1.txt
 sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
-cat tmp1.txt tmp2.txt > "fofa_${city}.txt"
+sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
+sed "s/ipipip/$ip4/g" "$program" > tmp4.txt
+sed "s/ipipip/$ip5/g" "$program" > tmp5.txt
+cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt > "fofa_${city}.txt"
 
-rm -rf tmp1.txt tmp2.txt
+rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt
 rm -f $ipfile $only_good_ip
 
 #--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
