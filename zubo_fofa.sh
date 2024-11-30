@@ -4,10 +4,8 @@ i=0
 
 if [ $# -eq 0 ]; then
   echo "请选择城市："
-  echo "1. 湖南（Hunan_100）"
-  echo "2. 浙江电信（Zhejiang_120）"
   echo "0. 全部"
-  read -t 3 -p "输入选择或在3秒内无输入将默认选择全部: " city_choice
+  read -t 1 -p "输入选择或在3秒内无输入将默认选择全部: " city_choice
 
   if [ -z "$city_choice" ]; then
       echo "未检测到输入，自动选择全部选项..."
@@ -73,7 +71,7 @@ case $city_choice in
 
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..2}; do
+        for option in {1..10}; do
           bash  ./fofa.sh $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -86,13 +84,11 @@ case $city_choice in
 esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
-ipfile="${city}.ip"
 only_good_ip="${city}.onlygood.ip"
 # 搜索最新 IP
-echo "$ipfile"
 cat ip/${channel_key}.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_onlyip
 sort tmp_onlyip | uniq | sed '/^\s*$/d' > "$only_good_ip"
-rm -f $ipfile tmp_onlyip
+rm -f tmp_onlyip
 lines=$(wc -l < "$only_good_ip")
 echo "【$only_good_ip】内 ip 共计 $lines 个"
 
