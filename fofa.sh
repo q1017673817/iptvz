@@ -5,6 +5,7 @@ i=0
 if [ $# -eq 0 ]; then
   echo "请选择城市："
   echo "1. 湖南（Hunan_100）"
+  echo "2. 浙江电信（Zhejiang_120）"
   echo "0. 全部"
   read -t 3 -p "输入选择或在3秒内无输入将默认选择全部: " city_choice
 
@@ -24,10 +25,16 @@ case $city_choice in
         stream="udp/239.76.245.51:1234"
         channel_key="湖南"
         ;;
+    2)
+        city="Zhejiang_120"
+        stream="rtp/233.50.201.63:5140"
+        channel_key="浙江电信"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiBjaXR5PSJIYW5nemhvdSIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi"
+        ;;
 
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1}; do
+        for option in {1..2}; do
           bash  ./fofa.sh $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
