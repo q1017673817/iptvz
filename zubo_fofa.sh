@@ -72,7 +72,7 @@ case $city_choice in
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
         for option in {1..10}; do
-          bash  ./fofa.sh $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
+          bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
         ;;
@@ -87,8 +87,10 @@ esac
 only_good_ip="${city}.onlygood.ip"
 # 搜索最新 IP
 cat ip/${channel_key}.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_onlyip
+cat result/fofa_${channel_key}.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' >> tmp_onlyip
 sort tmp_onlyip | uniq | sed '/^\s*$/d' > "$only_good_ip"
 rm -f tmp_onlyip
+
 lines=$(wc -l < "$only_good_ip")
 echo "【$only_good_ip】内 ip 共计 $lines 个"
 
@@ -107,16 +109,16 @@ while IFS= read -r line; do
 done < "$only_good_ip"
 
 rm -f zubo.tmp
-awk '/M|k/{print $2"  "$1}' "speedtest_${city}_$time.log" | sort -n -r >"result/result_fofa_${city}.txt"
-cat "result/result_fofa_${city}.txt"
-ip1=$(awk 'NR==1{print $2}' result/result_fofa_${city}.txt)
-ip2=$(awk 'NR==2{print $2}' result/result_fofa_${city}.txt)
-ip3=$(awk 'NR==3{print $2}' result/result_fofa_${city}.txt)
-ip4=$(awk 'NR==4{print $2}' result/result_fofa_${city}.txt)
-ip5=$(awk 'NR==5{print $2}' result/result_fofa_${city}.txt)
-ip6=$(awk 'NR==6{print $2}' result/result_fofa_${city}.txt)
-ip7=$(awk 'NR==7{print $2}' result/result_fofa_${city}.txt)
-ip8=$(awk 'NR==8{print $2}' result/result_fofa_${city}.txt)
+awk '/M|k/{print $2"  "$1}' "speedtest_${city}_$time.log" | sort -n -r > "result/fofa_${channel_key}.ip"
+cat "result/fofa_${channel_key}.ip"
+ip1=$(awk 'NR==1{print $2}' result/fofa_${channel_key}.ip)
+ip2=$(awk 'NR==2{print $2}' result/fofa_${channel_key}.ip)
+ip3=$(awk 'NR==3{print $2}' result/fofa_${channel_key}.ip)
+ip4=$(awk 'NR==4{print $2}' result/fofa_${channel_key}.ip)
+ip5=$(awk 'NR==5{print $2}' result/fofa_${channel_key}.ip)
+ip6=$(awk 'NR==6{print $2}' result/fofa_${channel_key}.ip)
+ip7=$(awk 'NR==7{print $2}' result/fofa_${channel_key}.ip)
+ip8=$(awk 'NR==8{print $2}' result/fofa_${channel_key}.ip)
 rm -f "speedtest_${city}_$time.log"
 
 # 用 8 个最快 ip 生成对应城市的 txt 文件
