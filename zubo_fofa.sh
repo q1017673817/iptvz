@@ -9,7 +9,7 @@ if [ $# -eq 0 ]; then
 
   if [ -z "$city_choice" ]; then
       echo "未检测到输入，自动选择全部选项..."
-      city_choice=0
+      city_choice=1
   fi
 
 else
@@ -87,7 +87,7 @@ esac
 only_good_ip="${city}.onlygood.ip"
 # 搜索最新 IP
 cat ip/${channel_key}.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_onlyip
-cat result/fofa_${channel_key}.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' >> tmp_onlyip
+cat ip/${channel_key}有效.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' >> tmp_onlyip
 sort tmp_onlyip | uniq | sed '/^\s*$/d' > "$only_good_ip"
 rm -f tmp_onlyip
 
@@ -110,6 +110,7 @@ done < "$only_good_ip"
 
 rm -f zubo.tmp
 awk '/M|k/{print $2"  "$1}' "speedtest_${city}_$time.log" | sort -n -r > "result/fofa_${channel_key}.ip"
+awk '{print $2}' "result/fofa_${channel_key}.ip" > "ip/${channel_key}有效.ip"
 cat "result/fofa_${channel_key}.ip"
 ip1=$(awk 'NR==1{print $2}' result/fofa_${channel_key}.ip)
 ip2=$(awk 'NR==2{print $2}' result/fofa_${channel_key}.ip)
