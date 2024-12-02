@@ -27,7 +27,7 @@ case $city_choice in
         city="Jiangsu"
         stream="udp/239.49.8.19:9614"
         channel_key="江苏电信"
-#url_fofa=$(echo  '"udpxy" && (city="Nanjing" || city="Suzhou") && protocol="http"' | base64 |tr -d '\n')
+#        url_fofa=$(echo  '"udpxy" && (city="Nanjing" || city="Suzhou") && protocol="http"' | base64 |tr -d '\n')
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkppYW5nc3UiICYmIHByb3RvY29sPSJodHRwIg%3D%3D&page=1&page_size=30"
         ;;
     2)
@@ -41,8 +41,8 @@ case $city_choice in
     3)
         city="Shanghai_103"
         stream="udp/239.45.1.4:5140"
-	    channel_key="上海电信"
-	    url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IlNoYW5naGFpIiAmJiBvcmc9IkNoaW5hIFRlbGVjb20gR3JvdXAiICYmIHByb3RvY29sPSJodHRwIg%3D%3D&page=1&page_size=30"
+	channel_key="上海电信"
+	url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IlNoYW5naGFpIiAmJiBvcmc9IkNoaW5hIFRlbGVjb20gR3JvdXAiICYmIHByb3RvY29sPSJodHRwIg%3D%3D&page=1&page_size=30"
 #        url_fofa=$(echo  '"udpxy" && region="Shanghai" && org="China Telecom Group" && protocol="http"' | base64 |tr -d '\n')
 #        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
@@ -82,21 +82,21 @@ ipfile="${city}.ip"
 only_good_ip="${city}.onlygood.ip"
 #onlyport="template/${city}.port"
 
-echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall.txt
-cat iptv.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall.txt
+#echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall.txt
+#cat iptv.txt zubo.txt >>iptvall.txt
 # 搜索最新 IP
 echo "===============从 fofa 检索 ip+端口================="
 curl -o test.html "$url_fofa"
-#echo $url_fofa
 echo "$ipfile"
 grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+$' test.html | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_onlyip
+cat ip/${channel_key}有效.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' >> tmp_onlyip
 sort tmp_onlyip | uniq | sed '/^\s*$/d' > $ipfile
 rm -f test.html tmp_onlyip
 # 遍历文件中的每个 IP 地址
 while IFS= read -r ip; do
     # 尝试连接 IP 地址和端口号，并将输出保存到变量中
     tmp_ip=$(echo -n "$ip" | sed 's/:/ /')
-    echo "nc -w 1 -v -z $tmp_ip 2>&1"
+#    echo "nc -w 1 -v -z $tmp_ip 2>&1"
     output=$(nc -w 1 -v -z $tmp_ip 2>&1)
     echo $output    
     # 如果连接成功，且输出包含 "succeeded"，则将结果保存到输出文件中
@@ -124,7 +124,7 @@ while IFS= read -r line; do
     ip="$line"
     url="http://$ip/$stream"
     echo "$url"
-    curl "$url" --connect-timeout 3 --max-time 8 -o /dev/null >zubo.tmp 2>&1
+    curl "$url" --connect-timeout 2 --max-time 8 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)
 
     echo "第 $i/$lines 个：$ip $a"
@@ -133,13 +133,20 @@ done < "$only_good_ip"
 rm -f zubo.tmp
 
 awk '/M|k/{print $2"  "$1}' "speedtest_${city}_$time.log" | sort -n -r >"result/result_fofa_${city}.txt"
+awk '{print $2}' "result/result_fofa_${city}.txt" > ${channel_key}有效.ip
+cat ip/${channel_key}有效.ip ${channel_key}有效.ip > tmp_ip
+sort tmp_ip | uniq | sed '/^\s*$/d' > ip/${channel_key}有效.ip
+
 cat "result/result_fofa_${city}.txt"
 ip1=$(awk 'NR==1{print $2}' result/result_fofa_${city}.txt)
 ip2=$(awk 'NR==2{print $2}' result/result_fofa_${city}.txt)
 ip3=$(awk 'NR==3{print $2}' result/result_fofa_${city}.txt)
 ip4=$(awk 'NR==4{print $2}' result/result_fofa_${city}.txt)
 ip5=$(awk 'NR==5{print $2}' result/result_fofa_${city}.txt)
-rm -f "speedtest_${city}_$time.log"
+ip6=$(awk 'NR==6{print $2}' result/result_fofa_${city}.txt)
+ip7=$(awk 'NR==7{print $2}' result/result_fofa_${city}.txt)
+ip8=$(awk 'NR==8{print $2}' result/result_fofa_${city}.txt)
+rm -f "speedtest_${city}_$time.log" ${channel_key}有效.ip tmp_ip
 
 # 用 3 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"
@@ -148,10 +155,13 @@ sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
 sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
 sed "s/ipipip/$ip4/g" "$program" > tmp4.txt
 sed "s/ipipip/$ip5/g" "$program" > tmp5.txt
-cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt > tmp_all.txt
+sed "s/ipipip/$ip6/g" "$program" > tmp6.txt
+sed "s/ipipip/$ip7/g" "$program" > tmp7.txt
+sed "s/ipipip/$ip8/g" "$program" > tmp8.txt
+cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp6.txt tmp7.txt tmp8.txt > tmp_all.txt
 grep -vE '/{3}' tmp_all.txt > "txt/fofa_${city}.txt"
 
-rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp_all.txt $only_good_ip 
+rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp6.txt tmp7.txt tmp8.txt tmp_all.txt $only_good_ip 
 
 
 #--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
@@ -168,5 +178,5 @@ cat txt/fofa_Beijing_liantong_145.txt >>zubo_fofa1.txt
 echo "浙江电信,#genre#" >>zubo_fofa1.txt
 cat txt/fofa_Zhejiang_120.txt >>zubo_fofa1.txt
 
-echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall.txt
-cat iptv.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall.txt
+echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall(备).txt
+cat iptv.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall(备).txt
