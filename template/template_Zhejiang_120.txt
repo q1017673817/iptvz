@@ -16,7 +16,7 @@ CCTV-5体育,http://ipipip/udp/233.50.201.197:5140
 CCTV-6电影,http://ipipip/udp/233.50.201.198:5140
 CCTV-7国防军事,http://ipipip/udp/233.50.200.24:5140
 CCTV-8电视剧,http://ipipip/udp/233.50.201.199:5140
-CCTV-9记录,http://ipipip/udp/233.50.201.121:5140
+CCTV-9纪录,http://ipipip/udp/233.50.201.121:5140
 CCTV-10科教,http://ipipip/udp/233.50.201.122:5140
 CCTV-12社会与法,http://ipipip/udp/233.50.201.123:5140
 CCTV-13新闻,http://ipipip/udp/233.50.201.246:5140
