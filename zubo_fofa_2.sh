@@ -36,7 +36,7 @@ case $city_choice in
         city="Sichuan_333"
         stream="udp/239.93.0.184:5140"
         channel_key="四川电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249InNpY2h1YW4iICYmIHByb3RvY29sPSJodHRwIiAmJiBvcmc9IkNoaW5hbmV0Ig%3D%3D&page=1&page_size=30"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249InNpY2h1YW4iICYmIHByb3RvY29sPSJodHRwIiAmJiBvcmc9IkNoaW5hbmV0Ig%3D%3D&page=1&page_size=20"
 #        url_fofa=$(echo  '"udpxy" && region="Sichuan" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
 #        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
@@ -44,7 +44,7 @@ case $city_choice in
         city="Beijing_dianxin_186"
         stream="/udp/225.1.8.1:8008"
         channel_key="北京电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkJlaWppbmciICYmIG9yZz0iQ2hpbmEgTmV0d29ya3MgSW50ZXItRXhjaGFuZ2UiICYmIHByb3RvY29sPSJodHRwIg%3D%3D&page=1&page_size=30"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkJlaWppbmciICYmIG9yZz0iQ2hpbmEgTmV0d29ya3MgSW50ZXItRXhjaGFuZ2UiICYmIHByb3RvY29sPSJodHRwIg%3D%3D&page=1&page_size=20"
 #        url_fofa=$(echo  '"udpxy" && region="Beijing" && org="China Networks Inter-Exchange" && protocol="http"' | base64 |tr -d '\n')
 #        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
@@ -52,7 +52,7 @@ case $city_choice in
         city="Hebei_313"
         stream="rtp/239.253.92.154:6011"
 	channel_key="河北联通"
-	url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkhlYmVpIiAmJiBvcmc9IkNISU5BIFVOSUNPTSBDaGluYTE2OSBCYWNrYm9uZSIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=30"
+	url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkhlYmVpIiAmJiBvcmc9IkNISU5BIFVOSUNPTSBDaGluYTE2OSBCYWNrYm9uZSIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=20"
 #        url_fofa=$(echo  '"udpxy" && region="Hebei" && org="CHINA UNICOM China169 Backbone" && protocol="http"' | base64 |tr -d '\n')
 #        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
@@ -60,13 +60,13 @@ case $city_choice in
         city="Shanxi_117"
         stream="udp/239.1.1.7:8007"
         channel_key="山西电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IuWxseilvyIgJiYgcHJvdG9jb2w9Imh0dHAiICYmIG9yZz0iQ2hpbmFuZXQi&page=1&page_size=30"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IuWxseilvyIgJiYgcHJvdG9jb2w9Imh0dHAiICYmIG9yZz0iQ2hpbmFuZXQi&page=1&page_size=20"
         ;;
     5)
         city="Tianjin_160"
         stream="udp/225.1.1.120:5002"
         channel_key="天津联通"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IuWkqea0pSIgJiYgb3JnPSJDSElOQSBVTklDT00gQ2hpbmExNjkgQmFja2JvbmUiICYmIHByb3RvY29sPSJodHRwIg%3D%3D&page=1&page_size=30"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IuWkqea0pSIgJiYgb3JnPSJDSElOQSBVTklDT00gQ2hpbmExNjkgQmFja2JvbmUiICYmIHByb3RvY29sPSJodHRwIg%3D%3D&page=1&page_size=20"
 #        url_fofa=$(echo  '"udpxy" && country="CN" && region="Tianjin" && protocol="http"' | base64 |tr -d '\n')
 #        url_fofa="https://fofa.info/result?qbase64="$url_fofa
         ;;
