@@ -178,5 +178,5 @@ cat txt/fofa_Beijing_liantong_145.txt >>zubo_fofa1.txt
 echo "浙江电信,#genre#" >>zubo_fofa1.txt
 cat txt/fofa_Zhejiang_120.txt >>zubo_fofa1.txt
 
-echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall(备).txt
-cat iptv.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall(备).txt
+echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >zubo_fofa.txt
+cat zubo_fofa1.txt zubo_fofa2.txt >>zubo_fofa.txt
