@@ -1,13 +1,3 @@
-#!/bin/bash
-# cd /root/iptv
-# read -p "确定要运行脚本吗？(y/n): " choice
-
-# 判断用户的选择，如果不是"y"则退出脚本
-# if [ "$choice" != "y" ]; then
-#     echo "脚本已取消."
-#     exit 0
-# fi
-
 time=$(date +%m%d%H%M)
 i=0
 
@@ -83,15 +73,11 @@ case $city_choice in
         ;;
 esac
 
-
-
 # 使用城市名作为默认文件名，格式为 CityName.ip
 ipfile="${city}.ip"
 only_good_ip="${city}.onlygood.ip"
 #onlyport="template/${city}.port"
 
-#echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall.txt
-#cat iptv.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall.txt
 # 搜索最新 IP
 echo "===============从 fofa 检索 ip+端口================="
 curl -o test.html "$url_fofa"
@@ -121,7 +107,6 @@ if [ ! -f "$only_good_ip" ]; then
     echo "错误：文件 $only_good_ip 不存在。"
     exit 1
 fi
-
 lines=$(wc -l < "$only_good_ip")
 echo "【$only_good_ip】内 ip 共计 $lines 个"
 
@@ -134,7 +119,6 @@ while IFS= read -r line; do
     echo "$url"
     curl "$url" --connect-timeout 2 --max-time 8 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)
-
     echo "第 $i/$lines 个：$ip $a"
     echo "$ip $a" >> "speedtest_${city}_$time.log"
 done < "$only_good_ip"
@@ -168,16 +152,10 @@ sed "s/ipipip/$ip7/g" "$program" > tmp7.txt
 sed "s/ipipip/$ip8/g" "$program" > tmp8.txt
 cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp6.txt tmp7.txt tmp8.txt > tmp_all.txt
 grep -vE '/{3}' tmp_all.txt > "txt/fofa_${city}.txt"
-
 rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp6.txt tmp7.txt tmp8.txt tmp_all.txt $only_good_ip 
 
-
-#--------------------合并所有城市的txt文件为:   zubo_fofa.txt-----------------------------------------
-
-
-echo "北京电信,#genre#" >zubo_fofa2.txt
-cat txt/fofa_Beijing_dianxin_186.txt >>zubo_fofa2.txt
-echo "四川电信,#genre#" >>zubo_fofa2.txt
+#----合并所有城市的txt文件为: zubo_fofa.txt----
+echo "四川电信,#genre#" >zubo_fofa2.txt
 cat txt/fofa_Sichuan_333.txt >>zubo_fofa2.txt
 echo "天津联通,#genre#" >>zubo_fofa2.txt
 cat txt/fofa_Tianjin_160.txt >>zubo_fofa2.txt
@@ -185,6 +163,8 @@ echo "河北联通,#genre#" >>zubo_fofa2.txt
 cat txt/fofa_Hebei_313.txt >>zubo_fofa2.txt
 echo "山西电信,#genre#" >>zubo_fofa2.txt
 cat txt/fofa_Shanxi_117.txt >>zubo_fofa2.txt
+cat "北京电信,#genre#" >>zubo_fofa2.txt
+cat txt/fofa_Beijing_dianxin_186.txt >>zubo_fofa2.txt
 
-echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall(备).txt
-cat iptv.txt zubo_fofa1.txt zubo_fofa2.txt >>iptvall(备).txt
+echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >zubo_fofa.txt
+cat zubo_fofa1.txt zubo_fofa2.txt >>zubo_fofa.txt
