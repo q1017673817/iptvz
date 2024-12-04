@@ -164,7 +164,7 @@ echo "安徽电信,#genre#" >>zubo_fofa3.txt
 cat txt/fofa_Anhui_191.txt >>zubo_fofa3.txt
 echo "重庆电信,#genre#" >>zubo_fofa3.txt
 cat txt/fofa_Chongqing_161.txt >>zubo_fofa3.txt
-cat "河南电信,#genre#" >>zubo_fofa3.txt
+echo "河南电信,#genre#" >>zubo_fofa3.txt
 cat txt/fofa_Henan_327.txt >>zubo_fofa3.txt
 
 echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >zubo_fofa.txt
