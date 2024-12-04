@@ -193,7 +193,7 @@ echo "安徽电信,#genre#" >>zubo.txt
 cat txt/安徽电信.txt >>zubo.txt
 echo "重庆电信,#genre#" >>zubo.txt
 cat txt/重庆电信.txt >>zubo.txt
-cat "河南电信,#genre#" >>zubo.txt
+echo "河南电信,#genre#" >>zubo.txt
 cat txt/河南电信.txt >>zubo.txt
 
 echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall.txt
