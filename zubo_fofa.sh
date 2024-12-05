@@ -126,7 +126,7 @@ while IFS= read -r line; do
     ip="$line"
     url="http://$ip/$stream"
     echo "$url"
-    curl "$url" --connect-timeout 2 --max-time 8 -o /dev/null >zubo.tmp 2>&1
+    curl "$url" --connect-timeout 3 --max-time 8 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)
 
     echo "第 $i/$lines 个：$ip $a"
@@ -195,6 +195,3 @@ echo "重庆电信,#genre#" >>zubo.txt
 cat txt/重庆电信.txt >>zubo.txt
 echo "河南电信,#genre#" >>zubo.txt
 cat txt/河南电信.txt >>zubo.txt
-
-echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >iptvall.txt
-cat iptv.txt zubo.txt >>iptvall.txt
