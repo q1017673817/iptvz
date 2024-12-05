@@ -76,7 +76,6 @@ esac
 # 使用城市名作为默认文件名，格式为 CityName.ip
 ipfile="${city}.ip"
 only_good_ip="${city}.onlygood.ip"
-#onlyport="template/${city}.port"
 
 # 搜索最新 IP
 echo "===============从 fofa 检索 ip+端口================="
@@ -136,8 +135,8 @@ ip3=$(awk 'NR==3{print $2}' result/result_fofa_${city}.txt)
 ip4=$(awk 'NR==4{print $2}' result/result_fofa_${city}.txt)
 ip5=$(awk 'NR==5{print $2}' result/result_fofa_${city}.txt)
 ip6=$(awk 'NR==6{print $2}' result/result_fofa_${city}.txt)
-ip7=$(awk 'NR==7{print $2}' result/result_fofa_${city}.txt)
-ip8=$(awk 'NR==8{print $2}' result/result_fofa_${city}.txt)
+#ip7=$(awk 'NR==7{print $2}' result/result_fofa_${city}.txt)
+#ip8=$(awk 'NR==8{print $2}' result/result_fofa_${city}.txt)
 rm -f "speedtest_${city}_$time.log" ${channel_key}有效.ip tmp_ip
 
 # 用 3 个最快 ip 生成对应城市的 txt 文件
@@ -148,11 +147,11 @@ sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
 sed "s/ipipip/$ip4/g" "$program" > tmp4.txt
 sed "s/ipipip/$ip5/g" "$program" > tmp5.txt
 sed "s/ipipip/$ip6/g" "$program" > tmp6.txt
-sed "s/ipipip/$ip7/g" "$program" > tmp7.txt
-sed "s/ipipip/$ip8/g" "$program" > tmp8.txt
-cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp6.txt tmp7.txt tmp8.txt > tmp_all.txt
+#sed "s/ipipip/$ip7/g" "$program" > tmp7.txt
+#sed "s/ipipip/$ip8/g" "$program" > tmp8.txt
+cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp6.txt > tmp_all.txt
 grep -vE '/{3}' tmp_all.txt > "txt/fofa_${city}.txt"
-rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp6.txt tmp7.txt tmp8.txt tmp_all.txt $only_good_ip 
+rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp6.txt tmp_all.txt $only_good_ip 
 
 #----合并所有城市的txt文件为: zubo_fofa.txt----
 echo "四川电信,#genre#" >zubo_fofa2.txt
@@ -163,8 +162,8 @@ echo "河北联通,#genre#" >>zubo_fofa2.txt
 cat txt/fofa_Hebei_313.txt >>zubo_fofa2.txt
 echo "山西电信,#genre#" >>zubo_fofa2.txt
 cat txt/fofa_Shanxi_117.txt >>zubo_fofa2.txt
-cat "北京电信,#genre#" >>zubo_fofa2.txt
+echo "北京电信,#genre#" >>zubo_fofa2.txt
 cat txt/fofa_Beijing_dianxin_186.txt >>zubo_fofa2.txt
 
 echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >zubo_fofa.txt
-cat zubo_fofa1.txt zubo_fofa2.txt >>zubo_fofa.txt
+cat zubo_fofa1.txt zubo_fofa2.txt zubo_fofa3.txt >>zubo_fofa.txt
