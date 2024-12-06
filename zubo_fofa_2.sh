@@ -76,7 +76,7 @@ esac
 # 使用城市名作为默认文件名，格式为 CityName.ip
 ipfile="${city}.ip"
 only_good_ip="${city}.onlygood.ip"
-
+sed -i 's/\r//' zubo_fofa_4.sh
 # 搜索最新 IP
 echo "===============从 fofa 检索 ip+端口================="
 curl -o test.html "$url_fofa"
