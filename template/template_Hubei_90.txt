@@ -1,3 +1,4 @@
+湖北卫视,http://ipipip/rtp/239.254.96.115:8664
 湖北公共新闻,http://ipipip/rtp/239.69.1.40:9880
 湖北经视频道,http://ipipip/rtp/239.69.1.41:9886
 湖北综合频道,http://ipipip/rtp/239.69.1.42:9892
@@ -44,7 +45,6 @@ CCTV-世界地理,http://ipipip/rtp/239.69.1.91:10186
 CCTV-央视台球,http://ipipip/rtp/239.69.1.98:10224
 CCTV-4中文国际 欧洲,http://ipipip/rtp/239.69.1.231:11028
 CCTV-4中文国际 美洲,http://ipipip/rtp/239.69.1.232:11034
-湖北卫视,http://ipipip/rtp/239.254.96.115:8664
 河北卫视,http://ipipip/rtp/239.254.96.113:9616
 深圳卫视,http://ipipip/rtp/239.254.96.137:8896
 湖南卫视,http://ipipip/rtp/239.254.96.139:8908
