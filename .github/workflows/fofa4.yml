@@ -1,0 +1,35 @@
+
+name: fofa4
+
+on:
+  schedule:
+    - cron: '0 3,8,22 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y yt-dlp sed nmap
+      
+    - name: Run Multitest Script
+#      working-directory: iptv/speedtest
+      run: |
+        cd $GITHUB_WORKSPACE
+        bash ./zubo_fofa_4.sh
+        
+    - name: Update Results
+      run: |
+        cd $GITHUB_WORKSPACE
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Update results"
+        git push
