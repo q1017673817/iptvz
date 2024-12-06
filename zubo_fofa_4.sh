@@ -1,5 +1,7 @@
+
 time=$(date +%m%d%H%M)
 i=0
+
 if [ $# -eq 0 ]; then
   echo "请选择城市："
   echo "1. 湖南电信（Hunan_282）"
@@ -22,7 +24,7 @@ fi
 # 根据用户选择设置城市和相应的stream
 case $city_choice in
     1)
-        city="Hunan_282.txt"
+        city="Hunan_282"
         stream="udp/239.76.245.115:1234"
         channel_key="湖南电信"
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iua5luWNlyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=20"
@@ -64,7 +66,7 @@ case $city_choice in
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
         for option in {1..5}; do
-           bash  "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
+          bash  "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
         ;;
