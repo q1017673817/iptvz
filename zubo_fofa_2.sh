@@ -24,7 +24,7 @@ fi
 case $city_choice in
     1)
         city="Sichuan_333"
-        stream="udp/239.93.0.184:5140"
+        stream="udp/239.93.42.33:5140"
         channel_key="四川电信"
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249InNpY2h1YW4iICYmIHByb3RvY29sPSJodHRwIiAmJiBvcmc9IkNoaW5hbmV0Ig%3D%3D&page=1&page_size=20"
 #        url_fofa=$(echo  '"udpxy" && region="Sichuan" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
@@ -32,7 +32,7 @@ case $city_choice in
         ;;
     2)
         city="Beijing_dianxin_186"
-        stream="/udp/225.1.8.1:8008"
+        stream="udp/225.1.8.211:8002"
         channel_key="北京电信"
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkJlaWppbmciICYmIG9yZz0iQ2hpbmEgTmV0d29ya3MgSW50ZXItRXhjaGFuZ2UiICYmIHByb3RvY29sPSJodHRwIg%3D%3D&page=1&page_size=20"
 #        url_fofa=$(echo  '"udpxy" && region="Beijing" && org="China Networks Inter-Exchange" && protocol="http"' | base64 |tr -d '\n')
@@ -40,7 +40,7 @@ case $city_choice in
         ;;
     3)
         city="Hebei_313"
-        stream="rtp/239.253.92.154:6011"
+        stream="rtp/239.253.93.223:6401"
 	channel_key="河北联通"
 	url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkhlYmVpIiAmJiBvcmc9IkNISU5BIFVOSUNPTSBDaGluYTE2OSBCYWNrYm9uZSIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=20"
 #        url_fofa=$(echo  '"udpxy" && region="Hebei" && org="CHINA UNICOM China169 Backbone" && protocol="http"' | base64 |tr -d '\n')
@@ -76,7 +76,7 @@ esac
 # 使用城市名作为默认文件名，格式为 CityName.ip
 ipfile="${city}.ip"
 only_good_ip="${city}.onlygood.ip"
-sed -i 's/\r//' zubo_fofa_4.sh
+
 # 搜索最新 IP
 echo "===============从 fofa 检索 ip+端口================="
 curl -o test.html "$url_fofa"
