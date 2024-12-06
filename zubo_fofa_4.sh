@@ -1,7 +1,5 @@
-
 time=$(date +%m%d%H%M)
 i=0
-
 if [ $# -eq 0 ]; then
   echo "请选择城市："
   echo "1. 湖南电信（Hunan_282）"
