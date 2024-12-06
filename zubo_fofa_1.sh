@@ -32,7 +32,7 @@ case $city_choice in
         ;;
     2)
         city="Hubei_90"
-        stream="rtp/239.254.96.96:8550"
+        stream="rtp/239.69.1.249:11136"
         channel_key="湖北电信"
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iua5luWMlyIgJiYgcHJvdG9jb2w9Imh0dHAiICYmIG9yZz0iQ2hpbmFuZXQi&page=1&page_size=20"
 #        url_fofa=$(echo  '"udpxy" && country="CN" && region="Hubei" && protocol="http"' | base64 |tr -d '\n')
@@ -40,7 +40,7 @@ case $city_choice in
         ;;
     3)
         city="Shanghai_103"
-        stream="udp/239.45.1.4:5140"
+        stream="udp/239.45.1.42:5140"
 	channel_key="上海电信"
 	url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IlNoYW5naGFpIiAmJiBvcmc9IkNoaW5hIFRlbGVjb20gR3JvdXAiICYmIHByb3RvY29sPSJodHRwIg%3D%3D&page=1&page_size=20"
 #        url_fofa=$(echo  '"udpxy" && region="Shanghai" && org="China Telecom Group" && protocol="http"' | base64 |tr -d '\n')
@@ -48,7 +48,7 @@ case $city_choice in
         ;;
     4)
         city="Beijing_liantong_145"
-        stream="rtp/239.3.1.236:2000"
+        stream="rtp/239.3.1.249:8001"
         channel_key="北京联通"
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IkJlaWppbmciICYmIG9yZz0iQ2hpbmEgVW5pY29tIEJlaWppbmcgUHJvdmluY2UgTmV0d29yayIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=20"
 #        url_fofa=$(echo  '"udpxy" && region="Beijing" && org="China Unicom Beijing Province Network" && protocol="http"' | base64 |tr -d '\n')
@@ -56,7 +56,7 @@ case $city_choice in
         ;;
     5)
         city="Zhejiang_120"
-        stream="rtp/233.50.201.63:5140"
+        stream="udp/233.50.201.63:5140"
         channel_key="浙江电信"
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IlpoZWppYW5nIiAmJiBwcm90b2NvbD0iaHR0cCIgJiYgb3JnPSJDaGluYW5ldCI%3D&page=1&page_size=20"
 #        url_fofa=$(echo  '"udpxy" && region="Zhejiang" && org="Chinanet" && protocol="http"' | base64 |tr -d '\n')
