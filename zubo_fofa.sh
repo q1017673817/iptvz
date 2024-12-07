@@ -9,7 +9,7 @@ if [ $# -eq 0 ]; then
 
   if [ -z "$city_choice" ]; then
       echo "未检测到输入，自动选择全部选项..."
-      city_choice=3
+      city_choice=7
   fi
 
 else
