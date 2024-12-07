@@ -2,7 +2,7 @@ name: fofa2
 
 on:
   schedule:
-    - cron: '0 1,6,20 * * *'
+    - cron: '0 7,22 * * *'
   workflow_dispatch:
 
 jobs:
