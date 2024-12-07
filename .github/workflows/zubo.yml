@@ -17,17 +17,16 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y yt-dlp sed nmap
       
-    - name: Run Multitest Script
-#      working-directory: iptv
+    - name: 测试组播地址有效性
       run: |
         cd $GITHUB_WORKSPACE
-        bash ./zubo_fofa.sh
+        bash ./zubo.sh
 
-    - name: 提交更改
+    - name: 更新组播源
       run: |
         cd $GITHUB_WORKSPACE
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
-        git commit -m "Update results"
+        git commit -m "更新组播源"
         git push
