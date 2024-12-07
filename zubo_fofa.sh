@@ -9,7 +9,7 @@ if [ $# -eq 0 ]; then
 
   if [ -z "$city_choice" ]; then
       echo "未检测到输入，自动选择全部选项..."
-      city_choice=7
+      city_choice=0
   fi
 
 else
@@ -20,7 +20,7 @@ fi
 case $city_choice in
     1)
         city="Zhejiang_120"
-        stream="rtp/233.50.201.63:5140"
+        stream="udp/233.50.201.63:5140"
         channel_key="浙江电信"
         ;;
     2)
@@ -30,57 +30,57 @@ case $city_choice in
         ;;
     3)
         city="Shanghai_103"
-        stream="udp/239.45.1.4:5140"
+        stream="udp/239.45.1.42:5140"
 	    channel_key="上海电信"
         ;;
     4)
         city="Beijing_liantong_145"
-        stream="rtp/239.3.1.236:2000"
+        stream="rtp/239.3.1.249:8001"
         channel_key="北京联通"
         ;;
     5)
         city="Hubei_90"
-        stream="rtp/239.254.96.96:8550"
+        stream="rtp/239.69.1.249:11136"
         channel_key="湖北电信"
         ;;
     6)
         city="Sichuan_333"
-        stream="udp/239.93.0.184:5140"
+        stream="udp/239.93.42.33:5140"
         channel_key="四川电信"
         ;;
     7)
         city="Beijing_dianxin_186"
-        stream="/udp/225.1.8.1:8008"
+        stream="udp/225.1.8.211:8002"
         channel_key="北京电信"
         ;;
     8)
         city="Hebei_313"
-        stream="rtp/239.253.92.154:6011"
+        stream="rtp/239.253.93.223:6401"
 	    channel_key="河北联通"
         ;;
     9)
         city="Shanxi_117"
-        stream="udp/239.1.1.7:8007"
+        stream="rtp/239.253.93.223:6401"
         channel_key="山西电信"
         ;;
     10)
         city="Tianjin_160"
-        stream="udp/225.1.1.120:5002"
+        stream="udp/225.1.2.190:5002"
         channel_key="天津联通"
         ;;
     11)
         city="Guangdong_332"
-        stream="udp/239.77.1.19:5146"
+        stream="udp/239.77.0.244:5146"
         channel_key="广东电信"
 	;;
     12)
         city="Anhui_191"
-        stream="rtp/238.1.79.27:4328"
+        stream="rtp/238.1.78.137:6968"
         channel_key="安徽电信"
 	;;
     13)
         city="Chongqing_161"
-        stream="rtp/235.254.196.249:1268"
+        stream="rtp/235.254.198.102:7980"
         channel_key="重庆电信"
 	;;
     14)
@@ -112,7 +112,7 @@ esac
 only_good_ip="${city}.onlygood.ip"
 # 搜索最新 IP
 cat ip/${channel_key}.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_onlyip
-#cat ip/${channel_key}有效.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' >> tmp_onlyip
+cat ip/${channel_key}有效.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' >> tmp_onlyip
 sort tmp_onlyip | uniq | sed '/^\s*$/d' > "$only_good_ip"
 rm -f tmp_onlyip
 
@@ -163,8 +163,8 @@ grep -vE '/{3}' tmp_all.txt > "txt/${channel_key}.txt"
 rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp6.txt tmp7.txt tmp8.txt tmp_all.txt $only_good_ip
 
 #--------------------合并所有城市的txt文件为:   zubo.txt-----------------------------------------
-
-echo $(TZ=UTC-8 date +%Y-%m-%d" "%H:%M:%S) >zubo.txt
+echo "广东电信,#genre#" >zubo.txt
+cat txt/广东电信.txt >>zubo.txt
 echo "浙江电信,#genre#" >>zubo.txt
 cat txt/浙江电信.txt >>zubo.txt
 echo "江苏电信,#genre#" >>zubo.txt
@@ -175,8 +175,6 @@ echo "上海电信,#genre#" >>zubo.txt
 cat txt/上海电信.txt >>zubo.txt
 echo "北京联通,#genre#" >>zubo.txt
 cat txt/北京联通.txt >>zubo.txt
-echo "北京电信,#genre#" >>zubo.txt
-cat txt/北京电信.txt >>zubo.txt
 echo "四川电信,#genre#" >>zubo.txt
 cat txt/四川电信.txt >>zubo.txt
 echo "天津联通,#genre#" >>zubo.txt
@@ -185,8 +183,6 @@ echo "河北联通,#genre#" >>zubo.txt
 cat txt/河北联通.txt >>zubo.txt
 echo "山西电信,#genre#" >>zubo.txt
 cat txt/山西电信.txt >>zubo.txt
-echo "广东电信,#genre#" >>zubo.txt
-cat txt/广东电信.txt >>zubo.txt
 echo "福建电信,#genre#" >>zubo.txt
 cat txt/福建电信.txt >>zubo.txt
 echo "安徽电信,#genre#" >>zubo.txt
@@ -195,3 +191,5 @@ echo "重庆电信,#genre#" >>zubo.txt
 cat txt/重庆电信.txt >>zubo.txt
 echo "河南电信,#genre#" >>zubo.txt
 cat txt/河南电信.txt >>zubo.txt
+echo "北京电信,#genre#" >>zubo.txt
+cat txt/北京电信.txt >>zubo.txt
