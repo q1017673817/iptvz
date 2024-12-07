@@ -2,7 +2,7 @@ name: fofa1
 
 on:
   schedule:
-    - cron: '0 0,5,19 * * *'
+    - cron: '0 6,21 * * *'
   workflow_dispatch:
 
 jobs:
@@ -18,17 +18,16 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y yt-dlp sed nmap
       
-    - name: Run Multitest Script
-#      working-directory: iptv/speedtest
+    - name: 获取组播地址
       run: |
         cd $GITHUB_WORKSPACE
         bash ./zubo_fofa_1.sh
         
-    - name: Update Results
+    - name: 更新组播源
       run: |
         cd $GITHUB_WORKSPACE
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
-        git commit -m "Update results"
+        git commit -m "更新组播源"
         git push
