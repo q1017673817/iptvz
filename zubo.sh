@@ -93,10 +93,34 @@ case $city_choice in
         stream="rtp/239.16.20.21:10210"
         channel_key="河南电信"
 	;;
- 
+    16)
+        city="Hunan_282.txt"
+        stream="udp/239.76.245.115:1234"
+        channel_key="湖南电信"
+        ;;
+    17)
+        city="Shandong_279"
+        stream="udp/239.21.1.52:5002"
+        channel_key="山东电信"
+        ;;
+    18)
+        city="Jiangxi_105"
+        stream="udp/239.252.220.63:5140"
+        channel_key="江西电信"
+        ;;
+    19)
+        city="Guizhou_153"
+        stream="rtp/238.255.2.1:5999"
+        channel_key="贵州电信"
+        ;;
+    20)
+        city="Shaanxi_123"
+        stream="rtp/239.111.205.35:5140"
+        channel_key="陕西电信"
+        ;;    
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..15}; do
+        for option in {1..20}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -115,7 +139,6 @@ cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' 
 cat ip/${channel_key}有效.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' >> tmp_onlyip
 sort tmp_onlyip | uniq | sed '/^\s*$/d' > "$only_good_ip"
 rm -f tmp_onlyip ip/${channel_key}.ip
-
 lines=$(wc -l < "$only_good_ip")
 echo "【$only_good_ip】内 ip 共计 $lines 个"
 
@@ -126,9 +149,8 @@ while IFS= read -r line; do
     ip="$line"
     url="http://$ip/$stream"
     echo "$url"
-    curl "$url" --connect-timeout 3 --max-time 8 -o /dev/null >zubo.tmp 2>&1
+    curl "$url" --connect-timeout 2 --max-time 10 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)
-
     echo "第 $i/$lines 个：$ip $a"
     echo "$ip $a" >> "speedtest_${city}_$time.log"
 done < "$only_good_ip"
@@ -142,25 +164,24 @@ ip2=$(awk 'NR==2{print $2}' result/fofa_${channel_key}.ip)
 ip3=$(awk 'NR==3{print $2}' result/fofa_${channel_key}.ip)
 ip4=$(awk 'NR==4{print $2}' result/fofa_${channel_key}.ip)
 ip5=$(awk 'NR==5{print $2}' result/fofa_${channel_key}.ip)
-ip6=$(awk 'NR==6{print $2}' result/fofa_${channel_key}.ip)
-ip7=$(awk 'NR==7{print $2}' result/fofa_${channel_key}.ip)
-ip8=$(awk 'NR==8{print $2}' result/fofa_${channel_key}.ip)
+#ip6=$(awk 'NR==6{print $2}' result/fofa_${channel_key}.ip)
+#ip7=$(awk 'NR==7{print $2}' result/fofa_${channel_key}.ip)
+#ip8=$(awk 'NR==8{print $2}' result/fofa_${channel_key}.ip)
 rm -f "speedtest_${city}_$time.log"
 
-# 用 8 个最快 ip 生成对应城市的 txt 文件
+# 用 5 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"
-
 sed "s/ipipip/$ip1/g" "$program" > tmp1.txt
 sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
 sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
 sed "s/ipipip/$ip4/g" "$program" > tmp4.txt
 sed "s/ipipip/$ip5/g" "$program" > tmp5.txt
-sed "s/ipipip/$ip6/g" "$program" > tmp6.txt
-sed "s/ipipip/$ip7/g" "$program" > tmp7.txt
-sed "s/ipipip/$ip8/g" "$program" > tmp8.txt
-cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp6.txt tmp7.txt tmp8.txt > tmp_all.txt
+#sed "s/ipipip/$ip6/g" "$program" > tmp6.txt
+#sed "s/ipipip/$ip7/g" "$program" > tmp7.txt
+#sed "s/ipipip/$ip8/g" "$program" > tmp8.txt
+cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt > tmp_all.txt
 grep -vE '/{3}' tmp_all.txt > "txt/${channel_key}.txt"
-rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp6.txt tmp7.txt tmp8.txt tmp_all.txt $only_good_ip
+rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp_all.txt $only_good_ip
 
 #--------------------合并所有城市的txt文件为:   zubo.txt-----------------------------------------
 echo "广东电信,#genre#" >zubo.txt
@@ -193,3 +214,13 @@ echo "河南电信,#genre#" >>zubo.txt
 cat txt/河南电信.txt >>zubo.txt
 echo "北京电信,#genre#" >>zubo.txt
 cat txt/北京电信.txt >>zubo.txt
+echo "湖南电信,#genre#" >>zubo.txt
+cat txt/湖南电信.txt >>zubo.txt
+echo "山东电信,#genre#" >>zubo.txt
+cat txt/山东电信.txt >>zubo.txt
+echo "江西电信,#genre#" >>zubo.txt
+cat txt/江西电信.txt >>zubo.txt
+echo "贵州电信,#genre#" >>zubo.txt
+cat txt/贵州电信.txt >>zubo.txt
+echo "陕西电信,#genre#" >>zubo.txt
+cat txt/陕西电信.txt >>zubo.txt
