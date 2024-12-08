@@ -164,6 +164,9 @@ ip2=$(head -n 2 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
 ip3=$(head -n 3 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
 ip4=$(head -n 4 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
 ip5=$(head -n 5 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
+ip6=$(head -n 6 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
+ip7=$(head -n 7 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
+ip8=$(head -n 8 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
 rm -f "speedtest_${city}_$time.log"
 
 # 用 5 个最快 ip 生成对应城市的 txt 文件
@@ -173,9 +176,12 @@ sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
 sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
 sed "s/ipipip/$ip4/g" "$program" > tmp4.txt
 sed "s/ipipip/$ip5/g" "$program" > tmp5.txt
-cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt > tmp_all.txt
+sed "s/ipipip/$ip6/g" "$program" > tmp6.txt
+sed "s/ipipip/$ip7/g" "$program" > tmp7.txt
+sed "s/ipipip/$ip8/g" "$program" > tmp8.txt
+cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp6.txt tmp7.txt tmp8.txt > tmp_all.txt
 grep -vE '/{3}' tmp_all.txt > "txt/${channel_key}.txt"
-rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp_all.txt $only_good_ip
+rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp6.txt tmp7.txt tmp8.txt tmp_all.txt
 
 #--------------------合并所有城市的txt文件为:   zubo.txt-----------------------------------------
 echo "广东电信,#genre#" >zubo.txt
