@@ -133,14 +133,14 @@ case $city_choice in
 esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
-only_good_ip="${city}.onlygood.ip"
+ipfile="ip/${channel_key}.ip"
 # 搜索最新 IP
-cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_onlyip
-cat ip/${channel_key}有效.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' >> tmp_onlyip
-sort tmp_onlyip | uniq | sed '/^\s*$/d' > "$only_good_ip"
-rm -f tmp_onlyip ip/${channel_key}.ip
-lines=$(wc -l < "$only_good_ip")
-echo "【$only_good_ip】内 ip 共计 $lines 个"
+cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
+cat ip/${channel_key}有效.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' >> tmp_ipfile
+sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
+rm -f tmp_ipfile ip/${channel_key}.html
+lines=$(wc -l < "$ipfile")
+echo "【$ipfile】内 ip 共计 $lines 个"
 
 i=0
 time=$(date +%Y%m%d%H%M%S) # 定义 time 变量
@@ -153,7 +153,7 @@ while IFS= read -r line; do
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)
     echo "第 $i/$lines 个：$ip $a"
     echo "$ip $a" >> "speedtest_${city}_$time.log"
-done < "$only_good_ip"
+done < "$ipfile"
 
 rm -f zubo.tmp
 cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sort -n -r >"result/fofa_${channel_key}.ip"
