@@ -149,24 +149,21 @@ while IFS= read -r line; do
     ip="$line"
     url="http://$ip/$stream"
     echo "$url"
-    curl "$url" --connect-timeout 2 --max-time 10 -o /dev/null >zubo.tmp 2>&1
+    curl "$url" --connect-timeout 2 --max-time 15 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)
     echo "第 $i/$lines 个：$ip $a"
     echo "$ip $a" >> "speedtest_${city}_$time.log"
 done < "$only_good_ip"
 
 rm -f zubo.tmp
-awk '/M|k/{print $2"  "$1}' "speedtest_${city}_$time.log" | sort -n -r > "result/fofa_${channel_key}.ip"
+cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sort -n -r >"result/fofa_${channel_key}.ip"
 awk '{print $2}' "result/fofa_${channel_key}.ip" > "ip/${channel_key}有效.ip"
 cat "result/fofa_${channel_key}.ip"
-ip1=$(awk 'NR==1{print $2}' result/fofa_${channel_key}.ip)
-ip2=$(awk 'NR==2{print $2}' result/fofa_${channel_key}.ip)
-ip3=$(awk 'NR==3{print $2}' result/fofa_${channel_key}.ip)
-ip4=$(awk 'NR==4{print $2}' result/fofa_${channel_key}.ip)
-ip5=$(awk 'NR==5{print $2}' result/fofa_${channel_key}.ip)
-#ip6=$(awk 'NR==6{print $2}' result/fofa_${channel_key}.ip)
-#ip7=$(awk 'NR==7{print $2}' result/fofa_${channel_key}.ip)
-#ip8=$(awk 'NR==8{print $2}' result/fofa_${channel_key}.ip)
+ip1=$(head -n 1 result/result_${city}.txt | awk '{print $2}')
+ip2=$(head -n 2 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
+ip3=$(head -n 3 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
+ip4=$(head -n 4 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
+ip5=$(head -n 5 result/result_${city}.txt | tail -n 1 | awk '{print $2}')
 rm -f "speedtest_${city}_$time.log"
 
 # 用 5 个最快 ip 生成对应城市的 txt 文件
@@ -176,9 +173,6 @@ sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
 sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
 sed "s/ipipip/$ip4/g" "$program" > tmp4.txt
 sed "s/ipipip/$ip5/g" "$program" > tmp5.txt
-#sed "s/ipipip/$ip6/g" "$program" > tmp6.txt
-#sed "s/ipipip/$ip7/g" "$program" > tmp7.txt
-#sed "s/ipipip/$ip8/g" "$program" > tmp8.txt
 cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt > tmp_all.txt
 grep -vE '/{3}' tmp_all.txt > "txt/${channel_key}.txt"
 rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp_all.txt $only_good_ip
