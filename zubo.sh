@@ -50,7 +50,7 @@ case $city_choice in
         ;;
     7)
         city="Beijing_dianxin_186"
-        stream="udp/225.1.8.211:8002"
+        stream="udp/225.1.8.1:8008"
         channel_key="北京电信"
         ;;
     8)
@@ -60,7 +60,7 @@ case $city_choice in
         ;;
     9)
         city="Shanxi_117"
-        stream="rtp/239.253.93.223:6401"
+        stream="udp/239.1.1.7:8007"
         channel_key="山西电信"
         ;;
     10)
