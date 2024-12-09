@@ -1,0 +1,31 @@
+name: 测试
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y yt-dlp sed nmap
+      
+    - name: Run Multitest Script
+      run: |
+        cd $GITHUB_WORKSPACE
+        chmod +x speed.sh
+        bash ./ceshi.sh
+    - name: Update Results
+      run: |
+        cd $GITHUB_WORKSPACE/speedtest
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Update results"
+        git push
