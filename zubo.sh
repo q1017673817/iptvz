@@ -94,7 +94,7 @@ case $city_choice in
         channel_key="河南电信"
 	;;
     16)
-        city="ningxia"
+        city="Ningxia"
         stream="rtp/239.121.4.94:8538"
         channel_key="宁夏电信"
         ;;
