@@ -147,18 +147,15 @@ while IFS= read -r line; do
     echo "$ip $a" >> "speedtest_${city}_$time.log"
 done < "$ipfile"
 
-cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sort -n -r >"result/fofa_${channel_key}.ip"
-cat "result/fofa_${channel_key}.ip"
-ip1=$(head -n 1 result/fofa_${channel_key}.ip | awk '{print $2}')
-ip2=$(head -n 2 result/fofa_${channel_key}.ip | tail -n 1 | awk '{print $2}')
-ip3=$(head -n 3 result/fofa_${channel_key}.ip | tail -n 1 | awk '{print $2}')
-ip4=$(head -n 4 result/fofa_${channel_key}.ip | tail -n 1 | awk '{print $2}')
-ip5=$(head -n 5 result/fofa_${channel_key}.ip | tail -n 1 | awk '{print $2}')
-ip6=$(head -n 6 result/fofa_${channel_key}.ip | tail -n 1 | awk '{print $2}')
-ip7=$(head -n 7 result/fofa_${channel_key}.ip | tail -n 1 | awk '{print $2}')
-ip8=$(head -n 8 result/fofa_${channel_key}.ip | tail -n 1 | awk '{print $2}')
-awk '{print $2}' "result/fofa_${channel_key}.ip" > "ip/${channel_key}有效.ip"
-rm -f "speedtest_${city}_$time.log"
+cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sort -n -r >"result/fofa_${city}.txt"
+cat "result/fofa_${city}.txt"
+ip1=$(head -n 1 result/fofa_${city}.txt | awk '{print $2}')
+ip2=$(head -n 2 result/fofa_${city}.txt | tail -n 1 | awk '{print $2}')
+ip3=$(head -n 3 result/fofa_${city}.txt | tail -n 1 | awk '{print $2}')
+ip4=$(head -n 4 result/fofa_${city}.txt | tail -n 1 | awk '{print $2}')
+ip5=$(head -n 5 result/fofa_${city}.txt | tail -n 1 | awk '{print $2}')
+awk '{print $2}' "result/fofa_${city}.txt" > "ip/${channel_key}有效.ip"
+rm -f "speedtest_${city}_$time.log" result/fofa_${channel_key}.ip
 # 用 8 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"
 sed "s/ipipip/$ip1/g" "$program" > tmp1.txt
@@ -166,12 +163,9 @@ sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
 sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
 sed "s/ipipip/$ip4/g" "$program" > tmp4.txt
 sed "s/ipipip/$ip5/g" "$program" > tmp5.txt
-sed "s/ipipip/$ip6/g" "$program" > tmp6.txt
-sed "s/ipipip/$ip7/g" "$program" > tmp7.txt
-sed "s/ipipip/$ip8/g" "$program" > tmp8.txt
-cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp6.txt tmp7.txt tmp8.txt > tmp_all.txt
+cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt > tmp_all.txt
 grep -vE '/{3}' tmp_all.txt > "txt/${channel_key}.txt"
-rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp6.txt tmp7.txt tmp8.txt tmp_all.txt
+rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp_all.txt
 
 #--------------------合并所有城市的txt文件为:   zubo.txt-----------------------------------------
 echo "广东电信,#genre#" >zubo.txt
