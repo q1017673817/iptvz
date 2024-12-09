@@ -37,7 +37,7 @@ DOWNLOAD_SPEED=$(echo "scale=2; $FILE_SIZE / $DURATION" | bc)
 # 将下载速度转换为 Mb/s
 DOWNLOAD_SPEED_MBPS=$(echo "scale=2; $DOWNLOAD_SPEED * 8 / 1000000" | bc)
 # 判断 DOWNLOAD_SPEED_MBPS 是否小于 1M，速度太慢的节点不要
-if (( $(echo "$DOWNLOAD_SPEED_MBPS < 1" | bc -l) )); then
+if (( $(echo "$DOWNLOAD_SPEED_MBPS < 0.9" | bc -l) )); then
     DOWNLOAD_SPEED_MBPS=0
 fi
 
