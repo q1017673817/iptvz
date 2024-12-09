@@ -137,15 +137,11 @@ time=$(date +%Y%m%d%H%M%S) # 定义 time 变量
 while IFS= read -r line; do
     i=$((i + 1))
     ip="$line"
-    url="http://$ip/$stream"
-    echo "$url"
-    curl "$url" --connect-timeout 2 --max-time 15 -o /dev/null >zubo.tmp 2>&1
-    a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)
+    a=$(./speed.sh "$ip" "$stream")
     echo "第 $i/$lines 个：$ip $a"
     echo "$ip $a" >> "speedtest_${city}_$time.log"
 done < "$ipfile"
 
-rm -f zubo.tmp
 cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sort -n -r >"result/fofa_${channel_key}.ip"
 awk '{print $2}' "result/fofa_${channel_key}.ip" > "ip/${channel_key}有效.ip"
 cat "result/fofa_${channel_key}.ip"
@@ -159,7 +155,7 @@ ip7=$(head -n 7 result/fofa_${channel_key}.ip | tail -n 1 | awk '{print $2}')
 ip8=$(head -n 8 result/fofa_${channel_key}.ip | tail -n 1 | awk '{print $2}')
 rm -f "speedtest_${city}_$time.log"
 
-# 用 5 个最快 ip 生成对应城市的 txt 文件
+# 用 8 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"
 sed "s/ipipip/$ip1/g" "$program" > tmp1.txt
 sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
@@ -210,4 +206,3 @@ echo "山东电信,#genre#" >>zubo.txt
 cat txt/山东电信.txt >>zubo.txt
 echo "宁夏电信,#genre#" >>zubo.txt
 cat txt/宁夏电信.txt >>zubo.txt
-
