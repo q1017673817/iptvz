@@ -1,8 +1,8 @@
-name: fofa1
+name: zubo1
 
 on:
   schedule:
-    - cron: '0 6,21 * * *'
+    - cron: '0 7 * * *'
   workflow_dispatch:
 
 jobs:
@@ -21,7 +21,8 @@ jobs:
     - name: 获取组播地址
       run: |
         cd $GITHUB_WORKSPACE
-        bash ./zubo_fofa_1.sh
+        chmod +x speed.sh
+        bash ./zubo1.sh
         
     - name: 更新组播源
       run: |
