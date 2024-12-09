@@ -14,13 +14,13 @@ OUTPUT_FILE="temp_video.mp4"
 # 开始时间
 START_TIME=$(date +%s)
 
-# 使用 ffmpeg 下载视频并保存 10 秒
-ffmpeg -i "$URL" -t 10 -c copy "$OUTPUT_FILE" -y 2>/dev/null
+# 使用 ffmpeg 下载视频并保存 8秒
+ffmpeg -i "$URL" -t 8 -c copy "$OUTPUT_FILE" -y 2>/dev/null
 
 # 检查 ffmpeg 的退出状态
 if [ $? -ne 0 ]; then
     #echo "下载失败，速度为 0 Mb/s"
-    echo "下载失败"
+    echo "连接失败"
     exit 0
 fi
 
