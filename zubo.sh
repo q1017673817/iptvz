@@ -108,9 +108,14 @@ case $city_choice in
         stream="rtp/226.0.2.152:9128"
         channel_key="山西联通"
         ;;
+    19)
+        city="Guangxi"
+        stream="udp/239.81.0.107:4056"
+        channel_key="广西电信"
+        ;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..18}; do
+        for option in {1..19}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
