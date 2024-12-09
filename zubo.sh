@@ -95,22 +95,22 @@ case $city_choice in
 	;;
     16)
         city="Hunan_282"
-        stream="udp/239.76.245.51:1234"
+        stream="udp/239.76.246.151:1234"
         channel_key="湖南电信"
         ;;
     17)
         city="Shandong_279"
-        stream="udp/239.21.1.52:5002"
+        stream="udp/239.21.1.120:5002"
         channel_key="山东电信"
         ;;
     18)
         city="Jiangxi_105"
-        stream="udp/239.252.219.200:5140"
+        stream="udp/239.252.220.238:5140"
         channel_key="江西电信"
         ;;
     19)
         city="Guizhou_153"
-        stream="rtp/238.255.2.91:5999"
+        stream="rtp/238.255.2.2:5999"
         channel_key="贵州电信"
         ;;
     20)
