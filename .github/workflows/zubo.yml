@@ -20,6 +20,7 @@ jobs:
     - name: 测试组播地址有效性
       run: |
         cd $GITHUB_WORKSPACE
+        chmod +x speed.sh
         bash ./zubo.sh
 
     - name: 更新组播源
