@@ -95,7 +95,7 @@ case $city_choice in
 	;;
     16)
         city="Hunan_282"
-        stream="udp/239.76.245.115:1234"
+        stream="udp/239.76.245.51:1234"
         channel_key="湖南电信"
         ;;
     17)
@@ -105,22 +105,22 @@ case $city_choice in
         ;;
     18)
         city="Jiangxi_105"
-        stream="udp/239.252.220.63:5140"
+        stream="udp/239.252.219.200:5140"
         channel_key="江西电信"
         ;;
     19)
         city="Guizhou_153"
-        stream="rtp/238.255.2.1:5999"
+        stream="rtp/238.255.2.91:5999"
         channel_key="贵州电信"
         ;;
     20)
         city="Shaanxi_123"
-        stream="rtp/239.111.205.35:5140"
+        stream="rtp/239.112.205.59:5140"
         channel_key="陕西电信"
         ;;    
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..20}; do
+        for option in {16..20}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -135,7 +135,7 @@ esac
 # 使用城市名作为默认文件名，格式为 CityName.ip
 ipfile="ip/${channel_key}.ip"
 # 搜索最新 IP
-cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
+cat ip/${channel_key}.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
 cat ip/${channel_key}有效.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' >> tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
 rm -f tmp_ipfile ip/${channel_key}.html
