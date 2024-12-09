@@ -211,3 +211,5 @@ echo "山东电信,#genre#" >>zubo.txt
 cat txt/山东电信.txt >>zubo.txt
 echo "宁夏电信,#genre#" >>zubo.txt
 cat txt/宁夏电信.txt >>zubo.txt
+echo "广西电信,#genre#" >>zubo.txt
+cat txt/广西电信.txt >>zubo.txt
