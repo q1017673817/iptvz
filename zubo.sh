@@ -148,7 +148,6 @@ while IFS= read -r line; do
 done < "$ipfile"
 
 cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sort -n -r >"result/fofa_${channel_key}.ip"
-awk '{print $2}' "result/fofa_${channel_key}.ip" > "ip/${channel_key}有效.ip"
 cat "result/fofa_${channel_key}.ip"
 ip1=$(head -n 1 result/fofa_${channel_key}.ip | awk '{print $2}')
 ip2=$(head -n 2 result/fofa_${channel_key}.ip | tail -n 1 | awk '{print $2}')
@@ -158,8 +157,8 @@ ip5=$(head -n 5 result/fofa_${channel_key}.ip | tail -n 1 | awk '{print $2}')
 ip6=$(head -n 6 result/fofa_${channel_key}.ip | tail -n 1 | awk '{print $2}')
 ip7=$(head -n 7 result/fofa_${channel_key}.ip | tail -n 1 | awk '{print $2}')
 ip8=$(head -n 8 result/fofa_${channel_key}.ip | tail -n 1 | awk '{print $2}')
+awk '{print $2}' "result/fofa_${channel_key}.ip" > "ip/${channel_key}有效.ip"
 rm -f "speedtest_${city}_$time.log"
-
 # 用 8 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"
 sed "s/ipipip/$ip1/g" "$program" > tmp1.txt
