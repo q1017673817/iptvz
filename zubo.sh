@@ -128,6 +128,7 @@ case $city_choice in
 esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
+rm -f ip/${channel_key}.ip ip/${channel_key}.onlygood.ip
 ipfile="ip/${channel_key}.ip"
 only_good_ip="ip/${channel_key}.onlygood.ip"
 # 搜索最新 IP
