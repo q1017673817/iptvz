@@ -131,8 +131,8 @@ esac
 ipfile="ip/${channel_key}.ip"
 only_good_ip="ip/${channel_key}.onlygood.ip"
 # 搜索最新 IP
-cat ip/${channel_key}.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
-cat ip/${channel_key}有效.ip >> tmp_ipfile
+cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
+#cat ip/${channel_key}有效.ip >> tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
 rm -f tmp_ipfile ip/${channel_key}.html
 
