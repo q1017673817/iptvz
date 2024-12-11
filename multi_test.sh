@@ -5,17 +5,12 @@ i=0
 
 if [ $# -eq 0 ]; then
   echo "请选择城市："
-  echo "1. 北京联通（Beijing_liantong_145）"
-  echo "2. 浙江电信（Zhejiang_120）"
-  echo "3. 河南电信（Henan_327）"
-  echo "4. 山西电信（Shanxi_117）"
-  echo "5. 天津联通（Tianjin_160）"
   echo "0. 全部"
-  read -t 3 -p "输入选择或在3秒内无输入将默认选择全部: " city_choice
+  read -t 1 -p "输入选择或在3秒内无输入将默认选择全部: " city_choice
 
   if [ -z "$city_choice" ]; then
       echo "未检测到输入，自动选择全部选项..."
-      city_choice=0
+      city_choice=1
   fi
 
 else
@@ -25,9 +20,9 @@ fi
 # 根据用户选择设置城市和相应的stream
 case $city_choice in
     1)
-        city="Beijing_liantong_145"
-        stream="rtp/239.3.1.236:2000"
-        channel_key="北京联通"
+        city="Hubei_90"
+        stream="rtp/239.254.96.115:8664"
+        channel_key="湖北综合"
         ;;
     2)
         city="Zhejiang_120"
@@ -137,14 +132,6 @@ cat tmp1.txt tmp2.txt >txt/${city}.txt
 rm -rf tmp1.txt tmp2.txt
 
 #--------------------合并所有城市的txt文件为:   zubo.txt-----------------------------------------
-cat iptv.txt >zubo1.txt
-echo "北京联通,#genre#" >>zubo1.txt
-cat txt/Beijing_liantong_145.txt >>zubo1.txt
-echo "浙江电信,#genre#" >>zubo1.txt
-cat txt/Zhejiang_120.txt >>zubo1.txt
-echo "河南电信,#genre#" >>zubo1.txt
-cat txt/Henan_327.txt >>zubo1.txt
-echo "山西电信,#genre#" >>zubo1.txt
-cat txt/Shanxi_117.txt >>zubo1.txt
-echo "天津联通,#genre#" >>zubo1.txt
-cat txt/Tianjin_160.txt >>zubo1.txt
+echo "湖北电信,#genre#" >>zubo2.txt
+cat txt/Hubei_90.txt >>zubo2.txt
+
