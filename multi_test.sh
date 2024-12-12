@@ -67,7 +67,7 @@ onlyport="template/${city}.port"
 echo "===============从tonkiang检索    $channel_key    最新ip================="
 #/usr/bin/python3 hoteliptv.py $channel_key  >test.html
 #grep -o "href='hotellist.html?s=[^']*'"  test.html > tempip.txt
-cat ip/{channel_key}.ip > tmp_onlyip
+cat ip/${channel_key}.ip > tmp_onlyip
 
 #sed -n "s/^.*href='hotellist.html?s=\([^:]*\):[0-9].*/\1/p" tempip.txt > tmp_onlyip
 sort tmp_onlyip | uniq | sed '/^\s*$/d' > $onlyip
