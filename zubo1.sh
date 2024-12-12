@@ -10,7 +10,7 @@ if [ $# -eq 0 ]; then
 
   if [ -z "$city_choice" ]; then
       echo "未检测到输入，自动选择全部选项..."
-      city_choice=5
+      city_choice=1
   fi
 
 else
@@ -133,7 +133,8 @@ rm -f ip/${channel_key}.onlygood.ip
 ipfile="ip/${city}.ip"
 only_good_ip="ip/${channel_key}.onlygood.ip"
 # 搜索最新 IP
-cat ip/${channel_key}.ip > tmp_ipfile
+#cat ip/${channel_key}.ip > tmp_ipfile
+cat ip/${channel_key}.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
 rm -f tmp_ipfile 
 
