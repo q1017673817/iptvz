@@ -22,7 +22,7 @@ case $city_choice in
     1)
         city="Hubei_90"
         stream="rtp/239.254.96.115:8664"
-        channel_key="湖北综合"
+        channel_key="湖北电信"
         ;;
     2)
         city="Zhejiang_120"
@@ -65,12 +65,11 @@ onlyport="template/${city}.port"
 # 搜索最新ip
 
 echo "===============从tonkiang检索    $channel_key    最新ip================="
-/usr/bin/python3 hoteliptv.py $channel_key  >test.html
-cat test.html
-grep -o "href='hotellist.html?s=[^']*'"  test.html > tempip.txt
-cat tempip.txt
+#/usr/bin/python3 hoteliptv.py $channel_key  >test.html
+#grep -o "href='hotellist.html?s=[^']*'"  test.html > tempip.txt
+cat ip/{channel_key}.ip > tmp_onlyip
 
-sed -n "s/^.*href='hotellist.html?s=\([^:]*\):[0-9].*/\1/p" tempip.txt > tmp_onlyip
+#sed -n "s/^.*href='hotellist.html?s=\([^:]*\):[0-9].*/\1/p" tempip.txt > tmp_onlyip
 sort tmp_onlyip | uniq | sed '/^\s*$/d' > $onlyip
 rm -f test.html tempip.txt tmp_onlyip 
 
