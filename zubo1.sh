@@ -10,7 +10,7 @@ if [ $# -eq 0 ]; then
 
   if [ -z "$city_choice" ]; then
       echo "未检测到输入，自动选择全部选项..."
-      city_choice=0
+      city_choice=5
   fi
 
 else
@@ -129,10 +129,11 @@ case $city_choice in
 esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
+rm -f ip/${channel_key}.onlygood.ip
 ipfile="ip/${city}.ip"
 only_good_ip="ip/${channel_key}.onlygood.ip"
 # 搜索最新 IP
-cat ip/${channel_key}.onlygood.ip > tmp_ipfile
+cat ip/${channel_key}.ip > tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
 rm -f tmp_ipfile 
 
@@ -159,7 +160,7 @@ while IFS= read -r line; do
     ip="$line"
     url="http://$ip/$stream"
     echo "$url"
-    curl "$url" --connect-timeout 2 --max-time 8 -o /dev/null >zubo.tmp 2>&1
+    curl "$url" --connect-timeout 3 --max-time 15 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)
     echo "第 $i/$lines 个：$ip $a"
     echo "$ip $a" >> "speedtest_${city}_$time.log"
