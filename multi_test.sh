@@ -22,7 +22,7 @@ case $city_choice in
     1)
         city="Hubei_90"
         stream="rtp/239.254.96.115:8664"
-        channel_key="湖北电信"
+        channel_key="湖北综合"
         ;;
     2)
         city="Zhejiang_120"
@@ -59,57 +59,53 @@ case $city_choice in
 esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
-ipfile="${city}.ip"
-onlyip="${city}.onlyip"
-onlyport="template/${city}.port"
+rm -f ip/${channel_key}.onlygood.ip
+ipfile="ip/${city}.ip"
+only_good_ip="ip/${channel_key}.onlygood.ip"
+#onlyport="template/${city}.port"
 # 搜索最新ip
 
 echo "===============从tonkiang检索    $channel_key    最新ip================="
 #/usr/bin/python3 hoteliptv.py $channel_key  >test.html
 #grep -o "href='hotellist.html?s=[^']*'"  test.html > tempip.txt
-cat ip/${channel_key}.ip > tmp_onlyip
 
-#sed -n "s/^.*href='hotellist.html?s=\([^:]*\):[0-9].*/\1/p" tempip.txt > tmp_onlyip
-sort tmp_onlyip | uniq | sed '/^\s*$/d' > $onlyip
-rm -f test.html tempip.txt tmp_onlyip 
-
+grep -E "^.*href='hotellist.html?s=[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+.*" ip/${city}.html | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > "$ipfile"
+rm -f ip/${city}.html
 # 遍历ip和端口组合
 while IFS= read -r ip; do
-    while IFS= read -r port; do
-        # 尝试连接 IP 地址和端口号
-        # nc -w 1 -v -z $ip $port
-        output=$(nc -w 1 -v -z "$ip" "$port" 2>&1)
-        # 如果连接成功，且输出包含 "succeeded"，则将结果保存到输出文件中
-        if [[ $output == *"succeeded"* ]]; then
-            # 使用 awk 提取 IP 地址和端口号对应的字符串，并保存到输出文件中
-            echo "$output" | grep "succeeded" | awk -v ip="$ip" -v port="$port" '{print ip ":" port}' >> "$ipfile"
-        fi
-    done < "$onlyport"
-done < "$onlyip"
+    # 尝试连接 IP 地址和端口号，并将输出保存到变量中
+    tmp_ip=$(echo -n "$ip" | sed 's/:/ /')
+    echo "nc -w 1 -v -z $tmp_ip 2>&1"
+    output=$(nc -w 1 -v -z $tmp_ip 2>&1)
+    echo $output    
+    # 如果连接成功，且输出包含 "succeeded"，则将结果保存到输出文件中
+    if [[ $output == *"succeeded"* ]]; then
+        # 使用 awk 提取 IP 地址和端口号对应的字符串，并保存到输出文件中
+        echo "$output" | grep "succeeded" | awk -v ip="$ip" '{print ip}' >> "$only_good_ip"
+    fi
+done < "$ipfile"
 
 echo "===============检索完成================="
-rm -f $onlyip
 # 检查文件是否存在
-if [ ! -f "$ipfile" ]; then
-    echo "错误：文件 $ipfile 不存在。"
+if [ ! -f "$only_good_ip" ]; then
+    echo "错误：文件 $only_good_ip 不存在。"
     exit 1
 fi
 
-lines=$(cat "$ipfile" | wc -l)
-echo "【$ipfile文件】内可用ip共计$lines个"
-
+lines=$(wc -l < "$only_good_ip")
+echo "【$only_good_ip】内 ip 共计 $lines 个"
 i=0
 while read line; do
     i=$((i + 1))
     ip=$line
     url="http://$ip/$stream"
     echo $url
-    curl $url --connect-timeout 5 --max-time 15 -o /dev/null >zubo.tmp 2>&1
+    curl $url --connect-timeout 3 --max-time 15 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)  
 
     echo "第$i/$lines个：$ip    $a"
     echo "$ip    $a" >> "speedtest_${city}_$time.log"
-done < "$ipfile"
+done < "$only_good_ip"
 
 rm -f zubo.tmp 
 cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sort -n -r >"result/result_${city}.txt"
