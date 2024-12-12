@@ -21,7 +21,7 @@ jobs:
     - name: 获取组播地址
       run: |
         cd $GITHUB_WORKSPACE
-        chmod +x speed.sh
+#        chmod +x speed.sh
         bash ./zubo1.sh
         
     - name: 更新组播源
