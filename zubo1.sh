@@ -50,66 +50,51 @@ case $city_choice in
         channel_key="四川电信"
         ;;
     7)
-        city="Beijing_dianxin_186"
-        stream="udp/225.1.8.1:8008"
-        channel_key="北京电信"
-        ;;
-    8)
         city="Hebei_313"
         stream="rtp/239.253.93.223:6401"
 	    channel_key="河北联通"
         ;;
-    9)
+    8)
         city="Shanxi_117"
         stream="udp/239.1.1.7:8007"
         channel_key="山西电信"
         ;;
-    10)
+    9)
         city="Tianjin_160"
         stream="udp/225.1.2.190:5002"
         channel_key="天津联通"
         ;;
-    11)
+    10)
         city="Guangdong_332"
         stream="udp/239.77.0.244:5146"
         channel_key="广东电信"
 	;;
-    12)
+    11)
         city="Anhui_191"
         stream="rtp/238.1.78.137:6968"
         channel_key="安徽电信"
 	;;
-    13)
+    12)
         city="Chongqing_161"
         stream="rtp/235.254.198.102:7980"
         channel_key="重庆电信"
 	;;
-    14)
-        city="Fujian_114"
-        stream="rtp/239.61.2.132:8708"
-        channel_key="福建电信"
-	;;
-    15)
+    13)
         city="Henan_327"
         stream="rtp/239.16.20.21:10210"
         channel_key="河南电信"
 	;;
-    16)
+    14)
         city="Ningxia"
         stream="rtp/239.121.4.94:8538"
         channel_key="宁夏电信"
         ;;
-    17)
-        city="Shandong_279"
-        stream="udp/239.21.1.87:5002"
-        channel_key="山东电信"
-        ;;
-    18)
+    15)
         city="Shanxi_184"
         stream="rtp/226.0.2.152:9128"
         channel_key="山西联通"
         ;;
-    19)
+    16)
         city="Guangxi"
         stream="udp/239.81.0.107:4056"
         channel_key="广西电信"
