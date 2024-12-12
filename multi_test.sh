@@ -68,8 +68,7 @@ only_good_ip="ip/${channel_key}.onlygood.ip"
 #echo "===============从tonkiang检索    $channel_key    最新ip================="
 #/usr/bin/python3 hoteliptv.py $channel_key  >test.html
 #grep -o "href='hotellist.html?s=[^']*'"  test.html > tempip.txt
-echo "===============从tonkiang检索    $channel_key    最新ip================="
-/usr/bin/python3 hoteliptv.py $channel_key >test.html
+cat ${city}.html >test.html
 grep -E "^.*href='hotellist.html?s=[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+.*" test.html | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > "$ipfile"
 cat $ipfile
 rm -f test.html
