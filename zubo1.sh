@@ -10,7 +10,7 @@ if [ $# -eq 0 ]; then
 
   if [ -z "$city_choice" ]; then
       echo "未检测到输入，自动选择全部选项..."
-      city_choice=1
+      city_choice=0
   fi
 
 else
@@ -32,7 +32,7 @@ case $city_choice in
     3)
         city="Shanghai_103"
         stream="udp/239.45.1.42:5140"
-	    channel_key="上海电信"
+	channel_key="上海电信"
         ;;
     4)
         city="Beijing_liantong_145"
@@ -52,7 +52,7 @@ case $city_choice in
     7)
         city="Hebei_313"
         stream="rtp/239.253.93.223:6401"
-	    channel_key="河北联通"
+	channel_key="河北联通"
         ;;
     8)
         city="Shanxi_117"
@@ -101,7 +101,7 @@ case $city_choice in
         ;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..2}; do
+        for option in {1..16}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -194,20 +194,14 @@ echo "河北联通,#genre#" >>zubo.txt
 cat txt/河北联通.txt >>zubo.txt
 echo "山西电信,#genre#" >>zubo.txt
 cat txt/山西电信.txt >>zubo.txt
-echo "福建电信,#genre#" >>zubo.txt
-cat txt/福建电信.txt >>zubo.txt
 echo "安徽电信,#genre#" >>zubo.txt
 cat txt/安徽电信.txt >>zubo.txt
 echo "重庆电信,#genre#" >>zubo.txt
 cat txt/重庆电信.txt >>zubo.txt
 echo "河南电信,#genre#" >>zubo.txt
 cat txt/河南电信.txt >>zubo.txt
-echo "北京电信,#genre#" >>zubo.txt
-cat txt/北京电信.txt >>zubo.txt
 echo "山西联通,#genre#" >>zubo.txt
 cat txt/山西联通.txt >>zubo.txt
-echo "山东电信,#genre#" >>zubo.txt
-cat txt/山东电信.txt >>zubo.txt
 echo "宁夏电信,#genre#" >>zubo.txt
 cat txt/宁夏电信.txt >>zubo.txt
 echo "广西电信,#genre#" >>zubo.txt
