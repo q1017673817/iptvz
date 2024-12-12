@@ -65,12 +65,14 @@ only_good_ip="ip/${channel_key}.onlygood.ip"
 #onlyport="template/${city}.port"
 # 搜索最新ip
 
-echo "===============从tonkiang检索    $channel_key    最新ip================="
+#echo "===============从tonkiang检索    $channel_key    最新ip================="
 #/usr/bin/python3 hoteliptv.py $channel_key  >test.html
 #grep -o "href='hotellist.html?s=[^']*'"  test.html > tempip.txt
-
-grep -E "^.*href='hotellist.html?s=[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+.*" ip/${city}.html | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > "$ipfile"
-rm -f ip/${city}.html
+echo "===============从tonkiang检索    $channel_key    最新ip================="
+/usr/bin/python3 hoteliptv.py $channel_key >test.html
+grep -E "^.*href='hotellist.html?s=[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+.*" test.html | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > "$ipfile"
+cat $ipfile
+rm -f test.html
 # 遍历ip和端口组合
 while IFS= read -r ip; do
     # 尝试连接 IP 地址和端口号，并将输出保存到变量中
