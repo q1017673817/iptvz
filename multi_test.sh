@@ -59,16 +59,16 @@ case $city_choice in
 esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
-rm -f ip/${channel_key}.onlygood.ip
+rm -f ip/${city}.onlygood.ip
 ipfile="ip/${city}.ip"
-only_good_ip="ip/${channel_key}.onlygood.ip"
+only_good_ip="ip/${city}.onlygood.ip"
 #onlyport="template/${city}.port"
 # 搜索最新ip
 
 #echo "===============从tonkiang检索    $channel_key    最新ip================="
 #/usr/bin/python3 hoteliptv.py $channel_key  >test.html
 #grep -o "href='hotellist.html?s=[^']*'"  test.html > tempip.txt
-grep -o "^.*href='hotellist.html?s=[^']*'.*"  ip/${city}.html > test.html
+grep -o -E "^.*href='hotellist.html?s=[^']*'"  ip/${city}.html > test.html
 grep -E "^.*href='hotellist.html?s=[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+.*" test.html | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > "$ipfile"
 cat $ipfile
 rm -f test.html
@@ -130,6 +130,6 @@ cat tmp1.txt tmp2.txt >txt/${city}.txt
 rm -rf tmp1.txt tmp2.txt
 
 #--------------------合并所有城市的txt文件为:   zubo.txt-----------------------------------------
-echo "湖北电信,#genre#" >>zubo2.txt
+echo "湖北电信,#genre#" >zubo2.txt
 cat txt/Hubei_90.txt >>zubo2.txt
 
