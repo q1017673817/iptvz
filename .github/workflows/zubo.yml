@@ -16,11 +16,17 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y yt-dlp sed nmap
-      
-    - name: 测试组播地址有效性
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+          python-version: 3.x
+          
+    - name: 获取组播地址测试有效性
       run: |
         cd $GITHUB_WORKSPACE
-        bash ./multi_test.sh
+        bash ./zubo.sh
+        bash ./去重.py
 
     - name: 更新组播源
       run: |
