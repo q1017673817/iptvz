@@ -1,4 +1,4 @@
-pwd
+p#wd
 time=$(date +%m%d%H%M)
 i=0
 
@@ -31,7 +31,7 @@ case $city_choice in
     3)
         city="Shanghai_103"
         stream="udp/239.45.1.42:5140"
-	    channel_key="上海电信"
+	channel_key="上海电信"
         ;;
     4)
         city="Beijing_liantong_145"
@@ -56,7 +56,7 @@ case $city_choice in
     8)
         city="Hebei_313"
         stream="rtp/239.253.93.223:6401"
-	    channel_key="河北联通"
+	channel_key="河北联通"
         ;;
     9)
         city="Shanxi_117"
