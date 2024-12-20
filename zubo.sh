@@ -128,12 +128,12 @@ case $city_choice in
 esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
-rm -f ip/${channel_key}.ip ip/${channel_key}.onlygood.ip
+#rm -f ip/${channel_key}.ip ip/${channel_key}.onlygood.ip
 ipfile="ip/${channel_key}.ip"
 only_good_ip="ip/${channel_key}.onlygood.ip"
 # 搜索最新 IP
-cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
-#cat ip/${channel_key}有效.ip >> tmp_ipfile
+#cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
+cat ip/${channel_key}.onlygood.ip > tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
 rm -f tmp_ipfile ip/${channel_key}.html
 
@@ -196,41 +196,14 @@ grep -vE '/{3}' tmp_all.txt > "txt/${channel_key}.txt"
 rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp_all.txt
 
 #--------------------合并所有城市的txt文件为:   zubo.txt-----------------------------------------
-echo "广东电信,#genre#" >zubo.txt
-cat txt/广东电信.txt >>zubo.txt
-echo "浙江电信,#genre#" >>zubo.txt
+
+echo "浙江电信,#genre#" >zubo.txt
 cat txt/浙江电信.txt >>zubo.txt
 echo "江苏电信,#genre#" >>zubo.txt
 cat txt/江苏电信.txt >>zubo.txt
 echo "湖北电信,#genre#" >>zubo.txt
 cat txt/湖北电信.txt >>zubo.txt
-echo "上海电信,#genre#" >>zubo.txt
-cat txt/上海电信.txt >>zubo.txt
-echo "北京联通,#genre#" >>zubo.txt
-cat txt/北京联通.txt >>zubo.txt
-echo "四川电信,#genre#" >>zubo.txt
-cat txt/四川电信.txt >>zubo.txt
-echo "天津联通,#genre#" >>zubo.txt
-cat txt/天津联通.txt >>zubo.txt
-echo "河北联通,#genre#" >>zubo.txt
-cat txt/河北联通.txt >>zubo.txt
-echo "山西电信,#genre#" >>zubo.txt
-cat txt/山西电信.txt >>zubo.txt
-echo "福建电信,#genre#" >>zubo.txt
-cat txt/福建电信.txt >>zubo.txt
-echo "安徽电信,#genre#" >>zubo.txt
-cat txt/安徽电信.txt >>zubo.txt
-echo "重庆电信,#genre#" >>zubo.txt
-cat txt/重庆电信.txt >>zubo.txt
 echo "河南电信,#genre#" >>zubo.txt
 cat txt/河南电信.txt >>zubo.txt
-echo "北京电信,#genre#" >>zubo.txt
-cat txt/北京电信.txt >>zubo.txt
 echo "山西联通,#genre#" >>zubo.txt
 cat txt/山西联通.txt >>zubo.txt
-echo "山东电信,#genre#" >>zubo.txt
-cat txt/山东电信.txt >>zubo.txt
-echo "宁夏电信,#genre#" >>zubo.txt
-cat txt/宁夏电信.txt >>zubo.txt
-echo "广西电信,#genre#" >>zubo.txt
-cat txt/广西电信.txt >>zubo.txt
