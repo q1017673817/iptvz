@@ -20,88 +20,73 @@ fi
 # 根据用户选择设置城市和相应的stream
 case $city_choice in
     1)
-        city="Zhejiang_120"
-        stream="udp/233.50.201.63:5140"
-        channel_key="浙江电信"
-        ;;
-    2)
         city="Jiangsu"
         stream="udp/239.49.8.19:9614"
         channel_key="江苏电信"
         ;;
-    3)
+    2)
         city="Shanghai_103"
         stream="udp/239.45.1.42:5140"
 	channel_key="上海电信"
         ;;
-    4)
+    3)
         city="Beijing_liantong_145"
         stream="rtp/239.3.1.249:8001"
         channel_key="北京联通"
         ;;
-    5)
-        city="Hubei_90"
-        stream="rtp/239.69.1.249:11136"
-        channel_key="湖北电信"
-        ;;
-    6)
+    4)
         city="Sichuan_333"
         stream="udp/239.93.42.33:5140"
         channel_key="四川电信"
         ;;
-    7)
+    5)
         city="Hebei_313"
         stream="rtp/239.253.93.223:6401"
 	channel_key="河北联通"
         ;;
-    8)
+    6)
         city="Shanxi_117"
         stream="udp/239.1.1.7:8007"
         channel_key="山西电信"
         ;;
-    9)
+    7)
         city="Tianjin_160"
         stream="udp/225.1.2.190:5002"
         channel_key="天津联通"
         ;;
-    10)
+    8)
         city="Guangdong_332"
         stream="udp/239.77.0.244:5146"
         channel_key="广东电信"
 	;;
-    11)
+    9)
         city="Anhui_191"
         stream="rtp/238.1.78.137:6968"
         channel_key="安徽电信"
 	;;
-    12)
+    10)
         city="Chongqing_161"
         stream="rtp/235.254.198.102:7980"
         channel_key="重庆电信"
 	;;
-    13)
-        city="Henan_327"
-        stream="rtp/239.16.20.21:10210"
-        channel_key="河南电信"
-	;;
-    14)
+    11)
         city="Ningxia"
         stream="rtp/239.121.4.94:8538"
         channel_key="宁夏电信"
         ;;
-    15)
+    12)
         city="Shanxi_184"
         stream="rtp/226.0.2.152:9128"
         channel_key="山西联通"
         ;;
-    16)
+    13)
         city="Guangxi"
         stream="udp/239.81.0.107:4056"
         channel_key="广西电信"
         ;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..16}; do
+        for option in {1..13}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -115,25 +100,26 @@ esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
 rm -f ip/${channel_key}.onlygood.ip
-ipfile="ip/${city}.ip"
+ipfile="ip/${channel_key}.ip"
+onlyport="template/${city}.port"
 only_good_ip="ip/${channel_key}.onlygood.ip"
 # 搜索最新 IP
-#cat ip/${channel_key}.ip > tmp_ipfile
-cat ip/${channel_key}.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
+#cat ip/${channel_key}.html > tmp_ipfile
+cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' > tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
 rm -f tmp_ipfile 
 
 while IFS= read -r ip; do
-    # 尝试连接 IP 地址和端口号，并将输出保存到变量中
-    tmp_ip=$(echo -n "$ip" | sed 's/:/ /')
-    #echo "nc -w 1 -v -z $tmp_ip 2>&1"
-    output=$(nc -w 1 -v -z $tmp_ip 2>&1)
-    echo $output   
-    # 如果连接成功，且输出包含 "succeeded"，则将结果保存到输出文件中
-    if [[ $output == *"succeeded"* ]]; then
-        # 使用 awk 提取 IP 地址和端口号对应的字符串，并保存到输出文件中
-        echo "$output" | grep "succeeded" | awk -v ip="$ip" '{print ip}' >> "$only_good_ip"
-    fi
+    while IFS= read -r port; do
+        # 尝试连接 IP 地址和端口号
+        # nc -w 1 -v -z $ip $port
+        output=$(nc -w 1 -v -z "$ip" "$port" 2>&1)
+        # 如果连接成功，且输出包含 "succeeded"，则将结果保存到输出文件中
+        if [[ $output == *"succeeded"* ]]; then
+            # 使用 awk 提取 IP 地址和端口号对应的字符串，并保存到输出文件中
+            echo "$output" | grep "succeeded" | awk -v ip="$ip" -v port="$port" '{print ip ":" port}' >> "$only_good_ip"
+        fi
+    done < "$onlyport"
 done < "$ipfile"
 
 lines=$(wc -l < "$only_good_ip")
@@ -146,12 +132,12 @@ while IFS= read -r line; do
     ip="$line"
     url="http://$ip/$stream"
     echo "$url"
-    curl "$url" --connect-timeout 3 --max-time 15 -o /dev/null >zubo.tmp 2>&1
+    curl "$url" --connect-timeout 3 --max-time 10 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)
     echo "第 $i/$lines 个：$ip $a"
     echo "$ip $a" >> "speedtest_${city}_$time.log"
 done < "$only_good_ip"
-rm -f zubo.tmp
+rm -f zubo.tmp $ipfile
 
 cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sort -n -r >"result/fofa_${city}.txt"
 cat "result/fofa_${city}.txt"
