@@ -19,11 +19,6 @@ fi
 
 # 根据用户选择设置城市和相应的stream
 case $city_choice in
-    1)
-        city="Jiangsu"
-        stream="udp/239.49.8.19:9614"
-        channel_key="江苏电信"
-        ;;
     2)
         city="Shanghai_103"
         stream="udp/239.45.1.42:5140"
@@ -86,7 +81,7 @@ case $city_choice in
         ;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..13}; do
+        for option in {2..13}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
