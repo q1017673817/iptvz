@@ -22,7 +22,20 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE
         bash ./zubo1.sh
-        
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+          python-version: 3.x
+
+    - name: Install dependencies
+      run: |
+          pip install selenium requests futures eventlet
+#         pip install selenium==4.19.0 requests==2.31.0 futures==3.0.5 eventlet==0.36.1
+
+    - name: run 去重py
+      run: python ${{ github.workspace }}/去重.py
+      
     - name: 更新组播源
       run: |
         cd $GITHUB_WORKSPACE
