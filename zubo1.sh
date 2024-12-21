@@ -102,7 +102,7 @@ only_good_ip="ip/${channel_key}.onlygood.ip"
 #cat ip/${channel_key}.html > tmp_ipfile
 cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' > tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
-rm -f tmp_ipfile 
+rm -f tmp_ipfile ip/${channel_key}.html
 
 while IFS= read -r ip; do
     while IFS= read -r port; do
