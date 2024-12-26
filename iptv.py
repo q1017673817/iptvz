@@ -214,6 +214,8 @@ with open('酒店源ip.txt', 'r', encoding='utf-8') as file:
                                 name = name.replace("CGTN今日世界", "CGTN")
                                 name = name.replace("CGTN英语", "CGTN")
                                 name = name.replace("ICS", "上视ICS外语频道")
+                                name = name.replace("法制天地", "法治天地")
+                                name = name.replace("都市时尚", "都市剧场")
                                 name = name.replace("上海炫动卡通", "哈哈炫动")
                                 name = name.replace("炫动卡通", "哈哈炫动")
                                 name = name.replace("经济科教", "TVB星河")
@@ -246,7 +248,7 @@ with open("itv.txt", 'w', encoding='utf-8') as file:
     for result in results:
         file.write(result + "\n")
         print(result)
-        
+
 with open('itv.txt', 'r', encoding='utf-8') as file:
 #从整理好的文本中按类别进行特定关键词提取
  keywords = ['tsfile']  # 需要提取的关键字列表
@@ -257,15 +259,80 @@ with open('itv.txt', 'r', encoding='utf-8') as file, open('itv1.txt', 'w', encod
     for line in file:
       if 'genre' not in line:
         if re.search(pattern, line):  # 如果行中有任意关键字
-         a.write(line)  # 将该行写入输出文件
+         a.write(line)  # 将该行写入输出文件        
 
+eventlet.monkey_patch()
+# 线程安全的队列，用于存储下载任务
+task_queue = Queue()
+# 线程安全的列表，用于存储结果
+results = []
 channels = []
-with open('itv1.txt', 'r', encoding='utf-8') as file:
-    for line in file:
+error_channels = []
+with open("itv1.txt", 'r', encoding='utf-8') as file:
+    lines = file.readlines()
+    for line in lines:
         line = line.strip()
         if line:
-            channel, address = line.split(',')
-            channels.append((channel, address))
+            channel_name, channel_url = line.split(',')
+            channels.append((channel_name, channel_url))
+
+# 定义工作线程函数
+def worker():
+    while True:
+        # 从队列中获取一个任务
+        channel_name, channel_url = task_queue.get()
+        try:
+            channel_url_t = channel_url.rstrip(channel_url.split('/')[-1])  # m3u8链接前缀
+            lines = requests.get(channel_url,timeout=1).text.strip().split('\n')  # 获取m3u8文件内容
+            ts_lists = [line.split('/')[-1] for line in lines if line.startswith('#') == False]  # 获取m3u8文件下视频流后缀
+            ts_lists_0 = ts_lists[0].rstrip(ts_lists[0].split('.ts')[-1])  # m3u8链接前缀
+            ts_url = channel_url_t + ts_lists[0]  # 拼接单个视频片段下载链接
+
+            # 多获取的视频数据进行5秒钟限制
+            with eventlet.Timeout(5, False):
+                start_time = time.time()
+                content = requests.get(ts_url,timeout=1).content
+                end_time = time.time()
+                response_time = (end_time - start_time) * 1
+
+            if content:
+                with open(ts_lists_0, 'ab') as f:
+                    f.write(content)  # 写入文件
+                file_size = len(content)
+                # print(f"文件大小：{file_size} 字节")
+                download_speed = file_size / response_time / 1024
+                # print(f"下载速度：{download_speed:.3f} kB/s")
+                normalized_speed = min(max(download_speed / 1024, 0.001), 100)  # 将速率从kB/s转换为MB/s并限制在1~100之间
+                #print(f"标准化后的速率：{normalized_speed:.3f} MB/s")
+
+                # 删除下载的文件
+                os.remove(ts_lists_0)
+                result = channel_name, channel_url, f"{normalized_speed:.3f} MB/s"
+                results.append(result)
+                numberx = (len(results) + len(error_channels)) / len(channels) * 100
+                print(f"可用频道：{len(results)} 个 , 不可用频道：{len(error_channels)} 个 , 总频道：{len(channels)} 个 ,总进度：{numberx:.2f} %。")
+        except:
+            error_channel = channel_name, channel_url
+            error_channels.append(error_channel)
+            numberx = (len(results) + len(error_channels)) / len(channels) * 100
+            print(f"可用频道：{len(results)} 个 , 不可用频道：{len(error_channels)} 个 , 总频道：{len(channels)} 个 ,总进度：{numberx:.2f} %。")
+
+        # 标记任务完成
+        task_queue.task_done()
+
+
+# 创建多个工作线程
+num_threads = 10
+for _ in range(num_threads):
+    t = threading.Thread(target=worker, daemon=True) 
+    t.start()
+
+# 添加下载任务到队列
+for channel in channels:
+    task_queue.put(channel)
+
+# 等待所有任务完成
+task_queue.join()
 # 对频道进行排序
 channels.sort()
 # 自定义排序函数，提取频道名称中的数字并按数字排序
@@ -281,12 +348,10 @@ channels.sort(key=lambda x: channel_key(x[0]))
 now = datetime.datetime.now(datetime.UTC) + datetime.timedelta(hours=8)
 current_time = now.strftime("%Y/%m/%d %H:%M")
 
-with open('2.txt', 'w', encoding='utf-8') as file:
-    file.write('\n')        
+with open('2.txt', 'w', encoding='utf-8') as file:       
     for channel, address in channels:
         if 'tsfile' in address:
             file.write(f'{channel},{address}\n')
-
 
 ###############################        
 with open('2.txt', 'r', encoding='utf-8') as file:
@@ -313,7 +378,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('b.txt', 'w', encoding='
          b.write(line)  # 将该行写入输出文件
          
 ################
-keywords = ['都市剧场', '上海', '上视', '欢笑剧场', '东方影视', '法治天地', '纪实人文', '动漫秀场', '七彩戏剧', '五星体育', '东方财经', '生活时尚', '第一财经', '金色学堂', '乐游']  # 需要提取的关键字列表
+keywords = ['都市剧场','上海','上视','欢笑剧场','东方影视','法治天地','纪实人文','动漫秀场','七彩戏剧','五星体育','东方财经','生活时尚','第一财经','游戏风云','金色学堂','乐游']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
 with open('2.txt', 'r', encoding='utf-8') as file, open('c.txt', 'w', encoding='utf-8') as c:    #####定义临时文件名
@@ -498,6 +563,17 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('s.txt', 'w', encoding='
         if re.search(pattern, line):  # 如果行中有任意关键字
          s.write(line)  # 将该行写入输出文件
 
+################
+keywords = ['重庆']  # 需要提取的关键字列表
+pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
+#pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
+with open('2.txt', 'r', encoding='utf-8') as file, open('t.txt', 'w', encoding='utf-8') as t:    #####定义临时文件名
+    t.write('\n重庆频道,#genre#\n')                                                                  #####写入临时文件名
+    for line in file:
+      if 'genre' not in line:
+        if re.search(pattern, line):  # 如果行中有任意关键字
+         t.write(line)  # 将该行写入输出文件
+
 keywords = [',']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
@@ -508,10 +584,9 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('z.txt', 'w', encoding='
         if re.search(pattern, line):  # 如果行中有任意关键字
          z.write(line)  # 将该行写入输出文件         
 
-
 ############
 file_contents = []
-file_paths = ["a.txt","b.txt","c.txt","d.txt","e.txt","f.txt","g.txt","h.txt","i.txt","j.txt","k.txt","l.txt","m.txt","n.txt","o.txt","p.txt","q.txt","r.txt","s.txt","z.txt"]  # 替换为实际的文件路径列表
+file_paths = ["a.txt","b.txt","c.txt","d.txt","e.txt","f.txt","g.txt","h.txt","i.txt","j.txt","k.txt","l.txt","m.txt","n.txt","o.txt","p.txt","q.txt","r.txt","s.txt","t.txt","z.txt"]  # 替换为实际的文件路径列表
 for file_path in file_paths:
     with open(file_path, 'r', encoding="utf-8") as file:
         content = file.read()
@@ -521,14 +596,14 @@ for file_path in file_paths:
 with open("去重.txt", "w", encoding="utf-8") as output:
     output.write('\n'.join(file_contents))
 
-##############################原始顺序去重
+# 原始顺序去重
 # 打开文档并读取所有行 
 with open('去重.txt', 'r', encoding="utf-8") as file:
  lines = file.readlines()
  
 # 使用列表来存储唯一的行的顺序 
- unique_lines = [] 
- seen_lines = set() 
+unique_lines = [] 
+seen_lines = set() 
 
 # 遍历每一行，如果是新的就加入unique_lines 
 for line in lines:
@@ -562,6 +637,7 @@ os.remove("p.txt")
 os.remove("q.txt")
 os.remove("r.txt")
 os.remove("s.txt")
+os.remove("t.txt")
 os.remove("z.txt")
 os.remove("去重.txt")
 print("任务运行完毕")
