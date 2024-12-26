@@ -399,7 +399,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('d.txt', 'w', encoding='
               d.write(line)  # 将该行写入输出文件
 
 ################
-keywords = ['山东','潍坊','烟台','高密','临沂']  # 需要提取的关键字列表
+keywords = ['山东','青岛','潍坊','烟台','高密','临沂']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
 with open('2.txt', 'r', encoding='utf-8') as file, open('e.txt', 'w', encoding='utf-8') as e:    #####定义临时文件名
@@ -586,7 +586,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('z.txt', 'w', encoding='
 
 ############
 file_contents = []
-file_paths = ["a.txt","b.txt","c.txt","d.txt","e.txt","f.txt","g.txt","h.txt","i.txt","j.txt","k.txt","l.txt","m.txt","n.txt","o.txt","p.txt","q.txt","r.txt","s.txt","t.txt","z.txt"]  # 替换为实际的文件路径列表
+file_paths = ["a.txt","b.txt","c.txt","d.txt","e.txt","sd.txt","f.txt","g.txt","h.txt","i.txt","j.txt","k.txt","l.txt","m.txt","n.txt","o.txt","p.txt","q.txt","r.txt","zj.txt","s.txt","t.txt","z.txt"]  # 替换为实际的文件路径列表
 for file_path in file_paths:
     with open(file_path, 'r', encoding="utf-8") as file:
         content = file.read()
