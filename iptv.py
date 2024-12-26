@@ -333,25 +333,24 @@ for channel in channels:
 
 # 等待所有任务完成
 task_queue.join()
-# 对频道进行排序
-channels.sort()
+
 # 自定义排序函数，提取频道名称中的数字并按数字排序
-def channel_key(channel):
-    match = re.search(r'\d+', channel)
+def channel_key(channel_name):
+    match = re.search(r'\d+', channel_name)
     if match:
         return int(match.group())
     else:
         return float('inf')  # 返回一个无穷大的数字作为关键字
 
 # 对频道进行排序
-channels.sort(key=lambda x: channel_key(x[0]))
+results.sort(key=lambda x: channel_key(x[0]))
 now = datetime.datetime.now(datetime.UTC) + datetime.timedelta(hours=8)
 current_time = now.strftime("%Y/%m/%d %H:%M")
 
 with open('2.txt', 'w', encoding='utf-8') as file:       
-    for channel, address in channels:
-        if 'tsfile' in address:
-            file.write(f'{channel},{address}\n')
+    for result in results:
+        channel_name, channel_url, speed = result
+        file.write(f"{channel_name},{channel_url}\n")
 
 ###############################        
 with open('2.txt', 'r', encoding='utf-8') as file:
