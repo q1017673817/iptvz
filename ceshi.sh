@@ -83,10 +83,10 @@ case $city_choice in
 esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
-ipfile="ip/${city}_ip.txt"
+ipfile="ip/${city}.ip"
 # 搜索最新 IP
 echo "$ipfile"
-cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_onlyip
+cat ip/${city}.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_onlyip
 sort tmp_onlyip | uniq | sed '/^\s*$/d' > "$ipfile"
-rm -f tmp_onlyip ip/${channel_key}.html
-cat ip/河南_ip.txt ip/湖南_ip.txt >酒店源_ip.txt
+rm -f tmp_onlyip 
+cat ip/河南.ip ip/湖南.ip >酒店源_ip.txt
