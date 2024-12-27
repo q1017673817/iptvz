@@ -128,12 +128,12 @@ case $city_choice in
 esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
-#rm -f ip/${channel_key}.ip ip/${channel_key}.onlygood.ip
+rm -f ip/${channel_key}.onlygood.ip ip/${channel_key}有效.ip
 ipfile="ip/${channel_key}.ip"
 only_good_ip="ip/${channel_key}.onlygood.ip"
 # 搜索最新 IP
-#cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
-cat ip/${channel_key}.onlygood.ip > tmp_ipfile
+cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
+#cat ip/${channel_key}.onlygood.ip > tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
 rm -f tmp_ipfile ip/${channel_key}.html
 
@@ -173,7 +173,7 @@ for temp_file in tmpip/ip_*.txt; do
      echo "第 $i/$lines 个：$ip $a"
      echo "$ip $a" >> "speedtest_${city}_$time.log"
 done
-rm -rf tmpip/* $ipfile
+rm -rf tmpip/* $only_good_ip
 
 cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sort -n -r >"result/fofa_${city}.txt"
 cat "result/fofa_${city}.txt"
@@ -182,7 +182,7 @@ ip2=$(head -n 2 result/fofa_${city}.txt | tail -n 1 | awk '{print $2}')
 ip3=$(head -n 3 result/fofa_${city}.txt | tail -n 1 | awk '{print $2}')
 ip4=$(head -n 4 result/fofa_${city}.txt | tail -n 1 | awk '{print $2}')
 ip5=$(head -n 5 result/fofa_${city}.txt | tail -n 1 | awk '{print $2}')
-awk '{print $2}' "result/fofa_${city}.txt" > "ip/${channel_key}有效.ip"
+# awk '{print $2}' "result/fofa_${city}.txt" > "ip/${channel_key}有效.ip"
 rm -f "speedtest_${city}_$time.log" result/fofa_${channel_key}.ip
 # 用 5 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"
