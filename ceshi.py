@@ -47,6 +47,7 @@ with open('酒店源_ip.txt', 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
             url = line.strip()
+            url = f"http://{url}"
             urls_all.append(url)
         
         # urls = list(set(urls_all))  # 去重得到唯一的URL列表
