@@ -612,7 +612,7 @@ for line in lines:
   seen_lines.add(line)
 
 # 将唯一的行写入新的文档 
-with open('ceshi.txt', 'w', encoding="utf-8") as file:
+with open('iptv2.txt', 'w', encoding="utf-8") as file:
  file.writelines(unique_lines)
 
 os.remove("itv.txt")
