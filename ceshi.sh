@@ -1,6 +1,5 @@
 pwd
 time=$(date +%m%d%H%M)
-i=0
 
 if [ $# -eq 0 ]; then
   echo "请选择城市："
@@ -19,58 +18,87 @@ fi
 case $city_choice in
     1)
         city="河南"
-        stream="rtp/233.50.201.63:5140"
         channel_key="河南"
         ;;
     2)
         city="湖南"
-        stream="udp/239.49.8.19:9614"
         channel_key="湖南"
         ;;
     3)
-        city="Shanghai_103"
-        stream="udp/239.45.1.4:5140"
-	    channel_key="上海电信"
+        city="河北"
+	    channel_key="河北"
         ;;
     4)
-        city="Beijing_liantong_145"
-        stream="rtp/239.3.1.236:2000"
-        channel_key="北京联通"
+        city="湖北"
+        channel_key="湖北"
         ;;
     5)
-        city="Hubei_90"
-        stream="rtp/239.254.96.96:8550"
-        channel_key="湖北电信"
+        city="山东"
+        channel_key="山东"
         ;;
     6)
-        city="Sichuan_333"
-        stream="udp/239.93.0.184:5140"
-        channel_key="四川电信"
+        city="山西"
+        channel_key="山西"
         ;;
     7)
-        city="Beijing_dianxin_186"
-        stream="/udp/225.1.8.1:8008"
-        channel_key="北京电信"
+        city="广东"
+        channel_key="广东"
         ;;
     8)
-        city="Hebei_313"
-        stream="rtp/239.253.92.154:6011"
-	    channel_key="河北联通"
+        city="广西"
+	    channel_key="广西"
         ;;
     9)
-        city="Shanxi_117"
-        stream="udp/239.1.1.7:8007"
-        channel_key="山西电信"
+        city="吉林"
+        channel_key="吉林"
         ;;
     10)
-        city="Tianjin_160"
-        stream="udp/225.1.1.120:5002"
-        channel_key="天津联通"
+        city="内蒙古"
+        channel_key="内蒙古"
         ;;
-
+    11)
+        city="黑龙江"
+        channel_key="黑龙江"
+        ;;    
+    12)
+        city="辽宁"
+        channel_key="辽宁"
+        ;;
+    13)
+        city="陕西"
+        channel_key="陕西"
+        ;;
+    14)
+        city="北京"
+        channel_key="北京"
+        ;;
+    15)
+        city="江苏"
+        channel_key="江苏"
+        ;;
+    16)
+        city="浙江"
+        channel_key="浙江"
+        ;;
+    17)
+        city="上海"
+        channel_key="上海"
+        ;;
+    18)
+        city="云南"
+        channel_key="云南"
+        ;; 
+    19)
+        city="四川"
+        channel_key="四川"
+        ;;                      
+    20)
+        city="重庆"
+        channel_key="重庆"
+        ;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..2}; do
+        for option in {1..20}; do
           bash  ./ceshi.sh $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -84,9 +112,9 @@ esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
 ipfile="ip/${city}.ip"
-# 搜索最新 IP
+# 筛选最新 IP
 echo "$ipfile"
-cat ip/${city}.ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_onlyip
+cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_onlyip
 sort tmp_onlyip | uniq | sed '/^\s*$/d' > "$ipfile"
-rm -f tmp_onlyip 
-cat ip/河南.ip ip/湖南.ip >酒店源_ip.txt
+cat "$ipfile" >> 测试_ip.txt
+rm -f tmp_onlyip ip/${channel_key}.html
