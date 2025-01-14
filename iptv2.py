@@ -43,10 +43,11 @@ results = []
 
 urls_all = []
 
-with open('酒店源ip.txt', 'r', encoding='utf-8') as file:
+with open('酒店源_ip.txt', 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
             url = line.strip()
+            url = f"http://{url}"
             urls_all.append(url)
         
         # urls = list(set(urls_all))  # 去重得到唯一的URL列表
@@ -358,7 +359,7 @@ with open('2.txt', 'r', encoding='utf-8') as file:
  keywords = ['CCTV','风云剧场','怀旧剧场','第一剧场','兵器','女性','地理','央视文化','风云音乐']  # 需要提取的关键字列表
  pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('a1.txt', 'w', encoding='utf-8') as a:    #####定义临时文件名
+with open('2.txt', 'r', encoding='utf-8') as file, open('a.txt', 'w', encoding='utf-8') as a:    #####定义临时文件名
     a.write(f"央视频道{current_time}点更新,#genre#\n")                                                                 #####写入临时文件名
     for line in file:
       if 'genre' not in line:
@@ -369,7 +370,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('a1.txt', 'w', encoding=
 keywords = ['卫视']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('b1.txt', 'w', encoding='utf-8') as b:    #####定义临时文件名
+with open('2.txt', 'r', encoding='utf-8') as file, open('b.txt', 'w', encoding='utf-8') as b:    #####定义临时文件名
     b.write('\n卫视频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'genre' not in line:        
@@ -585,7 +586,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('z.txt', 'w', encoding='
 
 ############
 file_contents = []
-file_paths = ["a1.txt","a.txt","b1.txt","b.txt","c.txt","d.txt","e.txt","f.txt","g.txt","h.txt","i.txt","j.txt","k.txt","l.txt","m.txt","n.txt","o.txt","p.txt","q.txt","r.txt","zj.txt","s.txt","t.txt","z.txt"]  # 替换为实际的文件路径列表
+file_paths = ["a.txt","b.txt","c.txt","d.txt","e.txt","f.txt","g.txt","h.txt","i.txt","j.txt","k.txt","l.txt","m.txt","n.txt","o.txt","p.txt","q.txt","r.txt","s.txt","t.txt","z.txt"]  # 替换为实际的文件路径列表
 for file_path in file_paths:
     with open(file_path, 'r', encoding="utf-8") as file:
         content = file.read()
@@ -611,15 +612,13 @@ for line in lines:
   seen_lines.add(line)
 
 # 将唯一的行写入新的文档 
-with open('iptv.txt', 'w', encoding="utf-8") as file:
+with open('iptv2.txt', 'w', encoding="utf-8") as file:
  file.writelines(unique_lines)
 
 os.remove("itv.txt")
 os.remove("itv1.txt")
-os.remove("a1.txt")
-os.remove("a.txt")
-os.remove("b1.txt")
-os.remove("b.txt")
+#os.remove("a.txt")
+#os.remove("b.txt")
 os.remove("c.txt")
 os.remove("d.txt")
 os.remove("2.txt")
