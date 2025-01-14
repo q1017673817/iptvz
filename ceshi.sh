@@ -57,48 +57,40 @@ case $city_choice in
         channel_key="内蒙古"
         ;;
     11)
-        city="黑龙江"
-        channel_key="黑龙江"
-        ;;    
-    12)
         city="辽宁"
         channel_key="辽宁"
         ;;
-    13)
+    12)
         city="陕西"
         channel_key="陕西"
         ;;
-    14)
-        city="北京"
-        channel_key="北京"
-        ;;
-    15)
+    13)
         city="江苏"
         channel_key="江苏"
         ;;
-    16)
+    14)
         city="浙江"
         channel_key="浙江"
         ;;
-    17)
+    15)
         city="上海"
         channel_key="上海"
         ;;
-    18)
+    16)
         city="云南"
         channel_key="云南"
         ;; 
-    19)
+    17)
         city="四川"
         channel_key="四川"
         ;;                      
-    20)
+    28)
         city="重庆"
         channel_key="重庆"
         ;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..20}; do
+        for option in {1..18}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
