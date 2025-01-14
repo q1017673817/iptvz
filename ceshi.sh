@@ -26,7 +26,7 @@ case $city_choice in
         ;;
     3)
         city="河北"
-	    channel_key="河北"
+	channel_key="河北"
         ;;
     4)
         city="湖北"
@@ -46,7 +46,7 @@ case $city_choice in
         ;;
     8)
         city="广西"
-	    channel_key="广西"
+	channel_key="广西"
         ;;
     9)
         city="吉林"
@@ -99,7 +99,7 @@ case $city_choice in
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
         for option in {1..20}; do
-          bash  ./ceshi.sh $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
+          bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
         ;;
