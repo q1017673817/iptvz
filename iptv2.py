@@ -47,7 +47,6 @@ with open('酒店源_ip.txt', 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
             url = line.strip()
-            url = f"http://{url}"
             urls_all.append(url)
         
         # urls = list(set(urls_all))  # 去重得到唯一的URL列表
@@ -432,7 +431,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('g.txt', 'w', encoding='
          g.write(line)  # 将该行写入输出文件
 
 ################
-keywords = ['河南','信阳','漯河','郑州','驻马店','平顶山','安阳','武术世界','梨园','南阳']  # 需要提取的关键字列表
+keywords = ['河南','武术世界','梨园','信阳','漯河','郑州','驻马店','平顶山','安阳','南阳']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
 with open('2.txt', 'r', encoding='utf-8') as file, open('h.txt', 'w', encoding='utf-8') as h:    #####定义临时文件名
