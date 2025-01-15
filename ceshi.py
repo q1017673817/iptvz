@@ -12,7 +12,6 @@ import eventlet
 import re
 
 urls = []
-
 def modify_urls(url):
     modified_urls = []
     ip_start_index = url.find("//") + 2
@@ -25,9 +24,7 @@ def modify_urls(url):
         modified_ip = f"{ip_address[:-1]}{i}"
         modified_url = f"{base_url}{modified_ip}{port}{ip_end}"
         modified_urls.append(modified_url)
-
     return modified_urls
-
 
 def is_url_accessible(url):
     try:
@@ -37,12 +34,9 @@ def is_url_accessible(url):
     except requests.exceptions.RequestException:
         pass
     return None
-
-
+    
 results = []
-
 urls_all = []
-
 with open('测试_ip.txt', 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
@@ -111,15 +105,6 @@ with open('测试_ip.txt', 'r', encoding='utf-8') as file:
             urls = sorted(set(urls))
             for url in urls:
                 file.write(url + "\n")
-
-            
-            
-        urls = sorted(set(x_urls))  # 去重得到唯一的URL列表
-        with open("更新ip.txt", 'w', encoding='utf-8') as file:
-                file.writelines(urls)
-
-        for url in valid_urls:
-            print(url)
        
         # 遍历网址列表，获取JSON文件并解析
         for url in valid_urls:
@@ -134,8 +119,7 @@ with open('测试_ip.txt', 'r', encoding='utf-8') as file:
     
                 json_url = f"{url}"
                 response = requests.get(json_url, timeout=3)
-                json_data = response.json()
-    
+                json_data = response.json()    
                 try:
                     # 解析JSON文件，获取name和url字段
                     for item in json_data['data']:
