@@ -84,7 +84,7 @@ case $city_choice in
         city="四川"
         channel_key="四川"
         ;;                      
-    28)
+    18)
         city="重庆"
         channel_key="重庆"
         ;;
