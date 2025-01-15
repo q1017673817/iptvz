@@ -34,11 +34,11 @@ jobs:
     - name: run iptvpy
       run: python ${{ github.workspace }}/ceshi.py
       
-    - name: 更新电视直播源
+    - name: 筛选更新ip
       run: |
         cd $GITHUB_WORKSPACE
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
-        git commit -m "更新酒店源"
+        git commit -m "筛选更新ip"
         git push
