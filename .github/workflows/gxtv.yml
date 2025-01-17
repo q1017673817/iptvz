@@ -32,6 +32,6 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit *.txt -m "Update results"
-          #git commit *.m3u -m "Update results"
+          git commit *.txt -m "更新光迅源"
+          #git commit *.m3u -m "更新光迅源"
           git push 
