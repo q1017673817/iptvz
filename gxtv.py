@@ -9,8 +9,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import requests
 import eventlet
-
-urls = []
+eventlet.monkey_patch()
 
 def modify_urls(url):
     modified_urls = []
@@ -28,7 +27,7 @@ def modify_urls(url):
     
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=3)
+        response = requests.get(url, timeout=1)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
@@ -42,8 +41,7 @@ with open('光迅ip.txt', 'r', encoding='utf-8') as file:
         for line in lines:
             url = line.strip()
             urls_all.append(url)
-        
-        # urls = list(set(urls_all))  # 去重得到唯一的URL列表
+            
         urls = set(urls_all)  # 去重得到唯一的URL列表
         x_urls = []
         for url in urls:  # 对urls进行处理，ip第四位修改为1，并去重
@@ -59,8 +57,7 @@ with open('光迅ip.txt', 'r', encoding='utf-8') as file:
             ip_end = "1"
             modified_ip = f"{ip_address}{ip_end}"
             x_url = f"{base_url}{modified_ip}{port}\n"
-            x_urls.append(x_url)
-        
+            x_urls.append(x_url)    
         urls = sorted(set(x_urls))  # 去重得到唯一的URL列表
 
         valid_urls = []
@@ -78,22 +75,19 @@ with open('光迅ip.txt', 'r', encoding='utf-8') as file:
                 if result:
                     valid_urls.append(result)
                     print(result)
-
-            valid_urls = sorted(set(valid_urls))
-    
-        
+            valid_urls = sorted(set(valid_urls))      
         # 遍历网址列表，获取JSON文件并解析
         for url in valid_urls:
             try:
                 # 发送GET请求获取JSON文件，设置超时时间为0.5秒
                 json_url = f"{url}"
-                response = requests.get(json_url, timeout=3)
+                response = requests.get(json_url, timeout=1)
                 json_data = response.content.decode('utf-8')
                 try:
                     # 按行分割数据
                     lines = json_data.split('\n')
                     for line in lines:
-                       if 'udp' not in line and 'rtp' not in line:
+                      if 'udp' not in line and 'rtp' not in line:
                         line = line.strip()
                         if line:
                             name, channel_url = line.split(',')
@@ -249,10 +243,8 @@ with open('gxtv0.txt', 'r', encoding='utf-8') as file, open('gxtv1.txt', 'w', en
         if re.search(pattern, line):  # 如果行中有任意关键字
          a.write(line)  # 将该行写入输出文件
 
-eventlet.monkey_patch()
 # 线程安全的队列，用于存储下载任务
 task_queue = Queue()
-# 线程安全的列表，用于存储结果
 results = []      
 channels = []
 error_channels = []
@@ -323,8 +315,8 @@ for channel in channels:
 task_queue.join()
 
 # 自定义排序函数，提取频道名称中的数字并按数字排序
-def channel_key(channel):
-    match = re.search(r'\d+', channel)
+def channel_key(channel_name):
+    match = re.search(r'\d+', channel_name)
     if match:
         return int(match.group())
     else:
@@ -341,7 +333,6 @@ with open('2.txt', 'w', encoding='utf-8') as file:
         channel_name, channel_url, speed = result
         file.write(f"{channel_name},{channel_url}\n")
         
-# 生成iptv.txt文件
 #############     
 with open('2.txt', 'r', encoding='utf-8') as file:
 #从整理好的文本中按类别进行特定关键词提取#############################################################################################
