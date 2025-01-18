@@ -9,9 +9,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import requests
 import eventlet
-import re
-
-urls = []
+eventlet.monkey_patch()
 
 def modify_urls(url):
     modified_urls = []
@@ -25,35 +23,27 @@ def modify_urls(url):
         modified_ip = f"{ip_address[:-1]}{i}"
         modified_url = f"{base_url}{modified_ip}{port}{ip_end}"
         modified_urls.append(modified_url)
-
     return modified_urls
-
 
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=3)
+        response = requests.get(url, timeout=1)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
         pass
     return None
 
-
 results = []
-
 urls_all = []
-
 with open('酒店源ip.txt', 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
             url = line.strip()
             urls_all.append(url)
-        
-        # urls = list(set(urls_all))  # 去重得到唯一的URL列表
         urls = set(urls_all)  # 去重得到唯一的URL列表
         x_urls = []
         for url in urls:  # 对urls进行处理，ip第四位修改为1，并去重
-            url = url.strip()
             ip_start_index = url.find("//") + 2
             ip_end_index = url.find(":", ip_start_index)
             ip_dot_start = url.find(".") + 1
@@ -82,9 +72,7 @@ with open('酒店源ip.txt', 'r', encoding='utf-8') as file:
                 result = future.result()
                 if result:
                     valid_urls.append(result)
-    
-        for url in valid_urls:
-            print(url)
+                    print(url)
         # 遍历网址列表，获取JSON文件并解析
         for url in valid_urls:
             try:
@@ -97,7 +85,7 @@ with open('酒店源ip.txt', 'r', encoding='utf-8') as file:
                 url_x = f"{base_url}{ip_address}"
     
                 json_url = f"{url}"
-                response = requests.get(json_url, timeout=3)
+                response = requests.get(json_url, timeout=1)
                 json_data = response.json()
     
                 try:
@@ -261,10 +249,8 @@ with open('itv.txt', 'r', encoding='utf-8') as file, open('itv1.txt', 'w', encod
         if re.search(pattern, line):  # 如果行中有任意关键字
          a.write(line)  # 将该行写入输出文件        
 
-eventlet.monkey_patch()
 # 线程安全的队列，用于存储下载任务
 task_queue = Queue()
-# 线程安全的列表，用于存储结果
 results = []
 channels = []
 error_channels = []
@@ -343,6 +329,7 @@ def channel_key(channel_name):
         return float('inf')  # 返回一个无穷大的数字作为关键字
 
 # 对频道进行排序
+results.sort(key=lambda x: (x[0], -float(x[2].split()[0])))
 results.sort(key=lambda x: channel_key(x[0]))
 now = datetime.datetime.now(datetime.UTC) + datetime.timedelta(hours=8)
 current_time = now.strftime("%Y/%m/%d %H")
