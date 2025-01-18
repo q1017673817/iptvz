@@ -25,14 +25,15 @@ jobs:
       - name: run iptvpy
         run: python ${{ github.workspace }}/iptv2.py
         
-      - name: run iptvpy
         run: python ${{ github.workspace }}/iptv.py
+
+        run: python ${{ github.workspace }}/gxtv.py
            
       - name: 提交更改
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit *.txt -m "更新酒店源"
+          git commit *.txt -m "更新直播源"
           #git commit *.m3u -m "Update results"
           git push 
