@@ -40,6 +40,7 @@ with open('酒店源_ip.txt', 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
             url = line.strip()
+            url = f"http://{url}"
             urls_all.append(url)
         urls = set(urls_all)  # 去重得到唯一的URL列表
         x_urls = []
@@ -157,13 +158,6 @@ with open('酒店源_ip.txt', 'r', encoding='utf-8') as file:
                                 name = name.replace("CCTV5+体育赛事", "CCTV5+")
                                 name = name.replace("CCTV5+体育", "CCTV5+")
                                 name = name.replace("CCTV足球", "CCTV风云足球")
-                                name = name.replace("怀旧剧场", "CCTV怀旧剧场")
-                                name = name.replace("电视指南", "CCTV电视指南")
-                                name = name.replace("第一剧场", "CCTV第一剧场")
-                                name = name.replace("风云剧场", "CCTV风云剧场")
-                                name = name.replace("风云足球", "CCTV风云足球")
-                                name = name.replace("风云音乐", "CCTV风云音乐")
-                                name = name.replace("高尔夫", "CCTV高尔夫")
                                 name = name.replace("上海卫视", "东方卫视")
                                 name = name.replace("奥运匹克", "")
                                 name = name.replace("军农", "")
