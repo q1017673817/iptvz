@@ -1,4 +1,4 @@
-name: ceshi
+name: 测试光迅ip
 on:
 #  schedule:
 #    - cron: 30 10 */3 * *
@@ -20,7 +20,7 @@ jobs:
     - name: 筛选ip
       run: |
         cd $GITHUB_WORKSPACE
-        bash ./ceshi.sh
+        bash ./test.sh
         
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -32,13 +32,13 @@ jobs:
         pip install selenium requests futures eventlet
 
     - name: run iptvpy
-      run: python ${{ github.workspace }}/ceshi.py
+      run: python ${{ github.workspace }}/test_gxtv.py
       
-    - name: 筛选更新ip
+    - name: 提交更新
       run: |
         cd $GITHUB_WORKSPACE
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
-        git commit -m "筛选更新ip"
+        git commit -m "更新光迅ip"
         git push
