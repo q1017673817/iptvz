@@ -128,12 +128,10 @@ case $city_choice in
 esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
-rm -f ip/${channel_key}.onlygood.ip ip/${channel_key}有效.ip
 ipfile="ip/${channel_key}.ip"
-only_good_ip="ip/${channel_key}_onlygood.ip"
+onlygood.ip="ip/${channel_key}onlygood.ip"
 # 搜索最新 IP
 cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
-#cat ip/${channel_key}.onlygood.ip > tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
 rm -f tmp_ipfile ip/${channel_key}.html
 
@@ -146,12 +144,12 @@ while IFS= read -r ip; do
     # 如果连接成功，且输出包含 "succeeded"，则将结果保存到输出文件中
     if [[ $output == *"succeeded"* ]]; then
         # 使用 awk 提取 IP 地址和端口号对应的字符串，并保存到输出文件中
-        echo "$output" | grep "succeeded" | awk -v ip="$ip" '{print ip}' >> "$only_good_ip"
+        echo "$output" | grep "succeeded" | awk -v ip="$ip" '{print ip}' >> "$onlygood.ip"
     fi
 done < "$ipfile"
 
-lines=$(wc -l < "$only_good_ip")
-echo "【$only_good_ip】内 ip 共计 $lines 个"
+lines=$(wc -l < "onlygood.ip")
+echo "【$onlygood.ip】内 ip 共计 $lines 个"
 
 i=0
 mkdir -p tmpip
@@ -163,7 +161,7 @@ while read -r line; do
         echo "$ip" > "tmpip/ip_$i.txt"  # 保存为 tmpip 目录下的临时文件
         ((i++))
     fi
-done < "$only_good_ip"
+done < "$onlygood.ip"
 
 i=0
 for temp_file in tmpip/ip_*.txt; do
@@ -173,17 +171,16 @@ for temp_file in tmpip/ip_*.txt; do
      echo "第 $i/$lines 个：$ip $a"
      echo "$ip $a" >> "speedtest_${city}_$time.log"
 done
-rm -rf tmpip/* $only_good_ip
+rm -rf tmpip/* $ipfile $onlygood.ip
 
-cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sort -n -r >"result/fofa_${city}.txt"
-cat "result/fofa_${city}.txt"
-ip1=$(head -n 1 result/fofa_${city}.txt | awk '{print $2}')
-ip2=$(head -n 2 result/fofa_${city}.txt | tail -n 1 | awk '{print $2}')
-ip3=$(head -n 3 result/fofa_${city}.txt | tail -n 1 | awk '{print $2}')
-ip4=$(head -n 4 result/fofa_${city}.txt | tail -n 1 | awk '{print $2}')
-ip5=$(head -n 5 result/fofa_${city}.txt | tail -n 1 | awk '{print $2}')
-# awk '{print $2}' "result/fofa_${city}.txt" > "ip/${channel_key}有效.ip"
-rm -f "speedtest_${city}_$time.log" result/fofa_${channel_key}.ip
+cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sort -n -r >"${city}.txt"
+cat "${city}.txt"
+ip1=$(head -n 1 ${city}.txt | awk '{print $2}')
+ip2=$(head -n 2 ${city}.txt | tail -n 1 | awk '{print $2}')
+ip3=$(head -n 3 ${city}.txt | tail -n 1 | awk '{print $2}')
+ip4=$(head -n 4 ${city}.txt | tail -n 1 | awk '{print $2}')
+ip5=$(head -n 5 ${city}.txt | tail -n 1 | awk '{print $2}')
+rm -f "speedtest_${city}_$time.log"         
 # 用 5 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"
 sed "s/ipipip/$ip1/g" "$program" > tmp1.txt
@@ -192,16 +189,16 @@ sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
 sed "s/ipipip/$ip4/g" "$program" > tmp4.txt
 sed "s/ipipip/$ip5/g" "$program" > tmp5.txt
 cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt > tmp_all.txt
-grep -vE '/{3}' tmp_all.txt > "txt/${channel_key}.txt"
-rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp_all.txt
+grep -vE '/{3}' tmp_all.txt > "${channel_key}.txt"
+rm -rf "${city}.txt" tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp_all.txt
 
 #--------------------合并所有城市的txt文件为:   zubo.txt-----------------------------------------
 
 echo "浙江电信,#genre#" >zubo.txt
-cat txt/浙江电信.txt >>zubo.txt
+cat 浙江电信.txt >>zubo.txt
 echo "上海电信,#genre#" >>zubo.txt
-cat txt/上海电信.txt >>zubo.txt
+cat 上海电信.txt >>zubo.txt
 echo "重庆电信,#genre#" >>zubo.txt
-cat txt/重庆电信.txt >>zubo.txt
+cat 重庆电信.txt >>zubo.txt
 echo "四川电信,#genre#" >>zubo.txt
-cat txt/四川电信.txt >>zubo.txt
+cat 四川电信.txt >>zubo.txt
