@@ -1,7 +1,8 @@
 name: zubo
+
 on:
 #  schedule:
-#    - cron: 30 10 */3 * *
+#    - cron: "0 20 * * *"
   workflow_dispatch:
 
 jobs:
@@ -11,17 +12,18 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-  
+      
     - name: Install Dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y yt-dlp sed nmap
-    
-    - name: 获取组播地址测试有效性
+      
+    - name: Run Multitest Script
       run: |
         cd $GITHUB_WORKSPACE
+        chmod +x speed.sh
         bash ./zubo.sh
-        
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -31,12 +33,11 @@ jobs:
       run: |
         pip install selenium requests futures eventlet
 
-    - name: run iptvpy
+    - name: 去重
       run: python ${{ github.workspace }}/去重.py
-      
-    - name: 更新组播源
+
+    - name: Update Results
       run: |
-        cd $GITHUB_WORKSPACE
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
