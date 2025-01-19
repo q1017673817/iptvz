@@ -115,7 +115,7 @@ case $city_choice in
         ;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1,2,5,15,18}; do
+        for option in {1,3,6,13}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -130,7 +130,7 @@ esac
 # 使用城市名作为默认文件名，格式为 CityName.ip
 rm -f ip/${channel_key}.onlygood.ip ip/${channel_key}有效.ip
 ipfile="ip/${channel_key}.ip"
-only_good_ip="ip/${channel_key}.onlygood.ip"
+only_good_ip="ip/${channel_key}_onlygood.ip"
 # 搜索最新 IP
 cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
 #cat ip/${channel_key}.onlygood.ip > tmp_ipfile
@@ -199,11 +199,9 @@ rm -rf tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp_all.txt
 
 echo "浙江电信,#genre#" >zubo.txt
 cat txt/浙江电信.txt >>zubo.txt
-echo "江苏电信,#genre#" >>zubo.txt
-cat txt/江苏电信.txt >>zubo.txt
-echo "湖北电信,#genre#" >>zubo.txt
-cat txt/湖北电信.txt >>zubo.txt
-echo "河南电信,#genre#" >>zubo.txt
-cat txt/河南电信.txt >>zubo.txt
-echo "山西联通,#genre#" >>zubo.txt
-cat txt/山西联通.txt >>zubo.txt
+echo "上海电信,#genre#" >>zubo.txt
+cat txt/上海电信.txt >>zubo.txt
+echo "重庆电信,#genre#" >>zubo.txt
+cat txt/重庆电信.txt >>zubo.txt
+echo "四川电信,#genre#" >>zubo.txt
+cat txt/四川电信.txt >>zubo.txt
