@@ -27,7 +27,7 @@ def modify_urls(url):
     
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=1)
+        response = requests.get(url, timeout=2)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
@@ -82,7 +82,7 @@ with open('光迅ip.txt', 'r', encoding='utf-8') as file:
             try:
                 # 发送GET请求获取JSON文件，设置超时时间为0.5秒
                 json_url = f"{url}"
-                response = requests.get(json_url, timeout=1)
+                response = requests.get(json_url, timeout=2)
                 json_data = response.content.decode('utf-8')
                 try:
                     # 按行分割数据
@@ -322,18 +322,18 @@ results.sort(key=lambda x: channel_key(x[0]))
 now = datetime.datetime.now(datetime.UTC) + datetime.timedelta(hours=8)
 current_time = now.strftime("%Y/%m/%d %H:%M")
 
-with open('2.txt', 'w', encoding='utf-8') as file:       
+with open('3.txt', 'w', encoding='utf-8') as file:       
     for result in results:
         channel_name, channel_url, speed = result
         file.write(f"{channel_name},{channel_url}\n")
         
 #############     
-with open('2.txt', 'r', encoding='utf-8') as file:
+with open('3.txt', 'r', encoding='utf-8') as file:
 #从整理好的文本中按类别进行特定关键词提取#############################################################################################
  keywords = ['CCTV', '风云剧场', '兵器', '女性', '地理', '央视文化', '风云音乐', '怀旧剧场', '第一剧场']  # 需要提取的关键字列表
  pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('a.txt', 'w', encoding='utf-8') as a:    #####定义临时文件名
+with open('3.txt', 'r', encoding='utf-8') as file, open('a3.txt', 'w', encoding='utf-8') as a:    #####定义临时文件名
     a.write(f"央视频道{current_time}更新,#genre#\n")                                                                 #####写入临时文件名
     for line in file:
       if 'genre' not in line:
@@ -344,7 +344,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('a.txt', 'w', encoding='
 keywords = ['卫视']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('b.txt', 'w', encoding='utf-8') as b:    #####定义临时文件名
+with open('3.txt', 'r', encoding='utf-8') as file, open('b3.txt', 'w', encoding='utf-8') as b:    #####定义临时文件名
     b.write('\n卫视频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'genre' not in line:        
@@ -355,7 +355,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('b.txt', 'w', encoding='
 keywords = [',']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('z.txt', 'w', encoding='utf-8') as z:    #####定义临时文件名
+with open('3.txt', 'r', encoding='utf-8') as file, open('z3.txt', 'w', encoding='utf-8') as z:    #####定义临时文件名
     z.write('\n其他频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'genre' not in line:
@@ -364,19 +364,19 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('z.txt', 'w', encoding='
 
 ############
 file_contents = []
-file_paths = ["a.txt","b.txt","z.txt"]  # 替换为实际的文件路径列表
+file_paths = ["a3.txt","b3.txt","z3.txt"]  # 替换为实际的文件路径列表
 for file_path in file_paths:
     with open(file_path, 'r', encoding="utf-8") as file:
         content = file.read()
         file_contents.append(content)
 
 # 写入合并后的文件
-with open("去重.txt", "w", encoding="utf-8") as output:
+with open("去重3.txt", "w", encoding="utf-8") as output:
     output.write('\n'.join(file_contents))
 
 # 原始顺序去重
 # 打开文档并读取所有行 
-with open('去重.txt', 'r', encoding="utf-8") as file:
+with open('去重3.txt', 'r', encoding="utf-8") as file:
  lines = file.readlines()
  
 # 使用列表来存储唯一的行的顺序 
@@ -395,9 +395,9 @@ with open('gxtv.txt', 'w', encoding="utf-8") as file:
 
 os.remove("gxtv0.txt")
 os.remove("gxtv1.txt")
-os.remove("a.txt")
-os.remove("b.txt")
-os.remove("2.txt")
-os.remove("z.txt")
-os.remove("去重.txt")
+os.remove("a3.txt")
+os.remove("b3.txt")
+os.remove("3.txt")
+os.remove("z3.txt")
+os.remove("去重3.txt")
 print("任务运行完毕")
