@@ -157,7 +157,8 @@ with open('酒店标清.ip', 'r', encoding='utf-8') as file:
                                 name = name.replace("CCTV5+体育赛视", "CCTV5+")
                                 name = name.replace("CCTV5+体育赛事", "CCTV5+")
                                 name = name.replace("CCTV5+体育", "CCTV5+")
-                                name = name.replace("CCTV足球", "CCTV风云足球")
+                                name = name.replace("CCTV足球", "风云足球")
+                                name = name.replace("CCTV精品", "文化精品")
                                 name = name.replace("上海卫视", "东方卫视")
                                 name = name.replace("奥运匹克", "")
                                 name = name.replace("军农", "")
@@ -176,6 +177,7 @@ with open('酒店标清.ip', 'r', encoding='utf-8') as file:
                                 name = name.replace("CCTV赛事", "CCTV5+")
                                 name = name.replace("CCTV教育", "CETV1")
                                 name = name.replace("CCTVnews", "CGTN")
+                                name = name.replace("CCTVNEWS", "CGTN")
                                 name = name.replace("1资讯", "凤凰资讯台")
                                 name = name.replace("2中文", "凤凰台")
                                 name = name.replace("3XG", "香港台")
@@ -337,7 +339,7 @@ with open('2.txt', 'w', encoding='utf-8') as file:
 ###############################        
 with open('2.txt', 'r', encoding='utf-8') as file:
 #从整理好的文本中按类别进行特定关键词提取#############################################################################################
- keywords = ['CCTV','风云剧场','怀旧剧场','第一剧场','兵器','女性','地理','央视文化','风云音乐']  # 需要提取的关键字列表
+ keywords = ['CCTV','风云剧场','怀旧剧场','第一剧场','兵器','女性','地理','央视文化','风云足球','风云音乐','高尔夫']  # 需要提取的关键字列表
  pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
 with open('2.txt', 'r', encoding='utf-8') as file, open('a2.txt', 'w', encoding='utf-8') as a:    #####定义临时文件名
