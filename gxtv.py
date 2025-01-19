@@ -36,7 +36,7 @@ def is_url_accessible(url):
 
 results = []
 urls_all = []
-with open('光迅ip.txt', 'r', encoding='utf-8') as file:
+with open('光迅.ip', 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
             url = line.strip()
