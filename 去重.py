@@ -27,7 +27,3 @@ with open('zubo.txt', 'w', encoding="utf-8") as file:
 os.remove("zubo0.txt")
 os.remove("zubo1.txt")
 os.remove("zubo2.txt")
-os.remove("浙江电信.txt")
-os.remove("四川电信.txt")
-os.remove("重庆电信.txt")
-os.remove("上海电信.txt")

@@ -70,7 +70,7 @@ case $city_choice in
         ;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..13}; do
+        for option in {2..7}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -151,18 +151,18 @@ rm -rf "${city}.txt" tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp_all.txt
 
 echo "重庆电信,#genre#" >zubo2.txt
 cat txt/重庆电信.txt >>zubo2.txt
-#echo "福建电信,#genre#" >>zubo2.txt
-#cat txt/福建电信.txt >>zubo2.txt
-#echo "河南电信,#genre#" >>zubo2.txt
-#cat txt/河南电信.txt >>zubo2.txt
-#echo "宁夏电信,#genre#" >>zubo2.txt
-#cat txt/宁夏电信.txt >>zubo2.txt
-#echo "山东电信,#genre#" >>zubo2.txt
-#cat txt/山东电信.txt >>zubo2.txt
-#echo "山西联通,#genre#" >>zubo2.txt
-#cat txt/山西联通.txt >>zubo2.txt
-#echo "广西电信,#genre#" >>zubo2.txt
-#cat txt/广西电信.txt >>zubo2.txt
+echo "福建电信,#genre#" >>zubo2.txt
+cat txt/福建电信.txt >>zubo2.txt
+echo "河南电信,#genre#" >>zubo2.txt
+cat txt/河南电信.txt >>zubo2.txt
+echo "宁夏电信,#genre#" >>zubo2.txt
+cat txt/宁夏电信.txt >>zubo2.txt
+echo "山东电信,#genre#" >>zubo2.txt
+cat txt/山东电信.txt >>zubo2.txt
+echo "山西联通,#genre#" >>zubo2.txt
+cat txt/山西联通.txt >>zubo2.txt
+echo "广西电信,#genre#" >>zubo2.txt
+cat txt/广西电信.txt >>zubo2.txt
 #echo "河南联通,#genre#" >>zubo2.txt
 #cat txt/河南联通.txt >>zubo2.txt
 #echo "陕西电信,#genre#" >>zubo2.txt
