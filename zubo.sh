@@ -1,6 +1,6 @@
 #pwd
 time=$(date +%m%d%H%M)
-city_choice=1
+city_choice=0
 # 根据用户选择设置城市和相应的stream
 case $city_choice in
     1)
@@ -65,7 +65,7 @@ case $city_choice in
 	;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {2..12}; do
+        for option in {1..12}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
