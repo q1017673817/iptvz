@@ -65,7 +65,7 @@ case $city_choice in
 	;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {2..7}; do
+        for option in {2..12}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -158,13 +158,13 @@ echo "四川电信,#genre#" >>zubo1.txt
 cat txt/四川电信.txt >>zubo1.txt
 echo "北京电信,#genre#" >>zubo1.txt
 cat txt/北京电信.txt >>zubo1.txt
-#echo "河北联通,#genre#" >>zubo1.txt
-#cat txt/河北联通.txt >>zubo1.txt
-#echo "山西电信,#genre#" >>zubo1.txt
-#cat txt/山西电信.txt >>zubo1.txt
-#echo "天津联通,#genre#" >>zubo1.txt
-#cat txt/天津联通.txt >>zubo1.txt
-#echo "广东电信,#genre#" >>zubo1.txt
-#cat txt/广东电信.txt >>zubo1.txt
-#echo "安徽电信,#genre#" >>zubo1.txt
-#cat txt/安徽电信.txt >>zubo1.txt
+echo "河北联通,#genre#" >>zubo1.txt
+cat txt/河北联通.txt >>zubo1.txt
+echo "山西电信,#genre#" >>zubo1.txt
+cat txt/山西电信.txt >>zubo1.txt
+echo "天津联通,#genre#" >>zubo1.txt
+cat txt/天津联通.txt >>zubo1.txt
+echo "广东电信,#genre#" >>zubo1.txt
+cat txt/广东电信.txt >>zubo1.txt
+echo "安徽电信,#genre#" >>zubo1.txt
+cat txt/安徽电信.txt >>zubo1.txt
