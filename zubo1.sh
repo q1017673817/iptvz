@@ -7,17 +7,17 @@ case $city_choice in
         city="Chongqing_161"
         stream="rtp/235.254.196.249:1268"
         channel_key="重庆电信"
-	;;
+	    ;;
     2)
         city="Fujian_114"
         stream="rtp/239.61.2.132:8708"
         channel_key="福建电信"
-	;;
+	    ;;
     3)
         city="Henan_327"
         stream="rtp/239.16.20.21:10210"
         channel_key="河南电信"
-	;;
+	    ;;
     4)
         city="Ningxia"
         stream="rtp/239.121.4.94:8538"
@@ -70,7 +70,7 @@ case $city_choice in
         ;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..13}; do
+        for option in {1..3}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -107,26 +107,19 @@ lines=$(wc -l < "$good_ip")
 echo "【$good_ip】内 ip 共计 $lines 个"
 
 i=0
-mkdir -p tmpip
-while read -r line; do
-    ip=$(echo "$line" | sed 's/^[ \t]*//;s/[ \t]*$//')  # 去除首尾空格
-    
-    # 如果行不为空，则写入临时文件
-    if [ -n "$ip" ]; then
-        echo "$ip" > "tmpip/ip_$i.txt"  # 保存为 tmpip 目录下的临时文件
-        ((i++))
-    fi
+time=$(date +%Y%m%d%H%M%S) # 定义 time 变量
+while IFS= read -r line; do
+    i=$((i + 1))
+    ip="$line"
+    url="http://$ip/$stream"
+    echo "$url"
+    curl "$url" --connect-timeout 3 --max-time 20 -o /dev/null >zubo.tmp 2>&1
+    a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)
+    echo "第 $i/$lines 个：$ip $a"
+    echo "$ip $a" >> "speedtest_${city}_$time.log"
 done < "$good_ip"
 
-i=0
-for temp_file in tmpip/ip_*.txt; do
-      ((i++))
-     ip=$(<"$temp_file")  # 从临时文件中读取 IP 地址
-     a=$(./speed.sh "$ip" "$stream")
-     echo "第 $i/$lines 个：$ip $a"
-     echo "$ip $a" >> "speedtest_${city}_$time.log"
-done
-rm -rf tmpip/* $ipfile 
+rm -f zubo.tmp $ipfile 
 
 cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sort -n -r >"${city}.txt"
 cat "${city}.txt"
