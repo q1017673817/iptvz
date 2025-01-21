@@ -23,16 +23,17 @@ jobs:
         cd $GITHUB_WORKSPACE
         chmod +x speed.sh
         bash ./zubo.sh
+
+    - name: Run Multitest Script
+      run: |
+        cd $GITHUB_WORKSPACE
+        chmod +x speed.sh
         bash ./zubo1.sh
 
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: 3.x
-
-    - name: Install dependencies
-      run: |
-        pip install selenium requests futures eventlet
 
     - name: 去重
       run: python ${{ github.workspace }}/去重.py
