@@ -1,6 +1,5 @@
 #pwd
 time=$(date +%m%d%H%M)
-i=0
 
 if [ $# -eq 0 ]; then
   echo "请选择城市："
@@ -15,7 +14,6 @@ if [ $# -eq 0 ]; then
 else
   city_choice=$1
 fi
-city_choice=0
 # 根据用户选择设置城市和相应的stream
 case $city_choice in
     1)
@@ -98,43 +96,50 @@ case $city_choice in
 esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
-ip_file="ip/${channel_key}_ip"
-good_ip2="ip/${channel_key}_good_ip"
+ipfile="ip/${channel_key}_ip"
+good_ip="ip/${channel_key}_good_ip"
 # 搜索最新 IP
-cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ip
-sort tmp_ip | uniq | sed '/^\s*$/d' > "$ip_file"
-rm -f tmp_ip ip/${channel_key}.html
+cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
+sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
+rm -f tmp_ipfile ip/${channel_key}.html
 
 while IFS= read -r ip; do
     # 尝试连接 IP 地址和端口号，并将输出保存到变量中
-    tmp_ip2=$(echo -n "$ip" | sed 's/:/ /')
+    tmp_ip=$(echo -n "$ip" | sed 's/:/ /')
     #echo "nc -w 1 -v -z $tmp_ip 2>&1"
-    output=$(nc -w 1 -v -z $tmp_ip2 2>&1)
+    output=$(nc -w 1 -v -z $tmp_ip 2>&1)
     echo $output   
     # 如果连接成功，且输出包含 "succeeded"，则将结果保存到输出文件中
     if [[ $output == *"succeeded"* ]]; then
         # 使用 awk 提取 IP 地址和端口号对应的字符串，并保存到输出文件中
-        echo "$output" | grep "succeeded" | awk -v ip="$ip" '{print ip}' >> "$good_ip2"
+        echo "$output" | grep "succeeded" | awk -v ip="$ip" '{print ip}' >> "$good_ip"
     fi
-done < "$ip_file"
+done < "$ipfile"
 
-lines=$(wc -l < "$good_ip2")
-echo "【$good_ip2】内 ip 共计 $lines 个"
+lines=$(wc -l < "$good_ip")
+echo "【$good_ip】内 ip 共计 $lines 个"
 
 i=0
-time=$(date +%Y%m%d%H%M%S) # 定义 time 变量
-while IFS= read -r line; do
-    i=$((i + 1))
-    ip="$line"
-    url="http://$ip/$stream"
-    echo "$url"
-    curl "$url" --connect-timeout 3 --max-time 20 -o /dev/null >zubo_tmp 2>&1
-    a=$(head -n 3 zubo_tmp | awk '{print $NF}' | tail -n 1)
-    echo "第 $i/$lines 个：$ip $a"
-    echo "$ip $a" >> "speedtest_${city}_$time.log"
-done < "$good_ip2"
+mkdir -p tmpip
+while read -r line; do
+    ip=$(echo "$line" | sed 's/^[ \t]*//;s/[ \t]*$//')  # 去除首尾空格
+    
+    # 如果行不为空，则写入临时文件
+    if [ -n "$ip" ]; then
+        echo "$ip" > "tmpip/ip_$i.txt"  # 保存为 tmpip 目录下的临时文件
+        ((i++))
+    fi
+done < "$good_ip"
 
-rm -f zubo_tmp $ip_file 
+i=0
+for temp_file in tmpip/ip_*.txt; do
+      ((i++))
+     ip=$(<"$temp_file")  # 从临时文件中读取 IP 地址
+     a=$(./speed.sh "$ip" "$stream")
+     echo "第 $i/$lines 个：$ip $a"
+     echo "$ip $a" >> "speedtest_${city}_$time.log"
+done
+rm -rf tmpip/* $ipfile 
 
 cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sort -n -r >"${city}.txt"
 cat "${city}.txt"
@@ -146,14 +151,14 @@ ip5=$(head -n 5 ${city}.txt | tail -n 1 | awk '{print $2}')
 rm -f "speedtest_${city}_$time.log"         
 # 用 5 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"
-sed "s/ipipip/$ip1/g" "$program" > tmp_1.txt
-sed "s/ipipip/$ip2/g" "$program" > tmp_2.txt
-sed "s/ipipip/$ip3/g" "$program" > tmp_3.txt
-sed "s/ipipip/$ip4/g" "$program" > tmp_4.txt
-sed "s/ipipip/$ip5/g" "$program" > tmp_5.txt
-cat tmp_1.txt tmp_2.txt tmp_3.txt tmp_4.txt tmp_5.txt > tmp_all2.txt
-grep -vE '/{3}' tmp_all2.txt > txt/"${channel_key}.txt"
-rm -rf "${city}.txt" tmp_1.txt tmp_2.txt tmp_3.txt tmp_4.txt tmp_5.txt tmp_all2.txt
+sed "s/ipipip/$ip1/g" "$program" > tmp1.txt
+sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
+sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
+sed "s/ipipip/$ip4/g" "$program" > tmp4.txt
+sed "s/ipipip/$ip5/g" "$program" > tmp5.txt
+cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt > tmp_all.txt
+grep -vE '/{3}' tmp_all.txt > txt/"${channel_key}.txt"
+rm -rf "${city}.txt" tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp_all.txt
 
 #--------------------合并所有城市的txt文件为:   zubo2.txt-----------------------------------------
 
