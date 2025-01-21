@@ -20,7 +20,7 @@ ffmpeg -i "$URL" -t 20 -c copy "$OUTPUT_FILE" -y 2>/dev/null
 # 检查 ffmpeg 的退出状态
 if [ $? -ne 0 ]; then
     #echo "下载失败，速度为 0 Mb/s"
-    echo "0.00"
+    echo "0"
     exit 0
 fi
 
@@ -38,10 +38,10 @@ DOWNLOAD_SPEED=$(echo "scale=2; $FILE_SIZE / $DURATION" | bc)
 DOWNLOAD_SPEED_MBPS=$(echo "scale=2; $DOWNLOAD_SPEED * 8 / 1000000" | bc)
 # 判断 DOWNLOAD_SPEED_MBPS 是否小于 1M，速度太慢的节点不要
 if (( $(echo "$DOWNLOAD_SPEED_MBPS < 0.3" | bc -l) )); then
-    DOWNLOAD_SPEED_MBPS=0.00
+    DOWNLOAD_SPEED_MBPS=0
 fi
 
 # 输出结果
-echo "$DOWNLOAD_SPEED_MBPS Mb/s"
+echo "$DOWNLOAD_SPEED_MBPS"
 
 rm -rf "temp_video.mp4"
