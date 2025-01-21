@@ -1,6 +1,19 @@
 #pwd
 time=$(date +%m%d%H%M)
-city_choice=0
+i=0
+if [ $# -eq 0 ]; then
+  echo "请选择城市："
+  echo "0. 全部"
+  read -t 1 -p "输入选择或在3秒内无输入将默认选择全部: " city_choice
+
+  if [ -z "$city_choice" ]; then
+      echo "未检测到输入，自动选择全部选项..."
+      city_choice=0
+  fi
+
+else
+  city_choice=$1
+fi
 # 根据用户选择设置城市和相应的stream
 case $city_choice in
     1)
