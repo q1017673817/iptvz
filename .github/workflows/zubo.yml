@@ -21,7 +21,7 @@ jobs:
     - name: Run Multitest Script
       run: |
         cd $GITHUB_WORKSPACE
-        chmod +x speed.sh
+#        chmod +x speed.sh
         bash ./zubo.sh
 
     - name: Set up Python
