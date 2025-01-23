@@ -36,6 +36,8 @@ FILE_SIZE=$(stat -c%s "$OUTPUT_FILE")
 DOWNLOAD_SPEED=$(echo "scale=2; $FILE_SIZE / $DURATION" | bc)
 # 将下载速度转换为 Mb/s
 DOWNLOAD_SPEED_MBPS=$(echo "scale=2; $DOWNLOAD_SPEED * 8 / 1000000" | bc)
+
+rm -rf "temp_video.mp4"
 # 判断 DOWNLOAD_SPEED_MBPS 是否小于 1M，速度太慢的节点不要
 if (( $(echo "$DOWNLOAD_SPEED_MBPS < 0.8" | bc -l) )); then
     DOWNLOAD_SPEED_MBPS=0
@@ -43,5 +45,3 @@ fi
 
 # 输出结果
 echo "$DOWNLOAD_SPEED_MBPS"
-
-rm -rf "temp_video.mp4"
