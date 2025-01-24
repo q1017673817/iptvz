@@ -142,7 +142,7 @@ for temp_file in tmpip/ip_*.txt; do
 done
 rm -rf tmpip/* $ipfile 
 
-echo "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2"  "$1}' | sort -n -r >"${city}.txt"
+cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2" "$1}' | sort -n -r >"${city}.txt"
 echo "${city}.txt"
 ip1=$(head -n 1 ${city}.txt | awk '{print $2}')
 ip2=$(head -n 2 ${city}.txt | tail -n 1 | awk '{print $2}')
