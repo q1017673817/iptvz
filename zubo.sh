@@ -142,13 +142,13 @@ for temp_file in tmpip/ip_*.txt; do
 done
 rm -rf tmpip/* $ipfile 
 
-cat "speedtest_${city}_$time.log" | grep -E 'M|k' | awk '{print $2" "$1}' | sort -n -r >"${city}.txt"
-echo "${city}.txt"
-ip1=$(head -n 1 ${city}.txt | awk '{print $2}')
-ip2=$(head -n 2 ${city}.txt | tail -n 1 | awk '{print $2}')
-ip3=$(head -n 3 ${city}.txt | tail -n 1 | awk '{print $2}')
-ip4=$(head -n 4 ${city}.txt | tail -n 1 | awk '{print $2}')
-ip5=$(head -n 5 ${city}.txt | tail -n 1 | awk '{print $2}')
+awk '/M|k/{print $2"  "$1}' "speedtest_${city}_$time.log" | sort -n -r >"result_${city}.txt"
+cat "result_${city}.txt"
+ip1=$(awk 'NR==1{print $2}' result_${city}.txt)
+ip2=$(awk 'NR==2{print $2}' result_${city}.txt)
+ip3=$(awk 'NR==3{print $2}' result_${city}.txt)
+ip4=$(awk 'NR==4{print $2}' result_${city}.txt)
+ip5=$(awk 'NR==5{print $2}' result_${city}.txt)
 rm -f "speedtest_${city}_$time.log"         
 # 用 5 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"
@@ -159,7 +159,7 @@ sed "s/ipipip/$ip4/g" "$program" > tmp4.txt
 sed "s/ipipip/$ip5/g" "$program" > tmp5.txt
 cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt > tmp_all.txt
 grep -vE '/{3}' tmp_all.txt > "txt/${channel_key}.txt"
-rm -rf "${city}.txt" tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp_all.txt
+rm -rf "result_${city}.txt" tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp_all.txt
 
 #--------------------合并所有城市的txt文件为:   zubo1.txt-----------------------------------------
 
