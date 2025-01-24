@@ -29,7 +29,7 @@ case $city_choice in
     3)
         city="Shanghai_103"
         stream="udp/239.45.1.42:5140"
-	    channel_key="上海电信"
+	channel_key="上海电信"
         ;;
     4)
         city="Beijing_liantong_145"
@@ -47,14 +47,14 @@ case $city_choice in
         channel_key="四川电信"
         ;;
     7)
-        city="Beijing_dianxin_186"
-        stream="udp/225.1.8.1:8008"
-        channel_key="北京电信"
+        city="Shanxi_184"
+        stream="rtp/226.0.2.152:9128"
+        channel_key="山西联通"
         ;;
     8)
-        city="Hebei_313"
-        stream="rtp/239.253.93.223:6401"
-	    channel_key="河北联通"
+        city="Guangxi"
+        stream="udp/239.81.0.107:4056"
+        channel_key="广西电信"
         ;;
     9)
         city="Shanxi_117"
@@ -67,18 +67,23 @@ case $city_choice in
         channel_key="天津联通"
         ;;
     11)
-        city="Guangdong_332"
-        stream="udp/239.77.0.244:5146"
-        channel_key="广东电信"
+        city="Chongqing_77"
+        stream="udp/225.0.4.188:7980"
+        channel_key="重庆联通"
 	;;
     12)
         city="Anhui_191"
         stream="rtp/238.1.78.137:6968"
         channel_key="安徽电信"
 	;;
+    13)
+        city="Chongqing_161"
+        stream="rtp/235.254.196.249:1268"
+        channel_key="重庆电信"
+	;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..12}; do
+        for option in {1..13}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -170,15 +175,17 @@ echo "湖北电信,#genre#" >>zubo1.txt
 cat txt/湖北电信.txt >>zubo1.txt
 echo "四川电信,#genre#" >>zubo1.txt
 cat txt/四川电信.txt >>zubo1.txt
-echo "北京电信,#genre#" >>zubo1.txt
-cat txt/北京电信.txt >>zubo1.txt
-echo "河北联通,#genre#" >>zubo1.txt
-cat txt/河北联通.txt >>zubo1.txt
+echo "山西联通,#genre#" >>zubo1.txt
+cat txt/山西联通.txt >>zubo1.txt
+echo "广西电信,#genre#" >>zubo1.txt
+cat txt/广西电信.txt >>zubo1.txt
 echo "山西电信,#genre#" >>zubo1.txt
 cat txt/山西电信.txt >>zubo1.txt
 echo "天津联通,#genre#" >>zubo1.txt
 cat txt/天津联通.txt >>zubo1.txt
-echo "广东电信,#genre#" >>zubo1.txt
-cat txt/广东电信.txt >>zubo1.txt
+echo "重庆联通,#genre#" >>zubo1.txt
+cat txt/重庆联通.txt >>zubo1.txt
 echo "安徽电信,#genre#" >>zubo1.txt
 cat txt/安徽电信.txt >>zubo1.txt
+echo "重庆电信,#genre#" >>zubo1.txt
+cat txt/重庆电信.txt >>zubo1.txt
