@@ -27,7 +27,7 @@ def modify_urls(url):
 
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=0.5)
+        response = requests.get(url, timeout=1)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
@@ -55,14 +55,15 @@ with open('测试.ip', 'r', encoding='utf-8') as file:
         ip_address = url[ip_start_index:ip_dot_three]
         port = url[ip_end_index:]
         ip_end = "1"
-        modified_ip = f"{ip_address}{ip_end}{port}\n"
+        modified_ip = f"{ip_address}{ip_end}{port}"
         x_url = f"{base_url}{modified_ip}"
         x_urls.append(x_url)
     
     urls_a = sorted(set(modified_ip))                
     urls = sorted(set(x_urls))  # 去重得到唯一的URL列表
     with open("更新酒店源.ip", 'w', encoding='utf-8') as file:
-        file.writelines(urls_a)
+        for url in urls_a:
+            file.write(url + "\n")  
     
     valid_urls = []    # 多线程获取可用url
     with concurrent.futures.ThreadPoolExecutor(max_workers=100) as executor:
@@ -102,7 +103,7 @@ with open('测试.ip', 'r', encoding='utf-8') as file:
         for url in valid_urls:
             try:     # 发送GET请求获取JSON文件，设置超时时间为0.5秒    
                 json_url = f"{url}"
-                response = requests.get(json_url, timeout=0.5)
+                response = requests.get(json_url, timeout=1)
                 json_data = response.json()    
                 try:
                     # 解析JSON文件，获取name和url字段
@@ -284,7 +285,7 @@ def worker():
             ts_lists_0 = ts_lists[0].rstrip(ts_lists[0].split('.ts')[-1])  # m3u8链接前缀
             ts_url = channel_url_t + ts_lists[0]  # 拼接单个视频片段下载链接
             # 多获取的视频数据进行5秒钟限制
-            with eventlet.Timeout(4, False):
+            with eventlet.Timeout(5, False):
                 start_time = time.time()
                 content = requests.get(ts_url,timeout=1).content
                 end_time = time.time()
@@ -336,18 +337,18 @@ results.sort(key=lambda x: channel_key(x[0]))
 now = datetime.datetime.now(datetime.UTC) + datetime.timedelta(hours=8)
 current_time = now.strftime("%Y/%m/%d %H:%M")
 # 生成iptv.txt文件
-with open('2.txt', 'w', encoding='utf-8') as file:       
+with open('1.txt', 'w', encoding='utf-8') as file:       
     for result in results:
         channel_name, channel_url, speed = result
         file.write(f"{channel_name},{channel_url}\n")
 
 ###############################        
-with open('2.txt', 'r', encoding='utf-8') as file:
+with open('1.txt', 'r', encoding='utf-8') as file:
 #从整理好的文本中按类别进行特定关键词提取#############################################################################################
  keywords = ['CCTV','风云剧场','怀旧剧场','第一剧场','兵器','女性','地理','央视文化','风云音乐']  # 需要提取的关键字列表
  pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('a.txt', 'w', encoding='utf-8') as a:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('a.txt', 'w', encoding='utf-8') as a:    #####定义临时文件名
     a.write(f"央视频道{current_time}点更新,#genre#\n")                                                                 #####写入临时文件名
     for line in file:
       if 'genre' not in line:
@@ -358,7 +359,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('a.txt', 'w', encoding='
 keywords = ['卫视']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('b.txt', 'w', encoding='utf-8') as b:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('b.txt', 'w', encoding='utf-8') as b:    #####定义临时文件名
     b.write('\n卫视频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'genre' not in line:        
@@ -369,7 +370,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('b.txt', 'w', encoding='
 keywords = ['都市剧场','上海','上视','欢笑剧场','东方影视','法治天地','纪实人文','动漫秀场','七彩戏剧','五星体育','东方财经','生活时尚','第一财经','游戏风云','金色学堂','乐游']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('c.txt', 'w', encoding='utf-8') as c:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('c.txt', 'w', encoding='utf-8') as c:    #####定义临时文件名
     c.write('\n上海频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'CCTV' not in line and '卫视' not in line and 'CHC' not in line and '4K' not in line and 'genre' not in line:
@@ -379,7 +380,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('c.txt', 'w', encoding='
 ############
 keywords = ['湖南','金鹰','快乐垂钓','茶','先锋乒羽']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
-with open('2.txt', 'r', encoding='utf-8') as file, open('d.txt', 'w', encoding='utf-8') as d:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('d.txt', 'w', encoding='utf-8') as d:    #####定义临时文件名
     d.write('\n湖南频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
         if 'CCTV' not in line and '卫视' not in line and 'CHC' not in line and '4K' not in line and 'genre' not in line:
@@ -390,7 +391,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('d.txt', 'w', encoding='
 keywords = ['山东','青岛','潍坊','烟台','高密','临沂']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('e.txt', 'w', encoding='utf-8') as e:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('e.txt', 'w', encoding='utf-8') as e:    #####定义临时文件名
     e.write('\n山东频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'CCTV' not in line and '卫视' not in line and 'CHC' not in line and '4K' not in line and 'genre' not in line:      
@@ -401,7 +402,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('e.txt', 'w', encoding='
 keywords = ['河北','衡水','邯郸','石家庄','唐山','秦皇岛','昌黎']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('f.txt', 'w', encoding='utf-8') as f:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('f.txt', 'w', encoding='utf-8') as f:    #####定义临时文件名
     f.write('\n河北频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'CCTV' not in line and '卫视' not in line and 'CHC' not in line and '4K' not in line and 'genre' not in line:
@@ -412,7 +413,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('f.txt', 'w', encoding='
 keywords = ['山西']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('g.txt', 'w', encoding='utf-8') as g:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('g.txt', 'w', encoding='utf-8') as g:    #####定义临时文件名
     g.write('\n山西频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'CCTV' not in line and '卫视' not in line and 'CHC' not in line and '4K' not in line and 'genre' not in line:
@@ -423,7 +424,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('g.txt', 'w', encoding='
 keywords = ['河南','信阳','漯河','郑州','驻马店','平顶山','安阳','武术世界','梨园','南阳']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('h.txt', 'w', encoding='utf-8') as h:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('h.txt', 'w', encoding='utf-8') as h:    #####定义临时文件名
     h.write('\n河南频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'CCTV' not in line and '卫视' not in line and 'CHC' not in line and '4K' not in line and 'genre' not in line:
@@ -434,7 +435,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('h.txt', 'w', encoding='
 keywords = ['陕西','西安','汉中']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('i.txt', 'w', encoding='utf-8') as i:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('i.txt', 'w', encoding='utf-8') as i:    #####定义临时文件名
     i.write('\n陕西频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'CCTV' not in line and '卫视' not in line and 'CHC' not in line and '4K' not in line and 'genre' not in line:
@@ -445,7 +446,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('i.txt', 'w', encoding='
 keywords = ['广东','广州','珠江','梅州','岭南','现代教育','客家']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('j.txt', 'w', encoding='utf-8') as j:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('j.txt', 'w', encoding='utf-8') as j:    #####定义临时文件名
     j.write('\n广东频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'CCTV' not in line and '卫视' not in line and 'CHC' not in line and '4K' not in line and 'genre' not in line:
@@ -456,7 +457,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('j.txt', 'w', encoding='
 keywords = ['广西','南宁','玉林','桂林','北流']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('k.txt', 'w', encoding='utf-8') as k:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('k.txt', 'w', encoding='utf-8') as k:    #####定义临时文件名
     k.write('\n广西频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'CCTV' not in line and '卫视' not in line and 'CHC' not in line and '4K' not in line and 'genre' not in line:
@@ -467,7 +468,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('k.txt', 'w', encoding='
 keywords = ['吉林','吉视','松原','东北戏曲']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('l.txt', 'w', encoding='utf-8') as l:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('l.txt', 'w', encoding='utf-8') as l:    #####定义临时文件名
     l.write('\n吉林频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'genre' not in line:
@@ -478,7 +479,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('l.txt', 'w', encoding='
 keywords = ['内蒙古']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('m.txt', 'w', encoding='utf-8') as m:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('m.txt', 'w', encoding='utf-8') as m:    #####定义临时文件名
     m.write('\n内蒙古频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'genre' not in line:
@@ -489,7 +490,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('m.txt', 'w', encoding='
 keywords = ['辽宁']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('n.txt', 'w', encoding='utf-8') as n:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('n.txt', 'w', encoding='utf-8') as n:    #####定义临时文件名
     n.write('\n辽宁频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'genre' not in line:
@@ -500,7 +501,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('n.txt', 'w', encoding='
 keywords = ['黑龙江']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('o.txt', 'w', encoding='utf-8') as o:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('o.txt', 'w', encoding='utf-8') as o:    #####定义临时文件名
     o.write('\n黑龙江频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'genre' not in line:
@@ -511,7 +512,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('o.txt', 'w', encoding='
 keywords = ['江苏']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('p.txt', 'w', encoding='utf-8') as p:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('p.txt', 'w', encoding='utf-8') as p:    #####定义临时文件名
     p.write('\n江苏频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'genre' not in line:
@@ -522,7 +523,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('p.txt', 'w', encoding='
 keywords = ['湖北','十堰']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('q.txt', 'w', encoding='utf-8') as q:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('q.txt', 'w', encoding='utf-8') as q:    #####定义临时文件名
     q.write('\n湖北频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'genre' not in line:
@@ -533,7 +534,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('q.txt', 'w', encoding='
 keywords = ['浙江']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('r.txt', 'w', encoding='utf-8') as r:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('r.txt', 'w', encoding='utf-8') as r:    #####定义临时文件名
     r.write('\n浙江频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'genre' not in line:
@@ -544,7 +545,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('r.txt', 'w', encoding='
 keywords = ['凤凰','香港','明珠','星河','翡翠']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('s.txt', 'w', encoding='utf-8') as s:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('s.txt', 'w', encoding='utf-8') as s:    #####定义临时文件名
     s.write('\n港澳台,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'genre' not in line:
@@ -555,7 +556,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('s.txt', 'w', encoding='
 keywords = ['重庆']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('t.txt', 'w', encoding='utf-8') as t:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('t.txt', 'w', encoding='utf-8') as t:    #####定义临时文件名
     t.write('\n重庆频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'genre' not in line:
@@ -565,7 +566,7 @@ with open('2.txt', 'r', encoding='utf-8') as file, open('t.txt', 'w', encoding='
 keywords = [',']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
-with open('2.txt', 'r', encoding='utf-8') as file, open('z.txt', 'w', encoding='utf-8') as z:    #####定义临时文件名
+with open('1.txt', 'r', encoding='utf-8') as file, open('z.txt', 'w', encoding='utf-8') as z:    #####定义临时文件名
     z.write('\n其他频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'genre' not in line:
@@ -612,7 +613,7 @@ os.remove("a.txt")
 os.remove("b.txt")
 os.remove("c.txt")
 os.remove("d.txt")
-os.remove("2.txt")
+os.remove("1.txt")
 os.remove("e.txt")
 os.remove("f.txt")
 os.remove("g.txt")

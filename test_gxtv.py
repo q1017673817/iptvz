@@ -27,7 +27,7 @@ def modify_urls(url):
 
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=0.5)
+        response = requests.get(url, timeout=1)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
@@ -54,13 +54,14 @@ with open('测试.ip', 'r', encoding='utf-8') as file:
         ip_address = url[ip_start_index:ip_dot_three]
         port = url[ip_end_index:]
         ip_end = "1"
-        modified_ip = f"{ip_address}{ip_end}{port}\n"
+        modified_ip = f"{ip_address}{ip_end}{port}"
         x_url = f"{base_url}{modified_ip}"
         x_urls.append(x_url)
     urls_a = sorted(set(modified_ip))            
     urls = sorted(set(x_urls))  # 去重得到唯一的URL列表
     with open("更新光迅源.ip", 'w', encoding='utf-8') as file:
-        file.writelines(urls_a)
+        for url in urls_a:
+            file.write(url + "\n")  
     
 valid_urls = []     #   多线程获取可用url
 with concurrent.futures.ThreadPoolExecutor(max_workers=100) as executor:
@@ -102,7 +103,7 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=100) as executor:
             try:
                 # 发送GET请求获取JSON文件，设置超时时间为0.5秒
                 json_url = f"{url}"
-                response = requests.get(json_url, timeout=0.5)
+                response = requests.get(json_url, timeout=1)
                 json_data = response.content.decode('utf-8')
                 try:
                     # 按行分割数据
