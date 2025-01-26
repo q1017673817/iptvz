@@ -36,7 +36,7 @@ def is_url_accessible(url):
 
 results = []
 urls_all = []
-with open('测试_ip.txt', 'r', encoding='utf-8') as file:
+with open('测试.ip', 'r', encoding='utf-8') as file:
     lines = file.readlines()
     for line in lines:
         url = line.strip()
@@ -59,7 +59,7 @@ with open('测试_ip.txt', 'r', encoding='utf-8') as file:
         x_urls.append(x_url)
     urls_a = sorted(set(modified_ip))            
     urls = sorted(set(x_urls))  # 去重得到唯一的URL列表
-    with open("更新光迅ip.txt", 'w', encoding='utf-8') as file:
+    with open("更新光迅源.ip", 'w', encoding='utf-8') as file:
         file.writelines(urls_a)
     
 valid_urls = []     #   多线程获取可用url
@@ -93,7 +93,7 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=100) as executor:
             modified_ip = f"{ip_address}{ip_end}{port}"
             urls.append(modified_ip)
         urls = sorted(set(urls))
-        with open("可用光迅ip.txt", 'w', encoding='utf-8') as file:
+        with open("可用光迅源.ip", 'w', encoding='utf-8') as file:
             for url in urls:
                 file.write(url + "\n")
        
@@ -401,7 +401,7 @@ for line in lines:
 with open('测试结果gxtv.txt', 'w', encoding="utf-8") as file:
  file.writelines(unique_lines)
 
-os.remove("测试_ip.txt")
+os.remove("测试.ip")
 os.remove("gxtv0.txt")
 os.remove("gxtv1.txt")
 os.remove("a.txt")
