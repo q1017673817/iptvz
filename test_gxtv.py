@@ -1,3 +1,6 @@
+import eventlet
+eventlet.monkey_patch()
+
 import time
 import datetime
 import threading
@@ -8,8 +11,6 @@ from queue import Queue
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import requests
-import eventlet
-eventlet.monkey_patch()
 
 def modify_urls(url):
     modified_urls = []
@@ -27,7 +28,7 @@ def modify_urls(url):
 
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=1)
+        response = requests.get(url, timeout=0.5)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
@@ -42,9 +43,12 @@ with open('测试.ip', 'r', encoding='utf-8') as file:
         url = line.strip()
         url = f"http://{url}"
         urls_all.append(url)        
-    urls = set(urls_all)  # 去重得到唯一的URL列表
+    urls_1 = set(urls_all)  # 去重得到唯一的URL列表
+
     x_urls = []
-    for url in urls:  # 对urls进行处理，ip第四位修改为1，并去重
+    urls_x = []
+    for url in urls_1:  # 对urls进行处理，ip第四位修改为1，并去重
+        url = url.strip()
         ip_start_index = url.find("//") + 2
         ip_end_index = url.find(":", ip_start_index)
         ip_dot_start = url.find(".") + 1
@@ -55,33 +59,36 @@ with open('测试.ip', 'r', encoding='utf-8') as file:
         port = url[ip_end_index:]
         ip_end = "1"
         modified_ip = f"{ip_address}{ip_end}{port}"
+        urls_x.append(modified_ip)
         x_url = f"{base_url}{modified_ip}"
         x_urls.append(x_url)
-    urls_a = sorted(set(modified_ip))            
-    urls = sorted(set(x_urls))  # 去重得到唯一的URL列表
+        
+    urls_a = sorted(set(urls_x))
     with open("更新光迅源.ip", 'w', encoding='utf-8') as file:
         for url in urls_a:
-            file.write(url + "\n")  
-    
-valid_urls = []     #   多线程获取可用url
-with concurrent.futures.ThreadPoolExecutor(max_workers=100) as executor:
-    futures = []
-    for url in urls:
-        url = url.strip()
-        modified_urls = modify_urls(url)
-        for modified_url in modified_urls:
-        futures.append(executor.submit(is_url_accessible, modified_url))
-    
-    for future in concurrent.futures.as_completed(futures):
-        result = future.result()
-        if result:
-           valid_urls.append(result)
-           print(result)
+            file.write(url + "\n")
+    urls_2 = sorted(set(x_urls))  # 去重得到唯一的URL列表
 
-        urls = []        
+    valid_urls = []  # 多线程获取可用url
+    with concurrent.futures.ThreadPoolExecutor(max_workers=100) as executor:
+        futures = []
+        for url in urls_2:
+            url = url.strip()
+            modified_urls = modify_urls(url)
+            for modified_url in modified_urls:
+                futures.append(executor.submit(is_url_accessible, modified_url))
+
+        for future in concurrent.futures.as_completed(futures):
+            result = future.result()
+            if result:
+                valid_urls.append(result)
+                print(result)
+        valid_urls = sorted(set(valid_urls))
+
+        urls = []
         for valid_url in valid_urls:
             url_e = valid_url.find("Z") - 1
-            url = valid_url[:url_e]                
+            url = valid_url[:url_e]
             ip_start_index = url.find("//") + 2
             ip_end_index = url.find(":", ip_start_index)
             ip_dot_start = url.find(".") + 1
@@ -93,33 +100,33 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=100) as executor:
             ip_end = "1"
             modified_ip = f"{ip_address}{ip_end}{port}"
             urls.append(modified_ip)
-        urls = sorted(set(urls))
+        urls_b = sorted(set(urls))
         with open("可用光迅源.ip", 'w', encoding='utf-8') as file:
-            for url in urls:
+            for url in urls_b:
                 file.write(url + "\n")
        
-        # 遍历网址列表，获取JSON文件并解析
-        for url in valid_urls:
+    # 遍历网址列表，获取JSON文件并解析
+    for url in valid_urls:
+        try:
+            # 发送GET请求获取JSON文件，设置超时时间为0.5秒
+            json_url = f"{url}"
+            response = requests.get(json_url, timeout=1)
+            json_data = response.content.decode('utf-8')
             try:
-                # 发送GET请求获取JSON文件，设置超时时间为0.5秒
-                json_url = f"{url}"
-                response = requests.get(json_url, timeout=1)
-                json_data = response.content.decode('utf-8')
-                try:
-                    # 按行分割数据
-                    lines = json_data.split('\n')
-                    for line in lines:
-                        if 'udp' not in line and 'rtp' not in line:
+                # 按行分割数据
+                lines = json_data.split('\n')
+                for line in lines:
+                    if 'udp' not in line and 'rtp' not in line:
                         line = line.strip()
                         if line:
                             name, channel_url = line.split(',')
                             urls = channel_url.split('/', 3)
                             url_data = json_url.split('/', 3)
                             if len(urls) >= 4:
-                                urld = (f"{urls[0]}//{url_data[2]}/{urls[3]}")
+                                urld = f"{urls[0]}//{url_data[2]}/{urls[3]}"
                             else:
-                                urld = (f"{urls[0]}//{url_data[2]}")
-                            print(f"{name},{urld}")
+                                urld = f"{urls[0]}//{url_data[2]}"
+                          #  print(f"{name},{urld}")
 
                             if name and urld:
                                 # 删除特定文字
@@ -234,10 +241,10 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=100) as executor:
                                 name = name.replace("动作电影", "CHC动作电影")
                                 name = name.replace("影迷电影", "CHC影迷电影")
                                 results.append(f"{name},{urld}")
-                except:
-                    continue
             except:
                 continue
+        except:
+            continue
 
 results = sorted(set(results))   # 去重得到唯一的URL列表
 with open("gxtv0.txt", 'w', encoding='utf-8') as file:
@@ -281,7 +288,7 @@ def worker():
             ts_url = channel_url_t + ts_lists[0]  # 拼接单个视频片段下载链接
 
             # 多获取的视频数据进行5秒钟限制
-            with eventlet.Timeout(4, False):
+            with eventlet.Timeout(5, False):
                 start_time = time.time()
                 content = requests.get(ts_url,timeout=1).content
                 end_time = time.time()

@@ -1,3 +1,6 @@
+import eventlet
+eventlet.monkey_patch()
+
 import time
 import datetime
 import threading
@@ -8,8 +11,6 @@ from queue import Queue
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import requests
-import eventlet
-eventlet.monkey_patch()
 
 def modify_urls(url):
     modified_urls = []
@@ -27,7 +28,7 @@ def modify_urls(url):
 
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=2)
+        response = requests.get(url, timeout=1)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
@@ -121,6 +122,10 @@ with open('酒店高清.ip', 'r', encoding='utf-8') as file:
                                 name = name.replace("＋", "+")
                                 name = name.replace("(", "")
                                 name = name.replace(")", "")
+                                name = name.replace("K1", "")
+                                name = name.replace("K2", "")
+                                name = name.replace("W", "")
+                                name = name.replace("w", "")
                                 name = re.sub(r"CCTV(\d+)台", r"CCTV\1", name)
                                 name = name.replace("CCTV1综合", "CCTV1")
                                 name = name.replace("CCTV2财经", "CCTV2")
@@ -222,8 +227,7 @@ with open('酒店高清.ip', 'r', encoding='utf-8') as file:
             except:
                 continue
 
-results = set(results)   # 去重得到唯一的URL列表
-results = sorted(results)
+results = sorted(set(results))   # 去重得到唯一的URL列表
 with open("iptv0.txt", 'w', encoding='utf-8') as file:
     for result in results:
         file.write(result + "\n")
@@ -564,7 +568,7 @@ with open('1.txt', 'r', encoding='utf-8') as file, open('z1.txt', 'w', encoding=
 
 ############
 file_contents = []
-file_paths = ["a1.txt","b1.txt","c1.txt","d1.txt","e1.txt","f1.txt","g1.txt","h1.txt","i1.txt","j1.txt","k1.txt","l1.txt","m1.txt","n1.txt","o1.txt","p1.txt","q1.txt","r1.txt","zj","s1.txt","t1.txt","z1.txt"]  # 替换为实际的文件路径列表
+file_paths = ["a1.txt","b1.txt","r1.txt","zj","h1.txt","j1.txt","c1.txt","d1.txt","e1.txt","f1.txt","g1.txt","i1.txt","k1.txt","l1.txt","m1.txt","n1.txt","o1.txt","p1.txt","q1.txt","s1.txt","t1.txt","z1.txt"]  # 替换为实际的文件路径列表
 for file_path in file_paths:
     with open(file_path, 'r', encoding="utf-8") as file:
         content = file.read()

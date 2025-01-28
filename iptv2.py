@@ -1,3 +1,6 @@
+import eventlet
+eventlet.monkey_patch()
+
 import time
 import datetime
 import threading
@@ -8,8 +11,6 @@ from queue import Queue
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import requests
-import eventlet
-eventlet.monkey_patch()
 
 def modify_urls(url):
     modified_urls = []
@@ -27,7 +28,7 @@ def modify_urls(url):
 
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=1)
+        response = requests.get(url, timeout=0.5)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
@@ -73,9 +74,7 @@ with open('酒店标清.ip', 'r', encoding='utf-8') as file:
                 result = future.result()
                 if result:
                     valid_urls.append(result)
-    
-        for url in valid_urls:
-            print(url)
+                    print(url)
         # 遍历网址列表，获取JSON文件并解析
         for url in valid_urls:
             try:
@@ -228,8 +227,7 @@ with open('酒店标清.ip', 'r', encoding='utf-8') as file:
             except:
                 continue
 
-results = set(results)   # 去重得到唯一的URL列表
-results = sorted(results)
+results = sorted(set(results))   # 去重得到唯一的URL列表
 with open("itv0.txt", 'w', encoding='utf-8') as file:
     for result in results:
         file.write(result + "\n")
@@ -245,7 +243,8 @@ with open('itv0.txt', 'r', encoding='utf-8') as file, open('itv1.txt', 'w', enco
     for line in file:
       if 'genre' not in line:
         if re.search(pattern, line):  # 如果行中有任意关键字
-         a.write(line)  # 将该行写入输出文件        
+         a.write(line)  # 将该行写入输出文件
+
 # 线程安全的队列，用于存储下载任务
 task_queue = Queue()
 results = []

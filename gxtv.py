@@ -1,3 +1,6 @@
+import eventlet
+eventlet.monkey_patch()
+
 import time
 import datetime
 import threading
@@ -8,8 +11,6 @@ from queue import Queue
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import requests
-import eventlet
-eventlet.monkey_patch()
 
 def modify_urls(url):
     modified_urls = []
@@ -27,7 +28,7 @@ def modify_urls(url):
     
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=2)
+        response = requests.get(url, timeout=1)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
@@ -82,7 +83,7 @@ with open('光迅.ip', 'r', encoding='utf-8') as file:
             try:
                 # 发送GET请求获取JSON文件，设置超时时间为0.5秒
                 json_url = f"{url}"
-                response = requests.get(json_url, timeout=2)
+                response = requests.get(json_url, timeout=1)
                 json_data = response.content.decode('utf-8')
                 try:
                     # 按行分割数据
@@ -98,7 +99,7 @@ with open('光迅.ip', 'r', encoding='utf-8') as file:
                                 urld = (f"{urls[0]}//{url_data[2]}/{urls[3]}")
                             else:
                                 urld = (f"{urls[0]}//{url_data[2]}")
-                            print(f"{name},{urld}")
+                      #      print(f"{name},{urld}")
 
                             if name and urld:
                                 # 删除特定文字
