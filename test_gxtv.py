@@ -28,7 +28,7 @@ def modify_urls(url):
 
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=0.5)
+        response = requests.get(url, timeout=1.5)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
@@ -110,7 +110,7 @@ with open('测试.ip', 'r', encoding='utf-8') as file:
         try:
             # 发送GET请求获取JSON文件，设置超时时间为0.5秒
             json_url = f"{url}"
-            response = requests.get(json_url, timeout=1)
+            response = requests.get(json_url, timeout=3)
             json_data = response.content.decode('utf-8')
             try:
                 # 按行分割数据

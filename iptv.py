@@ -28,7 +28,7 @@ def modify_urls(url):
 
 def is_url_accessible(url):
     try:
-        response = requests.get(url, timeout=1)
+        response = requests.get(url, timeout=1.5)
         if response.status_code == 200:
             return url
     except requests.exceptions.RequestException:
