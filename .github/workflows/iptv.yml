@@ -35,9 +35,8 @@ jobs:
           git add .
           git commit *.txt -m "更新直播源"
           #git commit *.m3u -m "Update results"
-          git push
 
-      - name: Push To Gitee
+      - name: Push Changes To Gitee
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GE_TOKEN }}
@@ -46,3 +45,12 @@ jobs:
           branch: iptv
           force: true
           github_url: https://gitee.com
+
+      - name: Push Changes To Github
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          repository: ${{ secrets.GH_PATH }}
+          directory: .
+          branch: iptv
+          force: true
