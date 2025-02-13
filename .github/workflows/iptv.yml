@@ -10,7 +10,9 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0    
     
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -24,9 +26,9 @@ jobs:
       - name: run iptvpy
         run: |
           cd $GITHUB_WORKSPACE
-          python ./iptv2.py
+          #python ./iptv2.py
           python ./iptv.py
-          python ./gxtv.py
+          #python ./gxtv.py
            
       - name: 提交更改
         run: |
