@@ -26,9 +26,9 @@ jobs:
       - name: run iptvpy
         run: |
           cd $GITHUB_WORKSPACE
-          #python ./iptv2.py
+          python ./iptv2.py
           python ./iptv.py
-          #python ./gxtv.py
+          python ./gxtv.py
            
       - name: 提交更改
         run: |
@@ -38,7 +38,7 @@ jobs:
           git commit *.txt -m "更新直播源"
           #git commit *.m3u -m "Update results"
 
-      - name: Push Changes To Gitee
+      - name: Push To Gitee
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GE_TOKEN }}
@@ -48,11 +48,10 @@ jobs:
           force: true
           github_url: https://gitee.com
 
-      - name: Push Changes To Github
+      - name: Push To Github
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GH_TOKEN }}
           repository: ${{ secrets.GH_PATH }}
           directory: .
-          branch: iptv
           force: true
