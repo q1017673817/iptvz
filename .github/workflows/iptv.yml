@@ -40,6 +40,7 @@ jobs:
       - name: Push To Gitee
         uses: ad-m/github-push-action@master
         with:
+          github_token: ${{ secrets.GE_TOKEN }}
           repository: ${{ secrets.GE_PATH }}
           directory: .
           branch: iptv
