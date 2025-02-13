@@ -35,4 +35,13 @@ jobs:
           git add .
           git commit *.txt -m "更新直播源"
           #git commit *.m3u -m "Update results"
-          git push 
+          git push
+
+      - name: Push To Gitee
+        uses: ad-m/github-push-action@master
+        with:
+          repository: ${{ secrets.GE_PATH }}
+          directory: .
+          branch: iptv
+          force: true
+          github_url: https://gitee.com
