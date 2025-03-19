@@ -21,9 +21,13 @@ jobs:
     - name: 获取组播地址
       run: |
         cd $GITHUB_WORKSPACE
+        bash ./zubo2.sh
+
+    - name: 测试组播地址
+      run: |
+        cd $GITHUB_WORKSPACE
         chmod +x speed.sh
         bash ./zubo.sh
-#        bash ./zubo1.sh
 
     - name: Set up Python
       uses: actions/setup-python@v2

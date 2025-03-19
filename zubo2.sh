@@ -69,10 +69,10 @@ esac
 ipfile="ip/${channel_key}_ip"
 good_ip="ip/${channel_key}_good_ip"
 # 搜索最新 IP
-#cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
-cat ip/${channel_key}_good_ip >tmp_ipfile
+cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
+cat ip/${channel_key}_good_ip >>tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
-rm -f tmp_ipfile $good_ip
+rm -f tmp_ipfile ip/${channel_key}.html $good_ip
 
 while IFS= read -r ip; do
     # 尝试连接 IP 地址和端口号，并将输出保存到变量中
@@ -91,26 +91,18 @@ lines=$(wc -l < "$good_ip")
 echo "【$good_ip】内 ip 共计 $lines 个"
 
 i=0
-mkdir -p tmpip
-while read -r line; do
-    ip=$(echo "$line" | sed 's/^[ \t]*//;s/[ \t]*$//')  # 去除首尾空格
-    
-    # 如果行不为空，则写入临时文件
-    if [ -n "$ip" ]; then
-        echo "$ip" > "tmpip/ip_$i.txt"  # 保存为 tmpip 目录下的临时文件
-        ((i++))
-    fi
-done < "$good_ip"
+while read line; do
+    i=$((i + 1))
+    ip=$line
+    url="http://$ip/$stream"
+    echo $url
+    curl $url --connect-timeout 3 --max-time 20 -o /dev/null >zubo.tmp 2>&1
+    a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)  
 
-i=0
-for temp_file in tmpip/ip_*.txt; do
-      ((i++))
-     ip=$(<"$temp_file")  # 从临时文件中读取 IP 地址
-     a=$(./speed.sh "$ip" "$stream")
-     echo "第 $i/$lines 个：$ip $a"
-     echo "$ip $a" >> "speedtest_${city}_$time.log"
-done
-rm -rf tmpip/* $ipfile 
+    echo "第$i/$lines个：$ip    $a"
+    echo "$ip    $a" >> "speedtest_${city}_$time.log"
+done < "$good_ip"
+rm -f zubo.tmp
 
 awk '/M|k/{print $2"  "$1}' "speedtest_${city}_$time.log" | sort -n -r >"result_${city}.txt"
 cat "result_${city}.txt"
@@ -127,19 +119,19 @@ cat tmp1.txt tmp2.txt tmp3.txt > tmp_all.txt
 grep -vE '/{3}' tmp_all.txt > "txt/${channel_key}.txt"
 rm -rf "result_${city}.txt" tmp1.txt tmp2.txt tmp3.txt tmp_all.txt
 
-#--------------------合并所有城市的txt文件为:   zubo1.txt-----------------------------------------
+#--------------------合并所有城市的txt文件为:   zubo2.txt-----------------------------------------
 
-echo "浙江电信,#genre#" >zubo1.txt
-cat txt/浙江电信.txt >>zubo1.txt
-echo "江苏电信,#genre#" >>zubo1.txt
-cat txt/江苏电信.txt >>zubo1.txt
-echo "上海电信,#genre#" >>zubo1.txt
-cat txt/上海电信.txt >>zubo1.txt
-echo "湖北电信,#genre#" >>zubo1.txt
-cat txt/湖北电信.txt >>zubo1.txt
-echo "山西电信,#genre#" >>zubo1.txt
-cat txt/山西电信.txt >>zubo1.txt
-echo "安徽电信,#genre#" >>zubo1.txt
-cat txt/安徽电信.txt >>zubo1.txt
-echo "重庆电信,#genre#" >>zubo1.txt
-cat txt/重庆电信.txt >>zubo1.txt
+echo "浙江电信,#genre#" >zubo2.txt
+cat txt/浙江电信.txt >>zubo2.txt
+echo "江苏电信,#genre#" >>zubo2.txt
+cat txt/江苏电信.txt >>zubo2.txt
+echo "上海电信,#genre#" >>zubo2.txt
+cat txt/上海电信.txt >>zubo2.txt
+echo "湖北电信,#genre#" >>zubo2.txt
+cat txt/湖北电信.txt >>zubo2.txt
+echo "山西电信,#genre#" >>zubo2.txt
+cat txt/山西电信.txt >>zubo2.txt
+echo "安徽电信,#genre#" >>zubo2.txt
+cat txt/安徽电信.txt >>zubo2.txt
+echo "重庆电信,#genre#" >>zubo2.txt
+cat txt/重庆电信.txt >>zubo2.txt
