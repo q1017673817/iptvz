@@ -342,7 +342,7 @@ with open('2.txt', 'r', encoding='utf-8') as file:
  pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 #pattern = r"^(.*?),(?!#genre#)(.*?)$" #以分类直接复制
 with open('2.txt', 'r', encoding='utf-8') as file, open('a2.txt', 'w', encoding='utf-8') as a:    #####定义临时文件名
-    a.write(f"央视频道{current_time}点更新,#genre#\n")                                                                 #####写入临时文件名
+    a.write(f"央视频道{current_time}更新,#genre#\n")                                                                 #####写入临时文件名
     for line in file:
       if 'genre' not in line:
         if re.search(pattern, line):  # 如果行中有任意关键字
