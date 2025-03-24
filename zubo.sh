@@ -135,12 +135,12 @@ rm -rf "result_${city}.txt" tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp_all
 
 echo "浙江电信,#genre#" >zubo1.txt
 cat txt/浙江电信.txt >>zubo1.txt
+echo "湖北电信,#genre#" >>zubo1.txt
+cat txt/湖北电信.txt >>zubo1.txt
 echo "江苏电信,#genre#" >>zubo1.txt
 cat txt/江苏电信.txt >>zubo1.txt
 echo "上海电信,#genre#" >>zubo1.txt
 cat txt/上海电信.txt >>zubo1.txt
-echo "湖北电信,#genre#" >>zubo1.txt
-cat txt/湖北电信.txt >>zubo1.txt
 echo "山西电信,#genre#" >>zubo1.txt
 cat txt/山西电信.txt >>zubo1.txt
 echo "安徽电信,#genre#" >>zubo1.txt
