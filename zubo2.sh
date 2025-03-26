@@ -53,7 +53,7 @@ case $city_choice in
 	;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..7}; do
+        for option in {1,2,4}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -109,34 +109,20 @@ cat "result_${city}.txt"
 ip1=$(awk 'NR==1{print $2}' result_${city}.txt)
 ip2=$(awk 'NR==2{print $2}' result_${city}.txt)
 ip3=$(awk 'NR==3{print $2}' result_${city}.txt)
-ip4=$(awk 'NR==4{print $2}' result_${city}.txt)
-ip5=$(awk 'NR==5{print $2}' result_${city}.txt)
 rm -f "speedtest_${city}_$time.log"         
-# 用 5 个最快 ip 生成对应城市的 txt 文件
+# 用 3 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"
 sed "s/ipipip/$ip1/g" "$program" > tmp1.txt
 sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
 sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
-sed "s/ipipip/$ip4/g" "$program" > tmp4.txt
-sed "s/ipipip/$ip5/g" "$program" > tmp5.txt
-cat tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt > tmp_all.txt
 cat tmp1.txt tmp2.txt tmp3.txt > tmp_all.txt
 grep -vE '/{3}' tmp_all.txt > "txt/${channel_key}.txt"
-rm -rf "result_${city}.txt" tmp1.txt tmp2.txt tmp3.txt tmp4.txt tmp5.txt tmp_all.txt
+rm -rf "result_${city}.txt" tmp1.txt tmp2.txt tmp3.txt tmp_all.txt
 
 #--------------------合并所有城市的txt文件为:   zubo2.txt-----------------------------------------
-
-echo "浙江电信,#genre#" >zubo2.txt
-cat txt/浙江电信.txt >>zubo2.txt
-echo "湖北电信,#genre#" >>zubo2.txt
+echo "湖北电信,#genre#" >zubo2.txt
 cat txt/湖北电信.txt >>zubo2.txt
+echo "浙江电信,#genre#" >>zubo2.txt
+cat txt/浙江电信.txt >>zubo2.txt
 echo "江苏电信,#genre#" >>zubo2.txt
 cat txt/江苏电信.txt >>zubo2.txt
-echo "上海电信,#genre#" >>zubo2.txt
-cat txt/上海电信.txt >>zubo2.txt
-echo "山西电信,#genre#" >>zubo2.txt
-cat txt/山西电信.txt >>zubo2.txt
-echo "安徽电信,#genre#" >>zubo2.txt
-cat txt/安徽电信.txt >>zubo2.txt
-echo "重庆电信,#genre#" >>zubo2.txt
-cat txt/重庆电信.txt >>zubo2.txt

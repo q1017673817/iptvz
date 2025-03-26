@@ -568,7 +568,7 @@ with open('1.txt', 'r', encoding='utf-8') as file, open('z1.txt', 'w', encoding=
 
 ############
 file_contents = []
-file_paths = ["a1.txt","b1.txt","r1.txt","zj","h1.txt","j1.txt","c1.txt","d1.txt","e1.txt","f1.txt","g1.txt","i1.txt","k1.txt","l1.txt","m1.txt","n1.txt","o1.txt","p1.txt","q1.txt","s1.txt","t1.txt","z1.txt"]  # 替换为实际的文件路径列表
+file_paths = ["a1.txt","b1.txt","zubo.txt","r1.txt","zj","h1.txt","j1.txt","c1.txt","d1.txt","e1.txt","f1.txt","g1.txt","i1.txt","k1.txt","l1.txt","m1.txt","n1.txt","o1.txt","p1.txt","q1.txt","s1.txt","t1.txt","z1.txt"]  # 替换为实际的文件路径列表
 for file_path in file_paths:
     with open(file_path, 'r', encoding="utf-8") as file:
         content = file.read()
