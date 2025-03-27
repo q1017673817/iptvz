@@ -70,7 +70,7 @@ ipfile="ip/${channel_key}_ip"
 good_ip="ip/${channel_key}_good_ip"
 # 搜索最新 IP
 cat ip/${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
-cat ip/${channel_key}_good_ip >tmp_ipfile
+cat ip/${channel_key}_good_ip >>tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
 rm -f tmp_ipfile $good_ip
 
