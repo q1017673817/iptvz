@@ -43,7 +43,7 @@ if [ $? -eq 0 ]; then
             echo "-------下载速度慢：$DOWNLOAD_SPEED_MBPS  下载帧数：$Frames-------"
             DOWNLOAD_SPEED_MBPS=0
         else
-            if (( Frames < 400  ));then
+            if (( Frames < 200  ));then
                 echo "-------下载速度($DOWNLOAD_SPEED_MBPS)，但测试帧数低:" $Frames"-------"
                 DOWNLOAD_SPEED_MBPS=0
             else
