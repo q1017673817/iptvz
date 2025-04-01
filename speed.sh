@@ -55,6 +55,7 @@ if [ $? -eq 0 ]; then
 
 else
     echo "链接下载测速不可用!"
+    DOWNLOAD_SPEED_MBPS=0
 fi
 echo "$DOWNLOAD_SPEED_MBPS Mb/s"
 rm -rf ${OUTPUT_FILE}
