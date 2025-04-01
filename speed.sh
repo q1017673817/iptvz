@@ -43,11 +43,11 @@ if [ $? -eq 0 ]; then
             echo "-------下载速度慢：$DOWNLOAD_SPEED_MBPS  下载帧数：$Frames-------"
             DOWNLOAD_SPEED_MBPS=0
         else
-            if (( Frames < 10  ));then
-                echo "-------下载速度($DOWNLOAD_SPEED_MBPS)，但测试帧数低:" $Frames"-------"
+            if (( $Frames < 200  ));then
+                echo "-------下载速度($DOWNLOAD_SPEED_MBPS)，但测试帧数低: $Frames-------"
                 DOWNLOAD_SPEED_MBPS=0
             else
-                echo "$DOWNLOAD_SPEED_MBPS Mb/s"
+                echo "-------下载速度($DOWNLOAD_SPEED_MBPS)，测试帧数: $Frames-------"
             fi
 
         fi
@@ -56,5 +56,5 @@ if [ $? -eq 0 ]; then
 else
     echo "链接下载测速不可用!"
 fi
-
+echo "$DOWNLOAD_SPEED_MBPS Mb/s"
 rm -rf ${OUTPUT_FILE}
