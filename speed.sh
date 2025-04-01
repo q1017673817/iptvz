@@ -14,9 +14,8 @@ OUTPUT_FILE="temp_video.mp4"
 # 开始时间
 START_TIME=$(date +%s)
 
-# 使用 ffmpeg 下载视频并保存 20秒
-#ffmpeg -i "$URL" -t 20 -c copy "$OUTPUT_FILE" -y 2>/dev/null
-timeout 25 ffmpeg -i "$URL" -t 20 -c copy "$OUTPUT_FILE" -y >ffmpeg.log 2>&1
+# 使用 ffmpeg 下载视频并保存 30秒
+ffmpeg -i "$URL" -t 30 -c copy "$OUTPUT_FILE" -y 2>/dev/null
 
 # 检查 ffmpeg 的退出状态
 if [ $? -eq 0 ]; then
@@ -28,7 +27,6 @@ if [ $? -eq 0 ]; then
 
     # 获取文件大小（以字节为单位）
     FILE_SIZE=$(stat -c%s "$OUTPUT_FILE")
-    Frames=$(tail -n 2 ffmpeg.log |head -n 1| grep -oE 'frame=[ ]*[0-9]+'  | tail -1 | awk -F'=' '{print $2}' | tr -d ' ')
     if [ "$FILE_SIZE" -eq 0 ]; then
         echo "下载文件为空：$1"
         DOWNLOAD_SPEED_MBPS=0
@@ -39,17 +37,11 @@ if [ $? -eq 0 ]; then
         DOWNLOAD_SPEED_MBPS=$(echo "scale=2; $DOWNLOAD_SPEED * 8 / 1000000" | bc)
 
         # 判断 DOWNLOAD_SPEED_MBPS 是否小于 1，速度太慢的节点不要
-        if (( $(echo "$DOWNLOAD_SPEED_MBPS < 1" | bc -l) )); then
-            echo "-------下载速度慢：$DOWNLOAD_SPEED_MBPS  下载帧数：$Frames-------"
+        if (( $(echo "$DOWNLOAD_SPEED_MBPS < 1.1" | bc -l) )); then
+            echo "-------下载速度慢：$DOWNLOAD_SPEED_MBPS-------"
             DOWNLOAD_SPEED_MBPS=0
-        else
-            if (( $Frames < 200  ));then
-                echo "-------下载速度($DOWNLOAD_SPEED_MBPS)，但测试帧数低: $Frames-------"
-                DOWNLOAD_SPEED_MBPS=0
-            else
-                echo "-------下载速度($DOWNLOAD_SPEED_MBPS)，测试帧数: $Frames-------"
-            fi
-
+        else                       
+             echo "-------下载速度($DOWNLOAD_SPEED_MBPS)-------"           
         fi
     fi
 
