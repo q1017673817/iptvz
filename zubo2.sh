@@ -96,7 +96,7 @@ while read line; do
     ip=$line
     url="http://$ip/$stream"
     echo $url
-    curl $url --connect-timeout 3 --max-time 20 -o /dev/null >zubo.tmp 2>&1
+    curl $url --connect-timeout 3 --max-time 30 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)  
 
     echo "第$i/$lines个：$ip    $a"
