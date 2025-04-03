@@ -53,7 +53,7 @@ case $city_choice in
 	;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1,2,4}; do
+        for option in {1..7}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -96,7 +96,7 @@ while read line; do
     ip=$line
     url="http://$ip/$stream"
     echo $url
-    curl $url --connect-timeout 3 --max-time 30 -o /dev/null >zubo.tmp 2>&1
+    curl $url --connect-timeout 3 --max-time 40 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)  
 
     echo "第$i/$lines个：$ip    $a"
@@ -126,3 +126,11 @@ echo "浙江电信,#genre#" >>zubo2.txt
 cat txt/浙江电信.txt >>zubo2.txt
 echo "江苏电信,#genre#" >>zubo2.txt
 cat txt/江苏电信.txt >>zubo2.txt
+echo "上海电信,#genre#" >>zubo2.txt
+cat txt/上海电信.txt >>zubo2.txt
+echo "安徽电信,#genre#" >>zubo2.txt
+cat txt/安徽电信.txt >>zubo2.txt
+echo "山西电信,#genre#" >>zubo2.txt
+cat txt/山西电信.txt >>zubo2.txt
+echo "重庆电信,#genre#" >>zubo2.txt
+cat txt/重庆电信.txt >>zubo2.txt

@@ -23,20 +23,20 @@ jobs:
         cd $GITHUB_WORKSPACE
         bash ./zubo2.sh
 
-    - name: 测试组播地址
-      run: |
-        cd $GITHUB_WORKSPACE
-        chmod +x speed.sh
-        bash ./zubo.sh
+#    - name: 测试组播地址
+#      run: |
+#        cd $GITHUB_WORKSPACE
+#        chmod +x speed.sh
+#        bash ./zubo.sh
 
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
           python-version: 3.x
 
-    - name: Install dependencies
-      run: |
-          pip install selenium requests futures eventlet
+#    - name: Install dependencies
+#      run: |
+#         pip install selenium requests futures eventlet
 #         pip install selenium==4.19.0 requests==2.31.0 futures==3.0.5 eventlet==0.36.1
 
     - name: run 去重py

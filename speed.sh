@@ -15,7 +15,7 @@ OUTPUT_FILE="temp_video.mp4"
 START_TIME=$(date +%s)
 
 # 使用 ffmpeg 下载视频并保存 20秒
-ffmpeg -i "$URL" -t 60 -c copy "$OUTPUT_FILE" -y 2>/dev/null
+ffmpeg -i "$URL" -t 40 -c copy "$OUTPUT_FILE" -y 2>/dev/null
 
 # 检查 ffmpeg 的退出状态
 if [ $? -ne 0 ]; then
