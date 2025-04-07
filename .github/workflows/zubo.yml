@@ -1,8 +1,8 @@
 name: zubo
 
 on:
-#  schedule:
-#    - cron: '0 7 * * *'
+  schedule:
+    - cron: '0 5,14 * * *'
   workflow_dispatch:
 
 jobs:
@@ -12,6 +12,28 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
+
+     - name: Set up Python
+       uses: actions/setup-python@v2
+       with:
+         python-version: 3.x
+
+     - name: Install dependencies
+       run: |
+         python -m pip install --upgrade pip
+     - name: Install bs4
+       run: pip3 install bs4
+     - name: Install playwright
+       run: pip3 install playwright
+     - name: Install requests
+       run: pip3 install requests     
+     - name: Install playwright install
+       run: playwright install
+     - name: Install datetime
+       run: pip install datetime
+
+     - name: Run py
+       run: python ${{ github.workspace }}/zubo.py
       
     - name: Install Dependencies
       run: |
@@ -28,16 +50,6 @@ jobs:
 #        cd $GITHUB_WORKSPACE
 #        chmod +x speed.sh
 #        bash ./zubo.sh
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-          python-version: 3.x
-
-#    - name: Install dependencies
-#      run: |
-#         pip install selenium requests futures eventlet
-#         pip install selenium==4.19.0 requests==2.31.0 futures==3.0.5 eventlet==0.36.1
 
     - name: run 去重py
       run: python ${{ github.workspace }}/去重.py

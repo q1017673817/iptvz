@@ -110,7 +110,7 @@ for temp_file in tmpip/ip_*.txt; do
      echo "第 $i/$lines 个：$ip $a"
      echo "$ip $a" >> "speedtest_${city}_$time.log"
 done
-rm -rf tmpip/* $ipfile $good_ip
+rm -rf tmpip/* tmpip/ $ipfile $good_ip
 
 awk '/M|k/{print $2"  "$1}' "speedtest_${city}_$time.log" | sort -n -r >"result_${city}.txt"
 cat "result_${city}.txt"

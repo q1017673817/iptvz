@@ -4,7 +4,7 @@ time=$(date +%m%d%H%M)
 if [ $# -eq 0 ]; then
   echo "请选择城市："
   echo "0. 全部"
-  read -t 1 -p "输入选择或在3秒内无输入将默认选择全部: " city_choice
+  read -t 1 -p "输入选择或在1秒内无输入将默认选择全部: " city_choice
 
   if [ -z "$city_choice" ]; then
       echo "未检测到输入，自动选择全部选项..."
@@ -53,7 +53,7 @@ case $city_choice in
 	;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1..4}; do
+        for option in {1,2,4}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -70,7 +70,7 @@ ipfile="ip/${channel_key}_ip"
 good_ip="ip/${channel_key}_good_ip"
 # 搜索最新 IP
 cat ip/${channel_key}_ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
-#cat ip/${channel_key}_good_ip >>tmp_ipfile
+cat ip/${channel_key}_good_ip >>tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
 rm -f tmp_ipfile $good_ip
 
@@ -120,14 +120,22 @@ grep -vE '/{3}' tmp_all.txt > "txt/${channel_key}.txt"
 rm -rf "result_${city}.txt" tmp1.txt tmp2.txt tmp3.txt tmp_all.txt
 
 #--------------------合并所有城市的txt文件为:   zubo2.txt-----------------------------------------
-echo "湖北电信,#genre#" >zubo2.txt
+echo "广东电信,#genre#" >zubo2.txt
+cat txt/广东电信.txt >>zubo2.txt
+echo "北京联通,#genre#" >>zubo2.txt
+cat txt/北京联通.txt >>zubo2.txt
+echo "广东联通,#genre#" >>zubo2.txt
+cat txt/广东联通.txt >>zubo2.txt
+echo "湖北电信,#genre#" >>zubo2.txt
 cat txt/湖北电信.txt >>zubo2.txt
 echo "浙江电信,#genre#" >>zubo2.txt
 cat txt/浙江电信.txt >>zubo2.txt
 echo "江苏电信,#genre#" >>zubo2.txt
 cat txt/江苏电信.txt >>zubo2.txt
-echo "上海电信,#genre#" >>zubo2.txt
-cat txt/上海电信.txt >>zubo2.txt
+#echo "湖南电信,#genre#" >>zubo2.txt
+#cat txt/湖南电信.txt >>zubo2.txt
+#echo "上海电信,#genre#" >>zubo2.txt
+#cat txt/上海电信.txt >>zubo2.txt
 #echo "安徽电信,#genre#" >>zubo2.txt
 #cat txt/安徽电信.txt >>zubo2.txt
 #echo "山西电信,#genre#" >>zubo2.txt
