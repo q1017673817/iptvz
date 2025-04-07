@@ -11,7 +11,9 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0   
     
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -26,21 +28,12 @@ jobs:
           pip install datetime
 
       - name: 获取组播地址
-        run: python ${{ github.workspace }}/zubo.py
-        
-      - name: Install Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y yt-dlp sed nmap
-      
-      - name: 合并组播文件
         run: |
           cd $GITHUB_WORKSPACE
+          python ./zubo.py
           bash ./合并.sh
-        
-      - name: 去重
-        run: python ${{ github.workspace }}/去重.py
-        
+          python ./去重.py
+    
       - name: 提交更改
         run: |
           git config --local user.email "action@github.com"
