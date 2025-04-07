@@ -37,7 +37,7 @@ def is_url_accessible(url):
 
 results = []
 urls_all = []
-with open('ip/酒店高清.ip', 'r', encoding='utf-8') as file:
+with open(f"ip/酒店高清.ip", 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
             url = line.strip()
@@ -273,7 +273,7 @@ def worker():
             # 多获取的视频数据进行5秒钟限制
             with eventlet.Timeout(5, False):
                 start_time = time.time()
-                content = requests.get(ts_url,timeout=1).content
+                content = requests.get(ts_url,timeout=2).content
                 end_time = time.time()
                 response_time = (end_time - start_time) * 1
                 
@@ -304,7 +304,7 @@ def worker():
         task_queue.task_done()
 
 # 创建多个工作线程
-num_threads = 10
+num_threads = 20
 for _ in range(num_threads):
     t = threading.Thread(target=worker, daemon=True) 
     t.start()
