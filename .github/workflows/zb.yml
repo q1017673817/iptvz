@@ -1,18 +1,17 @@
-name: iptv
+name: zb
+
 on:
   schedule:
-    - cron: '0 0,10 * * *'       
+    - cron: '0 4,19 * * *'  # 每12个小时的第 0 分钟运行
   workflow_dispatch:
-      
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0    
+        uses: actions/checkout@v2
     
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -21,21 +20,35 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install selenium requests futures eventlet
+          python -m pip install --upgrade pip
+          pip3 install bs4 playwright requests
+          playwright install
+          pip install datetime
 
-      - name: run iptvpy
+      - name: 获取组播地址
+        run: python ${{ github.workspace }}/zubo.py
+        
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y yt-dlp sed nmap
+      
+      - name: 合并组播文件
         run: |
           cd $GITHUB_WORKSPACE
-          python ./iptv2.py
-          python ./iptv.py
-           
+          bash ./合并.sh
+        
+      - name: 去重
+        run: python ${{ github.workspace }}/去重.py
+        
       - name: 提交更改
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
-          git commit *.txt -m "更新直播源"
-          #git commit *.m3u -m "Update results"
+          git commit *.txt -m "更新组播源"
+          # git commit *.m3u -m "Add generated file"
+          #git pull --rebase
 
       - name: Push To Gitee
         uses: ad-m/github-push-action@master

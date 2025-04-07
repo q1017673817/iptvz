@@ -1,8 +1,8 @@
 name: zubo
 
 on:
-  schedule:
-    - cron: '0 5,14 * * *'
+#  schedule:
+#    - cron: '0 7 * * *'
   workflow_dispatch:
 
 jobs:
@@ -12,21 +12,6 @@ jobs:
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.x
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-      run: pip3 install bs4 playwright requests     
-      run: playwright install
-      run: pip install datetime
-
-    - name: Run py
-      run: python ${{ github.workspace }}/zubo.py
       
     - name: Install Dependencies
       run: |
@@ -36,22 +21,39 @@ jobs:
     - name: 获取组播地址
       run: |
         cd $GITHUB_WORKSPACE
+#        chmod +x speed.sh
         bash ./zubo2.sh
 
-#    - name: 测试组播地址
-#      run: |
-#        cd $GITHUB_WORKSPACE
-#        chmod +x speed.sh
-#        bash ./zubo.sh
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+          python-version: 3.x
 
-    - name: run 去重py
+    - name: 去重
       run: python ${{ github.workspace }}/去重.py
       
     - name: 更新组播源
       run: |
-        cd $GITHUB_WORKSPACE
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
         git commit -m "更新组播源"
-        git push
+
+    - name: Push To Gitee
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GE_TOKEN }}
+        repository: ${{ secrets.GE_PATH }}
+        directory: .
+        branch: iptv
+        force: true
+        github_url: https://gitee.com
+        
+    - name: Push To Github
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GH_TOKEN }}
+        repository: ${{ secrets.GH_PATH }}
+        directory: .
+        force: true
+
