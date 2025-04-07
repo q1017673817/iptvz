@@ -13,27 +13,20 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
 
-     - name: Set up Python
-       uses: actions/setup-python@v2
-       with:
-         python-version: 3.x
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.x
 
-     - name: Install dependencies
-       run: |
-         python -m pip install --upgrade pip
-     - name: Install bs4
-       run: pip3 install bs4
-     - name: Install playwright
-       run: pip3 install playwright
-     - name: Install requests
-       run: pip3 install requests     
-     - name: Install playwright install
-       run: playwright install
-     - name: Install datetime
-       run: pip install datetime
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+      run: pip3 install bs4 playwright requests     
+      run: playwright install
+      run: pip install datetime
 
-     - name: Run py
-       run: python ${{ github.workspace }}/zubo.py
+    - name: Run py
+      run: python ${{ github.workspace }}/zubo.py
       
     - name: Install Dependencies
       run: |
