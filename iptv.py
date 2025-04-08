@@ -366,7 +366,7 @@ with open('1.txt', 'r', encoding='utf-8') as file, open('广西.txt', 'w', encod
         if re.search(pattern, line):  # 如果行中有任意关键字
          k.write(line)  # 将该行写入输出文件
 
-keywords = ['凤凰','香港','明珠','星河','翡翠']  # 需要提取的关键字列表
+keywords = ['凤凰','香港','明珠台','星河','翡翠台']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 with open('1.txt', 'r', encoding='utf-8') as file, open('港台.txt', 'w', encoding='utf-8') as s:    #####定义临时文件名
     s.write('\n港台频道,#genre#\n')                                                                  #####写入临时文件名
@@ -378,6 +378,7 @@ with open('1.txt', 'r', encoding='utf-8') as file, open('港台.txt', 'w', encod
 keywords = [',']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 with open('1.txt', 'r', encoding='utf-8') as file, open('其他.txt', 'w', encoding='utf-8') as z:    #####定义临时文件名
+    z.write('\n其他频道,#genre#\n')                                                                  #####写入临时文件名
     for line in file:
       if 'genre' not in line:
         if re.search(pattern, line):  # 如果行中有任意关键字
@@ -707,7 +708,7 @@ with open('1.txt', 'r', encoding='utf-8') as file, open('广西.txt', 'a', encod
         if re.search(pattern, line):  # 如果行中有任意关键字
          k.write(line)  # 将该行写入输出文件
 
-keywords = ['凤凰','香港','明珠','星河','翡翠']  # 需要提取的关键字列表
+keywords = ['凤凰','香港','明珠台','星河','翡翠台']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 with open('1.txt', 'r', encoding='utf-8') as file, open('港台.txt', 'a', encoding='utf-8') as s:    #####定义临时文件名
     for line in file:

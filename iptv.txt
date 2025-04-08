@@ -2900,6 +2900,7 @@ CCTV-17农业农村,http://117.81.138.133:888/udp/239.49.8.52:9810
 凤凰香港,http://116.11.156.161:8811/tsfile/live/1005_1.m3u8?key=txiptv&playlive=1&authid=0
 明珠台,http://119.125.134.151:9901/tsfile/live/1030_1.m3u8?key=txiptv&playlive=1&authid=0
 翡翠台,http://119.125.134.151:9901/tsfile/live/faacts/1035_1.m3u8?key=txiptv&playlive=1&authid=0
+其他频道,#genre#
 西湖明珠,http://123.154.107.230:9901/tsfile/live/1007_1.m3u8?key=txiptv&playlive=0&authid=0
 西湖明珠,http://123.154.104.204:9901/tsfile/live/1007_1.m3u8?key=txiptv&playlive=0&authid=0
 西湖明珠,http://123.154.107.165:9901/tsfile/live/1007_1.m3u8?key=txiptv&playlive=0&authid=0
