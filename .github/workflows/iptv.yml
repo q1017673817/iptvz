@@ -1,7 +1,7 @@
 name: iptv
 on:
-  schedule:
-    - cron: '0 0,10 * * *'       
+#  schedule:
+#    - cron: '0 0,10 * * *'       
   workflow_dispatch:
       
 jobs:
@@ -26,7 +26,6 @@ jobs:
       - name: run iptvpy
         run: |
           cd $GITHUB_WORKSPACE
-          python ./iptv2.py
           python ./iptv.py
            
       - name: 提交更改

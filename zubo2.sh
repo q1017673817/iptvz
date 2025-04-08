@@ -120,25 +120,21 @@ grep -vE '/{3}' tmp_all.txt > "txt/${channel_key}.txt"
 rm -rf "result_${city}.txt" tmp1.txt tmp2.txt tmp3.txt tmp_all.txt
 
 #--------------------合并所有城市的txt文件为:   zubo2.txt-----------------------------------------
-echo "广东电信,#genre#" >zubo2.txt
-cat txt/广东电信.txt >>zubo2.txt
-echo "北京联通,#genre#" >>zubo2.txt
+cat txt/广东电信.txt >zubo2.txt
 cat txt/北京联通.txt >>zubo2.txt
-echo "广东联通,#genre#" >>zubo2.txt
 cat txt/广东联通.txt >>zubo2.txt
-echo "湖北电信,#genre#" >>zubo2.txt
-cat txt/湖北电信.txt >>zubo2.txt
-echo "浙江电信,#genre#" >>zubo2.txt
-cat txt/浙江电信.txt >>zubo2.txt
-echo "江苏电信,#genre#" >>zubo2.txt
-cat txt/江苏电信.txt >>zubo2.txt
-#echo "湖南电信,#genre#" >>zubo2.txt
 #cat txt/湖南电信.txt >>zubo2.txt
-#echo "上海电信,#genre#" >>zubo2.txt
+echo "湖北电信_组播,#genre#" >>zubo2.txt
+cat txt/湖北电信.txt >>zubo2.txt
+echo "浙江电信_组播,#genre#" >>zubo2.txt
+cat txt/浙江电信.txt >>zubo2.txt
+echo "江苏电信_组播,#genre#" >>zubo2.txt
+cat txt/江苏电信.txt >>zubo2.txt
+#echo "上海电信_组播,#genre#" >>zubo2.txt
 #cat txt/上海电信.txt >>zubo2.txt
-#echo "安徽电信,#genre#" >>zubo2.txt
+#echo "安徽电信_组播,#genre#" >>zubo2.txt
 #cat txt/安徽电信.txt >>zubo2.txt
-#echo "山西电信,#genre#" >>zubo2.txt
+#echo "山西电信_组播,#genre#" >>zubo2.txt
 #cat txt/山西电信.txt >>zubo2.txt
-#echo "重庆电信,#genre#" >>zubo2.txt
+#echo "重庆电信_组播,#genre#" >>zubo2.txt
 #cat txt/重庆电信.txt >>zubo2.txt
