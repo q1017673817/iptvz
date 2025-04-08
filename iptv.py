@@ -565,7 +565,7 @@ with open(f"ip/酒店标清.ip", 'r', encoding='utf-8') as file:
                                 name = name.replace("动作电影", "CHC动作电影")
                                 name = name.replace("影迷电影", "CHC影迷电影")
 
-                                if 'tsfile' in urld
+                                if 'tsfile' in urld:
                                     results.append(f"{name},{urld}")
                 except:
                     continue
