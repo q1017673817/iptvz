@@ -93,7 +93,7 @@ def province(config_path):
         except Exception as e:
             print(f"配置错误: {entry} -> {e}")
             
-    with open(f"ip/{province}{operator}_good_ip", 'w') as f:
+    with open(f"{province}{operator}_good_ip", 'w') as f:
         for ip in all_ips:
             f.write(f"{ip}\n")
     
@@ -110,7 +110,7 @@ def province(config_path):
     for ip in all_ips:
         output.extend([channel.replace("ipipip", f"{ip}") for channel in channels])
     
-    with open(f"txt/{province}{operator}.txt", 'w', encoding='utf-8') as f:
+    with open(f"{province}{operator}.txt", 'w', encoding='utf-8') as f:
         f.write(f"\n{province}{operator}_组播,#genre#\n")
         f.write('\n'.join(output))
 

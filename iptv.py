@@ -36,7 +36,7 @@ def is_url_accessible(url):
 
 results = []
 urls_all = []
-with open(f"ip/酒店高清.ip", 'r', encoding='utf-8') as file:
+with open(f"酒店高清.ip", 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
             url = line.strip()
@@ -219,8 +219,7 @@ with open(f"ip/酒店高清.ip", 'r', encoding='utf-8') as file:
                                 name = name.replace("影迷电影", "CHC影迷电影")
 
                                 if 'udp' not in urld or 'rtp' not in urld:
-                                   if 'tsfiile' in urld:
-                                        results.append(f"{name},{urld}")
+                                    results.append(f"{name},{urld}")
                 except:
                     continue
             except:
@@ -387,7 +386,7 @@ with open('1.txt', 'r', encoding='utf-8') as file, open('其他.txt', 'w', encod
 
 results = []
 urls_all = []
-with open(f"ip/酒店标清.ip", 'r', encoding='utf-8') as file:
+with open(f"酒店标清.ip", 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
             url = line.strip()
@@ -569,9 +568,8 @@ with open(f"ip/酒店标清.ip", 'r', encoding='utf-8') as file:
                                 name = name.replace("动作电影", "CHC动作电影")
                                 name = name.replace("影迷电影", "CHC影迷电影")
 
-                                if 'udp' not in urld or 'rtp' not in urld:
-                                    if 'tsfiile' in urld:
-                                        results.append(f"{name},{urld}")
+                                if 'udp' not in urld or 'rtp' not in urld:           
+                                    results.append(f"{name},{urld}")
                 except:
                     continue
             except:
