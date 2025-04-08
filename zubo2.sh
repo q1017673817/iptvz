@@ -122,8 +122,8 @@ rm -rf "result_${city}.txt" tmp1.txt tmp2.txt tmp3.txt tmp_all.txt
 #--------------------合并所有城市的txt文件为:   zubo2.txt-----------------------------------------
 cat txt/广东电信.txt >zubo2.txt
 cat txt/北京联通.txt >>zubo2.txt
+cat txt/湖南电信.txt >>zubo2.txt
 cat txt/广东联通.txt >>zubo2.txt
-#cat txt/湖南电信.txt >>zubo2.txt
 echo "湖北电信_组播,#genre#" >>zubo2.txt
 cat txt/湖北电信.txt >>zubo2.txt
 echo "浙江电信_组播,#genre#" >>zubo2.txt

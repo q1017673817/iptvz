@@ -71,6 +71,8 @@ def scan_ips(ip_part, port, scan_type):
             checked[0] += 1
     
     print(f"扫描完成，有效ip数量：{len(valid_ips)}个")
+    for valid_ip in valid_ips
+    print(valid_ip)
     return valid_ips
 
 
@@ -92,11 +94,7 @@ def province(config_path):
             all_ips.extend(scan_ips(ip_part, port, int(scan_type)))
         except Exception as e:
             print(f"配置错误: {entry} -> {e}")
-            
-    with open(f"{province}{operator}_good_ip", 'w') as f:
-        for ip in all_ips:
-            f.write(f"{ip}\n")
-    
+                
     # 生成组播
     tmpl_file = os.path.join('template', f"template_{province}{operator}.txt")
     if not os.path.exists(tmpl_file):
@@ -110,9 +108,14 @@ def province(config_path):
     for ip in all_ips:
         output.extend([channel.replace("ipipip", f"{ip}") for channel in channels])
     
-    with open(f"{province}{operator}.txt", 'w', encoding='utf-8') as f:
-        f.write(f"\n{province}{operator}_组播,#genre#\n")
-        f.write('\n'.join(output))
+    with open(f"txt/{province}{operator}.txt", 'w', encoding='utf-8') as f:
+        f.write(f"\n{province}{operator}-组播,#genre#\n")
+        f.write('\n'.join(output) + "\n")
+
+    with open(f"ip/{province}{operator}_good_ip", 'w', encoding='utf-8') as f:
+        for ip in all_ips:
+            f.write(ip + "\n")
+            print(ip)
 
 
 def main():

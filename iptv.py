@@ -29,6 +29,7 @@ def is_url_accessible(url):
     try:
         response = requests.get(url, timeout=1.5)
         if response.status_code == 200:
+            print(f"{url}")
             return url
     except requests.exceptions.RequestException:
         pass
@@ -36,7 +37,7 @@ def is_url_accessible(url):
 
 results = []
 urls_all = []
-with open(f"酒店高清.ip", 'r', encoding='utf-8') as file:
+with open(f"ip/酒店高清.ip", 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
             url = line.strip()
@@ -72,7 +73,6 @@ with open(f"酒店高清.ip", 'r', encoding='utf-8') as file:
                 result = future.result()
                 if result:
                     valid_urls.append(result)
-                    print(url)
         # 遍历网址列表，获取JSON文件并解析
         for url in valid_urls:
             try:
@@ -218,7 +218,7 @@ with open(f"酒店高清.ip", 'r', encoding='utf-8') as file:
                                 name = name.replace("动作电影", "CHC动作电影")
                                 name = name.replace("影迷电影", "CHC影迷电影")
 
-                                if 'udp' not in urld or 'rtp' not in urld:
+                                if 'tsfile' in urld:
                                     results.append(f"{name},{urld}")
                 except:
                     continue
@@ -386,7 +386,7 @@ with open('1.txt', 'r', encoding='utf-8') as file, open('其他.txt', 'w', encod
 
 results = []
 urls_all = []
-with open(f"酒店标清.ip", 'r', encoding='utf-8') as file:
+with open(f"ip/酒店标清.ip", 'r', encoding='utf-8') as file:
         lines = file.readlines()
         for line in lines:
             url = line.strip()
@@ -422,7 +422,6 @@ with open(f"酒店标清.ip", 'r', encoding='utf-8') as file:
                 result = future.result()
                 if result:
                     valid_urls.append(result)
-                    print(url)
         # 遍历网址列表，获取JSON文件并解析
         for url in valid_urls:
             try:
@@ -444,9 +443,6 @@ with open(f"酒店标清.ip", 'r', encoding='utf-8') as file:
                         if isinstance(item, dict):
                             name = item.get('name')
                             urlx = item.get('url')
-                            if ',' in urlx:
-                                urlx=f"aaaaaaaa"
-                                
                             #if 'http' in urlx or 'udp' in urlx or 'rtp' in urlx:
                             if 'http' in urlx:
                                 urld = f"{urlx}"
@@ -568,7 +564,7 @@ with open(f"酒店标清.ip", 'r', encoding='utf-8') as file:
                                 name = name.replace("动作电影", "CHC动作电影")
                                 name = name.replace("影迷电影", "CHC影迷电影")
 
-                                if 'udp' not in urld or 'rtp' not in urld:           
+                                if 'tsfile' in urld
                                     results.append(f"{name},{urld}")
                 except:
                     continue
@@ -770,4 +766,4 @@ os.remove("河南.txt")
 os.remove("港台.txt")
 os.remove("其他.txt")
 os.remove("去重.txt")
-print("任务运行完毕")
+print("任务运行完毕，组播频道合并到文件zubo.txt，所有频道分类合并到iptv.txt文件")
