@@ -71,8 +71,8 @@ def scan_ips(ip_part, port, scan_type):
             checked[0] += 1
     
     print(f"扫描完成，有效ip数量：{len(valid_ips)}个")
-    for valid_ip in valid_ips
-    print(valid_ip)
+    for valid_ip in valid_ips:
+        print(valid_ip)
     return valid_ips
 
 
