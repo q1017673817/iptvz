@@ -25,11 +25,14 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install bs4 playwright requests
           pip install selenium futures eventlet
+          sudo apt-get update
+          sudo apt-get install -y yt-dlp sed nmap
 
-      - name: 
+      - name: 获取有效ip地址
         run: |
           cd $GITHUB_WORKSPACE
           python ./zubo.py
+          bash ./zubo.sh
           bash ./合并.sh
           python ./iptv.py
     
@@ -59,3 +62,4 @@ jobs:
           repository: ${{ secrets.GH_PATH }}
           directory: .
           force: true
+          
