@@ -56,3 +56,5 @@ echo "四川电信-组播2,#genre#" >>zubo.txt
 cat txt/四川电信2.txt >>zubo.txt
 echo "四川电信-组播3,#genre#" >>zubo.txt
 cat txt/四川电信3.txt >>zubo.txt
+
+rm -f zubo1.txt 旧文件备份.sh 酒店标清.ip 酒店高清.ip
