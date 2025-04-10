@@ -27,9 +27,9 @@ case $city_choice in
         channel_key="江苏电信"
         ;;
     3)
-        city="Shanghai_103"
-        stream="udp/239.45.1.42:5140"
-	channel_key="上海电信"
+        city="Sichuan_333"
+        stream="udp/239.93.0.169:5140"
+	channel_key="四川电信"
         ;;
     4)
         city="Hubei_90"
@@ -53,7 +53,7 @@ case $city_choice in
 	;;
     0)
         # 如果选择是“全部选项”，则逐个处理每个选项
-        for option in {1,2,4}; do
+        for option in {1..4}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -112,29 +112,56 @@ ip3=$(awk 'NR==3{print $2}' result_${city}.txt)
 rm -f "speedtest_${city}_$time.log"         
 # 用 3 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"
-sed "s/ipipip/$ip1/g" "$program" > tmp1.txt
-sed "s/ipipip/$ip2/g" "$program" > tmp2.txt
-sed "s/ipipip/$ip3/g" "$program" > tmp3.txt
-cat tmp1.txt tmp2.txt tmp3.txt > tmp_all.txt
+sed "s/ipipip/$ip1/g" "$program" > "txt/${channel_key}1.txt"
+sed "s/ipipip/$ip2/g" "$program" > "txt/${channel_key}2.txt"
+sed "s/ipipip/$ip3/g" "$program" > "txt/${channel_key}3.txt"
+cat "txt/${channel_key}1.txt" "txt/${channel_key}2.txt" "txt/${channel_key}3.txt" > tmp_all.txt
 grep -vE '/{3}' tmp_all.txt > "txt/${channel_key}.txt"
-rm -rf "result_${city}.txt" tmp1.txt tmp2.txt tmp3.txt tmp_all.txt
+rm -rf "result_${city}.txt" tmp_all.txt
 
 #--------------------合并所有城市的txt文件为:   zubo2.txt-----------------------------------------
-cat txt/广东电信.txt >zubo2.txt
-cat txt/北京联通.txt >>zubo2.txt
-cat txt/湖南电信.txt >>zubo2.txt
-cat txt/广东联通.txt >>zubo2.txt
+cat 广东电信.txt >zubo2.txt
+cat 北京联通.txt >>zubo2.txt
+cat 湖南电信.txt >>zubo2.txt
+cat 广东联通.txt >>zubo2.txt
 echo "湖北电信_组播,#genre#" >>zubo2.txt
 cat txt/湖北电信.txt >>zubo2.txt
 echo "浙江电信_组播,#genre#" >>zubo2.txt
 cat txt/浙江电信.txt >>zubo2.txt
 echo "江苏电信_组播,#genre#" >>zubo2.txt
 cat txt/江苏电信.txt >>zubo2.txt
-#echo "上海电信_组播,#genre#" >>zubo2.txt
-#cat txt/上海电信.txt >>zubo2.txt
+echo "四川电信_组播,#genre#" >>zubo2.txt
+cat txt/四川电信.txt >>zubo2.txt
 #echo "安徽电信_组播,#genre#" >>zubo2.txt
 #cat txt/安徽电信.txt >>zubo2.txt
 #echo "山西电信_组播,#genre#" >>zubo2.txt
 #cat txt/山西电信.txt >>zubo2.txt
 #echo "重庆电信_组播,#genre#" >>zubo2.txt
 #cat txt/重庆电信.txt >>zubo2.txt
+
+
+echo "湖北电信_组播1,#genre#" >zubo1.txt
+cat txt/湖北电信1.txt >>zubo1.txt
+echo "湖北电信_组播2,#genre#" >>zubo1.txt
+cat txt/湖北电信2.txt >>zubo1.txt
+echo "湖北电信_组播3,#genre#" >>zubo1.txt
+cat txt/湖北电信3.txt >>zubo1.txt
+echo "浙江电信_组播1,#genre#" >>zubo1.txt
+cat txt/浙江电信1.txt >>zubo1.txt
+echo "浙江电信_组播2,#genre#" >>zubo1.txt
+cat txt/浙江电信2.txt >>zubo1.txt
+echo "浙江电信_组播3,#genre#" >>zubo1.txt
+cat txt/浙江电信3.txt >>zubo1.txt
+echo "江苏电信_组播1,#genre#" >>zubo1.txt
+cat txt/江苏电信1.txt >>zubo1.txt
+echo "江苏电信_组播2,#genre#" >>zubo1.txt
+cat txt/江苏电信2.txt >>zubo1.txt
+echo "江苏电信_组播3,#genre#" >>zubo1.txt
+cat txt/江苏电信3.txt >>zubo1.txt
+echo "四川电信_组播1,#genre#" >>zubo1.txt
+cat txt/四川电信1.txt >>zubo1.txt
+echo "四川电信_组播2,#genre#" >>zubo1.txt
+cat txt/四川电信2.txt >>zubo1.txt
+echo "四川电信_组播3,#genre#" >>zubo1.txt
+cat txt/四川电信3.txt >>zubo1.txt
+

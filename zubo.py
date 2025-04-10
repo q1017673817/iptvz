@@ -57,8 +57,8 @@ def scan_ips(ip_part, port, scan_type):
     
     def show_progress():
         while checked[0] < total:
-            print(f"已扫描：{checked[0]}/{total}，有效ip：{len(valid_ips)}个")
-            time.sleep(10)
+            print(f"已扫描：{checked[0]}/{total}, 有效ip：{len(valid_ips)}个")
+            time.sleep(30)
     
     Thread(target=show_progress, daemon=True).start()
     
@@ -70,9 +70,8 @@ def scan_ips(ip_part, port, scan_type):
                 valid_ips.append(result)
             checked[0] += 1
     
-    print(f"扫描完成，有效ip数量：{len(valid_ips)}个")
-    for valid_ip in valid_ips:
-        print(valid_ip)
+    print(f"扫描完成，有效ip数量：{len(valid_ips)}个\n{valid_ips}")
+#        print(valid_ip)
     return valid_ips
 
 
@@ -82,7 +81,7 @@ def province(config_path):
         return
     
     province, operator = filename.split('_')[:2]
-    print(f"\n{'='*30}\n 获取: {province}{operator}ip\n{'='*30}")
+    print(f"\n{'='*30}\n     获取: {province}{operator}ip\n{'='*30}")
     
     # 扫描IP
     configs = read_config(config_path)
@@ -108,14 +107,12 @@ def province(config_path):
     for ip in all_ips:
         output.extend([channel.replace("ipipip", f"{ip}") for channel in channels])
     
-    with open(f"txt/{province}{operator}.txt", 'w', encoding='utf-8') as f:
+    with open(f"{province}{operator}.txt", 'w', encoding='utf-8') as f:
         f.write(f"\n{province}{operator}-组播,#genre#\n")
         f.write('\n'.join(output) + "\n")
 
     with open(f"ip/{province}{operator}_good_ip", 'w', encoding='utf-8') as f:
-        for ip in all_ips:
-            f.write(ip + "\n")
-            print(ip)
+        f.write('\n'.join(all_ips))
 
 
 def main():
