@@ -348,15 +348,6 @@ with open('1.txt', 'r', encoding='utf-8') as file, open('河南.txt', 'w', encod
         if re.search(pattern, line):  # 如果行中有任意关键字
          h.write(line)  # 将该行写入输出文件
 
-keywords = ['陕西','西安','汉中']  # 需要提取的关键字列表
-pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
-with open('1.txt', 'r', encoding='utf-8') as file, open('陕西.txt', 'w', encoding='utf-8') as i:    #####定义临时文件名
-    i.write('\n陕西频道,#genre#\n')                                                                  #####写入临时文件名
-    for line in file:
-      if 'CCTV' not in line and '卫视' not in line and 'CHC' not in line and 'genre' not in line:
-        if re.search(pattern, line):  # 如果行中有任意关键字
-         i.write(line)  # 将该行写入输出文件
-
 keywords = ['广西','南宁','玉林','桂林','北流']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 with open('1.txt', 'r', encoding='utf-8') as file, open('广西.txt', 'w', encoding='utf-8') as k:    #####定义临时文件名
@@ -692,14 +683,6 @@ with open('1.txt', 'r', encoding='utf-8') as file, open('河南.txt', 'a', encod
         if re.search(pattern, line):  # 如果行中有任意关键字
          h.write(line)  # 将该行写入输出文件
 
-keywords = ['陕西','西安','汉中']  # 需要提取的关键字列表
-pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
-with open('1.txt', 'r', encoding='utf-8') as file, open('陕西.txt', 'a', encoding='utf-8') as i:    #####定义临时文件名
-    for line in file:
-      if 'CCTV' not in line and '卫视' not in line and 'CHC' not in line and 'genre' not in line:
-        if re.search(pattern, line):  # 如果行中有任意关键字
-         i.write(line)  # 将该行写入输出文件
-
 keywords = ['广西','南宁','玉林','桂林','北流']  # 需要提取的关键字列表
 pattern = '|'.join(keywords)  # 创建正则表达式模式，匹配任意一个关键字
 with open('1.txt', 'r', encoding='utf-8') as file, open('广西.txt', 'a', encoding='utf-8') as k:    #####定义临时文件名
@@ -725,7 +708,7 @@ with open('1.txt', 'r', encoding='utf-8') as file, open('其他.txt', 'a', encod
          z.write(line)  # 将该行写入输出文件         
 
 file_contents = []
-file_paths = ["央视.txt","卫视.txt","zubo.txt","zj","河南.txt","广西.txt","陕西.txt","港台.txt","其他.txt"]  # 替换为实际的文件路径列表
+file_paths = ["央视.txt","卫视.txt","zubo2.txt","zj","河南.txt","广西.txt","港台.txt","其他.txt"]  # 替换为实际的文件路径列表
 for file_path in file_paths:
     with open(file_path, 'r', encoding="utf-8") as file:
         content = file.read()
@@ -762,9 +745,9 @@ os.remove("1.txt")
 os.remove("央视.txt")
 os.remove("卫视.txt")
 os.remove("广西.txt")
-os.remove("陕西.txt")
 os.remove("河南.txt")
 os.remove("港台.txt")
 os.remove("其他.txt")
 os.remove("去重.txt")
-print("任务运行完毕，组播频道合并到文件zubo.txt，所有频道分类合并到iptv.txt文件")
+os.remove("zubo2.txt")
+print("任务运行完毕，组播频道合并到文件zubo.txt，所有频道合并到iptv.txt")
