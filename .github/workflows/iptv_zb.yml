@@ -16,17 +16,15 @@ jobs:
           fetch-depth: 0   
     
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.x
+          python-version: 3.11
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip3 install bs4 playwright requests
-          pip install selenium futures eventlet
+          pip install -r requirements.txt
 
-      - name: python获取组播地址
+      - name: 获取组播地址
         run: |
           cd $GITHUB_WORKSPACE
           python ./zubo.py
@@ -41,6 +39,10 @@ jobs:
           cd $GITHUB_WORKSPACE
           bash ./zubo2.sh
           bash ./合并.sh
+          
+      - name: 获取酒店源
+        run: |
+          cd $GITHUB_WORKSPACE
           python ./iptv.py
     
       - name: 提交更改
