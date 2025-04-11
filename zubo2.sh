@@ -60,7 +60,7 @@ ipfile="ip/${city}_ip.txt"
 good_ip="ip/${city}_good_ip.txt"
 # 从文件读取ip
 cat ip/${city}_ip.txt | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
-awk '/M|k/{print $2}' "ip/result_${city}.txt" | sort -n -r >>tmp_ipfile
+awk '/M|k/{print $2}' "ip/result_${city}_ip.txt" | sort -n -r >>tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
 rm -f tmp_ipfile
 
@@ -94,11 +94,11 @@ while read line; do
 done < "$good_ip"
 rm -f zubo.tmp $good_ip
 
-awk '/M|k/{print $2"  "$1}' "speedtest_${city}_$time.log" | sort -n -r >"ip/result_${city}.txt"
-cat "ip/result_${city}.txt"
-ip1=$(awk 'NR==1{print $2}' "ip/result_${city}.txt")
-ip2=$(awk 'NR==2{print $2}' "ip/result_${city}.txt")
-ip3=$(awk 'NR==3{print $2}' "ip/result_${city}.txt")
+awk '/M|k/{print $2"  "$1}' "speedtest_${city}_$time.log" | sort -n -r >"ip/result_${city}_ip.txt"
+cat "ip/result_${city}_ip.txt"
+ip1=$(awk 'NR==1{print $2}' "ip/result_${city}_ip.txt")
+ip2=$(awk 'NR==2{print $2}' "ip/result_${city}_ip.txt")
+ip3=$(awk 'NR==3{print $2}' "ip/result_${city}_ip.txt")
 rm -f "speedtest_${city}_$time.log"         
 # 用 3 个最快 ip 生成对应城市的 txt 文件
 program="template/template_${city}.txt"

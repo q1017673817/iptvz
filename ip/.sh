@@ -96,9 +96,9 @@ case $city_choice in
 esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
-ipfile="${channel_key}_ip"
-good_ip="${channel_key}_good_ip"
+ipfile="${channel_key}_ip.txt"
+good_ip="${channel_key}_good_ip.txt"
 # 搜索最新 IP
 cat ${channel_key}.html | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
-rm -f tmp_ipfile ip/${channel_key}.html $good_ip
+rm -f tmp_ipfile $good_ip

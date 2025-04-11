@@ -2,7 +2,7 @@ import re
 import os
 
 # 打开文档并读取所有行 
-with open('zubo2.txt', 'r', encoding="utf-8") as file:
+with open('zubo1.txt', 'r', encoding="utf-8") as file:
  lines = file.readlines()
 # 使用列表来存储唯一的行的顺序 
  unique_lines = [] 
@@ -13,6 +13,7 @@ for line in lines:
   unique_lines.append(line)
   seen_lines.add(line)
 # 将唯一的行写入新的文档 
-with open('zubo.txt', 'w', encoding="utf-8") as file:
+with open('zubo_fofa.txt', 'w', encoding="utf-8") as file:
  file.writelines(unique_lines)
-os.remove("zubo2.txt")
+
+os.remove("zubo1.txt")
