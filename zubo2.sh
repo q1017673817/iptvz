@@ -2,9 +2,19 @@
 time=$(date +%m%d%H%M)
 
 if [ $# -eq 0 ]; then
-  city_choice=0
+  echo "默认测试所有已设置好的城市组播地址"
+  echo "输入1~8选择想要测试的城市"
+  read -t 5 -p "5秒内未输入将测试全部城市" city_choice
+
+  if [ -z "$city_choice" ]; then
+      echo "未检测到输入，开始测试全部..."
+      city_choice=0
+  fi
+
+else
+  city_choice=$1
 fi
-# 根据用户选择设置城市和相应的stream
+# 设置城市和相应的stream
 case $city_choice in
     1)
         city="浙江电信"

@@ -3,10 +3,7 @@ time=$(date +%Y/%m/%d)
 cat iptv.txt >iptv_备份.txt
 cat zubo.txt >zubo_备份.txt
 #--------合并所有城市的txt文件---------
-cat 广东电信.txt >zubo2.txt
-cat 北京联通.txt >>zubo2.txt
-cat 湖南电信.txt >>zubo2.txt
-cat 广东联通.txt >>zubo2.txt
+cat 广东电信.txt 北京联通.txt 湖南电信.txt 广东联通.txt >zubo2.txt
 echo "湖北电信-组播,#genre#" >>zubo2.txt
 cat txt/湖北电信.txt >>zubo2.txt
 echo "浙江电信-组播,#genre#" >>zubo2.txt
