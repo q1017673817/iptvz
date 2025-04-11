@@ -19,7 +19,7 @@ case $city_choice in
     3)
         city="四川电信"
         stream="udp/239.93.0.169:5140"
-	      channel_key="四川电信"
+	channel_key="四川电信"
         ;;
     4)
         city="湖北电信"
@@ -35,17 +35,17 @@ case $city_choice in
         city="北京联通"
         stream="rtp/239.3.1.241:8000"
         channel_key="北京联通"
-	      ;;
+	;;
     7)
         city="湖南电信"
         stream="udp/239.76.246.101:1234"
         channel_key="湖南电信"
-	      ;;
+	;;
     8)
         city="广东联通"
         stream="udp/239.0.1.1:5001"
         channel_key="广东联通"
-	      ;;
+	;;
     0)
         # 逐个处理{ }内每个选项
         for option in {1..8}; do
@@ -56,10 +56,10 @@ case $city_choice in
 esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
-ipfile="ip/${city}_ip"
-good_ip="ip/${city}_good_ip"
+ipfile="ip/${city}_ip.txt"
+good_ip="ip/${city}_good_ip.txt"
 # 从文件读取ip
-cat ip/${city}_ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
+cat ip/${city}_ip.txt | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
 awk '/M|k/{print $2}' "ip/result_${city}.txt" | sort -n -r >>tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
 rm -f tmp_ipfile
