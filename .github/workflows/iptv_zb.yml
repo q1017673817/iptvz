@@ -2,7 +2,7 @@ name: iptv_zb
 
 on:
   schedule:
-    - cron: '0 5,20 * * *'  # 每12个小时的第 0 分钟运行
+    - cron: '0 20 * * *'  
   workflow_dispatch:
 
 jobs:
@@ -25,13 +25,20 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install bs4 playwright requests
           pip install selenium futures eventlet
-          sudo apt-get update
-          sudo apt-get install -y yt-dlp sed nmap
 
-      - name: 获取有效ip地址
+      - name: python获取组播地址
         run: |
           cd $GITHUB_WORKSPACE
           python ./zubo.py
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y yt-dlp sed nmap
+
+      - name: 检测组播地址
+        run: |
+          cd $GITHUB_WORKSPACE
           bash ./zubo2.sh
           bash ./合并.sh
           python ./iptv.py
