@@ -1,3 +1,4 @@
+time=$(date +%m%d%H%M)
 #-------旧文件备份------
 cat iptv.txt >iptv_备份.txt
 cat zubo.txt >zubo_备份.txt
@@ -15,7 +16,7 @@ cat txt/江苏电信.txt >>zubo2.txt
 echo "四川电信-组播,#genre#" >>zubo2.txt
 cat txt/四川电信.txt >>zubo2.txt
 
-echo "广东电信-组播1,#genre#" >zubo.txt
+echo "广东电信-组播1$time更新,#genre#" >zubo.txt
 cat txt/广东电信1.txt >>zubo.txt
 echo "广东电信-组播2,#genre#" >>zubo.txt
 cat txt/广东电信2.txt >>zubo.txt
@@ -56,5 +57,3 @@ echo "四川电信-组播2,#genre#" >>zubo.txt
 cat txt/四川电信2.txt >>zubo.txt
 echo "四川电信-组播3,#genre#" >>zubo.txt
 cat txt/四川电信3.txt >>zubo.txt
-
-rm -f zubo1.txt 旧文件备份.sh 酒店标清.ip 酒店高清.ip

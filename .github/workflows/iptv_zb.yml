@@ -32,7 +32,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           python ./zubo.py
-          bash ./zubo.sh
+          bash ./zubo2.sh
           bash ./合并.sh
           python ./iptv.py
     

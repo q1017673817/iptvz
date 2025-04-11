@@ -111,7 +111,7 @@ def province(config_path):
         f.write(f"\n{province}{operator}-组播,#genre#\n")
         f.write('\n'.join(output) + "\n")
 
-    with open(f"ip/{province}{operator}_good_ip", 'w', encoding='utf-8') as f:
+    with open(f"ip/{province}{operator}_ip", 'w', encoding='utf-8') as f:
         f.write('\n'.join(all_ips))
 
 

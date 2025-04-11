@@ -2,17 +2,7 @@
 time=$(date +%m%d%H%M)
 
 if [ $# -eq 0 ]; then
-  echo "请选择城市："
-  echo "0. 全部"
-  read -t 1 -p "输入选择或在1秒内无输入将默认选择全部: " city_choice
-
-  if [ -z "$city_choice" ]; then
-      echo "未检测到输入，自动选择全部选项..."
-      city_choice=0
-  fi
-
-else
-  city_choice=$1
+  city_choice=0
 fi
 # 根据用户选择设置城市和相应的stream
 case $city_choice in
@@ -29,7 +19,7 @@ case $city_choice in
     3)
         city="四川电信"
         stream="udp/239.93.0.169:5140"
-	    channel_key="四川电信"
+	      channel_key="四川电信"
         ;;
     4)
         city="湖北电信"
@@ -45,39 +35,34 @@ case $city_choice in
         city="北京联通"
         stream="rtp/239.3.1.241:8000"
         channel_key="北京联通"
-	    ;;
+	      ;;
     7)
         city="湖南电信"
         stream="udp/239.76.246.101:1234"
         channel_key="湖南电信"
-	    ;;
+	      ;;
     8)
         city="广东联通"
         stream="udp/239.0.1.1:5001"
         channel_key="广东联通"
-	    ;;
+	      ;;
     0)
-        # 如果选择是“全部选项”，则逐个处理每个选项
+        # 逐个处理{ }内每个选项
         for option in {1..8}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
-        ;;
-
-    *)
-        echo "错误：无效的选择。"
-        exit 1
         ;;
 esac
 
 # 使用城市名作为默认文件名，格式为 CityName.ip
 ipfile="ip/${city}_ip"
 good_ip="ip/${city}_good_ip"
-# 搜索最新 IP
+# 从文件读取ip
 cat ip/${city}_ip | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
-cat ip/${city}_good_ip >>tmp_ipfile
+awk '/M|k/{print $2}' "ip/result_${city}.txt" | sort -n -r >>tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > "$ipfile"
-rm -f tmp_ipfile $good_ip
+rm -f tmp_ipfile
 
 while IFS= read -r ip; do
     # 尝试连接 IP 地址和端口号，并将输出保存到变量中
@@ -107,7 +92,7 @@ while read line; do
     echo "第$i/$lines个：$ip    $a"
     echo "$ip    $a" >> "speedtest_${city}_$time.log"
 done < "$good_ip"
-rm -f zubo.tmp
+rm -f zubo.tmp $good_ip
 
 awk '/M|k/{print $2"  "$1}' "speedtest_${city}_$time.log" | sort -n -r >"ip/result_${city}.txt"
 cat "ip/result_${city}.txt"
