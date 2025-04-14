@@ -23,10 +23,11 @@ jobs:
         run: |
           pip install selenium requests futures eventlet
 
-      - name: run iptvpy
+      - name: 获取酒店源
         run: |
           cd $GITHUB_WORKSPACE
           python ./iptv.py
+          bash ./合并.sh
            
       - name: 提交更改
         run: |

@@ -708,7 +708,7 @@ with open('1.txt', 'r', encoding='utf-8') as file, open('其他.txt', 'a', encod
          z.write(line)  # 将该行写入输出文件         
 
 file_contents = []
-file_paths = ["央视.txt","卫视.txt","zubo2.txt","zj","河南.txt","广西.txt","港台.txt","其他.txt"]  # 替换为实际的文件路径列表
+file_paths = ["央视.txt","卫视.txt","河南.txt","广西.txt","港台.txt","其他.txt"]  # 替换为实际的文件路径列表
 for file_path in file_paths:
     with open(file_path, 'r', encoding="utf-8") as file:
         content = file.read()
@@ -737,7 +737,7 @@ for line in lines:
   seen_lines.add(line)
 
 # 将唯一的行写入新的文档 
-with open('iptv.txt', 'w', encoding="utf-8") as file:
+with open('iptv1.txt', 'w', encoding="utf-8") as file:
  file.writelines(unique_lines)
 
 os.remove("iptv0.txt")
@@ -749,5 +749,4 @@ os.remove("河南.txt")
 os.remove("港台.txt")
 os.remove("其他.txt")
 os.remove("去重.txt")
-os.remove("zubo2.txt")
 print("任务运行完毕，组播频道合并到文件zubo.txt，所有频道合并到iptv.txt")

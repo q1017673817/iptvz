@@ -21,9 +21,9 @@ def check_ip(ip, port):
         return None
 
 
-def generate_ips(ip_part, scan_type):
+def generate_ips(ip_part, option):
     a, b, c, d = map(int, ip_part.split('.'))
-    if scan_type == 0:  # D段扫描
+    if option == 0:  # D段扫描
         return [f"{a}.{b}.{c}.{x}" for x in range(1, 256)]
     else:  # C+D段扫描
         return [f"{a}.{b}.{x}.{y}" for x in range(256) for y in range(256)]
@@ -34,24 +34,30 @@ def read_config(config_path):
     try:
         with open(config_path, 'r') as f:
             for line_num, line in enumerate(f, 1):
-                line = line.strip()
+                line = line.strip()            
                 if not line or line.startswith("#"):
+                    #print(f"第{line_num}行：{line}不需要扫描")
                     continue
                 parts = line.split(',')
-                if len(parts) != 2:
-                    print(f"格式错误，第{line_num}行：{line}需要'ip:端口,扫描类型'格式")
-                    continue
-                configs.append(parts)
+                ip_port = parts[0].strip()                
+                option = int(parts[1].strip()) if len(parts) == 2 else 1  # 默认为1                 
+                if ':' in ip_port:
+                    print(f"第{line_num}行：{line}需要扫描")
+                    configs.append((ip_port, option))
+                else:
+                    print(f"第{line_num}行：{line}格式错误")
+        print(f"共需扫描 {len(configs)}组")
         return configs
     except Exception as e:
         print(f"配置文件错误: {e}")
         return []
 
 
-def scan_ips(ip_part, port, scan_type):
-    print(f"\n开始扫描 ip:{ip_part} 端口:{port} 类型:{scan_type}")
+def scan_ips(ip_part, port, option):
+    print(f"\n开始扫描 ip:{ip_part} 端口:{port} 类型:{option}")
     valid_ips = []
-    ips = generate_ips(ip_part, scan_type)
+    ips = generate_ips(ip_part, option)
+
     total = len(ips)
     checked = [0]
     
@@ -62,7 +68,7 @@ def scan_ips(ip_part, port, scan_type):
     
     Thread(target=show_progress, daemon=True).start()
     
-    with ThreadPoolExecutor(max_workers=300 if scan_type==0 else 100) as executor:
+    with ThreadPoolExecutor(max_workers=300 if option==0 else 100) as executor:
         futures = {executor.submit(check_ip, ip, port): ip for ip in ips}
         for future in as_completed(futures):
             result = future.result()
@@ -88,9 +94,10 @@ def province(config_path):
     all_ips = []
     for entry in configs:
         try:
-            ip_port, scan_type = entry
+            ip_port, option = entry
             ip_part, port = ip_port.split(':', 1)
-            all_ips.extend(scan_ips(ip_part, port, int(scan_type)))
+            all_ips.extend(scan_ips(ip_part, port, int(option)))
+            print(f"{province}{operator} 扫描完成，有效ip共：{len(all_ips)}个\n{all_ips}")
         except Exception as e:
             print(f"配置错误: {entry} -> {e}")
                 
@@ -101,7 +108,7 @@ def province(config_path):
         return
     
     with open(tmpl_file, 'r', encoding='utf-8') as f:
-        channels = [line.strip() for line in f if line.strip()]
+        channels = [line for line in f if line]
     
     output = []
     for ip in all_ips:
@@ -109,18 +116,22 @@ def province(config_path):
     
     with open(f"{province}{operator}.txt", 'w', encoding='utf-8') as f:
         f.write(f"\n{province}{operator}-组播,#genre#\n")
-        f.write('\n'.join(output) + "\n")
+        for channel in output:
+            f.write(channel)
+        print(f"成功生成可用文件 {province}{operator}.txt")
 
     ip_file = os.path.join('ip', f"{province}{operator}_ip.txt")
-    with open(ip_file, 'w', encoding='utf-8') as f:
-        f.write('\n'.join(all_ips))
+    with open(ip_file, 'a', encoding='utf-8') as f:
+        for ip in all_ips:
+            f.write(ip + '\n')
+        print(f"有效ip成功写入文件 'ip/{province}{operator}_ip.txt'")
 
 
 def main():
     # 处理所有省份配置
     for conf in glob.glob(os.path.join('ip', '*_config.txt')):
         province(conf)
-    
+    print("扫描任务运行完毕")
 
 if __name__ == "__main__":
     main()

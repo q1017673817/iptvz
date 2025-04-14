@@ -2,7 +2,7 @@ name: zubo
 
 on:
 #  schedule:
-#    - cron: '0 7 * * *'
+#    - cron: '0 18 * * *'
   workflow_dispatch:
 
 jobs:
@@ -23,6 +23,7 @@ jobs:
     - name: 测试组播地址
       run: |
         cd $GITHUB_WORKSPACE
+        cat zubo.txt > zubo_备份.txt
         bash ./zubo2.sh
       
     - name: 更新组播源
