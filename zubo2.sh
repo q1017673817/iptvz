@@ -178,3 +178,4 @@ echo "四川电信-组播3,#genre#" >>zubo.txt
 cat txt/四川电信3.txt >>zubo.txt
 echo "四川电信-组播4,#genre#" >>zubo.txt
 cat txt/四川电信4.txt >>zubo.txt
+echo "合并到可用文件'zubo.txt'"
