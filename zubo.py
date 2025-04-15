@@ -12,10 +12,10 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 def scan_ips(ip, port, option):
     def generate_ips(ip, option):
         a, b, c, d = map(int, ip.split('.'))
-            if option == 1:  # C+D段扫描
-                return [f"{a}.{b}.{x}.{y}" for x in range(256) for y in range(256)]
-            else:  # D段扫描
-                return [f"{a}.{b}.{c}.{x}" for x in range(1, 256)]
+        if option == 1:  # C+D段扫描
+            return [f"{a}.{b}.{x}.{y}" for x in range(256) for y in range(256)]
+        else:  # D段扫描
+            return [f"{a}.{b}.{c}.{x}" for x in range(1, 256)]
                 
     def check_ip(ip, port):
         try:
