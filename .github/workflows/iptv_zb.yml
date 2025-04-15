@@ -2,7 +2,7 @@ name: iptv_zb
 
 on:
   schedule:
-    - cron: '0 21 * * *'  
+    - cron: '0 7,21 * * *'  
   workflow_dispatch:
 
 jobs:
@@ -24,28 +24,12 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: 获取组播地址
+      - name: 获取有效源
         run: |
           cd $GITHUB_WORKSPACE
           python ./zubo.py
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y yt-dlp sed nmap
-
-      - name: 检测组播地址
-        run: |
-          cd $GITHUB_WORKSPACE
-          cat zubo.txt > zubo_备份.txt
           cat iptv.txt > iptv_备份.txt
-          bash ./zubo2.sh
-          
-      - name: 获取酒店源
-        run: |
-          cd $GITHUB_WORKSPACE
           python ./iptv.py
-          bash ./合并.sh
     
       - name: 提交更改
         run: |
