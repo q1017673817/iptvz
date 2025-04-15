@@ -179,3 +179,12 @@ cat txt/四川电信3.txt >>zubo.txt
 echo "四川电信-组播4,#genre#" >>zubo.txt
 cat txt/四川电信4.txt >>zubo.txt
 echo "合并到可用文件'zubo.txt'"
+
+echo "浙江电信-组播,#genre#" >zubo2.txt
+cat txt/浙江电信.txt >>zubo2.txt
+echo "湖北电信-组播,#genre#" >>zubo2.txt
+cat txt/湖北电信.txt >>zubo2.txt
+echo "江苏电信-组播,#genre#" >>zubo2.txt
+cat txt/江苏电信.txt >>zubo2.txt
+echo "四川电信-组播,#genre#" >>zubo2.txt
+cat txt/四川电信.txt >>zubo2.txt

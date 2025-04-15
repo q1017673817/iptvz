@@ -214,9 +214,12 @@ with open(f"ip/酒店高清.ip", 'r', encoding='utf-8') as file:
                                 name = name.replace("南方1", "广东经济科教")
                                 name = name.replace("南方4", "广东影视频道")
                                 name = name.replace("吉林市1", "吉林新闻综合")
-                                name = name.replace("家庭影院", "CHC家庭影院")
-                                name = name.replace("动作电影", "CHC动作电影")
-                                name = name.replace("影迷电影", "CHC影迷电影")
+                                name = name.replace("CHC家庭影院", "家庭影院")
+                                name = name.replace("CHC动作电影", "动作电影")
+                                name = name.replace("CHC影迷电影", "影迷电影")
+                                name = name.replace("广播电视台", "")
+                                name = name.replace("XF", "")
+
 
                                 if 'tsfile' in urld:
                                     results.append(f"{name},{urld}")
@@ -708,7 +711,7 @@ with open('1.txt', 'r', encoding='utf-8') as file, open('其他.txt', 'a', encod
          z.write(line)  # 将该行写入输出文件         
 
 file_contents = []
-file_paths = ["央视.txt","卫视.txt","河南.txt","广西.txt","港台.txt","其他.txt"]  # 替换为实际的文件路径列表
+file_paths = ["央视.txt","卫视.txt","txt/浙江.txt","河南.txt","广西.txt","港台.txt","其他.txt","广东电信.txt","北京联通.txt","湖南电信.txt","广东联通.txt"]  # 替换为实际的文件路径列表
 for file_path in file_paths:
     with open(file_path, 'r', encoding="utf-8") as file:
         content = file.read()
