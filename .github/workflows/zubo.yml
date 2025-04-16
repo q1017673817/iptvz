@@ -2,7 +2,7 @@ name: zubo
 
 on:
   schedule:
-    - cron: '20 8,23 * * *'
+    - cron: '20 2,5,8,23 * * *'
   workflow_dispatch:
 
 jobs:
@@ -25,6 +25,10 @@ jobs:
           cd $GITHUB_WORKSPACE
           cat zubo.txt > zubo_备份.txt
           bash ./zubo2.sh
+          
+      - name: 
+        run: |
+          cd $GITHUB_WORKSPACE
           cat iptv.txt zubo2.txt > iptv.txt
           rm -f zubo2.txt
       
