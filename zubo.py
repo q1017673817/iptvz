@@ -83,11 +83,9 @@ def province(config_path):
         all_ips.extend(scan_ips(ip, port, int(option)))
     print(f"{province}{operator} 扫描完成，有效ip共：{len(all_ips)}个\n{all_ips}")
     all_ips = set(all_ips)
-    ip_file = os.path.join('ip', f"{province}{operator}_ip.txt")
-    with open(ip_file, 'a', encoding='utf-8') as f:
+    with open(f"{province}{operator}_ip.txt", 'w', encoding='utf-8') as f:
         for ip in all_ips:
             f.write(ip + '\n')
-        print(f"有效ip写入文件 {ip_file}")    
     template_file = os.path.join('template', f"template_{province}{operator}.txt")
     if not os.path.exists(template_file):
         print(f"缺少模板文件: {template_file}")
@@ -107,7 +105,7 @@ def main():
     # 处理所有省份配置
     for config_path in glob.glob(os.path.join('ip', '*_config.txt')):
         province(config_path)
-    print("任务运行完毕")
+    print("组播源获取完成")
 
 if __name__ == "__main__":
     main()

@@ -29,6 +29,10 @@ jobs:
           cd $GITHUB_WORKSPACE
           python ./zubo.py
           cat iptv.txt > iptv_备份.txt
+          cat 广东电信_ip.txt > ip/广东电信_ip.txt
+          cat 北京联通_ip.txt > ip/北京联通_ip.txt
+          cat 湖南电信_ip.txt > ip/湖南电信_ip.txt
+          cat 广东联通_ip.txt > ip/广东联通_ip.txt
           python ./iptv.py
     
       - name: 提交更改
