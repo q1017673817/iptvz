@@ -33,10 +33,6 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           cat iptv.txt > iptv_备份.txt
-          cat 广东电信_ip.txt >> "ip/广东电信_ip.txt"
-          cat 北京联通_ip.txt >> "ip/北京联通_ip.txt"
-          cat 湖南电信_ip.txt >> "ip/湖南电信_ip.txt"
-          cat 广东联通_ip.txt >> "ip/广东联通_ip.txt"
           
       - name: 获取酒店源
         run: |
