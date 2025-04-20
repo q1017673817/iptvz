@@ -2,7 +2,7 @@ name: zubo
 
 on:
   schedule:
-    - cron: '20 2,5,8,23 * * *'
+    - cron: '20 2,5 * * *'
   workflow_dispatch:
 
 jobs:
@@ -24,8 +24,9 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           cat zubo.txt > zubo_备份.txt
-          bash ./zubo2.sh          
-
+          bash ./zubo2.sh
+          cat txt/广东电信.txt txt/北京联通.txt txt/湖南电信.txt txt/广东联通.txt txt/湖北电信.txt txt/浙江电信.txt txt/江苏电信.txt txt/四川电信.txt > zubo.txt
+          
       - name: 更新组播源
         run: |
           git config --local user.email "action@github.com"
