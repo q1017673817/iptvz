@@ -1,7 +1,6 @@
 import os
 import re
 import time
-import shutil
 import glob
 import requests
 import threading
@@ -84,8 +83,7 @@ def province(config_path):
     print(f"{province}{operator} 扫描完成，有效ip共：{len(all_ips)}个\n{all_ips}")
     all_ips = set(all_ips)
     with open(f"{province}{operator}_ip.txt", 'w', encoding='utf-8') as f:
-        for ip in all_ips:
-            f.write(ip + '\n')
+        f.write('\n'.join(all_ips))
     template_file = os.path.join('template', f"template_{province}{operator}.txt")
     if not os.path.exists(template_file):
         print(f"缺少模板文件: {template_file}")
@@ -99,10 +97,8 @@ def province(config_path):
         f.write(f"\n{province}{operator}-组播,#genre#\n")
         for channel in output:
             f.write(channel)
-        print(f"生成可用文件 {province}{operator}.txt")        
-    src_path=f"{province}{operator}_ip.txt"
-    dst_path=f"ip/{province}{operator}_ip.txt"
-    shutil.move(src_path,dst_path)
+        print(f"生成可用文件 {province}{operator}.txt") 
+               
 def main():
     # 处理所有省份配置
     for config_path in glob.glob(os.path.join('ip', '*_config.txt')):
