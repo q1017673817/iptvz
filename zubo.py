@@ -1,6 +1,7 @@
 import os
 import re
 import time
+import shutil
 import glob
 import requests
 import threading
@@ -25,8 +26,6 @@ def read_config(config_path):
                         configs.append((ip, port, option))
                     else:
                         print(f"第{line_num}行：{ip_port}格式错误")
-                else:
-                    print(f"第{line_num}行：{line}不需要扫描")                
         print(f"读取完成，共需扫描{len(configs)}组")
         return configs
     except Exception as e:
@@ -84,6 +83,9 @@ def province(config_path):
     all_ips = set(all_ips)
     with open(f"{province}{operator}_ip.txt", 'w', encoding='utf-8') as f:
         f.write('\n'.join(all_ips))
+    src_path=f"/home/runner/work/iptvz/iptvz/{province}{operator}_ip.txt"
+    dst_path=f"/home/runner/work/iptvz/iptvz/ip/{province}{operator}_ip.txt"
+    shutil.move(src_path,dst_path)
     template_file = os.path.join('template', f"template_{province}{operator}.txt")
     if not os.path.exists(template_file):
         print(f"缺少模板文件: {template_file}")
@@ -98,7 +100,7 @@ def province(config_path):
         for channel in output:
             f.write(channel)
         print(f"生成可用文件 {province}{operator}.txt") 
-               
+    
 def main():
     # 处理所有省份配置
     for config_path in glob.glob(os.path.join('ip', '*_config.txt')):
