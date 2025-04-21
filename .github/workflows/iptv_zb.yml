@@ -2,7 +2,7 @@ name: iptv_zb
 
 on:
   schedule:
-    - cron: '0 7,21 * * *'  
+    - cron: '0 7,22 * * *'  
   workflow_dispatch:
 
 jobs:

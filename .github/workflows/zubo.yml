@@ -2,7 +2,7 @@ name: zubo
 
 on:
   schedule:
-    - cron: '20 2,5 * * *'
+    - cron: '10 3,12 * * *'
   workflow_dispatch:
 
 jobs:
@@ -23,9 +23,8 @@ jobs:
       - name: 获取测试组播源
         run: |
           cd $GITHUB_WORKSPACE
-          cat zubo.txt > zubo_备份.txt
-          bash ./zubo2.sh
-          cat txt/广东电信.txt txt/北京联通.txt txt/湖南电信.txt txt/广东联通.txt txt/湖北电信.txt txt/浙江电信.txt txt/江苏电信.txt txt/四川电信.txt > zubo.txt
+          bash ./zubo1.sh
+          cat txt/湖北电信.txt txt/浙江电信.txt txt/江苏电信.txt txt/四川电信.txt > zubo1.txt
           
       - name: 更新组播源
         run: |
@@ -33,21 +32,4 @@ jobs:
           git config --local user.name "GitHub Action"
           git add .
           git commit -m "更新组播源"
-          #git push
-      - name: Push To Gitee
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GE_TOKEN }}
-          repository: ${{ secrets.GE_PATH }}
-          directory: .
-          branch: iptv
-          force: true
-          github_url: https://gitee.com
-
-      - name: Push To Github
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          repository: ${{ secrets.GH_PATH }}
-          directory: .
-          force: true
+          git push
