@@ -64,7 +64,7 @@ case $city_choice in
 	;;
     0)
         # 逐个处理{ }内每个选项
-        for option in {1..8}; do
+        for option in {1..4}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -80,8 +80,7 @@ echo "======== 开始检索 ${city} ========"
 echo "从 fofa 获取ip+端口"
 curl -o test.html $url_fofa
 grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+$' test.html | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
-echo "从 '${ipfile}' 读取ip并添加到检测列表"
-cat $ipfile >> tmp_ipfile
+awk '/M|k/{print $2}' $result_ip >> tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > $ipfile
 rm -f tmp_ipfile test.html
 

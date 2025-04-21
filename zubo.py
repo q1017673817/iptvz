@@ -1,7 +1,6 @@
 import os
 import re
 import time
-import shutil
 import glob
 import requests
 import threading
@@ -81,11 +80,8 @@ def province(config_path):
         all_ips.extend(scan_ip_port(ip, port, url_end, option))
     print(f"{province}{operator} 扫描完成，有效ip共：{len(all_ips)}个\n{all_ips}")
     all_ips = set(all_ips)
-    with open(f"{province}{operator}_ip.txt", 'w', encoding='utf-8') as f:
+    with open(f"ip/{province}{operator}_ip.txt", 'w', encoding='utf-8') as f:
         f.write('\n'.join(all_ips))
-    src_path=f"/home/runner/work/iptvz/iptvz/{province}{operator}_ip.txt"
-    dst_path=f"/home/runner/work/iptvz/iptvz/ip/{province}{operator}_ip.txt"
-    shutil.move(src_path,dst_path)
     template_file = os.path.join('template', f"template_{province}{operator}.txt")
     if not os.path.exists(template_file):
         print(f"缺少模板文件: {template_file}")
@@ -96,7 +92,7 @@ def province(config_path):
     for ip in all_ips:
         output.extend([channel.replace("ipipip", f"{ip}") for channel in channels])    
     with open(f"{province}{operator}.txt", 'w', encoding='utf-8') as f:
-        f.write(f"\n{province}{operator}-组播,#genre#\n")
+        f.write(f"{province}{operator}-组播,#genre#\n")
         for channel in output:
             f.write(channel)
         print(f"生成可用文件 {province}{operator}.txt") 
