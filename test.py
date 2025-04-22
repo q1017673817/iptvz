@@ -144,7 +144,7 @@ def speed_test(channels):
                 # 获取的视频数据进行5秒钟限制
                 with eventlet.Timeout(5, False):
                     start_time = time.time()
-                    cont = requests.get(ts_url, timeout=3).content
+                    cont = requests.get(ts_url, timeout=2).content
                     end_time = time.time()
                     response_time = (end_time - start_time) * 1                    
                 if cont:
@@ -152,17 +152,16 @@ def speed_test(channels):
                         f.write(cont)  # 写入文件
                     file_size = len(cont)
                     download_speed = file_size / response_time / 1024
-                    normalized_speed = max(download_speed / 1024, 0.01),  # 将速率从kB/s转换为MB/s并限制在0.01~之间
+                    normalized_speed = max(download_speed / 1024, 0.01)  # 将速率从kB/s转换为MB/s并限制在0.01~之间
                     os.remove(ts_lists_0)
                     result = channel_name, channel_url, f"{normalized_speed:.2f} MB/s\n"
                     results.append(result)
                     numberx = (len(results) + len(error_channels)) / len(channels) * 100
-                    print(f"总频道：{len(channels)}，可用频道：{len(results)}个，不可用频道：{len(error_channels)}个，进度：{numberx:.2f} %。")
-            except:
+                    print(f"可用频道：{len(results)} 个，不可用频道：{len(error_channels)} 个，总频道：{len(channels)} 个，总进度：{numberx:.2f} %。")
                 error_channel = channel_name, channel_url
                 error_channels.append(error_channel)
                 numberx = (len(results) + len(error_channels)) / len(channels) * 100
-                print(f"总频道：{len(channels)}，可用频道：{len(results)}个，不可用频道：{len(error_channels)}个，进度：{numberx:.2f} %。")
+                print(f"可用频道：{len(results)} 个，不可用频道：{len(error_channels)} 个，总频道：{len(channels)} 个，总进度：{numberx:.2f} %。")
             task_queue.task_done()
             
     task_queue = Queue()
@@ -175,9 +174,9 @@ def speed_test(channels):
     task_queue.join()
     return results
 # 替换关键词以规范频道名#
-def unify_channel_name(file_to_rename):
+def unify_channel_name(file_path):
     new_lines =[]
-    with open(file_to_rename, 'r', encoding='utf-8') as f:
+    with open(file_path, 'r', encoding='utf-8') as f:
         for line in f:
             line = line.replace("cctv", "CCTV")
             line = line.replace("中央", "CCTV")
