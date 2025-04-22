@@ -158,6 +158,7 @@ def speed_test(channels):
                     results.append(result)
                     numberx = (len(results) + len(error_channels)) / len(channels) * 100
                     print(f"可用频道：{len(results)} 个，不可用频道：{len(error_channels)} 个，总频道：{len(channels)} 个，总进度：{numberx:.2f} %。")
+            except:
                 error_channel = channel_name, channel_url
                 error_channels.append(error_channel)
                 numberx = (len(results) + len(error_channels)) / len(channels) * 100
