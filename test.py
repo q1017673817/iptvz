@@ -285,7 +285,7 @@ def unify_channel_name(channels_list):
         name = name.replace("CHC影迷电影", "影迷电影")
         name = name.replace("广播电视台", "")
         name = name.replace("XF", "")
-        new_channels_list.append(f"{name},{channel_url},{speed}\n")
+        new_channels_list.append(f"{name},{channel_url}\n")
     return new_channels_list
 # 定义排序函数，提取频道名称中的数字并按数字排序
 def channel_key(channel_name):
@@ -302,9 +302,9 @@ def classify_channels(input_file, output_file, keywords):
                 if re.search(pattern, line):
                     extracted_lines.append(line)
     with open(output_file, 'a', encoding='utf-8') as out_file:
-        out_file.write(f"\n{keywords_list[0]},#genre#\n")  # 写入头部信息
+        out_file.write(f"{keywords_list[0]},#genre#\n")  # 写入头部信息
         out_file.writelines(extracted_lines)  # 写入提取的行    
-        
+# 获取组播源        
 def multicast_province(config_file):
     filename = os.path.basename(config_file)
     province, operator = filename.split('_')[:2]
@@ -332,7 +332,7 @@ def multicast_province(config_file):
         for channel in output:
             f.write(channel)
         print(f"生成可用文件 {province}{operator}.txt") 
-        
+# 获取酒店源        
 def hotel_iptv(config_file):
     print(f"读取设置文件：{config_file}")
     configs = set(read_config(config_file))
@@ -360,10 +360,10 @@ def hotel_iptv(config_file):
     classify_channels('1.txt',  '其他.txt',  keywords="其他频道,tsfile")
 
 def main():
-    #print("\n开始获取组播源")
-    #for config_file in glob.glob(os.path.join('ip', '*_config.txt')):
-    #    multicast_province(config_file)
-    #print("组播源获取完成\n开始获取酒店源")
+    print("\n开始获取组播源")
+    for config_file in glob.glob(os.path.join('ip', '*_config.txt')):
+        multicast_province(config_file)
+    print("组播源获取完成\n开始获取酒店源")
     hotel_config_files = [f"ip/酒店高清.ip", f"ip/酒店标清.ip"]
     for config_file in hotel_config_files:
         hotel_iptv(config_file)
@@ -391,7 +391,7 @@ def main():
             seen_lines.add(line)
     with open('iptv.txt', 'w', encoding="utf-8") as f:
         f.writelines(unique_lines)
-# 移除过程文件
+    # 移除过程文件
     files_to_remove = ["1.txt","央视.txt","卫视.txt","河南.txt","广西.txt","港台.txt","其他.txt"]
     for file in files_to_remove:
         if os.path.exists(file):
