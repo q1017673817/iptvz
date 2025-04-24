@@ -12,6 +12,7 @@ import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
 # 读取文件设置参数
 def read_config(config_file):
+    print(f"读取设置文件：{config_file}")
     ip_configs = []
     try:
         with open(config_file, 'r') as f:
@@ -41,6 +42,7 @@ def read_config(config_file):
                         print(f"第{line_num}行：http://{ip}:{port}{url_end}添加到扫描列表")
                     else:
                         print(f"第{line_num}行：{ip_port}格式错误")
+        print(f"读取完成，共需扫描 {len(ip_configs)}组\n开始扫描")
         return ip_configs
     except Exception as e:
         print(f"设置文件错误: {e}")
@@ -58,20 +60,18 @@ def check_ip_port(ip_port, url_end, keyword):
         url = f"http://{ip_port}{url_end}"
         resp = requests.get(url, timeout=1.5)
         if resp.status_code == 200 and keyword in resp.text:
-            #print(f"扫描到有效ip_port：{ip_port}")
-            return ip_port
+            print(f"{url} 访问成功")
+        return ip_port
     except:
         return None
 # 多线程检测url，获取有效ip_port
 def scan_ip_port(ip, port, option, url_end, keyword):
     def show_progress():
-        while checked[0] < total and option == 1:
-            print(f"已扫描：{checked[0]}/{total}, 有效ip_port：{len(valid_ip_ports)}个")
+        while checked[0] < len(ip_ports) and option == 1:
+            print(f"已扫描：{checked[0]}/{len(ip_ports)}, 有效ip_port：{len(valid_ip_ports)}个")
             time.sleep(20)
-    #print(f"开始扫描：http://{ip}:{port}{url_end} 类型：{option}")
     valid_ip_ports = []
     ip_ports = generate_ip_ports(ip, port, option)
-    total = len(ip_ports)
     checked = [0]
     Thread(target=show_progress, daemon=True).start()
     with ThreadPoolExecutor(max_workers=300 if option==1 else 100) as executor:
@@ -80,9 +80,7 @@ def scan_ip_port(ip, port, option, url_end, keyword):
             result = future.result()
             if result:
                 valid_ip_ports.append(result)
-                print(f"http://{result}{url_end} 访问成功")
             checked[0] += 1
-    #print(f"本组扫描完成, 有效ip_port：{len(valid_ip_ports)}个")
     return valid_ip_ports    
 # 发送GET请求获取JSON文件, 解析JSON文件, 获取频道信息
 def extract_channels(ip_port, url_end, keyword):
@@ -122,7 +120,7 @@ def speed_test(channels):
     def show_progress():
         while checked[0] < len(channels):
             numberx = (len(results) + len(error_channels)) / len(channels) * 100
-            print(f"已测试{checked[0]}/{len(channels)}，可用频道：{len(results)} 个，总进度：{numberx:.2f} %。")
+            print(f"已测试{checked[0]}/{len(channels)}，可用频道:{len(results)}个，进度:{numberx:.2f}%。")
             time.sleep(5)
     checked = [0]
     Thread(target=show_progress, daemon=True).start()
@@ -139,7 +137,7 @@ def speed_test(channels):
                 # 获取的视频数据进行5秒钟限制
                 with eventlet.Timeout(5, False):
                     start_time = time.time()
-                    cont = requests.get(ts_url, timeout=2).content
+                    cont = requests.get(ts_url, timeout=4).content
                     end_time = time.time()
                     response_time = (end_time - start_time) * 1                    
                 if cont:
@@ -285,7 +283,7 @@ def unify_channel_name(channels_list):
         name = name.replace("CHC影迷电影", "影迷电影")
         name = name.replace("广播电视台", "")
         name = name.replace("XF", "")
-        new_channels_list.append(f"{name},{channel_url}\n")
+        new_channels_list.append(f"{name},{channel_url},{speed}\n")
     return new_channels_list
 # 定义排序函数，提取频道名称中的数字并按数字排序
 def channel_key(channel_name):
@@ -301,7 +299,7 @@ def classify_channels(input_file, output_file, keywords):
             if "genre" not in line:
                 if re.search(pattern, line):
                     extracted_lines.append(line)
-    with open(output_file, 'a', encoding='utf-8') as out_file:
+    with open(output_file, 'w', encoding='utf-8') as out_file:
         out_file.write(f"{keywords_list[0]},#genre#\n")  # 写入头部信息
         out_file.writelines(extracted_lines)  # 写入提取的行    
 # 获取组播源        
@@ -312,9 +310,9 @@ def multicast_province(config_file):
     configs = set(read_config(config_file))
     valid_ip_ports = []
     for ip, port, option, url_end, keyword in configs:
-        print("开始扫描")
+        print(f"开始扫描 ip：{ip}，port：{port}，类型：C+D段扫描")
         valid_ip_ports.extend(scan_ip_port(ip, port, option, url_end, keyword))
-    print(f"扫描完成，获取有效ip_port共：{len(valid_ip_ports)}个\n{valid_ip_ports}")
+    print(f"{province}{operator} 扫描完成，获取有效ip_port共：{len(valid_ip_ports)}个\n{valid_ip_ports}")
     all_ip_ports = set(valid_ip_ports)
     with open(f"ip/{province}{operator}_ip.txt", 'w', encoding='utf-8') as f:
         f.write('\n'.join(all_ip_ports))
@@ -334,11 +332,9 @@ def multicast_province(config_file):
         print(f"生成可用文件 {province}{operator}.txt") 
 # 获取酒店源        
 def hotel_iptv(config_file):
-    print(f"读取设置文件：{config_file}")
     configs = set(read_config(config_file))
     valid_ip_ports = []
     channels = []
-    print(f"读取完成，共需扫描 {len(configs)}组\n开始扫描")
     for ip, port, option, url_end, keyword in configs:
         valid_ip_ports.extend(scan_ip_port(ip, port, option, url_end, keyword))
     print(f"扫描完成，获取有效ip_port共：{len(valid_ip_ports)}个")
@@ -349,15 +345,10 @@ def hotel_iptv(config_file):
     # 对频道进行排序
     results.sort(key=lambda x: (x[0], -float(x[2].split()[0])))
     results.sort(key=lambda x: channel_key(x[0]))
-    with open('1.txt', 'w', encoding='utf-8') as f:
+    with open('1.txt', 'a', encoding='utf-8') as f:
         f.writelines(unify_channel_name(results))
     print("测速完成，排序后写入文件：'1.txt'")
-    classify_channels('1.txt',  '央视.txt',  keywords="央视频道,CCTV,风云剧场,怀旧剧场,第一剧场,兵器,女性,地理,央视文化,风云音乐,CHC")
-    classify_channels('1.txt',  '卫视.txt',  keywords="卫视频道,卫视")
-    classify_channels('1.txt',  '河南.txt',  keywords="河南频道,河南,信阳,漯河,郑州,驻马店,平顶山,安阳,武术世界,梨园,南阳")
-    classify_channels('1.txt',  '广西.txt',  keywords="广西频道,广西,南宁,玉林,桂林,北流")
-    classify_channels('1.txt',  '港台.txt',  keywords="香港频道,凤凰,香港,明珠台,翡翠台,星河")
-    classify_channels('1.txt',  '其他.txt',  keywords="其他频道,tsfile")
+
 
 def main():
     print("\n开始获取组播源")
@@ -367,6 +358,14 @@ def main():
     hotel_config_files = [f"ip/酒店高清.ip", f"ip/酒店标清.ip"]
     for config_file in hotel_config_files:
         hotel_iptv(config_file)
+    classify_channels('1.txt', '央视.txt',
+                          keywords="央视频道,CCTV,风云剧场,怀旧剧场,第一剧场,兵器,女性,地理,央视文化,风云音乐,CHC")
+    classify_channels('1.txt', '卫视.txt', keywords="卫视频道,卫视")
+    classify_channels('1.txt', '河南.txt',
+                          keywords="河南频道,河南,信阳,漯河,郑州,驻马店,平顶山,安阳,武术世界,梨园,南阳")
+    classify_channels('1.txt', '广西.txt', keywords="广西频道,广西,南宁,玉林,桂林,北流")
+    classify_channels('1.txt', '港台.txt', keywords="香港频道,凤凰,香港,明珠台,翡翠台,星河")
+    classify_channels('1.txt', '其他.txt', keywords="其他频道,tsfile")
     # 合并写入文件
     file_contents = []
     file_paths = ["央视.txt","卫视.txt","txt/浙江.txt","河南.txt","广西.txt","港台.txt","其他.txt","广东电信.txt","北京联通.txt","湖南电信.txt","广东联通.txt"]  # 替换为实际的文件路径列表
