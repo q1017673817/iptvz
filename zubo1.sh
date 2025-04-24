@@ -31,10 +31,10 @@ case $city_choice in
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iuaxn%2BiLjyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=10"
         ;;
     3)
-        city="四川电信"
-        stream="udp/239.93.0.169:5140"
-	channel_key="四川电信"
-	url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IuWbm%2BW3nSIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=10"
+        city="山东电信"
+        stream="udp/239.21.1.87:5002"
+	channel_key="山东电信"
+	url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249InNoYW5kb25nIiAmJiBvcmc9IkNoaW5hbmV0IiAmJiBwcm90b2NvbD0iaHR0cCI%3D&page=1&page_size=10"
         ;;
     4)
         city="湖北电信"
@@ -43,28 +43,34 @@ case $city_choice in
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iua5luWMlyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=20"
         ;;
     5)
+        city="安徽电信"
+        stream="rtp/238.1.79.27:4328"
+        channel_key="安徽电信"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249ImFuaHVpIiAmJiBvcmc9IkNoaW5hbmV0IiAmJiBwcm90b2NvbD0iaHR0cCI%3D&page=1&page_size=20"
+        ;;
+    6)
         city="广东电信"
         stream="udp/239.77.1.19:5146"
         channel_key="广东电信"
         ;;
-    6)
+    7)
         city="北京联通"
         stream="rtp/239.3.1.241:8000"
         channel_key="北京联通"
 	;;
-    7)
+    8)
         city="湖南电信"
         stream="udp/239.76.246.101:1234"
         channel_key="湖南电信"
 	;;
-    8)
+    9)
         city="广东联通"
         stream="udp/239.0.1.1:5001"
         channel_key="广东联通"
 	;;
     0)
         # 逐个处理{ }内每个选项
-        for option in {1..4}; do
+        for option in {1..5}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0

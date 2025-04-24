@@ -24,7 +24,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           bash ./zubo1.sh
-          cat txt/湖北电信.txt txt/浙江电信.txt txt/江苏电信.txt txt/四川电信.txt > zubo1.txt
+          cat txt/湖北电信.txt txt/浙江电信.txt txt/江苏电信.txt txt/山东电信.txt txt/安徽电信.txt > zubo1.txt
           
       - name: 更新组播源
         run: |

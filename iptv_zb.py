@@ -58,7 +58,7 @@ def generate_ip_ports(ip, port, option):
 def check_ip_port(ip_port, url_end, keyword):
     try:
         url = f"http://{ip_port}{url_end}"
-        resp = requests.get(url, timeout=1.5)
+        resp = requests.get(url, timeout=2)
         if resp.status_code == 200 and keyword in resp.text:
             print(f"{url} 访问成功")
         return ip_port
@@ -130,14 +130,14 @@ def speed_test(channels):
             channel_name, channel_url = task_queue.get()  # 从队列中获取任务    
             try:
                 channel_url_t = channel_url.rstrip(channel_url.split('/')[-1])  # m3u8链接前缀
-                lines = requests.get(channel_url,timeout=1.5).text.strip().split('\n')  # 获取m3u8文件内容
+                lines = requests.get(channel_url,timeout=2).text.strip().split('\n')  # 获取m3u8文件内容
                 ts_lists = [line.split('/')[-1] for line in lines if line.startswith('#') == False]  # 获取m3u8文件下视频流后缀
                 ts_lists_0 = ts_lists[0].rstrip(ts_lists[0].split('.ts')[-1])  # m3u8链接前缀
                 ts_url = channel_url_t + ts_lists[0]  # 拼接单个视频片段下载链接
                 # 获取的视频数据进行5秒钟限制
                 with eventlet.Timeout(5, False):
                     start_time = time.time()
-                    cont = requests.get(ts_url, timeout=4).content
+                    cont = requests.get(ts_url, timeout=2).content
                     end_time = time.time()
                     response_time = (end_time - start_time) * 1                    
                 if cont:
@@ -148,7 +148,7 @@ def speed_test(channels):
                     download_speed = file_size / response_time / 1024
                     normalized_speed = max(download_speed / 1024, 0.01)  # 将速率从kB/s转换为MB/s并限制在0.01~之间
                     os.remove(ts_lists_0)
-                    result = channel_name, channel_url, f"{normalized_speed:.2f} MB/s"
+                    result = channel_name, channel_url, f"{normalized_speed:.3f}"
                     results.append(result)
             except:
                 checked[0] += 1
@@ -282,8 +282,9 @@ def unify_channel_name(channels_list):
         name = name.replace("CHC动作电影", "动作电影")
         name = name.replace("CHC影迷电影", "影迷电影")
         name = name.replace("广播电视台", "")
+        name = name.replace("编码", "")
         name = name.replace("XF", "")
-        new_channels_list.append(f"{name},{channel_url},{speed}\n")
+        new_channels_list.append(f"{name},{channel_url}\n")
     return new_channels_list
 # 定义排序函数，提取频道名称中的数字并按数字排序
 def channel_key(channel_name):
@@ -343,7 +344,7 @@ def hotel_iptv(config_file):
     print(f"共获取频道：{len(channels)}个\n开始测速")
     results = speed_test(channels)
     # 对频道进行排序
-    results.sort(key=lambda x: (x[0], -float(x[2].split()[0])))
+    results.sort(key=lambda x: -float(x[2]))
     results.sort(key=lambda x: channel_key(x[0]))
     with open('1.txt', 'a', encoding='utf-8') as f:
         f.writelines(unify_channel_name(results))
