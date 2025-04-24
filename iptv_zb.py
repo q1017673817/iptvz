@@ -10,7 +10,7 @@ import glob
 from queue import Queue
 import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
-# 读取文件设置参数
+# 读取文件并设置参数
 def read_config(config_file):
     print(f"读取设置文件：{config_file}")
     ip_configs = []
@@ -54,7 +54,7 @@ def generate_ip_ports(ip, port, option):
         return [f"{a}.{b}.{x}.{y}:{port}" for x in range(256) for y in range(1,256)]
     else:  # D段扫描
         return [f"{a}.{b}.{c}.{x}:{port}" for x in range(1, 256)]
-# 检测url是否可访问
+# 发送get请求检测url是否可访问
 def check_ip_port(ip_port, url_end, keyword):
     try:
         url = f"http://{ip_port}{url_end}"
@@ -111,9 +111,9 @@ def extract_channels(ip_port, url_end, keyword):
                         hotel_channels.append((name, urld))
         return hotel_channels
     except Exception as e:
-        print(f"错误: {e}")
+        print(f"解析json错误,{e}")
         return []
-
+# 测速
 def speed_test(channels):
     results = []
     error_channels = []
@@ -134,7 +134,7 @@ def speed_test(channels):
                 ts_lists = [line.split('/')[-1] for line in lines if line.startswith('#') == False]  # 获取m3u8文件下视频流后缀
                 ts_lists_0 = ts_lists[0].rstrip(ts_lists[0].split('.ts')[-1])  # m3u8链接前缀
                 ts_url = channel_url_t + ts_lists[0]  # 拼接单个视频片段下载链接
-                # 获取的视频数据进行5秒钟限制
+                # 获取视频数据进行5秒钟限制
                 with eventlet.Timeout(5, False):
                     start_time = time.time()
                     cont = requests.get(ts_url, timeout=2).content
@@ -155,7 +155,6 @@ def speed_test(channels):
                 error_channel = channel_name, channel_url
                 error_channels.append(error_channel)
             task_queue.task_done()
-            
     task_queue = Queue()
     num_threads = 20
     for _ in range(num_threads):    # 创建多个工作线程
@@ -165,7 +164,7 @@ def speed_test(channels):
         task_queue.put(channel)
     task_queue.join()
     return results
-# 替换关键词以规范频道名#
+# 替换关键词以规范频道名
 def unify_channel_name(channels_list):
     new_channels_list =[]
     for name, channel_url, speed in channels_list:
@@ -303,7 +302,7 @@ def classify_channels(input_file, output_file, keywords):
     with open(output_file, 'w', encoding='utf-8') as out_file:
         out_file.write(f"{keywords_list[0]},#genre#\n")  # 写入头部信息
         out_file.writelines(extracted_lines)  # 写入提取的行    
-# 获取组播源        
+# 获取组播源流程        
 def multicast_province(config_file):
     filename = os.path.basename(config_file)
     province, operator = filename.split('_')[:2]
@@ -316,7 +315,7 @@ def multicast_province(config_file):
     print(f"{province}{operator} 扫描完成，获取有效ip_port共：{len(valid_ip_ports)}个\n{valid_ip_ports}")
     all_ip_ports = set(valid_ip_ports)
     with open(f"ip/{province}{operator}_ip.txt", 'w', encoding='utf-8') as f:
-        f.write('\n'.join(all_ip_ports))
+        f.write('\n'.join(all_ip_ports))    #有效ip_port写入文件
     template_file = os.path.join('template', f"template_{province}{operator}.txt")
     if not os.path.exists(template_file):
         print(f"缺少模板文件: {template_file}")
@@ -331,7 +330,7 @@ def multicast_province(config_file):
         for channel in output:
             f.write(channel)
         print(f"生成可用文件 {province}{operator}.txt") 
-# 获取酒店源        
+# 获取酒店源流程        
 def hotel_iptv(config_file):
     configs = set(read_config(config_file))
     valid_ip_ports = []
@@ -350,7 +349,6 @@ def hotel_iptv(config_file):
         f.writelines(unify_channel_name(results))
     print("测速完成，排序后写入文件：'1.txt'")
 
-
 def main():
     print("\n开始获取组播源")
     for config_file in glob.glob(os.path.join('ip', '*_config.txt')):
@@ -359,11 +357,9 @@ def main():
     hotel_config_files = [f"ip/酒店高清.ip", f"ip/酒店标清.ip"]
     for config_file in hotel_config_files:
         hotel_iptv(config_file)
-    classify_channels('1.txt', '央视.txt',
-                          keywords="央视频道,CCTV,风云剧场,怀旧剧场,第一剧场,兵器,女性,地理,央视文化,风云音乐,CHC")
+    classify_channels('1.txt', '央视.txt', keywords="央视频道,CCTV,风云剧场,怀旧剧场,第一剧场,兵器,女性,地理,央视文化,风云音乐,CHC")
     classify_channels('1.txt', '卫视.txt', keywords="卫视频道,卫视")
-    classify_channels('1.txt', '河南.txt',
-                          keywords="河南频道,河南,信阳,漯河,郑州,驻马店,平顶山,安阳,武术世界,梨园,南阳")
+    classify_channels('1.txt', '河南.txt', keywords="河南频道,河南,信阳,漯河,郑州,驻马店,平顶山,安阳,武术世界,梨园,南阳")
     classify_channels('1.txt', '广西.txt', keywords="广西频道,广西,南宁,玉林,桂林,北流")
     classify_channels('1.txt', '港台.txt', keywords="香港频道,凤凰,香港,明珠台,翡翠台,星河")
     classify_channels('1.txt', '其他.txt', keywords="其他频道,tsfile")
