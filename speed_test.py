@@ -46,9 +46,9 @@ def worker():
 task_queue = Queue()
 results = []
 channels = []
-with open("iptv.txt", 'r', encoding='utf-8') as f:
+with open('iptv.txt', 'r', encoding='utf-8') as f:
     for line in f:
-        if "genre" not in line:
+        if ',' in line and 'genre' not in line:
             channel_name, channel_url = line.split(',')
             channels.append((channel_name, channel_url))
 
