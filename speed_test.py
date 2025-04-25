@@ -27,10 +27,10 @@ def worker():
                     file_size = 0
                 normalized_speed = file_size / r_time / 1024 / 1024
                 if normalized_speed >= 1.05 and file_size >= 9000000:
-                result = channel_name, channel_url, f"{normalized_speed:.3f} MB/s"
-                results.append(result)
-                numberx = (len(results) + len(error_channels)) / len(channels) * 100
-                print(f"可用频道：{len(results)}个，下载速度：{normalized_speed:.3f}MB/s，总频道：{len(channels)}个，进度：{numberx:.2f}%")
+                    result = channel_name, channel_url, f"{normalized_speed:.3f} MB/s"
+                    results.append(result)
+                    numberx = (len(results) + len(error_channels)) / len(channels) * 100
+                    print(f"可用频道：{len(results)}个，下载速度：{normalized_speed:.3f}MB/s，总频道：{len(channels)}个，进度：{numberx:.2f}%")
         except:
             error_channel = channel_name, channel_url
             error_channels.append(error_channel)
