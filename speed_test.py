@@ -48,8 +48,7 @@ results = []
 channels = []
 with open("iptv.txt", 'r', encoding='utf-8') as f:
     for line in f:
-        parts = line.strip().split(',')
-        if len(parts) == 2:
+        if "genre" not in line:
             channel_name, channel_url = line.split(',')
             channels.append((channel_name, channel_url))
 
