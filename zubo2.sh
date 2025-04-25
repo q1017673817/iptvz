@@ -4,8 +4,9 @@ if [ $# -eq 0 ]; then
   echo "在5秒内输入1~4可选择城市"
   echo "1.浙江电信"
   echo "2.江苏电信"
-  echo "3.四川电信"
+  echo "3.天津联通"
   echo "4.湖北电信"
+  echo "5.河南联通"
   read -t 5 -p "超时未输入,将按默认设置测试" city_choice
 
   if [ -z "$city_choice" ]; then
@@ -31,10 +32,10 @@ case $city_choice in
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iuaxn%2BiLjyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=10"
         ;;
     3)
-        city="山东电信"
-        stream="udp/239.21.1.87:5002"
-	channel_key="山东电信"
-	url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249InNoYW5kb25nIiAmJiBvcmc9IkNoaW5hbmV0IiAmJiBwcm90b2NvbD0iaHR0cCI%3D&page=1&page_size=10"
+        city="天津联通"
+        stream="udp/225.1.1.111:5002"
+	channel_key="天津联通"
+	url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IlRpYW5qaW4iICYmIG9yZz0iQ0hJTkEgVU5JQ09NIENoaW5hMTY5IEJhY2tib25lIiAmJiBwcm90b2NvbD0iaHR0cCI%3D&page=1&page_size=10"
         ;;
     4)
         city="湖北电信"
@@ -43,10 +44,10 @@ case $city_choice in
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iua5luWMlyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=20"
         ;;
     5)
-        city="安徽电信"
-        stream="rtp/238.1.79.27:4328"
-        channel_key="安徽电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249ImFuaHVpIiAmJiBvcmc9IkNoaW5hbmV0IiAmJiBwcm90b2NvbD0iaHR0cCI%3D&page=1&page_size=20"
+        city="河南联通"
+        stream="rtp/239.16.20.21:10210"
+        channel_key="河南联通"
+        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iuays%2BWNlyIgJiYgb3JnPSJDSElOQSBVTklDT00gQ2hpbmExNjkgQmFja2JvbmUiICYmIHByb3RvY29sPSJodHRwIg%3D%3D&page=1&page_size=10"
         ;;
     6)
         city="广东电信"
