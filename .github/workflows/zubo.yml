@@ -23,8 +23,9 @@ jobs:
       - name: 获取测试组播源
         run: |
           cd $GITHUB_WORKSPACE
-          bash ./zubo1.sh
-          cat txt/湖北电信.txt txt/浙江电信.txt txt/江苏电信.txt txt/山东电信.txt txt/安徽电信.txt > zubo1.txt
+          zubo.txt > zubo_备份.txt
+          bash ./zubo2.sh
+          cat txt/广东电信.txt txt/北京联通.txt txt/湖南电信.txt txt/广东联通.txt txt/湖北电信.txt txt/浙江电信.txt txt/江苏电信.txt txt/山东电信.txt txt/安徽电信.txt > zubo.txt
           
       - name: 更新组播源
         run: |

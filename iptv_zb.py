@@ -2,7 +2,6 @@ import eventlet
 eventlet.monkey_patch()
 import time
 import datetime
-import threading
 from threading import Thread
 import os
 import re
@@ -101,7 +100,7 @@ def extract_channels(ip_port, url_end, keyword):
         elif "ZHGXTV" in json_url:
             response = requests.get(json_url, timeout=2)
             json_data = response.content.decode('utf-8')
-            data_lines = json_data.splitlines()
+            data_lines = json_data.split('\n')
             for line in data_lines:
                 if "," in line and keyword in line:
                     name, channel_url = line.strip().split(',')
@@ -111,55 +110,46 @@ def extract_channels(ip_port, url_end, keyword):
                         hotel_channels.append((name, urld))
         return hotel_channels
     except Exception as e:
-        print(f"解析json错误,{e}")
+        print(f"解析json错误 {e}")
         return []
 # 测速
 def speed_test(channels):
-    results = []
-    error_channels = []
     def show_progress():
         while checked[0] < len(channels):
-            numberx = (len(results) + len(error_channels)) / len(channels) * 100
-            print(f"已测试{checked[0]}/{len(channels)}，可用频道:{len(results)}个，进度:{numberx:.2f}%。")
+            numberx = checked[0] / len(channels) * 100
+            print(f"已测试{checked[0]}/{len(channels)}，可用频道:{len(results)}个，进度:{numberx:.2f}%")
             time.sleep(5)
-    checked = [0]
-    Thread(target=show_progress, daemon=True).start()
     # 定义工作线程函数
     def worker():
         while True:
-            channel_name, channel_url = task_queue.get()  # 从队列中获取任务    
+            channel_name, channel_url = task_queue.get()  # 从队列中获取一个任务
             try:
                 channel_url_t = channel_url.rstrip(channel_url.split('/')[-1])  # m3u8链接前缀
                 lines = requests.get(channel_url,timeout=2).text.strip().split('\n')  # 获取m3u8文件内容
                 ts_lists = [line.split('/')[-1] for line in lines if line.startswith('#') == False]  # 获取m3u8文件下视频流后缀
-                ts_lists_0 = ts_lists[0].rstrip(ts_lists[0].split('.ts')[-1])  # m3u8链接前缀
                 ts_url = channel_url_t + ts_lists[0]  # 拼接单个视频片段下载链接
-                # 获取视频数据进行5秒钟限制
-                with eventlet.Timeout(5, False):
+                ts_lists_0 = ts_lists[0].rstrip(ts_lists[0].split('.ts')[-1])  # m3u8链接前缀
+                with eventlet.Timeout(5, False):    # 获取视频数据进行5秒钟限制
                     start_time = time.time()
                     cont = requests.get(ts_url, timeout=2).content
-                    end_time = time.time()
-                    response_time = (end_time - start_time) * 1                    
+                    resp_time = (time.time() - start_time) * 1                    
                 if cont:
                     checked[0] += 1
                     with open(ts_lists_0, 'ab') as f:
                         f.write(cont)  # 写入文件
-                    file_size = len(cont)
-                    download_speed = file_size / response_time / 1024
-                    normalized_speed = max(download_speed / 1024, 0.01)  # 将速率从kB/s转换为MB/s并限制在0.01~之间
+                    normalized_speed = max(len(cont) / resp_time / 1024 / 1024, 0.001)
                     os.remove(ts_lists_0)
                     result = channel_name, channel_url, f"{normalized_speed:.3f}"
                     results.append(result)
             except:
                 checked[0] += 1
-                error_channel = channel_name, channel_url
-                error_channels.append(error_channel)
             task_queue.task_done()
     task_queue = Queue()
-    num_threads = 20
-    for _ in range(num_threads):    # 创建多个工作线程
-        t = threading.Thread(target=worker, daemon=True) 
-        t.start()
+    results = []
+    checked = [0]
+    Thread(target=show_progress, daemon=True).start()
+    for _ in range(20):    # 创建多个工作线程
+        Thread(target=worker, daemon=True).start()
     for channel in channels:
         task_queue.put(channel)
     task_queue.join()
@@ -302,7 +292,7 @@ def classify_channels(input_file, output_file, keywords):
     with open(output_file, 'w', encoding='utf-8') as out_file:
         out_file.write(f"{keywords_list[0]},#genre#\n")  # 写入头部信息
         out_file.writelines(extracted_lines)  # 写入提取的行    
-# 获取组播源流程        
+# 获取组播ip_port流程
 def multicast_province(config_file):
     filename = os.path.basename(config_file)
     province, operator = filename.split('_')[:2]
@@ -316,20 +306,6 @@ def multicast_province(config_file):
     all_ip_ports = set(valid_ip_ports)
     with open(f"ip/{province}{operator}_ip.txt", 'w', encoding='utf-8') as f:
         f.write('\n'.join(all_ip_ports))    #有效ip_port写入文件
-    template_file = os.path.join('template', f"template_{province}{operator}.txt")
-    if not os.path.exists(template_file):
-        print(f"缺少模板文件: {template_file}")
-        return
-    with open(template_file, 'r', encoding='utf-8') as f:
-        channels = f.readlines()
-    output = []
-    for ip_port in all_ip_ports:
-        output.extend([channel.replace("ipipip", f"{ip_port}") for channel in channels])
-    with open(f"{province}{operator}.txt", 'w', encoding='utf-8') as f:
-        f.write(f"{province}{operator}-组播,#genre#\n")
-        for channel in output:
-            f.write(channel)
-        print(f"生成可用文件 {province}{operator}.txt") 
 # 获取酒店源流程        
 def hotel_iptv(config_file):
     configs = set(read_config(config_file))
@@ -353,7 +329,7 @@ def main():
     print("\n开始获取组播源")
     for config_file in glob.glob(os.path.join('ip', '*_config.txt')):
         multicast_province(config_file)
-    print("组播源获取完成\n开始获取酒店源")
+    print(f"组播源获取完成\n{'='*25}\n开始获取酒店源\n{'='*25}")
     hotel_config_files = [f"ip/酒店高清.ip", f"ip/酒店标清.ip"]
     for config_file in hotel_config_files:
         hotel_iptv(config_file)
@@ -365,7 +341,7 @@ def main():
     classify_channels('1.txt', '其他.txt', keywords="其他频道,tsfile")
     # 合并写入文件
     file_contents = []
-    file_paths = ["央视.txt","卫视.txt","txt/浙江.txt","河南.txt","广西.txt","港台.txt","其他.txt","广东电信.txt","北京联通.txt","湖南电信.txt","广东联通.txt"]  # 替换为实际的文件路径列表
+    file_paths = ["央视.txt","卫视.txt","txt/浙江.txt","河南.txt","广西.txt","港台.txt","其他.txt"]  # 替换为实际的文件路径列表
     for file_path in file_paths:
         with open(file_path, 'r', encoding="utf-8") as f:
             content = f.read()
