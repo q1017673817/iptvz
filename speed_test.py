@@ -13,27 +13,20 @@ def worker():
     while True:
         channel_name, channel_url = task_queue.get()    # 从队列中获取一个任务
         try:
-            response = requests.get(channel_url, timeout=2)
-            response.raise_for_status()
-            channel_url_t = channel_url.rstrip(channel_url.split('/')[-1])  # m3u8链接前缀
-            lines = requests.get(channel_url,timeout=2).text.strip().split('\n')  # 获取m3u8文件内容
-            ts_lists = [line.split('/')[-1] for line in lines if line.startswith('#') == False]  # 获取m3u8文件下视频流后缀
-            # 获取视频数据进行10秒钟限制
             with eventlet.Timeout(10, False):
                 file_size = 0
                 start_time = time.time()
-                for i in range(len(ts_lists)):
-                    ts_url = channel_url_t + ts_lists[i]  # 拼接单个视频片段下载链接
-                    response = requests.get(ts_url, stream=True, timeout=2)
-                    for chunk in response.iter_content(chunk_size=1024):
-                        if chunk:
-                            file_size += len(chunk)
-                    response.close()
-            response_time = time.time() - start_time
-            if response_time >=10:
-                file_size = 0
-            normalized_speed = file_size / response_time / 1024 / 1024
-            if normalized_speed >= 0.1: #and file_size >= 9000000:
+                r = requests.get(channel_url, stream=True, timeout=2)
+                r.raise_for_status()
+                for chunk in r.iter_content(chunk_size=1024):
+                    if chunk:
+                        file_size += len(chunk)
+                    r.close()
+                r_time = time.time() - start_time
+                if r_time >=10:
+                    file_size = 0
+                normalized_speed = file_size / r_time / 1024 / 1024
+                if normalized_speed >= 1.05 and file_size >= 9000000:
                 result = channel_name, channel_url, f"{normalized_speed:.3f} MB/s"
                 results.append(result)
                 numberx = (len(results) + len(error_channels)) / len(channels) * 100
@@ -48,6 +41,7 @@ results = []
 channels = []
 with open('iptv.txt', 'r', encoding='utf-8') as f:
     for line in f:
+        line = line.strip()
         if ',' in line and 'genre' not in line:
             channel_name, channel_url = line.split(',')
             channels.append((channel_name, channel_url))
@@ -71,6 +65,8 @@ with open("speed_results.txt", 'w', encoding='utf-8') as file:
         file.write(f"{channel_name},{channel_url},{speed}\n")
 
 result_counter = 20  # 每个频道需要的个数
+now = datetime.datetime.now(datetime.UTC) + datetime.timedelta(hours=8)
+current_time = now.strftime("%Y/%m/%d %H:%M")
 with open("iptv_list.m3u", 'w', encoding='utf-8') as file:
     channel_counters = {}
     file.write('#EXTM3U\n')
@@ -118,4 +114,4 @@ with open("iptv_list.m3u", 'w', encoding='utf-8') as file:
                 file.write(f"{channel_url}\n")
                 channel_counters[channel_name] = 1
 
-    file.write(f"#EXTINF:-1 group-title=\"{now_today}更新\"\n")
+    file.write(f"#EXTINF:-1 group-title=\"{current_time}更新\"\n")
