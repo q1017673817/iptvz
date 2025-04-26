@@ -131,11 +131,11 @@ def speed_test(channels):
                     response_time = time.time() - start_time
                     normalized_speed = file_size / response_time / 1024 / 1024
                     if normalized_speed >= 0.001:
-                    result = channel_name, channel_url, f"{normalized_speed:.3f}"
-                    results.append(result)
-                    checked[0] += 1
-                    numberx = checked[0] / len(channels) * 100
-                    print(f"可用频道：{len(results)}个，下载速度：{normalized_speed:.3f}MB/s，总频道：{len(channels)}个，进度：{numberx:.2f}%")
+                        result = channel_name, channel_url, f"{normalized_speed:.3f}"
+                        results.append(result)
+                        checked[0] += 1
+                        numberx = checked[0] / len(channels) * 100
+                        print(f"可用频道：{len(results)}个，下载速度：{normalized_speed:.3f}MB/s，总频道：{len(channels)}个，进度：{numberx:.2f}%")
             except:
                 checked[0] += 1
             task_queue.task_done()
