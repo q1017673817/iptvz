@@ -31,19 +31,19 @@ case $city_choice in
         channel_key="江苏电信"
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iuaxn%2BiLjyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=10"
         ;;
-    3)
-        city="天津联通"
-        stream="udp/225.1.1.111:5002"
-	channel_key="天津联通"
-	url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249IlRpYW5qaW4iICYmIG9yZz0iQ0hJTkEgVU5JQ09NIENoaW5hMTY5IEJhY2tib25lIiAmJiBwcm90b2NvbD0iaHR0cCI%3D&page=1&page_size=10"
+    5)
+        city="河北联通"
+        stream="rtp/239.253.92.154:6011"
+	channel_key="河北联通"
+	url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iuays%2BWMlyIgJiYgb3JnPSJDSElOQSBVTklDT00gQ2hpbmExNjkgQmFja2JvbmUiICYmIHByb3RvY29sPSJodHRwIg%3D%3D&page=1&page_size=10"
         ;;
-    4)
+    3)
         city="湖北电信"
         stream="rtp/239.69.1.40:9880"
         channel_key="湖北电信"
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iua5luWMlyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=20"
         ;;
-    5)
+    4)
         city="河南电信"
         stream="rtp/239.16.20.21:10210"
         channel_key="河南电信"
@@ -61,7 +61,7 @@ case $city_choice in
 	;;
     8)
         city="湖南电信"
-        stream="udp/239.76.246.101:1234"
+        stream="udp/239.76.246.151:1234"
         channel_key="湖南电信"
 	;;
     9)

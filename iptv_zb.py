@@ -109,8 +109,7 @@ def extract_channels(ip_port, url_end, keyword):
                         urld = f"{url_x}/{parts[3]}"
                         hotel_channels.append((name, urld))
         return hotel_channels
-    except Exception as e:
-        print(f"解析json错误 {e}")
+    except Exception:
         return []
 # 测速
 def speed_test(channels):
@@ -273,7 +272,7 @@ def unify_channel_name(channels_list):
         name = name.replace("广播电视台", "")
         name = name.replace("编码", "")
         name = name.replace("XF", "")
-        new_channels_list.append(f"{name},{channel_url}\n")
+        new_channels_list.append(f"{name},{channel_url},{speed}\n")
     return new_channels_list
 # 定义排序函数，提取频道名称中的数字并按数字排序
 def channel_key(channel_name):
@@ -321,9 +320,13 @@ def hotel_iptv(config_file):
     # 对频道进行排序
     results.sort(key=lambda x: -float(x[2]))
     results.sort(key=lambda x: channel_key(x[0]))
-    with open('1.txt', 'a', encoding='utf-8') as f:
+    with open('speed_result.txt', 'a', encoding='utf-8') as f:
         f.writelines(unify_channel_name(results))
-    print("测速完成，排序后写入文件：'1.txt'")
+    print("测速完成，排序后写入文件：'speed_result.txt'")
+    with open('speed_result.txt', 'r', encoding='utf-8') as f, open('1.txt', 'w', encoding='utf-8') as a:
+        for line in f:
+            name, channel_url, speed = line.strip().split(',')
+            a.write(f"{name},{channel_url}\n")
 
 def main():
     print("\n开始获取组播源")
