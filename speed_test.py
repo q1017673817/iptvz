@@ -138,8 +138,8 @@ def speed_test(channels):
                 response_time = time.time() - start_time
                 if response_time >=10:
                     file_size = 0
-                normalized_speed = file_size / response_time / 1024 / 1024
-                if normalized_speed >= 1.05:
+                normalized_speed = max(file_size / response_time / 1024 / 1024,0.001)
+                if normalized_speed >= 0.001:
                     result = channel_name, channel_url, f"{normalized_speed:.3f}"
                     results.append(result)
                     numberx = checked[0] / len(channels) * 100
