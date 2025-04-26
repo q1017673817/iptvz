@@ -33,7 +33,7 @@ def worker():
             if response_time >=10:
                 file_size = 0
             normalized_speed = file_size / response_time / 1024 / 1024
-            if normalized_speed >= 1.05 and file_size >= 9000000:
+            if normalized_speed >= 0.001:
                 result = channel_name, channel_url, f"{normalized_speed:.3f} MB/s"
                 results.append(result)
                 numberx = (len(results) + len(error_channels)) / len(channels) * 100
