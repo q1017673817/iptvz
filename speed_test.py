@@ -119,29 +119,21 @@ def speed_test(channels):
         while True:
             channel_name, channel_url = task_queue.get()  # 从队列中获取一个任务
             try:
-                response = requests.get(channel_url, timeout=2)
-                response.raise_for_status()
-                channel_url_t = channel_url.rstrip(channel_url.split('/')[-1])  # m3u8链接前缀
-                lines = requests.get(channel_url,timeout=2).text.strip().split('\n')  # 获取m3u8文件内容
-                ts_lists = [line.split('/')[-1] for line in lines if line.startswith('#') == False]  # 获取m3u8文件下视频流后缀
                 file_size = 0
                 start_time = time.time()
                 with eventlet.Timeout(10, False):    # 获取视频数据进行5秒钟限制
-                    for i in range(len(ts_lists)):
-                        ts_url = channel_url_t + ts_lists[i]  # 拼接单个视频片段下载链接
-                        response = requests.get(ts_url, stream=True, timeout=2)
-                        for chunk in response.iter_content(chunk_size=1024):
-                            if chunk:
-                                file_size += len(chunk)
-                                checked[0] += 1
-                            response.close()
-                response_time = time.time() - start_time
-                if response_time >=10:
-                    file_size = 0
-                normalized_speed = max(file_size / response_time / 1024 / 1024,0.001)
-                if normalized_speed >= 0.001:
+                    response = requests.get(channel_url, stream=True, timeout=2)
+                    response.raise_for_status()
+                    for chunk in response.iter_content(chunk_size=1024):
+                        file_size += len(chunk)
+                        if time.time() - start_time >=10:
+                            break
+                    response_time = time.time() - start_time
+                    normalized_speed = file_size / response_time / 1024 / 1024
+                    if normalized_speed >= 0.001:
                     result = channel_name, channel_url, f"{normalized_speed:.3f}"
                     results.append(result)
+                    checked[0] += 1
                     numberx = checked[0] / len(channels) * 100
                     print(f"可用频道：{len(results)}个，下载速度：{normalized_speed:.3f}MB/s，总频道：{len(channels)}个，进度：{numberx:.2f}%")
             except:
