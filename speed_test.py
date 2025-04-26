@@ -114,13 +114,13 @@ def extract_channels(ip_port, url_end, keyword):
         return []
 # 测速
 def speed_test(channels):
-    def show_progress():
-        while checked[0] < len(channels):
-            numberx = checked[0] / len(channels) * 100
-            print(f"可用频道：{len(results)}个，下载速度：{normalized_speed:.3f}MB/s，总频道：{len(channels)}个，进度：{numberx:.2f}%")
-            #time.sleep(5)
     # 定义工作线程函数
     def worker():
+        def show_progress():
+            while checked[0] < len(channels):
+                numberx = checked[0] / len(channels) * 100
+                print(f"可用频道：{len(results)}个，下载速度：{normalized_speed:.3f}MB/s，总频道：{len(channels)}个，进度：{numberx:.2f}%")
+                #time.sleep(5)
         while True:
             channel_name, channel_url = task_queue.get()  # 从队列中获取一个任务
             try:
@@ -144,7 +144,7 @@ def speed_test(channels):
                 if response_time >=10:
                     file_size = 0
                 normalized_speed = file_size / response_time / 1024 / 1024
-                if normalized_speed >= 1.05 and file_size >= 9000000:
+                if normalized_speed >= 1.05:
                     result = channel_name, channel_url, f"{normalized_speed:.3f}"
                     results.append(result)
             except:
