@@ -114,34 +114,41 @@ def extract_channels(ip_port, url_end, keyword):
         return []
 # 测速
 def speed_test(channels):
+    def show_progress():
+        while checked[0] < len(channels):
+            numberx = checked[0] / len(channels) * 100
+            print(f"可用频道：{len(results)}个，总频道：{len(channels)}个，进度：{numberx:.2f}%")
+            time.sleep(10)
     # 定义工作线程函数
     def worker():
         while True:
             channel_name, channel_url = task_queue.get()  # 从队列中获取一个任务
             try:
-                file_size = 0
-                start_time = time.time()
+                checked[0] += 1
+                channel_url_t = channel_url.rstrip(channel_url.split('/')[-1])  # m3u8链接前缀
+                lines = requests.get(channel_url,timeout=2).text.strip().split('\n')  # 获取m3u8文件内容
+                ts_lists = [line.split('/')[-1] for line in lines if line.startswith('#') == False]  # 获取m3u8文件下视频流后缀
+                ts_url = channel_url_t + ts_lists[0]  # 拼接单个视频片段下载链接
+                ts_lists_0 = ts_lists[0].rstrip(ts_lists[0].split('.ts')[-1])  # m3u8链接前缀
                 with eventlet.Timeout(10, False):    # 获取视频数据进行5秒钟限制
-                    response = requests.get(channel_url, stream=True, timeout=2)
-                    response.raise_for_status()
-                    for chunk in response.iter_content(chunk_size=1024):
-                        file_size += len(chunk)
-                        if time.time() - start_time >=10:
-                            break
-                    response_time = time.time() - start_time
-                    normalized_speed = file_size / response_time / 1024 / 1024
-                    if normalized_speed >= 0.001:
-                        result = channel_name, channel_url, f"{normalized_speed:.3f}"
-                        results.append(result)
-                        checked[0] += 1
-                        numberx = checked[0] / len(channels) * 100
-                        print(f"可用频道：{len(results)}个，下载速度：{normalized_speed:.3f}MB/s，总频道：{len(channels)}个，进度：{numberx:.2f}%")
+                    start_time = time.time()
+                    cont = requests.get(ts_url, timeout=2).content
+                    resp_time = (time.time() - start_time) * 1                    
+                if cont:
+                    with open(ts_lists_0, 'ab') as f:
+                        f.write(cont)  # 写入文件
+                    normalized_speed = max(len(cont) / resp_time / 1024 / 1024, 0.001)
+                    os.remove(ts_lists_0)
+                    result = channel_name, channel_url, f"{normalized_speed:.3f}"
+                    results.append(result)
+                    print(f"可用频道：{len(results)}个，下载速度：{normalized_speed:.3f}MB/s，总频道：{len(channels)}个，进度：{numberx:.2f}%")
             except:
                 checked[0] += 1
             task_queue.task_done()
     task_queue = Queue()
     results = []
     checked = [0]
+    Thread(target=show_progress, daemon=True).start()
     for _ in range(20):    # 创建多个工作线程
         Thread(target=worker, daemon=True).start()
     for channel in channels:
@@ -267,7 +274,7 @@ def unify_channel_name(channels_list):
         name = name.replace("广播电视台", "")
         name = name.replace("编码", "")
         name = name.replace("XF", "")
-        new_channels_list.append(f"{name},{channel_url},{speed}\n")
+        new_channels_list.append(f"{name},{channel_url}\n")
     return new_channels_list
 # 定义排序函数，提取频道名称中的数字并按数字排序
 def channel_key(channel_name):
@@ -312,6 +319,7 @@ def hotel_iptv(config_file):
         channels.extend(extract_channels(valid_ip_port, url_end, keyword))
     print(f"共获取频道：{len(channels)}个\n开始测速")
     results = speed_test(channels)
+    # 对频道进行排序
     results.sort(key=lambda x: -float(x[2]))
     results.sort(key=lambda x: channel_key(x[0]))
     with open('speed_results.txt', 'a', encoding='utf-8') as f:
@@ -321,7 +329,7 @@ def hotel_iptv(config_file):
         for line in f:
             channel_name, channel_url, speed = line.split(',')
             a.write(f"{channel_name},{channel_url}\n")
-            
+
 def main():
     #print("\n开始获取组播源")
     #for config_file in glob.glob(os.path.join('ip', '*_config.txt')):
