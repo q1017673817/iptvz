@@ -116,11 +116,6 @@ def extract_channels(ip_port, url_end, keyword):
 def speed_test(channels):
     # 定义工作线程函数
     def worker():
-        def show_progress():
-            while checked[0] < len(channels):
-                numberx = checked[0] / len(channels) * 100
-                print(f"可用频道：{len(results)}个，下载速度：{normalized_speed:.3f}MB/s，总频道：{len(channels)}个，进度：{numberx:.2f}%")
-                #time.sleep(5)
         while True:
             channel_name, channel_url = task_queue.get()  # 从队列中获取一个任务
             try:
@@ -147,13 +142,14 @@ def speed_test(channels):
                 if normalized_speed >= 1.05:
                     result = channel_name, channel_url, f"{normalized_speed:.3f}"
                     results.append(result)
+                    numberx = checked[0] / len(channels) * 100
+                    print(f"可用频道：{len(results)}个，下载速度：{normalized_speed:.3f}MB/s，总频道：{len(channels)}个，进度：{numberx:.2f}%")
             except:
                 checked[0] += 1
             task_queue.task_done()
     task_queue = Queue()
     results = []
     checked = [0]
-    Thread(target=show_progress, daemon=True).start()
     for _ in range(20):    # 创建多个工作线程
         Thread(target=worker, daemon=True).start()
     for channel in channels:
