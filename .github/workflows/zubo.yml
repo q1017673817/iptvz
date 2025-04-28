@@ -25,7 +25,7 @@ jobs:
           cd $GITHUB_WORKSPACE
           cat zubo.txt > zubo_备份.txt
           bash ./zubo2.sh
-          cat txt/广东电信.txt txt/北京联通.txt txt/湖南电信.txt txt/广东联通.txt txt/湖北电信.txt txt/浙江电信.txt txt/江苏电信.txt txt/天津联通.txt txt/河南电信.txt > zubo.txt
+          cat txt/广东电信.txt txt/北京联通.txt txt/四川电信.txt txt/湖南电信.txt txt/广东联通.txt txt/湖北电信.txt txt/浙江电信.txt txt/江苏电信.txt txt/河南电信.txt txt/河北联通.txt > zubo.txt
           
       - name: 更新组播源
         run: |

@@ -51,7 +51,7 @@ case $city_choice in
         ;;
     6)
         city="广东电信"
-        stream="udp/239.77.1.19:5146"
+        stream="udp/239.77.1.152:5146"
         channel_key="广东电信"
         ;;
     7)
@@ -69,9 +69,14 @@ case $city_choice in
         stream="udp/239.0.1.1:5001"
         channel_key="广东联通"
 	;;
+    10)
+        city="四川电信"
+        stream="udp/239.93.0.169:5140"
+        channel_key="四川电信"
+        ;;
     0)
         # 逐个处理{ }内每个选项
-        for option in {1..9}; do
+        for option in {1..10}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
