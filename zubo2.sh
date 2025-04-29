@@ -1,4 +1,4 @@
-pwd
+#pwd
 if [ $# -eq 0 ]; then
   echo "开始测试······"
   echo "在5秒内输入1~4可选择城市"
@@ -23,13 +23,13 @@ case $city_choice in
         city="浙江电信"
         stream="udp/233.50.201.100:5140"
         channel_key="浙江电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iua1meaxnyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=20"
+        #url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iua1meaxnyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=20"
         ;;
     2)
         city="江苏电信"
         stream="udp/239.49.8.19:9614"
         channel_key="江苏电信"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iuaxn%2BiLjyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=10"
+        #url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iuaxn%2BiLjyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=10"
         ;;
     5)
         city="河北联通"
@@ -109,23 +109,22 @@ while IFS= read -r ip; do
 done < $ipfile
 lines=$(wc -l < $good_ip)
 echo "连接成功 $lines 个,开始测速······"
-
 i=0
 while read line; do
     i=$((i + 1))
     ip=$line
     url="http://$ip/$stream"
     #echo $url
-    curl $url --connect-timeout 3 --max-time 60 -o /dev/null >zubo.tmp 2>&1
+    curl $url --connect-timeout 5 --max-time 60 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)  
     echo "第$i/$lines个：$ip    $a"
     echo "$ip    $a" >> speedtest_${city}_$time.log
 done < $good_ip
-rm -f zubo.tmp $ipfile $good_ip
+cat $good_ip > $ipfile
+rm -rf zubo.tmp $good_ip
 
 echo "测速结果排序"
 awk '/M|k/{print $2"  "$1}' speedtest_${city}_$time.log | sort -n -r > $result_ip
-awk '/M|k/{print $2}' $result_ip > $ipfile
 cat $result_ip
 ip1=$(awk 'NR==1{print $2}' $result_ip)
 ip2=$(awk 'NR==2{print $2}' $result_ip)

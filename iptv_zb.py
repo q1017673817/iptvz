@@ -272,7 +272,7 @@ def unify_channel_name(channels_list):
         name = name.replace("广播电视台", "")
         name = name.replace("编码", "")
         name = name.replace("XF", "")
-        new_channels_list.append(f"{name},{channel_url},{speed}\n")
+        new_channels_list.append(f"{name},{channel_url}\n")
     return new_channels_list
 # 定义排序函数，提取频道名称中的数字并按数字排序
 def channel_key(channel_name):
@@ -299,12 +299,12 @@ def multicast_province(config_file):
     configs = set(read_config(config_file))
     valid_ip_ports = []
     for ip, port, option, url_end, keyword in configs:
-        print(f"开始扫描 ip：{ip}，port：{port}，类型：C+D段扫描")
+        print(f"\n开始扫描 ip：{ip}，port：{port}，类型：C+D段扫描")
         valid_ip_ports.extend(scan_ip_port(ip, port, option, url_end, keyword))
     print(f"{province}{operator} 扫描完成，获取有效ip_port共：{len(valid_ip_ports)}个\n{valid_ip_ports}")
     all_ip_ports = set(valid_ip_ports)
-    with open(f"ip/{province}{operator}_ip.txt", 'w', encoding='utf-8') as f:
-        f.write('\n'.join(all_ip_ports))    #有效ip_port写入文件
+    with open(f"ip/{province}{operator}_ip.txt", 'a', encoding='utf-8') as f:
+        f.write('\n'.join(all_ip_ports) + '\n')    #有效ip_port写入文件
 # 获取酒店源流程        
 def hotel_iptv(config_file):
     configs = set(read_config(config_file))
@@ -320,13 +320,9 @@ def hotel_iptv(config_file):
     # 对频道进行排序
     results.sort(key=lambda x: -float(x[2]))
     results.sort(key=lambda x: channel_key(x[0]))
-    with open('speed_result.txt', 'a', encoding='utf-8') as f:
+    with open('1.txt', 'a', encoding='utf-8') as f:
         f.writelines(unify_channel_name(results))
-    print("测速完成，排序后写入文件：'speed_result.txt'")
-    with open('speed_result.txt', 'r', encoding='utf-8') as f, open('1.txt', 'w', encoding='utf-8') as a:
-        for line in f:
-            name, channel_url, speed = line.strip().split(',')
-            a.write(f"{name},{channel_url}\n")
+    print("测速完成")
 
 def main():
     print("\n开始获取组播源")
