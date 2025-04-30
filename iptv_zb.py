@@ -26,17 +26,17 @@ def read_config(config_file):
                             ip, option, keyword = f"{a}.{b}.{c}.1", 0, "tsfile"
                             url_end = "/iptv/live/1000.json?key=txiptv"
                         elif int(parts[1]) == 0:
-                            ip, option = f"{a}.{b}.{c}.1", 0
-                            url_end, keyword = "/stat", "Multi stream daemon"
+                            ip, option, url_end = f"{a}.{b}.{c}.1", 0, "/stat"
+                            keyword = "Multi stream daemon" or "udpxy status"
                         elif int(parts[1]) == 1:
-                            ip, option = f"{a}.{b}.1.1", 1
-                            url_end, keyword = "/stat", "Multi stream daemon"
+                            ip, option, url_end = f"{a}.{b}.1.1", 1, "/stat"
+                            keyword = "Multi stream daemon" or "udpxy status"
                         elif int(parts[1]) == 2:
                             ip, option, keyword = f"{a}.{b}.{c}.1", 0, "hls"
                             url_end = "/ZHGXTV/Public/json/live_interface.txt"
                         elif int(parts[1]) == 3:
-                            ip, option = f"{a}.{b}.1.1", 1
-                            url_end, keyword = "/status", "udpxy status"
+                            ip, option, url_end = f"{a}.{b}.1.1", 1, "/status"
+                            keyword = "Multi stream daemon" or "udpxy status"
                         ip_configs.append((ip, port, option, url_end, keyword))
                         print(f"第{line_num}行：http://{ip}:{port}{url_end}添加到扫描列表")
                     else:
@@ -58,9 +58,10 @@ def check_ip_port(ip_port, url_end, keyword):
     try:
         url = f"http://{ip_port}{url_end}"
         resp = requests.get(url, timeout=2)
-        if resp.status_code == 200 and keyword in resp.text:
+        resp.raise_for_status()
+        if keyword in resp.text:
             print(f"{url} 访问成功")
-        return ip_port
+            return ip_port
     except:
         return None
 # 多线程检测url，获取有效ip_port
