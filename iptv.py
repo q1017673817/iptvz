@@ -18,7 +18,7 @@ def check_ip_port(ip_port, url_end):
             print(f"{url} 访问成功")
             return url
     except:
-        return None
+        pass
 
 def extract_channels(ip, port, url_end):
     valid_urls = []
