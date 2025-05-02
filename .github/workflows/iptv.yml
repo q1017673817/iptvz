@@ -1,0 +1,38 @@
+name: hotel_iptv
+
+on:
+#  schedule:
+#    - cron: '0 7,22 * * *'  
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0   
+    
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: 获取酒店源
+        run: |
+          cd $GITHUB_WORKSPACE
+          python ./iptv.py
+          
+      - name: 提交更改
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "更新直播源"
+          git push
