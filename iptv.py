@@ -185,9 +185,9 @@ def hotel_iptv(config_file):
 
 def main():
     print(f"\n{'='*25}\n开始获取酒店源\n{'='*25}")
-    hotel_config_files = [f"ip/酒店高清.ip", f"ip/酒店标清.ip"]
-    for config_file in hotel_config_files:
-        hotel_iptv(config_file)
+
+    config_file = os.path.join('ip', '酒店高清.ip')
+    hotel_iptv(config_file)
     classify_channels('1.txt', '央视.txt', keywords="央视频道,CCTV,风云剧场,怀旧剧场,第一剧场,兵器,女性,地理,央视文化,风云音乐,CHC")
     classify_channels('1.txt', '卫视.txt', keywords="卫视频道,卫视")
     classify_channels('1.txt', '少儿.txt', keywords="少儿频道,少儿,卡通,动漫,炫动")
