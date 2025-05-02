@@ -68,7 +68,6 @@ def multicast_province(config_file):
     with open(f"ip/{province}{operator}_ip.txt", 'a', encoding='utf-8') as f:
         f.write('\n'.join(all_ip_ports) + '\n')    #有效ip_port写入文件
 
-print("\n开始获取组播地址")
 for config_file in glob.glob(os.path.join('ip', '*_config.txt')):
     multicast_province(config_file)
 print(f"组播地址获取完成")
