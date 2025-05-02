@@ -63,7 +63,7 @@ def multicast_province(config_file):
     for ip, port, url_end in configs:
         print(f"\n开始扫描  http://{ip}:{port}{url_end}")
         all_ip_ports.extend(scan_ip_port(ip, port, url_end))
-    all_ip_ports = sorted(set(valid_ip_ports))
+    all_ip_ports = sorted(set(all_ip_ports))
     print(f"{province}{operator} 扫描完成，获取有效ip_port共：{len(all_ip_ports)}个\n{all_ip_ports}")
     with open(f"ip/{province}{operator}_ip.txt", 'a', encoding='utf-8') as f:
         f.write('\n'.join(all_ip_ports) + '\n')    #有效ip_port写入文件
