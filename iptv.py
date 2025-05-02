@@ -16,8 +16,7 @@ def check_ip_port(ip_port, url_end):
         resp.raise_for_status()
         if "tsfile" in resp.text or "hls" in resp.text:
             print(f"{url} 访问成功")
-            result = (ip_port, url_end)
-            return result
+            return url
     except:
         return None
 
@@ -31,12 +30,11 @@ def extract_channels(ip, port, url_end):
             result = future.result()
             if result:
                 valid_urls.append(result)
-    print(f"扫描完成，获取有效url共：{len(valid_urls)}个")
     hotel_channels = []
-    for ip_port, url_end in valid_urls:
+    for json_url in valid_urls:
         try:
-            json_url = f"http://{ip_port}{url_end}"
-            url_x = f"http://{ip_port}"
+            urls = json_url.split('/', 3)
+            url_x = f"{urls[0]}//{urls[2]}"
             response = requests.get(json_url, timeout=2)
             response.raise_for_status()
             if "iptv" in json_url:
@@ -60,7 +58,7 @@ def extract_channels(ip, port, url_end):
                             hotel_channels.append((name, urld))
             return hotel_channels
         except Exception:
-            return None
+            return []
             
 def speed_test(channels):
     def show_progress():
