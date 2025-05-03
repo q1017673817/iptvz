@@ -32,6 +32,7 @@ def extract_channels(config_file):
     configs = sorted(set(ip_configs))
     url_ends = ["/iptv/live/1000.json?key=txiptv", "/ZHGXTV/Public/json/live_interface.txt"]
     valid_urls = []
+    all_urls =[]
     for url_end in url_ends:
         for ip, port in configs:
             a, b, c, d = map(int, ip.split('.'))
@@ -42,9 +43,10 @@ def extract_channels(config_file):
                     result = future.result()
                     if result:
                         valid_urls.append(result)
+            all_urls.extent(valid_urls)
     all_channels = []
     hotel_channels = []
-    for url in valid_urls:
+    for url in all_urls:
         try:
             json_url = f"{url}"
             urls = url.split('/', 3)
