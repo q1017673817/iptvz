@@ -60,7 +60,7 @@ def extract_channels(url):
                 if isinstance(item, dict):
                     name = item.get('name')
                     urlx = item.get('url')
-                    if keyword in urlx:
+                    if "tsfile" in urlx:
                         urld = f"{url_x}{urlx}"
                         hotel_channels.append((name, urld))
         elif "ZHGXTV" in json_url:
@@ -68,7 +68,7 @@ def extract_channels(url):
             json_data = response.content.decode('utf-8')
             data_lines = json_data.split('\n')
             for line in data_lines:
-                if "," in line and keyword in line:
+                if "," in line and "hls" in line:
                     name, channel_url = line.strip().split(',')
                     parts = channel_url.split('/', 3)
                     if len(parts) >= 4:
