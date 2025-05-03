@@ -266,7 +266,7 @@ def hotel_iptv(config_file):
     url_ends = ["/iptv/live/1000.json?key=txiptv", "/ZHGXTV/Public/json/live_interface.txt"]
     for url_end in url_ends:
         for ip, port in ip_configs:
-            configs.append(ip, port, url_end)
+            configs.append((ip, port, url_end))
     for ip, port, url_end in configs:
         valid_urls.extend(scan_ip_port(ip, port, url_end))
     print(f"扫描完成，获取有效url共：{len(valid_urls)}个")
