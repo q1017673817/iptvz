@@ -20,20 +20,34 @@ def check_ip_port(ip_port, url_end):
     except:
         pass
 
-def extract_channels(ip, port, url_end):
+def extract_channels(config_file):
+    ip_configs = []
+    with open(config_file, 'r') as f:
+        for line in f:
+            if line and not line.startswith("#"):
+                ip_part, port = line.strip().split(':')
+                a, b, c, d = ip_part.split('.')
+                ip = f"{a}.{b}.{c}.1"
+                ip_configs.append((ip, port))
+    configs = sorted(set(ip_configs))
+    url_ends = ["/iptv/live/1000.json?key=txiptv", "/ZHGXTV/Public/json/live_interface.txt"]
     valid_urls = []
-    a, b, c, d = map(int, ip.split('.'))
-    ip_ports = [f"{a}.{b}.{c}.{x}:{port}" for x in range(1, 256)]
-    with ThreadPoolExecutor(max_workers=100) as executor:
-        futures = {executor.submit(check_ip_port, ip_port, url_end): ip_port for ip_port in ip_ports}
-        for future in as_completed(futures):
-            result = future.result()
-            if result:
-                valid_urls.append(result)
+    for url_end in url_ends:
+        for ip, port in configs:
+            a, b, c, d = map(int, ip.split('.'))
+            ip_ports = [f"{a}.{b}.{c}.{x}:{port}" for x in range(1, 256)]
+            with ThreadPoolExecutor(max_workers=100) as executor:
+                futures = {executor.submit(check_ip_port, ip_port, url_end): ip_port for ip_port in ip_ports}
+                for future in as_completed(futures):
+                    result = future.result()
+                    if result:
+                        valid_urls.append(result)
+    all_channels = []
     hotel_channels = []
-    for json_url in valid_urls:
+    for url in valid_urls:
         try:
-            urls = json_url.split('/', 3)
+            json_url = f"{url}"
+            urls = url.split('/', 3)
             url_x = f"{urls[0]}//{urls[2]}"
             response = requests.get(json_url, timeout=2)
             response.raise_for_status()
@@ -56,7 +70,8 @@ def extract_channels(ip, port, url_end):
                         if len(parts) >= 4:
                             urld = f"{url_x}/{parts[3]}"
                             hotel_channels.append((name, urld))
-            return hotel_channels
+            all_channels.extent(hotel_channels)
+            return all_channels
         except Exception:
             return []
             
@@ -158,23 +173,7 @@ def classify_channels(input_file, output_file, keywords):
         out_file.writelines(extracted_lines) 
 
 def hotel_iptv(config_file):
-    ip_configs = []
-    try:
-        with open(config_file, 'r') as f:
-            for line in f:
-                if line and not line.startswith("#"):
-                    ip_part, port = line.strip().split(':')
-                    a, b, c, d = ip_part.split('.')
-                    ip = f"{a}.{b}.{c}.1"
-                    ip_configs.append((ip, port))
-    except Exception as e:
-        print(f"读取文件错误: {e}")
-    configs = sorted(set(ip_configs))
-    channels = []
-    url_ends = ["/iptv/live/1000.json?key=txiptv", "/ZHGXTV/Public/json/live_interface.txt"]
-    for url_end in url_ends:
-        for ip, port in configs:
-            channels.extend(extract_channels(ip, port, url_end))
+    channels = extract_channels(config_file)
     print(f"共获取频道：{len(channels)}个\n开始测速")
     results = speed_test(channels)
     results.sort(key=lambda x: -float(x[2]))
@@ -185,9 +184,9 @@ def hotel_iptv(config_file):
 
 def main():
     print(f"\n{'='*25}\n开始获取酒店源\n{'='*25}")
-
-    config_file = os.path.join('ip', '酒店高清.ip')
-    hotel_iptv(config_file)
+    hotel_config_files = [f"ip/酒店高清.ip", f"ip/酒店标清.ip"]
+    for config_file in hotel_config_files:
+        hotel_iptv(config_file)
     classify_channels('1.txt', '央视.txt', keywords="央视频道,CCTV,风云剧场,怀旧剧场,第一剧场,兵器,女性,地理,央视文化,风云音乐,CHC")
     classify_channels('1.txt', '卫视.txt', keywords="卫视频道,卫视")
     classify_channels('1.txt', '少儿.txt', keywords="少儿频道,少儿,卡通,动漫,炫动")
