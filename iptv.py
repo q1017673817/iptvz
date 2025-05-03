@@ -37,19 +37,19 @@ def extract_channels(config_file):
     all_ip_ports.extend(ip_ports)
     url_ends = ["/iptv/live/1000.json?key=txiptv", "/ZHGXTV/Public/json/live_interface.txt"]
     valid_urls = []
-    all_urls = []
     with ThreadPoolExecutor(max_workers=100) as executor:
+        futures = []
         for url_end in url_ends:
-            futures = {executor.submit(check_ip_port, ip_port, url_end): ip_port for ip_port in all_ip_ports}
-            for future in as_completed(futures):
-                result = future.result()
-                if result:
-                    valid_urls.append(result)
-            all_urls.extend(valid_urls)
-    all_channels = []
+            for ip_port in all_ip_ports:
+                futures.append(executor.submit(check_ip_port, ip_port, url_end))
+        
+        for future in as_completed(futures):
+            result = future.result()
+            if result:
+                valid_urls.append(result)
     hotel_channels = []
     try:
-        for url in all_urls:
+        for url in valid_urls:
             json_url = f"{url}"
             urls = url.split('/', 3)
             url_x = f"{urls[0]}//{urls[2]}"
