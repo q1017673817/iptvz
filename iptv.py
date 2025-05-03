@@ -34,22 +34,22 @@ def extract_channels(config_file):
     for ip, port in configs:
         a, b, c, d = map(int, ip.split('.'))
         ip_ports = [f"{a}.{b}.{c}.{x}:{port}" for x in range(1, 256)]
-        all_ip_ports.extend(ip_ports)
+    all_ip_ports.extend(ip_ports)
     url_ends = ["/iptv/live/1000.json?key=txiptv", "/ZHGXTV/Public/json/live_interface.txt"]
     valid_urls = []
     all_urls = []
-    for url_end in url_ends:
-        with ThreadPoolExecutor(max_workers=100) as executor:
+    with ThreadPoolExecutor(max_workers=100) as executor:
+        for url_end in url_ends:
             futures = {executor.submit(check_ip_port, ip_port, url_end): ip_port for ip_port in all_ip_ports}
             for future in as_completed(futures):
                 result = future.result()
                 if result:
                     valid_urls.append(result)
-        all_urls.extend(valid_urls)
+            all_urls.extend(valid_urls)
     all_channels = []
     hotel_channels = []
-    for url in all_urls:
-        try:
+    try:
+        for url in all_urls:
             json_url = f"{url}"
             urls = url.split('/', 3)
             url_x = f"{urls[0]}//{urls[2]}"
@@ -75,9 +75,9 @@ def extract_channels(config_file):
                             urld = f"{url_x}/{parts[3]}"
                             hotel_channels.append((name, urld))
             all_channels.extend(hotel_channels)
-            return all_channels
-        except Exception:
-            return []
+        return all_channels
+    except Exception:
+        return []
             
 def speed_test(channels):
     def show_progress():
