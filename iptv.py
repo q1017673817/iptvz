@@ -43,7 +43,7 @@ def extract_channels(config_file):
                     result = future.result()
                     if result:
                         valid_urls.append(result)
-            all_urls.extent(valid_urls)
+            all_urls.extend(valid_urls)
     all_channels = []
     hotel_channels = []
     for url in all_urls:
@@ -72,7 +72,7 @@ def extract_channels(config_file):
                         if len(parts) >= 4:
                             urld = f"{url_x}/{parts[3]}"
                             hotel_channels.append((name, urld))
-            all_channels.extent(hotel_channels)
+            all_channels.extend(hotel_channels)
             return all_channels
         except Exception:
             return []
