@@ -129,7 +129,7 @@ cat $result_ip
 ip1=$(awk 'NR==1{print $2}' $result_ip)
 ip2=$(awk 'NR==2{print $2}' $result_ip)
 ip3=$(awk 'NR==3{print $2}' $result_ip)
-rm -f speedtest_${city}_$time.log     
+rm -f speedtest_${city}_$time.log $result_ip    
 # 用 3 个最快 ip 生成对应城市的 txt 文件
 program=template/template_${city}.txt
 sed "s/ipipip/$ip1/g" $program > tmp_1.txt

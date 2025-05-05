@@ -27,7 +27,6 @@ jobs:
       - name: 获取酒店源
         run: |
           cd $GITHUB_WORKSPACE
-          cat iptv.txt > iptv_备份.txt
           python ./iptv_zb.py
           
       - name: Install Dependencies
