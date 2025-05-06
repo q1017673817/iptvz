@@ -27,16 +27,16 @@ def read_config(config_file):
                             url_end = "/iptv/live/1000.json?key=txiptv"
                         elif int(parts[1]) == 0:
                             ip, option, url_end = f"{a}.{b}.{c}.1", 0, "/stat"
-                            keyword = "Multi stream daemon" or "udpxy status"
+                            keyword = "Multi stream daemon"
                         elif int(parts[1]) == 1:
                             ip, option, url_end = f"{a}.{b}.1.1", 1, "/stat"
-                            keyword = "Multi stream daemon" or "udpxy status"
+                            keyword = "Multi stream daemon"
                         elif int(parts[1]) == 2:
                             ip, option, keyword = f"{a}.{b}.{c}.1", 0, "hls"
                             url_end = "/ZHGXTV/Public/json/live_interface.txt"
                         elif int(parts[1]) == 3:
                             ip, option, url_end = f"{a}.{b}.1.1", 1, "/status"
-                            keyword = "Multi stream daemon" or "udpxy status"
+                            keyword = "udpxy status"
                         ip_configs.append((ip, port, option, url_end, keyword))
                         print(f"第{line_num}行：http://{ip}:{port}{url_end}添加到扫描列表")
                     else:
