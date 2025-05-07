@@ -2,7 +2,7 @@ name: iptv_zb
 
 on:
   schedule:
-    - cron: '0 7,22 * * *'  
+    - cron: '0 7,20 * * *'  
   workflow_dispatch:
 
 jobs:
@@ -27,7 +27,6 @@ jobs:
       - name: 获取酒店源
         run: |
           cd $GITHUB_WORKSPACE
-          cat iptv.txt > iptv_备份.txt
           python ./iptv_zb.py
           
       - name: Install Dependencies
