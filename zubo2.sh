@@ -22,61 +22,59 @@ case $city_choice in
     1)
         city="浙江电信"
         stream="udp/233.50.201.100:5140"
-        channel_key="浙江电信"
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iua1meaxnyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=20"
         ;;
     2)
         city="江苏电信"
         stream="udp/239.49.8.19:9614"
-        channel_key="江苏电信"
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iuaxn%2BiLjyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=10"
         ;;
     5)
         city="河北联通"
         stream="rtp/239.253.92.154:6011"
-	channel_key="河北联通"
 	url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iuays%2BWMlyIgJiYgb3JnPSJDSElOQSBVTklDT00gQ2hpbmExNjkgQmFja2JvbmUiICYmIHByb3RvY29sPSJodHRwIg%3D%3D&page=1&page_size=10"
         ;;
     3)
         city="湖北电信"
         stream="rtp/239.69.1.40:9880"
-        channel_key="湖北电信"
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iua5luWMlyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=20"
         ;;
     4)
         city="河南电信"
         stream="rtp/239.16.20.21:10210"
-        channel_key="河南电信"
         url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iuays%2BWNlyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=10"
         ;;
     6)
         city="广东电信"
         stream="udp/239.77.1.152:5146"
-        channel_key="广东电信"
         ;;
     7)
         city="北京联通"
         stream="rtp/239.3.1.241:8000"
-        channel_key="北京联通"
 	;;
     8)
         city="湖南电信"
         stream="udp/239.76.246.151:1234"
-        channel_key="湖南电信"
 	;;
     9)
         city="广东联通"
         stream="udp/239.0.1.1:5001"
-        channel_key="广东联通"
 	;;
     10)
         city="四川电信"
         stream="udp/239.93.0.169:5140"
-        channel_key="四川电信"
+        ;;
+    11)
+        city="山东电信"
+        stream="udp/239.21.1.87:5002"
+        ;;
+    12)
+        city="陕西电信"
+        stream="rtp/239.111.205.35:5140"
         ;;
     0)
         # 逐个处理{ }内每个选项
-        for option in {1..10}; do
+        for option in {1..12}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -89,13 +87,13 @@ ipfile=ip/${city}_ip.txt
 good_ip=ip/good_${city}_ip.txt
 result_ip=ip/result_${city}_ip.txt
 echo "======== 开始检索 ${city} ========"
-echo "从 fofa 获取ip+端口"
-curl -o test.html $url_fofa
-grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+$' test.html | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
+#echo "从 fofa 获取ip+端口"
+#curl -o test.html $url_fofa
+#grep -E '^\s*[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+$' test.html | grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+:[0-9]+' > tmp_ipfile
 echo "从 '${ipfile}' 读取ip并添加到检测列表"
 cat $ipfile >> tmp_ipfile
 sort tmp_ipfile | uniq | sed '/^\s*$/d' > $ipfile
-rm -f tmp_ipfile test.html
+rm -f tmp_ipfile
 
 while IFS= read -r ip; do
     # 尝试连接 IP 地址和端口号，并将输出保存到变量中
@@ -120,8 +118,8 @@ while read line; do
     echo "第$i/$lines个：$ip    $a"
     echo "$ip    $a" >> speedtest_${city}_$time.log
 done < $good_ip
-cat $good_ip > $ipfile
-rm -rf zubo.tmp $good_ip
+#cat $good_ip > $ipfile
+rm -rf zubo.tmp $ipfile $good_ip
 
 echo "测速结果排序"
 awk '/M|k/{print $2"  "$1}' speedtest_${city}_$time.log | sort -n -r > $result_ip

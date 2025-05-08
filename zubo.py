@@ -10,7 +10,7 @@ def read_config(config_file):
     try:
         with open(config_file, 'r') as f:
             for line_num, line in enumerate(f, 1):
-                if line and not line.startswith("#"):
+                if "," in line and not line.startswith("#"):
                     parts = line.strip().split(',')
                     ip_part, port = parts[0].strip().split(':')
                     a, b, c, d = ip_part.split('.')
