@@ -72,9 +72,21 @@ case $city_choice in
         city="陕西电信"
         stream="rtp/239.111.205.35:5140"
         ;;
+    13)
+        city="广西电信"
+        stream="udp/239.81.0.107:4056"
+        ;;
+    14)
+        city="贵州电信"
+        stream="rtp/238.255.2.1:5999"
+        ;;
+    15)
+        city="山西联通"
+        stream="rtp/226.0.2.152:9128"
+        ;;
     0)
         # 逐个处理{ }内每个选项
-        for option in {1..12}; do
+        for option in {1..15}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
