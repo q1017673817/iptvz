@@ -65,9 +65,21 @@ def multicast_province(config_file):
         all_ip_ports.extend(scan_ip_port(ip, port, url_end))
     all_ip_ports = sorted(set(all_ip_ports))
     print(f"{province}{operator} 扫描完成，获取有效ip_port共：{len(all_ip_ports)}个\n{all_ip_ports}")
-    with open(f"ip/{province}{operator}_ip.txt", 'a', encoding='utf-8') as f:
+    with open(f"ip/{province}{operator}_ip.txt", 'w', encoding='utf-8') as f:
         f.write('\n'.join(all_ip_ports) + '\n')    #有效ip_port写入文件
-
+    template_file = os.path.join('template', f"template_{province}{operator}.txt")
+    if not os.path.exists(template_file):
+        print(f"缺少模板文件: {template_file}")
+        return    
+    with open(template_file, 'r', encoding='utf-8') as f:
+        channels = f.readlines()    
+    output = []
+    for ip in all_ip_ports:
+        output.extend([channel.replace("ipipip", f"{ip}") for channel in channels])    
+    with open(f"组播_{province}{operator}.txt", 'w', encoding='utf-8') as f:
+        f.write(f"{province}{operator}-组播,#genre#\n")
+        for channel in output:
+            f.write(channel)
 for config_file in glob.glob(os.path.join('ip', '*_config.txt')):
     multicast_province(config_file)
 print(f"组播地址获取完成")
