@@ -32,7 +32,6 @@ case $city_choice in
     5)
         city="河北联通"
         stream="rtp/239.253.92.154:6011"
-	url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iuays%2BWMlyIgJiYgb3JnPSJDSElOQSBVTklDT00gQ2hpbmExNjkgQmFja2JvbmUiICYmIHByb3RvY29sPSJodHRwIg%3D%3D&page=1&page_size=10"
         ;;
     3)
         city="湖北电信"
@@ -42,7 +41,6 @@ case $city_choice in
     4)
         city="河南电信"
         stream="rtp/239.16.20.21:10210"
-        url_fofa="https://fofa.info/result?qbase64=InVkcHh5IiAmJiByZWdpb249Iuays%2BWNlyIgJiYgb3JnPSJDaGluYW5ldCIgJiYgcHJvdG9jb2w9Imh0dHAi&page=1&page_size=10"
         ;;
     6)
         city="广东电信"
@@ -84,9 +82,33 @@ case $city_choice in
         city="山西联通"
         stream="rtp/226.0.2.152:9128"
         ;;
+    16)
+        city="上海电信"
+        stream="udp/239.45.3.146:5140"
+        ;;
+    17)
+        city="福建电信"
+        stream="rtp/239.61.2.132:8708"
+        ;;
+    18)
+        city="江西电信"
+        stream="udp/239.252.220.63:5140"
+        ;;
+    19)
+        city="安徽电信"
+        stream="rtp/238.1.79.27:4328"
+        ;;
+    20)
+        city="天津联通"
+        stream="udp/225.1.1.111:5002"
+        ;;
+    21)
+        city="宁夏电信"
+        stream="rtp/239.121.4.94:8538"
+        ;;
     0)
         # 逐个处理{ }内每个选项
-        for option in {1..15}; do
+        for option in {1..21}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
