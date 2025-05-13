@@ -58,13 +58,13 @@ def multicast_province(config_file):
     province, operator = filename.split('_')[:2]
     print(f"{'='*25}\n   获取: {province}{operator}ip_port\n{'='*25}")
     configs = set(read_config(config_file))
-    print(f"读取完成，共需扫描 {len(configs)}组\n")
+    print(f"读取完成，共需扫描 {len(configs)}组")
     all_ip_ports = []
     for ip, port, url_end in configs:
         print(f"\n开始扫描  http://{ip}:{port}{url_end}")
         all_ip_ports.extend(scan_ip_port(ip, port, url_end))
     all_ip_ports = sorted(set(all_ip_ports))
-    print(f"{province}{operator} 扫描完成，获取有效ip_port共：{len(all_ip_ports)}个\n{all_ip_ports}")
+    print(f"\n{province}{operator} 扫描完成，获取有效ip_port共：{len(all_ip_ports)}个\n{all_ip_ports}\n")
     with open(f"ip/{province}{operator}_ip.txt", 'w', encoding='utf-8') as f:
         f.write('\n'.join(all_ip_ports) + '\n')    #有效ip_port写入文件
     template_file = os.path.join('template', f"template_{province}{operator}.txt")
