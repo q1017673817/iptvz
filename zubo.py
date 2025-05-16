@@ -68,7 +68,7 @@ def multicast_province(config_file):
     all_ip_ports = sorted(set(all_ip_ports))
     print(f"\n{province} 扫描完成，获取有效ip_port共：{len(all_ip_ports)}个\n{all_ip_ports}\n")
     with open(f"ip/{province}_ip.txt", 'w', encoding='utf-8') as f:
-        f.write('\n'.join(all_ip_ports) + '\n')    #有效ip_port写入文件
+        f.write('\n'.join(all_ip_ports))    #有效ip_port写入文件
     template_file = os.path.join('template', f"template_{province}.txt")
     if not os.path.exists(template_file):
         print(f"缺少模板文件: {template_file}")
