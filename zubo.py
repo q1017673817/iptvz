@@ -55,8 +55,10 @@ def scan_ip_port(ip, port, url_end):
 
 def multicast_province(config_file):
     filename = os.path.basename(config_file)
-    province, operator = filename.split('_')[:2]
-    print(f"{'='*25}\n   获取: {province}{operator}ip_port\n{'='*25}")
+    province = filename.split('_')[0]
+    if os.path.exists(f"组播_{province}.txt"):
+        os.remove(f"组播_{province}.txt")
+    print(f"{'='*25}\n   获取: {province}ip_port\n{'='*25}")
     configs = set(read_config(config_file))
     print(f"读取完成，共需扫描 {len(configs)}组")
     all_ip_ports = []
@@ -64,23 +66,22 @@ def multicast_province(config_file):
         print(f"\n开始扫描  http://{ip}:{port}{url_end}")
         all_ip_ports.extend(scan_ip_port(ip, port, url_end))
     all_ip_ports = sorted(set(all_ip_ports))
-    print(f"\n{province}{operator} 扫描完成，获取有效ip_port共：{len(all_ip_ports)}个\n{all_ip_ports}\n")
-    with open(f"ip/{province}{operator}_ip.txt", 'w', encoding='utf-8') as f:
+    print(f"\n{province} 扫描完成，获取有效ip_port共：{len(all_ip_ports)}个\n{all_ip_ports}\n")
+    with open(f"ip/{province}_ip.txt", 'w', encoding='utf-8') as f:
         f.write('\n'.join(all_ip_ports) + '\n')    #有效ip_port写入文件
-    template_file = os.path.join('template', f"template_{province}{operator}.txt")
+    template_file = os.path.join('template', f"template_{province}.txt")
     if not os.path.exists(template_file):
         print(f"缺少模板文件: {template_file}")
-        return    
-    with open(template_file, 'r', encoding='utf-8') as f:
-        channels = f.readlines()    
-    output = []
-    for ip in all_ip_ports:
-        output.extend([channel.replace("ipipip", f"{ip}") for channel in channels])    
-    with open(f"组播_{province}{operator}.txt", 'w', encoding='utf-8') as f:
-        f.write(f"{province}{operator}-组播,#genre#\n")
-        for channel in output:
-            f.write(channel)
-
+        return        
+    with open(f"ip/{province}_ip.txt", 'r', encoding='utf-8') as f:    
+        for line_num, line in enumerate(f, 1):
+            ip = line.strip()
+            with open(template_file, 'r', encoding='utf-8') as t, open(f"组播_{province}.txt", 'a', encoding='utf-8') as output:
+                output.write(f"{province}-组播{line_num},#genre#\n")
+                for line in t:
+                    line.replace("ipipip", f"{ip}")
+                    output.write(line)
+            
 def main():
     for config_file in glob.glob(os.path.join('ip', '*_config.txt')):
         multicast_province(config_file)
