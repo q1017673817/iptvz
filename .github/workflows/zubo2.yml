@@ -2,8 +2,8 @@ name: zubo
 
 on:
   schedule:
-#    - cron: '0 5,19 * * *'
-#  workflow_dispatch:
+    - cron: '0 6,21 * * *'
+  workflow_dispatch:
 
 jobs:
   run-script:
@@ -27,7 +27,7 @@ jobs:
       - name: 获取组播源
         run: |
           cd $GITHUB_WORKSPACE
-          python ./zubo.py
+          python ./zubo2.py
           
       - name: Install Dependencies
         run: |
@@ -43,6 +43,7 @@ jobs:
           
       - name: 更新组播源
         run: |
+          git pull
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
