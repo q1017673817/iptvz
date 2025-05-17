@@ -79,7 +79,7 @@ def multicast_province(config_file):
             with open(template_file, 'r', encoding='utf-8') as t, open(f"组播_{province}.txt", 'a', encoding='utf-8') as output:
                 output.write(f"{province}-组播{line_num},#genre#\n")
                 for line in t:
-                    line.replace("ipipip", f"{ip}")
+                    line = line.replace("ipipip", f"{ip}")
                     output.write(line)
             
 def main():
