@@ -7,8 +7,7 @@ for config_file in config_files:
         os.remove(f"组播_{province}.txt")
     template_file = os.path.join('template', f"template_{province}.txt")
     if not os.path.exists(template_file):
-        print(f"缺少模板文件: {template_file}")
-        return        
+        print(f"缺少模板文件: {template_file}")        
     with open(f"ip/{province}_ip.txt", 'r', encoding='utf-8') as f:    
         for line_num, line in enumerate(f, 1):
             ip = line.strip()
