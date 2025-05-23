@@ -28,10 +28,6 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           python ./zubo1.py
-          time=$(date +%Y/%m/%d)
-          echo "浙江频道 $time 更新,#genre#" > zubo_all.txt
-          cat txt/浙江.txt >> zubo_all.txt
-          cat 组播_广东电信.txt 组播_北京联通.txt 组播_四川电信.txt 组播_湖南电信.txt 组播_广东联通.txt 组播_湖北电信.txt 组播_浙江电信.txt 组播_江苏电信.txt 组播_上海电信.txt 组播_福建电信.txt 组播_安徽电信.txt 组播_江西电信.txt 组播_天津联通.txt 组播_河南电信.txt 组播_河北联通.txt 组播_山东电信.txt 组播_陕西电信.txt 组播_广西电信.txt 组播_贵州电信.txt 组播_山西联通.txt 组播_重庆电信.txt 组播_宁夏电信.txt >> zubo_all.txt
 
       - name: 更新组播源
         run: |
