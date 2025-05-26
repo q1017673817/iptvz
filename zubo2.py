@@ -1,7 +1,20 @@
 import datetime
 import glob
 from zubo import multicast_province
-config_files = ["ip/江苏电信_config.txt", "ip/上海电信_config.txt", "ip/浙江电信_config.txt", "ip/江西电信_config.txt", "ip/安徽电信_config.txt", "ip/四川电信_config.txt", "ip/贵州电信_config.txt", "ip/重庆电信_config.txt", "ip/陕西电信_config.txt", "ip/宁夏电信_config.txt", "ip/黑龙江联通_config.txt", "ip/辽宁联通_config.txt"]
+config_files = ["ip/江苏电信_config.txt",
+                "ip/上海电信_config.txt",
+                "ip/浙江电信_config.txt",
+                "ip/江西电信_config.txt",
+                "ip/安徽电信_config.txt",
+                "ip/四川电信_config.txt",
+                "ip/贵州电信_config.txt",
+                "ip/重庆电信_config.txt",
+                "ip/陕西电信_config.txt",
+                "ip/甘肃电信_config.txt",
+                "ip/内蒙古电信_config.txt",
+                "ip/宁夏电信_config.txt",
+                "ip/黑龙江联通_config.txt",
+                "ip/辽宁联通_config.txt"]
 for config_file in config_files:
     multicast_province(config_file)
 file_contents = []
