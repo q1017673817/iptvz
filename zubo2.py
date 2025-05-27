@@ -13,6 +13,7 @@ config_files = ["ip/江苏电信_config.txt",
                 "ip/甘肃电信_config.txt",
                 "ip/内蒙古电信_config.txt",
                 "ip/宁夏电信_config.txt",
+                "ip/新疆电信_config.txt",
                 "ip/黑龙江联通_config.txt",
                 "ip/辽宁联通_config.txt"]
 for config_file in config_files:

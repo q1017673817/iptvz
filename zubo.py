@@ -14,9 +14,15 @@ def read_config(config_file):
                     parts = line.strip().split(',')
                     ip_part, port = parts[0].strip().split(':')
                     a, b, c, d = ip_part.split('.')
-                    ip = f"{a}.{b}.1.1"
-                    url_end = "/stat" if int(parts[1]) == 1 else "/status"
-                    ip_configs.append((ip, port, url_end))
+                    if int(parts[1]) == 0:
+                        ip, option, url_end = f"{a}.{b}.{c}.1", 0, "/stat"
+                    elif int(parts[1]) == 1:
+                        ip, option, url_end = f"{a}.{b}.1.1", 1, "/stat"
+                    elif int(parts[1]) == 2:
+                        ip, option, url_end = f"{a}.{b}.{c}.1", 0, "/status"
+                    elif int(parts[1]) == 3:
+                        ip, option, url_end = f"{a}.{b}.1.1", 1, "/status"
+                    ip_configs.append((ip, port, option, url_end))
                     print(f"第{line_num}行：http://{ip}:{port}{url_end}添加到扫描列表")
         return ip_configs
     except Exception as e:
@@ -34,17 +40,18 @@ def check_ip_port(ip_port, url_end):
     except:
         return None
 # 多线程检测url，获取有效ip_port
-def scan_ip_port(ip, port, url_end):
+def scan_ip_port(ip, port, option, url_end):
     def show_progress():
-        while checked[0] < len(ip_ports):
+        while checked[0] < len(ip_ports) and option == 1:
             print(f"已扫描：{checked[0]}/{len(ip_ports)}, 有效ip_port：{len(valid_ip_ports)}个")
-            time.sleep(20)
+            time.sleep(30)
     valid_ip_ports = []
     a, b, c, d = map(int, ip.split('.'))
-    ip_ports = [f"{a}.{b}.{x}.{y}:{port}" for x in range(256) for y in range(1,256)]
+    ip_ports = [f"{a}.{b}.{x}.{y}:{port}" for x in range(256) for y in range(1,256)] if option == 1 \
+               else [f"{a}.{b}.{c}.{x}:{port}" for x in range(1,256)]
     checked = [0]
     Thread(target=show_progress, daemon=True).start()
-    with ThreadPoolExecutor(max_workers=300) as executor:
+    with ThreadPoolExecutor(max_workers = 300 if option == 1 else 50) as executor:
         futures = {executor.submit(check_ip_port, ip_port, url_end): ip_port for ip_port in ip_ports}
         for future in as_completed(futures):
             result = future.result()
@@ -59,16 +66,25 @@ def multicast_province(config_file):
     if os.path.exists(f"组播_{province}.txt"):
         os.remove(f"组播_{province}.txt")
     print(f"{'='*25}\n   获取: {province}ip_port\n{'='*25}")
-    configs = set(read_config(config_file))
+    configs = sorted(set(read_config(config_file)))
     print(f"读取完成，共需扫描 {len(configs)}组")
     all_ip_ports = []
-    for ip, port, url_end in configs:
+    for ip, port, option, url_end in configs:
         print(f"\n开始扫描  http://{ip}:{port}{url_end}")
-        all_ip_ports.extend(scan_ip_port(ip, port, url_end))
+        all_ip_ports.extend(scan_ip_port(ip, port, option, url_end))
     all_ip_ports = sorted(set(all_ip_ports))
     print(f"\n{province} 扫描完成，获取有效ip_port共：{len(all_ip_ports)}个\n{all_ip_ports}\n")
     with open(f"ip/{province}_ip.txt", 'w', encoding='utf-8') as f:
         f.write('\n'.join(all_ip_ports))    #有效ip_port写入文件
+    with open(f"ip/存档_{province}_ip.txt", 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+        for ip_port in all_ip_ports:
+            ip, port = ip_port.split(":")
+            a, b, c, d = ip.split(".")
+            lines.append(f"{a}.{b}.{c}.1:{port}\n")
+        lines = sorted(set(lines))
+    with open(f"ip/存档_{province}_ip.txt", 'w', encoding='utf-8') as f:
+        f.writelines(lines)    
     template_file = os.path.join('template', f"template_{province}.txt")
     if not os.path.exists(template_file):
         print(f"缺少模板文件: {template_file}")
