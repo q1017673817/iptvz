@@ -2,7 +2,7 @@ name: zubo1
 
 on:
   schedule:
-    - cron: '0 20 * * *'
+    - cron: '0 20,4 * * *'
   workflow_dispatch:
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
       - name: 获取组播源
         run: |
           cd $GITHUB_WORKSPACE
-          python ./zubo1.py
+          python ./zubo.py
 
       - name: 更新组播源
         run: |
