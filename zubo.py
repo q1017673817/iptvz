@@ -1,6 +1,7 @@
 from threading import Thread
 import os
 import time
+import datetime
 import glob
 import requests
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -63,8 +64,6 @@ def scan_ip_port(ip, port, option, url_end):
 def multicast_province(config_file):
     filename = os.path.basename(config_file)
     province = filename.split('_')[0]
-    if os.path.exists(f"组播_{province}.txt"):
-        os.remove(f"组播_{province}.txt")
     print(f"{'='*25}\n   获取: {province}ip_port\n{'='*25}")
     configs = sorted(set(read_config(config_file)))
     print(f"读取完成，共需扫描 {len(configs)}组")
@@ -72,35 +71,51 @@ def multicast_province(config_file):
     for ip, port, option, url_end in configs:
         print(f"\n开始扫描  http://{ip}:{port}{url_end}")
         all_ip_ports.extend(scan_ip_port(ip, port, option, url_end))
-    all_ip_ports = sorted(set(all_ip_ports))
-    print(f"\n{province} 扫描完成，获取有效ip_port共：{len(all_ip_ports)}个\n{all_ip_ports}\n")
-    with open(f"ip/{province}_ip.txt", 'w', encoding='utf-8') as f:
-        f.write('\n'.join(all_ip_ports))    #有效ip_port写入文件
-    with open(f"ip/存档_{province}_ip.txt", 'r', encoding='utf-8') as f:
-        lines = f.readlines()
-        for ip_port in all_ip_ports:
-            ip, port = ip_port.split(":")
-            a, b, c, d = ip.split(".")
-            lines.append(f"{a}.{b}.{c}.1:{port}\n")
-        lines = sorted(set(lines))
-    with open(f"ip/存档_{province}_ip.txt", 'w', encoding='utf-8') as f:
-        f.writelines(lines)    
-    template_file = os.path.join('template', f"template_{province}.txt")
-    if not os.path.exists(template_file):
-        print(f"缺少模板文件: {template_file}")
-        return        
-    with open(f"ip/{province}_ip.txt", 'r', encoding='utf-8') as f:    
-        for line_num, line in enumerate(f, 1):
-            ip = line.strip()
-            with open(template_file, 'r', encoding='utf-8') as t, open(f"组播_{province}.txt", 'a', encoding='utf-8') as output:
-                output.write(f"{province}-组播{line_num},#genre#\n")
-                for line_t in t:
-                    line_t = line_t.replace("ipipip", f"{ip}")
-                    output.write(line_t)
+    if len(all_ip_ports) != 0:
+        all_ip_ports = sorted(set(all_ip_ports))
+        print(f"\n{province} 扫描完成，获取有效ip_port共：{len(all_ip_ports)}个\n{all_ip_ports}\n")
+        with open(f"ip/{province}_ip.txt", 'w', encoding='utf-8') as f:
+            f.write('\n'.join(all_ip_ports))    #有效ip_port写入文件
+        with open(f"ip/存档_{province}_ip.txt", 'r', encoding='utf-8') as f:
+            lines = f.readlines()
+            for ip_port in all_ip_ports:
+                ip, port = ip_port.split(":")
+                a, b, c, d = ip.split(".")
+                lines.append(f"{a}.{b}.{c}.1:{port}\n")
+            lines = sorted(set(lines))
+        with open(f"ip/存档_{province}_ip.txt", 'w', encoding='utf-8') as f:
+            f.writelines(lines)    
+        template_file = os.path.join('template', f"template_{province}.txt")
+        if os.path.exists(template_file):
+            with open(template_file, 'r', encoding='utf-8') as f:
+                tem_channels = f.read()
+            output = [] 
+            with open(f"ip/{province}_ip.txt", 'r', encoding='utf-8') as f:
+                for line_num, line in enumerate(f, 1):
+                    ip = line.strip()
+                    output.append(f"{province}-组播{line_num},#genre#\n")
+                    output.extend(tem_channels.replace("ipipip", f"{ip}"))
+            with open(f"组播_{province}.txt", 'w', encoding='utf-8') as f:
+                f.writelines(output)
+        else:
+            print(f"缺少模板文件: {template_file}")
+    else:
+        print(f"\n{province} 扫描完成，未扫描到有效ip_port")
             
 def main():
     for config_file in glob.glob(os.path.join('ip', '*_config.txt')):
         multicast_province(config_file)
+    file_contents = []
+    for file_path in glob.glob('组播_*.txt'):
+        with open(file_path, 'r', encoding="utf-8") as f:
+            content = f.read()
+            file_contents.append(content)
+    now = datetime.datetime.now(datetime.UTC) + datetime.timedelta(hours=8)
+    current_time = now.strftime("%Y/%m/%d %H:%M")
+    with open("zubo_all.txt", "w", encoding="utf-8") as f:
+        f.write(f"{current_time}更新,#genre#\n")
+        f.write(f"浙江卫视,http://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8\n")
+        f.write('\n'.join(file_contents))
     print(f"组播地址获取完成")
 
 if __name__ == "__main__":

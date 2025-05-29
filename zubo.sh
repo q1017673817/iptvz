@@ -134,9 +134,13 @@ case $city_choice in
         city="新疆电信"
         stream="udp/238.125.3.174:5140"
         ;;
+    29)
+        city="内蒙古电信"
+        stream="rtp/239.29.0.2:5000"
+        ;;
     0)
         # 逐个处理{ }内每个选项
-        for option in {1..28}; do
+        for option in {1..29}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -181,7 +185,7 @@ while read line; do
     echo "$ip    $a" >> speedtest_${city}_$time.log
 done < $good_ip
 #cat $good_ip > $ipfile
-rm -rf zubo.tmp $ipfile $good_ip
+rm -rf zubo.tmp $good_ip
 
 echo "测速结果排序"
 awk '/M|k/{print $2"  "$1}' speedtest_${city}_$time.log | sort -n -r > $result_ip
