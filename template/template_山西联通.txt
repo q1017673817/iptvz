@@ -1,7 +1,7 @@
 山西卫视,http://ipipip/rtp/226.0.2.152:9128
-山西黄河,http://ipipip/rtp/226.0.2.235:9792
+山西黄河频道,http://ipipip/rtp/226.0.2.235:9792
 山西经济与科技,http://ipipip/rtp/226.0.2.236:9800
-山西影视,http://ipipip/rtp/226.0.2.237:9808
+山西影视频道,http://ipipip/rtp/226.0.2.237:9808
 山西社会与法治,http://ipipip/rtp/226.0.2.238:9816
 山西文体生活,http://ipipip/rtp/226.0.2.16:8040
 CCTV-1综合,http://ipipip/rtp/226.0.2.153:9136
