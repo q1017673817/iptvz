@@ -31,7 +31,7 @@ def generate_ip_ports(ip, port, option):
     elif option == 0 or option == 10:
         return [f"{a}.{b}.{c}.{y}:{port}" for y in range(1, 256)]
     else:
-        return [f"{a}.{b}.{x}.{y}" for x in range(256) for y in range(1, 256)]
+        return [f"{a}.{b}.{x}.{y}:{port}" for x in range(256) for y in range(1, 256)]
 # 发送get请求检测url是否可访问        
 def check_ip_port(ip_port, url_end):    
     try:
