@@ -25,9 +25,12 @@ def read_config(config_file):
         print(f"读取文件错误: {e}")
 
 def generate_ip_ports(ip, port, option):
-    a, b, c, d = map(int, ip.split('.'))
+    a, b, c, d = ip.split('.')
     if option == 2 or option == 12:
-        return [f"{a}.{b}.{x}.{y}:{port}" for x in range(c, (c + 8)) for y in range(1, 256)]
+        c_extent = c.split('-')
+        c_first = int(c_extent[0]) if len(c_extent) == 2 else int(c)
+        c_last = int(c_extent[1]) if len(c_extent) == 2 else int(c) + 8
+        return [f"{a}.{b}.{x}.{y}:{port}" for x in range(c_first, c_last) for y in range(1, 256)]
     elif option == 0 or option == 10:
         return [f"{a}.{b}.{c}.{y}:{port}" for y in range(1, 256)]
     else:
