@@ -29,7 +29,7 @@ def generate_ip_ports(ip, port, option):
     if option == 2 or option == 12:
         c_extent = c.split('-')
         c_first = int(c_extent[0]) if len(c_extent) == 2 else int(c)
-        c_last = int(c_extent[1]) if len(c_extent) == 2 else int(c) + 8
+        c_last = int(c_extent[1]) + 1 if len(c_extent) == 2 else int(c) + 8
         return [f"{a}.{b}.{x}.{y}:{port}" for x in range(c_first, c_last) for y in range(1, 256)]
     elif option == 0 or option == 10:
         return [f"{a}.{b}.{c}.{y}:{port}" for y in range(1, 256)]
@@ -105,12 +105,31 @@ def multicast_province(config_file):
             print(f"缺少模板文件: {template_file}")
     else:
         print(f"\n{province} 扫描完成，未扫描到有效ip_port")
-            
+
+def txt_to_m3u(input_file, output_file):
+    with open(input_file, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    with open(output_file, 'w', encoding='utf-8') as f:
+        genre = ''
+        for line in lines:
+            line = line.strip()
+            if "," in line:
+                channel_name, channel_url = line.split(',', 1)
+                if channel_url == '#genre#':
+                    genre = channel_name
+                else:
+                    f.write(f'#EXTINF:-1 group-title="{genre}",{channel_name}\n')
+                    f.write(f'{channel_url}\n')
+
 def main():
     for config_file in glob.glob(os.path.join('ip', '*_config.txt')):
         multicast_province(config_file)
     file_contents = []
-    for file_path in glob.glob('组播_*.txt'):
+    for file_path in glob.glob('组播_*电信.txt'):
+        with open(file_path, 'r', encoding="utf-8") as f:
+            content = f.read()
+            file_contents.append(content)
+    for file_path in glob.glob('组播_*联通.txt'):
         with open(file_path, 'r', encoding="utf-8") as f:
             content = f.read()
             file_contents.append(content)
@@ -120,6 +139,7 @@ def main():
         f.write(f"{current_time}更新,#genre#\n")
         f.write(f"浙江卫视,http://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8\n")
         f.write('\n'.join(file_contents))
+    txt_to_m3u("zubo_all.txt", "zubo_all.m3u")
     print(f"组播地址获取完成")
 
 if __name__ == "__main__":
