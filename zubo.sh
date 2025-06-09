@@ -138,9 +138,33 @@ case $city_choice in
         city="内蒙古电信"
         stream="rtp/239.29.0.2:5000"
         ;;
+    30)
+        city="北京电信"
+        stream="rtp/225.1.8.21:8002"
+        ;;
+    31)
+        city="湖北联通"
+        stream="rtp/228.0.0.60:6108"
+        ;;
+    32)
+        city="吉林电信"
+        stream="rtp/239.37.0.231:5540"
+        ;;
+    33)
+        city="云南电信"
+        stream="rtp/239.200.200.145:8840"
+        ;;
+    34)
+        city="山东联通"
+        stream="rtp/239.253.254.78:8000"
+        ;;
+    35)
+        city="重庆联通"
+        stream="udp/225.0.4.187:7980"
+        ;;
     0)
         # 逐个处理{ }内每个选项
-        for option in {1..29}; do
+        for option in {1..35}; do
           bash "$0" $option  # 假定fofa.sh是当前脚本的文件名，$option将递归调用
         done
         exit 0
@@ -179,7 +203,7 @@ while read line; do
     ip=$line
     url="http://$ip/$stream"
     #echo $url
-    curl $url --connect-timeout 5 --max-time 60 -o /dev/null >zubo.tmp 2>&1
+    curl $url --connect-timeout 5 --max-time 40 -o /dev/null >zubo.tmp 2>&1
     a=$(head -n 3 zubo.tmp | awk '{print $NF}' | tail -n 1)  
     echo "第$i/$lines个：$ip    $a"
     echo "$ip    $a" >> speedtest_${city}_$time.log
