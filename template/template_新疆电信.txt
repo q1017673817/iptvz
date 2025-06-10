@@ -29,7 +29,7 @@ CCTV-14少儿,http://ipipip/udp/238.125.5.66:5140
 CCTV-15音乐,http://ipipip/udp/238.125.4.84:5140
 CCTV-16奥林匹克,http://ipipip/udp/238.125.5.34:5140
 CCTV-17农业农村,http://ipipip/udp/238.125.5.74:5140
-安徽卫视,http://0ipipip/udp/238.125.5.9:5140
+安徽卫视,http://ipipip/udp/238.125.5.9:5140
 北京卫视,http://ipipip/udp/238.125.5.3:5140
 东方卫视,http://ipipip/udp/238.125.5.5:5140
 东南卫视,http://ipipip/udp/238.125.5.49:5140
