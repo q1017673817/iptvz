@@ -80,15 +80,16 @@ def multicast_province(config_file):
         print(f"\n{province} 扫描完成，获取有效ip_port共：{len(all_ip_ports)}个\n{all_ip_ports}\n")
         with open(f"ip/{province}_ip.txt", 'w', encoding='utf-8') as f:
             f.write('\n'.join(all_ip_ports))    #有效ip_port写入文件
-        with open(f"ip/存档_{province}_ip.txt", 'r', encoding='utf-8') as f:
-            lines = f.readlines()
-            for ip_port in all_ip_ports:
-                ip, port = ip_port.split(":")
-                a, b, c, d = ip.split(".")
-                lines.append(f"{a}.{b}.{c}.1:{port}\n")
-            lines = sorted(set(lines))
-        with open(f"ip/存档_{province}_ip.txt", 'w', encoding='utf-8') as f:
-            f.writelines(lines)    
+        if os.path.exists(f"ip/存档_{province}_ip.txt"):
+            with open(f"ip/存档_{province}_ip.txt", 'r', encoding='utf-8') as f:
+                lines = f.readlines()
+                for ip_port in all_ip_ports:
+                    ip, port = ip_port.split(":")
+                    a, b, c, d = ip.split(".")
+                    lines.append(f"{a}.{b}.{c}.1:{port}\n")
+                lines = sorted(set(lines))
+            with open(f"ip/存档_{province}_ip.txt", 'w', encoding='utf-8') as f:
+                f.writelines(lines)    
         template_file = os.path.join('template', f"template_{province}.txt")
         if os.path.exists(template_file):
             with open(template_file, 'r', encoding='utf-8') as f:
@@ -125,6 +126,10 @@ def main():
     for config_file in glob.glob(os.path.join('ip', '*_config.txt')):
         multicast_province(config_file)
     file_contents = []
+    for file_path in glob.glob('组播_*移动.txt'):
+        with open(file_path, 'r', encoding="utf-8") as f:
+            content = f.read()
+            file_contents.append(content)
     for file_path in glob.glob('组播_*电信.txt'):
         with open(file_path, 'r', encoding="utf-8") as f:
             content = f.read()
