@@ -126,10 +126,6 @@ def main():
     for config_file in glob.glob(os.path.join('ip', '*_config.txt')):
         multicast_province(config_file)
     file_contents = []
-    for file_path in glob.glob('组播_*移动.txt'):
-        with open(file_path, 'r', encoding="utf-8") as f:
-            content = f.read()
-            file_contents.append(content)
     for file_path in glob.glob('组播_*电信.txt'):
         with open(file_path, 'r', encoding="utf-8") as f:
             content = f.read()
