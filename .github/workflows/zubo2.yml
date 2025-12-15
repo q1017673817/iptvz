@@ -1,0 +1,57 @@
+name: zubo2
+
+on:
+  schedule:
+    - cron: '30 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0   
+      
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y yt-dlp sed nmap
+        
+      - name: 测试组播源
+        run: |
+          cd $GITHUB_WORKSPACE
+          bash ./zubo.sh
+          time=$(date +%Y/%m/%d)
+          echo "浙江频道 $time 更新,#genre#" > zubo.txt
+          cat txt/浙江.txt >> zubo.txt
+          cat txt/湖南电信.txt txt/湖北电信.txt txt/广东电信.txt txt/北京联通.txt txt/四川电信.txt txt/浙江电信.txt txt/江苏电信.txt txt/上海电信.txt txt/福建电信.txt txt/安徽电信.txt txt/江西电信.txt txt/天津联通.txt txt/河南联通.txt txt/河南电信.txt txt/河北电信.txt txt/河北联通.txt txt/山东电信.txt txt/北京电信.txt txt/陕西电信.txt txt/广西电信.txt txt/贵州电信.txt txt/山西联通.txt txt/重庆电信.txt txt/海南电信.txt txt/吉林电信.txt txt/云南电信.txt txt/湖北联通.txt txt/山东联通.txt txt/重庆联通.txt txt/黑龙江联通.txt txt/辽宁联通.txt txt/甘肃电信.txt txt/新疆电信.txt txt/宁夏电信.txt >> zubo.txt       
+
+      - name: 更新组播源
+        run: |
+          git pull
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "更新组播源"
+#          git push
+
+      - name: Push To Gitee
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GE_TOKEN }}
+          repository: ${{ secrets.GE_PATH }}
+          directory: .
+          branch: iptv
+          force: true
+          github_url: https://gitee.com
+
+      - name: Push To Github
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          repository: ${{ secrets.GH_PATH }}
+          directory: .
+          force: true
