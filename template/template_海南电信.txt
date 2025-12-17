@@ -12,7 +12,7 @@ CCTV-4中文国际,http://ipipip/rtp/239.253.64.196:5140
 CCTV-5体育,http://ipipip/rtp/239.253.64.245:5140
 CCTV-5+体育赛事,http://ipipip/rtp/239.253.64.100:5140
 CCTV-6电影,http://ipipip/rtp/239.253.64.246:5140
-CCTV-7国防科技,http://ipipip/rtp/239.253.64.54:5140
+CCTV-7国防军事,http://ipipip/rtp/239.253.64.54:5140
 CCTV-8电视剧,http://ipipip/rtp/239.253.64.247:5140
 CCTV-9纪录,http://ipipip/rtp/239.253.64.76:5140
 CCTV-10科教,http://ipipip/rtp/239.253.64.87:5140
