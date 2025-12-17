@@ -72,10 +72,11 @@ CCTV-17,http://ipipip/rtp/239.112.205.211:5140
 CGTN英语,http://ipipip/rtp/239.111.205.32:5140
 CGTN西班牙语,http://ipipip/rtp/239.111.205.33:5140
 CGTN法语,http://ipipip/rtp/239.111.205.34:5140
-上海欢笑剧场,http://ipipip/rtp/239.112.205.236:5140
+欢笑剧场,http://ipipip/rtp/239.112.205.236:5140
 CETV1,http://ipipip/rtp/239.109.205.47:8312
 CETV2,http://ipipip/rtp/239.109.205.48:8320
 CETV4,http://ipipip/rtp/239.111.205.15:5140
-曲艺大观,http://ipipip/rtp/239.111.205.31:5140
+宝鸡综合频道,http://ipipip/rtp/239.111.205.31:5140
 北京体育,http://ipipip/rtp/239.111.205.23:5140
+
 
