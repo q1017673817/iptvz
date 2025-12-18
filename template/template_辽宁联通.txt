@@ -111,5 +111,5 @@ IPTV5(轮播),http://ipipip/rtp/232.0.0.119:1234
 IPTV地理,http://ipipip/rtp/232.0.0.197:1234
 华数怀旧电影,http://ipipip/rtp/232.0.0.48:1234
 劲爆电影,http://ipipip/rtp/232.0.0.155:1234
-辽河新闻综合,http://ipipip/rtp/232.0.0.214:1234
+营口新闻综合,http://ipipip/rtp/232.0.0.214:1234
 辽河文化生活,http://ipipip/rtp/232.0.0.215:1234
