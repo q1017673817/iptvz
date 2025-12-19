@@ -70,6 +70,6 @@ CCTV怀旧剧场,http://ipipip/rtp/228.0.0.237:6108
 CETV1,http://ipipip/rtp/228.0.0.146:7146
 CETV2,http://ipipip/rtp/228.0.0.198:7198
 CETV4,http://ipipip/rtp/228.0.0.177:7177
-GCTN英语,http://ipipip/rtp/228.0.0.16:6108
+CGTN英语,http://ipipip/rtp/228.0.0.16:6108
 IPTV靓妆,http://ipipip/rtp/228.0.0.86:6108
 新动漫,http://ipipip/rtp/228.0.0.240:6108
