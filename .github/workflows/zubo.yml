@@ -2,7 +2,7 @@ name: zubo
 
 on:
   schedule:
-    - cron: "*/240 * * * *"
+    - cron: "*/300 * * * *"
   workflow_dispatch:
 
 jobs:
