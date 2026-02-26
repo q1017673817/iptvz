@@ -2,7 +2,7 @@ name: zubo2
 
 on:
   schedule:
-    - cron: '30 8 * * *'
+    - cron: '50 8 * * *'
   workflow_dispatch:
 
 jobs:
