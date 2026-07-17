@@ -1,4 +1,4 @@
-#EXTINF:-1 group-title="2026/07/17 10:18更新",浙江卫视
+#EXTINF:-1 group-title="2026/07/17 18:22更新",浙江卫视
 http://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8
 #EXTINF:-1 group-title="山东电信-组播1",山东卫视
 http://144.255.16.132:6688/udp/239.21.1.87:5002
@@ -14061,781 +14061,393 @@ http://39.77.159.145:4002/rtp/239.253.254.142:8000
 #EXTINF:-1 group-title="山东联通-组播2",青岛李沧
 http://39.77.159.145:4002/rtp/239.253.254.253:8000
 #EXTINF:-1 group-title="山东联通-组播3",山东卫视
-http://39.77.163.126:4002/rtp/239.253.254.78:8000
-#EXTINF:-1 group-title="山东联通-组播3",山东新闻频道
-http://39.77.163.126:4002/rtp/239.253.254.23:8000
-#EXTINF:-1 group-title="山东联通-组播3",山东综艺频道
-http://39.77.163.126:4002/rtp/239.253.254.159:8000
-#EXTINF:-1 group-title="山东联通-组播3",山东农科频道
-http://39.77.163.126:4002/rtp/239.253.254.24:8000
-#EXTINF:-1 group-title="山东联通-组播3",山东齐鲁频道
-http://39.77.163.126:4002/rtp/239.253.254.114:8000
-#EXTINF:-1 group-title="山东联通-组播3",山东少儿频道
-http://39.77.163.126:4002/rtp/239.253.254.25:8000
-#EXTINF:-1 group-title="山东联通-组播3",山东生活频道
-http://39.77.163.126:4002/rtp/239.253.254.151:8000
-#EXTINF:-1 group-title="山东联通-组播3",山东文旅频道
-http://39.77.163.126:4002/rtp/239.253.254.160:8000
-#EXTINF:-1 group-title="山东联通-组播3",山东体育休闲
-http://39.77.163.126:4002/rtp/239.253.254.22:8000
-#EXTINF:-1 group-title="山东联通-组播3",山东教育卫视
-http://39.77.163.126:4002/rtp/239.253.254.59:8000
-#EXTINF:-1 group-title="山东联通-组播3",山东居家购物
-http://39.77.163.126:4002/rtp/239.253.254.104:8000
-#EXTINF:-1 group-title="山东联通-组播3",青岛QTV1
-http://39.77.163.126:4002/rtp/239.253.254.249:8000
-#EXTINF:-1 group-title="山东联通-组播3",青岛QTV2
-http://39.77.163.126:4002/rtp/239.253.254.250:8000
-#EXTINF:-1 group-title="山东联通-组播3",青岛QTV3
-http://39.77.163.126:4002/rtp/239.253.254.251:8000
-#EXTINF:-1 group-title="山东联通-组播3",青岛QTV4
-http://39.77.163.126:4002/rtp/239.253.254.252:8000
-#EXTINF:-1 group-title="山东联通-组播3",青岛生活频道
-http://39.77.163.126:4002/rtp/239.253.254.244:8000
-#EXTINF:-1 group-title="山东联通-组播3",青岛综合频道
-http://39.77.163.126:4002/rtp/239.253.254.243:8000
-#EXTINF:-1 group-title="山东联通-组播3",莱西综合频道
-http://39.77.163.126:4002/rtp/239.253.254.247:8000
-#EXTINF:-1 group-title="山东联通-组播3",崂山电视台
-http://39.77.163.126:4002/rtp/239.253.254.242:8000
-#EXTINF:-1 group-title="山东联通-组播3",平度新闻综合
-http://39.77.163.126:4002/rtp/239.253.254.248:8000
-#EXTINF:-1 group-title="山东联通-组播3",海洋频道
-http://39.77.163.126:4002/rtp/239.253.254.67:8000
-#EXTINF:-1 group-title="山东联通-组播3",综合1
-http://39.77.163.126:4002/rtp/239.253.254.245:8000
-#EXTINF:-1 group-title="山东联通-组播3",综合2
-http://39.77.163.126:4002/rtp/239.253.254.246:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-1综合
-http://39.77.163.126:4002/rtp/239.253.254.77:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-2财经
-http://39.77.163.126:4002/rtp/239.253.254.232:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-3综艺
-http://39.77.163.126:4002/rtp/239.253.254.191:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-4中文国际
-http://39.77.163.126:4002/rtp/239.253.254.111:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-4欧洲
-http://39.77.163.126:4002/rtp/239.253.254.186:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-4美洲
-http://39.77.163.126:4002/rtp/239.253.254.187:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-5体育
-http://39.77.163.126:4002/rtp/239.253.254.192:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-5+体育赛事
-http://39.77.163.126:4002/rtp/239.253.254.80:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-6电影
-http://39.77.163.126:4002/rtp/239.253.254.193:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-7国防军事
-http://39.77.163.126:4002/rtp/239.253.254.233:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-8电视剧
-http://39.77.163.126:4002/rtp/239.253.254.194:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-9纪录
-http://39.77.163.126:4002/rtp/239.253.254.79:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-10科教
-http://39.77.163.126:4002/rtp/239.253.254.234:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-11戏曲
-http://39.77.163.126:4002/rtp/239.253.254.169:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-12社会与法
-http://39.77.163.126:4002/rtp/239.253.254.235:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-13新闻
-http://39.77.163.126:4002/rtp/239.253.254.175:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-14少儿
-http://39.77.163.126:4002/rtp/239.253.254.236:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-15音乐
-http://39.77.163.126:4002/rtp/239.253.254.170:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-17农业农村
-http://39.77.163.126:4002/rtp/239.253.254.168:8000
-#EXTINF:-1 group-title="山东联通-组播3",CHC动作电影
-http://39.77.163.126:4002/rtp/239.253.254.153:8000
-#EXTINF:-1 group-title="山东联通-组播3",CHC影迷电影
-http://39.77.163.126:4002/rtp/239.253.254.154:8000
-#EXTINF:-1 group-title="山东联通-组播3",CHC家庭影院
-http://39.77.163.126:4002/rtp/239.253.254.152:8000
-#EXTINF:-1 group-title="山东联通-组播3",湖南卫视
-http://39.77.163.126:4002/rtp/239.253.254.82:8000
-#EXTINF:-1 group-title="山东联通-组播3",江苏卫视
-http://39.77.163.126:4002/rtp/239.253.254.83:8000
-#EXTINF:-1 group-title="山东联通-组播3",湖北卫视
-http://39.77.163.126:4002/rtp/239.253.254.88:8000
-#EXTINF:-1 group-title="山东联通-组播3",浙江卫视
-http://39.77.163.126:4002/rtp/239.253.254.84:8000
-#EXTINF:-1 group-title="山东联通-组播3",安徽卫视
-http://39.77.163.126:4002/rtp/239.253.254.87:8000
-#EXTINF:-1 group-title="山东联通-组播3",北京卫视
-http://39.77.163.126:4002/rtp/239.253.254.85:8000
-#EXTINF:-1 group-title="山东联通-组播3",东方卫视
-http://39.77.163.126:4002/rtp/239.253.254.86:8000
-#EXTINF:-1 group-title="山东联通-组播3",东南卫视
-http://39.77.163.126:4002/rtp/239.253.254.105:8000
-#EXTINF:-1 group-title="山东联通-组播3",甘肃卫视
-http://39.77.163.126:4002/rtp/239.253.254.74:8000
-#EXTINF:-1 group-title="山东联通-组播3",广东卫视
-http://39.77.163.126:4002/rtp/239.253.254.90:8000
-#EXTINF:-1 group-title="山东联通-组播3",广西卫视
-http://39.77.163.126:4002/rtp/239.253.254.197:8000
-#EXTINF:-1 group-title="山东联通-组播3",贵州卫视
-http://39.77.163.126:4002/rtp/239.253.254.113:8000
-#EXTINF:-1 group-title="山东联通-组播3",海南卫视
-http://39.77.163.126:4002/rtp/239.253.254.179:8000
-#EXTINF:-1 group-title="山东联通-组播3",河北卫视
-http://39.77.163.126:4002/rtp/239.253.254.112:8000
-#EXTINF:-1 group-title="山东联通-组播3",河南卫视
-http://39.77.163.126:4002/rtp/239.253.254.190:8000
-#EXTINF:-1 group-title="山东联通-组播3",黑龙江卫视
-http://39.77.163.126:4002/rtp/239.253.254.93:8000
-#EXTINF:-1 group-title="山东联通-组播3",吉林卫视
-http://39.77.163.126:4002/rtp/239.253.254.173:8000
-#EXTINF:-1 group-title="山东联通-组播3",江西卫视
-http://39.77.163.126:4002/rtp/239.253.254.47:8000
-#EXTINF:-1 group-title="山东联通-组播3",重庆卫视
-http://39.77.163.126:4002/rtp/239.253.254.38:8000
-#EXTINF:-1 group-title="山东联通-组播3",云南卫视
-http://39.77.163.126:4002/rtp/239.253.254.196:8000
-#EXTINF:-1 group-title="山东联通-组播3",辽宁卫视
-http://39.77.163.126:4002/rtp/239.253.254.92:8000
-#EXTINF:-1 group-title="山东联通-组播3",青海卫视
-http://39.77.163.126:4002/rtp/239.253.254.195:8000
-#EXTINF:-1 group-title="山东联通-组播3",深圳卫视
-http://39.77.163.126:4002/rtp/239.253.254.91:8000
-#EXTINF:-1 group-title="山东联通-组播3",四川卫视
-http://39.77.163.126:4002/rtp/239.253.254.180:8000
-#EXTINF:-1 group-title="山东联通-组播3",CCTV-1综合
-http://39.77.163.126:4002/rtp/239.253.254.89:8000
-#EXTINF:-1 group-title="山东联通-组播3",上海动漫秀场
-http://39.77.163.126:4002/rtp/239.253.254.115:8000
-#EXTINF:-1 group-title="山东联通-组播3",上海都市剧场
-http://39.77.163.126:4002/rtp/239.253.254.98:8000
-#EXTINF:-1 group-title="山东联通-组播3",上海法治天地
-http://39.77.163.126:4002/rtp/239.253.254.96:8000
-#EXTINF:-1 group-title="山东联通-组播3",上海游戏风云
-http://39.77.163.126:4002/rtp/239.253.254.95:8000
-#EXTINF:-1 group-title="山东联通-组播3",上海生活时尚
-http://39.77.163.126:4002/rtp/239.253.254.99:8000
-#EXTINF:-1 group-title="山东联通-组播3",上海东方财经
-http://39.77.163.126:4002/rtp/239.253.254.94:8000
-#EXTINF:-1 group-title="山东联通-组播3",上海金色学堂
-http://39.77.163.126:4002/rtp/239.253.254.101:8000
-#EXTINF:-1 group-title="山东联通-组播3",金鹰纪实
-http://39.77.163.126:4002/rtp/239.253.254.103:8000
-#EXTINF:-1 group-title="山东联通-组播3",金鹰卡通
-http://39.77.163.126:4002/rtp/239.253.254.117:8000
-#EXTINF:-1 group-title="山东联通-组播3",茶频道
-http://39.77.163.126:4002/rtp/239.253.254.143:8000
-#EXTINF:-1 group-title="山东联通-组播3",快乐垂钓
-http://39.77.163.126:4002/rtp/239.253.254.144:8000
-#EXTINF:-1 group-title="山东联通-组播3",北京卡酷少儿
-http://39.77.163.126:4002/rtp/239.253.254.66:8000
-#EXTINF:-1 group-title="山东联通-组播3",河南梨园频道
-http://39.77.163.126:4002/rtp/239.253.254.139:8000
-#EXTINF:-1 group-title="山东联通-组播3",河南文物宝库
-http://39.77.163.126:4002/rtp/239.253.254.141:8000
-#EXTINF:-1 group-title="山东联通-组播3",河南武术世界
-http://39.77.163.126:4002/rtp/239.253.254.140:8000
-#EXTINF:-1 group-title="山东联通-组播3",CETV1
-http://39.77.163.126:4002/rtp/239.253.254.110:8000
-#EXTINF:-1 group-title="山东联通-组播3",CETV4
-http://39.77.163.126:4002/rtp/239.253.254.116:8000
-#EXTINF:-1 group-title="山东联通-组播3",CGTN英语
-http://39.77.163.126:4002/rtp/239.253.254.189:8000
-#EXTINF:-1 group-title="山东联通-组播3",CGTN纪录
-http://39.77.163.126:4002/rtp/239.253.254.188:8000
-#EXTINF:-1 group-title="山东联通-组播3",CGTN西班牙语
-http://39.77.163.126:4002/rtp/239.253.254.182:8000
-#EXTINF:-1 group-title="山东联通-组播3",CGTN法语
-http://39.77.163.126:4002/rtp/239.253.254.183:8000
-#EXTINF:-1 group-title="山东联通-组播3",CGTN阿拉伯语
-http://39.77.163.126:4002/rtp/239.253.254.184:8000
-#EXTINF:-1 group-title="山东联通-组播3",CGTN俄语
-http://39.77.163.126:4002/rtp/239.253.254.185:8000
-#EXTINF:-1 group-title="山东联通-组播3",魅力足球
-http://39.77.163.126:4002/rtp/239.253.254.100:8000
-#EXTINF:-1 group-title="山东联通-组播3",中国交通
-http://39.77.163.126:4002/rtp/239.253.254.177:8000
-#EXTINF:-1 group-title="山东联通-组播3",精彩影视
-http://39.77.163.126:4002/rtp/239.253.254.142:8000
-#EXTINF:-1 group-title="山东联通-组播3",青岛李沧
-http://39.77.163.126:4002/rtp/239.253.254.253:8000
-#EXTINF:-1 group-title="山东联通-组播4",山东卫视
 http://39.77.163.221:4002/rtp/239.253.254.78:8000
-#EXTINF:-1 group-title="山东联通-组播4",山东新闻频道
+#EXTINF:-1 group-title="山东联通-组播3",山东新闻频道
 http://39.77.163.221:4002/rtp/239.253.254.23:8000
-#EXTINF:-1 group-title="山东联通-组播4",山东综艺频道
+#EXTINF:-1 group-title="山东联通-组播3",山东综艺频道
 http://39.77.163.221:4002/rtp/239.253.254.159:8000
-#EXTINF:-1 group-title="山东联通-组播4",山东农科频道
+#EXTINF:-1 group-title="山东联通-组播3",山东农科频道
 http://39.77.163.221:4002/rtp/239.253.254.24:8000
-#EXTINF:-1 group-title="山东联通-组播4",山东齐鲁频道
+#EXTINF:-1 group-title="山东联通-组播3",山东齐鲁频道
 http://39.77.163.221:4002/rtp/239.253.254.114:8000
-#EXTINF:-1 group-title="山东联通-组播4",山东少儿频道
+#EXTINF:-1 group-title="山东联通-组播3",山东少儿频道
 http://39.77.163.221:4002/rtp/239.253.254.25:8000
-#EXTINF:-1 group-title="山东联通-组播4",山东生活频道
+#EXTINF:-1 group-title="山东联通-组播3",山东生活频道
 http://39.77.163.221:4002/rtp/239.253.254.151:8000
-#EXTINF:-1 group-title="山东联通-组播4",山东文旅频道
+#EXTINF:-1 group-title="山东联通-组播3",山东文旅频道
 http://39.77.163.221:4002/rtp/239.253.254.160:8000
-#EXTINF:-1 group-title="山东联通-组播4",山东体育休闲
+#EXTINF:-1 group-title="山东联通-组播3",山东体育休闲
 http://39.77.163.221:4002/rtp/239.253.254.22:8000
-#EXTINF:-1 group-title="山东联通-组播4",山东教育卫视
+#EXTINF:-1 group-title="山东联通-组播3",山东教育卫视
 http://39.77.163.221:4002/rtp/239.253.254.59:8000
-#EXTINF:-1 group-title="山东联通-组播4",山东居家购物
+#EXTINF:-1 group-title="山东联通-组播3",山东居家购物
 http://39.77.163.221:4002/rtp/239.253.254.104:8000
-#EXTINF:-1 group-title="山东联通-组播4",青岛QTV1
+#EXTINF:-1 group-title="山东联通-组播3",青岛QTV1
 http://39.77.163.221:4002/rtp/239.253.254.249:8000
-#EXTINF:-1 group-title="山东联通-组播4",青岛QTV2
+#EXTINF:-1 group-title="山东联通-组播3",青岛QTV2
 http://39.77.163.221:4002/rtp/239.253.254.250:8000
-#EXTINF:-1 group-title="山东联通-组播4",青岛QTV3
+#EXTINF:-1 group-title="山东联通-组播3",青岛QTV3
 http://39.77.163.221:4002/rtp/239.253.254.251:8000
-#EXTINF:-1 group-title="山东联通-组播4",青岛QTV4
+#EXTINF:-1 group-title="山东联通-组播3",青岛QTV4
 http://39.77.163.221:4002/rtp/239.253.254.252:8000
-#EXTINF:-1 group-title="山东联通-组播4",青岛生活频道
+#EXTINF:-1 group-title="山东联通-组播3",青岛生活频道
 http://39.77.163.221:4002/rtp/239.253.254.244:8000
-#EXTINF:-1 group-title="山东联通-组播4",青岛综合频道
+#EXTINF:-1 group-title="山东联通-组播3",青岛综合频道
 http://39.77.163.221:4002/rtp/239.253.254.243:8000
-#EXTINF:-1 group-title="山东联通-组播4",莱西综合频道
+#EXTINF:-1 group-title="山东联通-组播3",莱西综合频道
 http://39.77.163.221:4002/rtp/239.253.254.247:8000
-#EXTINF:-1 group-title="山东联通-组播4",崂山电视台
+#EXTINF:-1 group-title="山东联通-组播3",崂山电视台
 http://39.77.163.221:4002/rtp/239.253.254.242:8000
-#EXTINF:-1 group-title="山东联通-组播4",平度新闻综合
+#EXTINF:-1 group-title="山东联通-组播3",平度新闻综合
 http://39.77.163.221:4002/rtp/239.253.254.248:8000
-#EXTINF:-1 group-title="山东联通-组播4",海洋频道
+#EXTINF:-1 group-title="山东联通-组播3",海洋频道
 http://39.77.163.221:4002/rtp/239.253.254.67:8000
-#EXTINF:-1 group-title="山东联通-组播4",综合1
+#EXTINF:-1 group-title="山东联通-组播3",综合1
 http://39.77.163.221:4002/rtp/239.253.254.245:8000
-#EXTINF:-1 group-title="山东联通-组播4",综合2
+#EXTINF:-1 group-title="山东联通-组播3",综合2
 http://39.77.163.221:4002/rtp/239.253.254.246:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-1综合
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-1综合
 http://39.77.163.221:4002/rtp/239.253.254.77:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-2财经
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-2财经
 http://39.77.163.221:4002/rtp/239.253.254.232:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-3综艺
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-3综艺
 http://39.77.163.221:4002/rtp/239.253.254.191:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-4中文国际
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-4中文国际
 http://39.77.163.221:4002/rtp/239.253.254.111:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-4欧洲
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-4欧洲
 http://39.77.163.221:4002/rtp/239.253.254.186:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-4美洲
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-4美洲
 http://39.77.163.221:4002/rtp/239.253.254.187:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-5体育
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-5体育
 http://39.77.163.221:4002/rtp/239.253.254.192:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-5+体育赛事
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-5+体育赛事
 http://39.77.163.221:4002/rtp/239.253.254.80:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-6电影
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-6电影
 http://39.77.163.221:4002/rtp/239.253.254.193:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-7国防军事
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-7国防军事
 http://39.77.163.221:4002/rtp/239.253.254.233:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-8电视剧
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-8电视剧
 http://39.77.163.221:4002/rtp/239.253.254.194:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-9纪录
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-9纪录
 http://39.77.163.221:4002/rtp/239.253.254.79:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-10科教
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-10科教
 http://39.77.163.221:4002/rtp/239.253.254.234:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-11戏曲
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-11戏曲
 http://39.77.163.221:4002/rtp/239.253.254.169:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-12社会与法
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-12社会与法
 http://39.77.163.221:4002/rtp/239.253.254.235:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-13新闻
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-13新闻
 http://39.77.163.221:4002/rtp/239.253.254.175:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-14少儿
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-14少儿
 http://39.77.163.221:4002/rtp/239.253.254.236:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-15音乐
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-15音乐
 http://39.77.163.221:4002/rtp/239.253.254.170:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-17农业农村
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-17农业农村
 http://39.77.163.221:4002/rtp/239.253.254.168:8000
-#EXTINF:-1 group-title="山东联通-组播4",CHC动作电影
+#EXTINF:-1 group-title="山东联通-组播3",CHC动作电影
 http://39.77.163.221:4002/rtp/239.253.254.153:8000
-#EXTINF:-1 group-title="山东联通-组播4",CHC影迷电影
+#EXTINF:-1 group-title="山东联通-组播3",CHC影迷电影
 http://39.77.163.221:4002/rtp/239.253.254.154:8000
-#EXTINF:-1 group-title="山东联通-组播4",CHC家庭影院
+#EXTINF:-1 group-title="山东联通-组播3",CHC家庭影院
 http://39.77.163.221:4002/rtp/239.253.254.152:8000
-#EXTINF:-1 group-title="山东联通-组播4",湖南卫视
+#EXTINF:-1 group-title="山东联通-组播3",湖南卫视
 http://39.77.163.221:4002/rtp/239.253.254.82:8000
-#EXTINF:-1 group-title="山东联通-组播4",江苏卫视
+#EXTINF:-1 group-title="山东联通-组播3",江苏卫视
 http://39.77.163.221:4002/rtp/239.253.254.83:8000
-#EXTINF:-1 group-title="山东联通-组播4",湖北卫视
+#EXTINF:-1 group-title="山东联通-组播3",湖北卫视
 http://39.77.163.221:4002/rtp/239.253.254.88:8000
-#EXTINF:-1 group-title="山东联通-组播4",浙江卫视
+#EXTINF:-1 group-title="山东联通-组播3",浙江卫视
 http://39.77.163.221:4002/rtp/239.253.254.84:8000
-#EXTINF:-1 group-title="山东联通-组播4",安徽卫视
+#EXTINF:-1 group-title="山东联通-组播3",安徽卫视
 http://39.77.163.221:4002/rtp/239.253.254.87:8000
-#EXTINF:-1 group-title="山东联通-组播4",北京卫视
+#EXTINF:-1 group-title="山东联通-组播3",北京卫视
 http://39.77.163.221:4002/rtp/239.253.254.85:8000
-#EXTINF:-1 group-title="山东联通-组播4",东方卫视
+#EXTINF:-1 group-title="山东联通-组播3",东方卫视
 http://39.77.163.221:4002/rtp/239.253.254.86:8000
-#EXTINF:-1 group-title="山东联通-组播4",东南卫视
+#EXTINF:-1 group-title="山东联通-组播3",东南卫视
 http://39.77.163.221:4002/rtp/239.253.254.105:8000
-#EXTINF:-1 group-title="山东联通-组播4",甘肃卫视
+#EXTINF:-1 group-title="山东联通-组播3",甘肃卫视
 http://39.77.163.221:4002/rtp/239.253.254.74:8000
-#EXTINF:-1 group-title="山东联通-组播4",广东卫视
+#EXTINF:-1 group-title="山东联通-组播3",广东卫视
 http://39.77.163.221:4002/rtp/239.253.254.90:8000
-#EXTINF:-1 group-title="山东联通-组播4",广西卫视
+#EXTINF:-1 group-title="山东联通-组播3",广西卫视
 http://39.77.163.221:4002/rtp/239.253.254.197:8000
-#EXTINF:-1 group-title="山东联通-组播4",贵州卫视
+#EXTINF:-1 group-title="山东联通-组播3",贵州卫视
 http://39.77.163.221:4002/rtp/239.253.254.113:8000
-#EXTINF:-1 group-title="山东联通-组播4",海南卫视
+#EXTINF:-1 group-title="山东联通-组播3",海南卫视
 http://39.77.163.221:4002/rtp/239.253.254.179:8000
-#EXTINF:-1 group-title="山东联通-组播4",河北卫视
+#EXTINF:-1 group-title="山东联通-组播3",河北卫视
 http://39.77.163.221:4002/rtp/239.253.254.112:8000
-#EXTINF:-1 group-title="山东联通-组播4",河南卫视
+#EXTINF:-1 group-title="山东联通-组播3",河南卫视
 http://39.77.163.221:4002/rtp/239.253.254.190:8000
-#EXTINF:-1 group-title="山东联通-组播4",黑龙江卫视
+#EXTINF:-1 group-title="山东联通-组播3",黑龙江卫视
 http://39.77.163.221:4002/rtp/239.253.254.93:8000
-#EXTINF:-1 group-title="山东联通-组播4",吉林卫视
+#EXTINF:-1 group-title="山东联通-组播3",吉林卫视
 http://39.77.163.221:4002/rtp/239.253.254.173:8000
-#EXTINF:-1 group-title="山东联通-组播4",江西卫视
+#EXTINF:-1 group-title="山东联通-组播3",江西卫视
 http://39.77.163.221:4002/rtp/239.253.254.47:8000
-#EXTINF:-1 group-title="山东联通-组播4",重庆卫视
+#EXTINF:-1 group-title="山东联通-组播3",重庆卫视
 http://39.77.163.221:4002/rtp/239.253.254.38:8000
-#EXTINF:-1 group-title="山东联通-组播4",云南卫视
+#EXTINF:-1 group-title="山东联通-组播3",云南卫视
 http://39.77.163.221:4002/rtp/239.253.254.196:8000
-#EXTINF:-1 group-title="山东联通-组播4",辽宁卫视
+#EXTINF:-1 group-title="山东联通-组播3",辽宁卫视
 http://39.77.163.221:4002/rtp/239.253.254.92:8000
-#EXTINF:-1 group-title="山东联通-组播4",青海卫视
+#EXTINF:-1 group-title="山东联通-组播3",青海卫视
 http://39.77.163.221:4002/rtp/239.253.254.195:8000
-#EXTINF:-1 group-title="山东联通-组播4",深圳卫视
+#EXTINF:-1 group-title="山东联通-组播3",深圳卫视
 http://39.77.163.221:4002/rtp/239.253.254.91:8000
-#EXTINF:-1 group-title="山东联通-组播4",四川卫视
+#EXTINF:-1 group-title="山东联通-组播3",四川卫视
 http://39.77.163.221:4002/rtp/239.253.254.180:8000
-#EXTINF:-1 group-title="山东联通-组播4",CCTV-1综合
+#EXTINF:-1 group-title="山东联通-组播3",CCTV-1综合
 http://39.77.163.221:4002/rtp/239.253.254.89:8000
-#EXTINF:-1 group-title="山东联通-组播4",上海动漫秀场
+#EXTINF:-1 group-title="山东联通-组播3",上海动漫秀场
 http://39.77.163.221:4002/rtp/239.253.254.115:8000
-#EXTINF:-1 group-title="山东联通-组播4",上海都市剧场
+#EXTINF:-1 group-title="山东联通-组播3",上海都市剧场
 http://39.77.163.221:4002/rtp/239.253.254.98:8000
-#EXTINF:-1 group-title="山东联通-组播4",上海法治天地
+#EXTINF:-1 group-title="山东联通-组播3",上海法治天地
 http://39.77.163.221:4002/rtp/239.253.254.96:8000
-#EXTINF:-1 group-title="山东联通-组播4",上海游戏风云
+#EXTINF:-1 group-title="山东联通-组播3",上海游戏风云
 http://39.77.163.221:4002/rtp/239.253.254.95:8000
-#EXTINF:-1 group-title="山东联通-组播4",上海生活时尚
+#EXTINF:-1 group-title="山东联通-组播3",上海生活时尚
 http://39.77.163.221:4002/rtp/239.253.254.99:8000
-#EXTINF:-1 group-title="山东联通-组播4",上海东方财经
+#EXTINF:-1 group-title="山东联通-组播3",上海东方财经
 http://39.77.163.221:4002/rtp/239.253.254.94:8000
-#EXTINF:-1 group-title="山东联通-组播4",上海金色学堂
+#EXTINF:-1 group-title="山东联通-组播3",上海金色学堂
 http://39.77.163.221:4002/rtp/239.253.254.101:8000
-#EXTINF:-1 group-title="山东联通-组播4",金鹰纪实
+#EXTINF:-1 group-title="山东联通-组播3",金鹰纪实
 http://39.77.163.221:4002/rtp/239.253.254.103:8000
-#EXTINF:-1 group-title="山东联通-组播4",金鹰卡通
+#EXTINF:-1 group-title="山东联通-组播3",金鹰卡通
 http://39.77.163.221:4002/rtp/239.253.254.117:8000
-#EXTINF:-1 group-title="山东联通-组播4",茶频道
+#EXTINF:-1 group-title="山东联通-组播3",茶频道
 http://39.77.163.221:4002/rtp/239.253.254.143:8000
-#EXTINF:-1 group-title="山东联通-组播4",快乐垂钓
+#EXTINF:-1 group-title="山东联通-组播3",快乐垂钓
 http://39.77.163.221:4002/rtp/239.253.254.144:8000
-#EXTINF:-1 group-title="山东联通-组播4",北京卡酷少儿
+#EXTINF:-1 group-title="山东联通-组播3",北京卡酷少儿
 http://39.77.163.221:4002/rtp/239.253.254.66:8000
-#EXTINF:-1 group-title="山东联通-组播4",河南梨园频道
+#EXTINF:-1 group-title="山东联通-组播3",河南梨园频道
 http://39.77.163.221:4002/rtp/239.253.254.139:8000
-#EXTINF:-1 group-title="山东联通-组播4",河南文物宝库
+#EXTINF:-1 group-title="山东联通-组播3",河南文物宝库
 http://39.77.163.221:4002/rtp/239.253.254.141:8000
-#EXTINF:-1 group-title="山东联通-组播4",河南武术世界
+#EXTINF:-1 group-title="山东联通-组播3",河南武术世界
 http://39.77.163.221:4002/rtp/239.253.254.140:8000
-#EXTINF:-1 group-title="山东联通-组播4",CETV1
+#EXTINF:-1 group-title="山东联通-组播3",CETV1
 http://39.77.163.221:4002/rtp/239.253.254.110:8000
-#EXTINF:-1 group-title="山东联通-组播4",CETV4
+#EXTINF:-1 group-title="山东联通-组播3",CETV4
 http://39.77.163.221:4002/rtp/239.253.254.116:8000
-#EXTINF:-1 group-title="山东联通-组播4",CGTN英语
+#EXTINF:-1 group-title="山东联通-组播3",CGTN英语
 http://39.77.163.221:4002/rtp/239.253.254.189:8000
-#EXTINF:-1 group-title="山东联通-组播4",CGTN纪录
+#EXTINF:-1 group-title="山东联通-组播3",CGTN纪录
 http://39.77.163.221:4002/rtp/239.253.254.188:8000
-#EXTINF:-1 group-title="山东联通-组播4",CGTN西班牙语
+#EXTINF:-1 group-title="山东联通-组播3",CGTN西班牙语
 http://39.77.163.221:4002/rtp/239.253.254.182:8000
-#EXTINF:-1 group-title="山东联通-组播4",CGTN法语
+#EXTINF:-1 group-title="山东联通-组播3",CGTN法语
 http://39.77.163.221:4002/rtp/239.253.254.183:8000
-#EXTINF:-1 group-title="山东联通-组播4",CGTN阿拉伯语
+#EXTINF:-1 group-title="山东联通-组播3",CGTN阿拉伯语
 http://39.77.163.221:4002/rtp/239.253.254.184:8000
-#EXTINF:-1 group-title="山东联通-组播4",CGTN俄语
+#EXTINF:-1 group-title="山东联通-组播3",CGTN俄语
 http://39.77.163.221:4002/rtp/239.253.254.185:8000
-#EXTINF:-1 group-title="山东联通-组播4",魅力足球
+#EXTINF:-1 group-title="山东联通-组播3",魅力足球
 http://39.77.163.221:4002/rtp/239.253.254.100:8000
-#EXTINF:-1 group-title="山东联通-组播4",中国交通
+#EXTINF:-1 group-title="山东联通-组播3",中国交通
 http://39.77.163.221:4002/rtp/239.253.254.177:8000
-#EXTINF:-1 group-title="山东联通-组播4",精彩影视
+#EXTINF:-1 group-title="山东联通-组播3",精彩影视
 http://39.77.163.221:4002/rtp/239.253.254.142:8000
-#EXTINF:-1 group-title="山东联通-组播4",青岛李沧
+#EXTINF:-1 group-title="山东联通-组播3",青岛李沧
 http://39.77.163.221:4002/rtp/239.253.254.253:8000
-#EXTINF:-1 group-title="山东联通-组播5",山东卫视
+#EXTINF:-1 group-title="山东联通-组播4",山东卫视
 http://39.77.163.227:4002/rtp/239.253.254.78:8000
-#EXTINF:-1 group-title="山东联通-组播5",山东新闻频道
+#EXTINF:-1 group-title="山东联通-组播4",山东新闻频道
 http://39.77.163.227:4002/rtp/239.253.254.23:8000
-#EXTINF:-1 group-title="山东联通-组播5",山东综艺频道
+#EXTINF:-1 group-title="山东联通-组播4",山东综艺频道
 http://39.77.163.227:4002/rtp/239.253.254.159:8000
-#EXTINF:-1 group-title="山东联通-组播5",山东农科频道
+#EXTINF:-1 group-title="山东联通-组播4",山东农科频道
 http://39.77.163.227:4002/rtp/239.253.254.24:8000
-#EXTINF:-1 group-title="山东联通-组播5",山东齐鲁频道
+#EXTINF:-1 group-title="山东联通-组播4",山东齐鲁频道
 http://39.77.163.227:4002/rtp/239.253.254.114:8000
-#EXTINF:-1 group-title="山东联通-组播5",山东少儿频道
+#EXTINF:-1 group-title="山东联通-组播4",山东少儿频道
 http://39.77.163.227:4002/rtp/239.253.254.25:8000
-#EXTINF:-1 group-title="山东联通-组播5",山东生活频道
+#EXTINF:-1 group-title="山东联通-组播4",山东生活频道
 http://39.77.163.227:4002/rtp/239.253.254.151:8000
-#EXTINF:-1 group-title="山东联通-组播5",山东文旅频道
+#EXTINF:-1 group-title="山东联通-组播4",山东文旅频道
 http://39.77.163.227:4002/rtp/239.253.254.160:8000
-#EXTINF:-1 group-title="山东联通-组播5",山东体育休闲
+#EXTINF:-1 group-title="山东联通-组播4",山东体育休闲
 http://39.77.163.227:4002/rtp/239.253.254.22:8000
-#EXTINF:-1 group-title="山东联通-组播5",山东教育卫视
+#EXTINF:-1 group-title="山东联通-组播4",山东教育卫视
 http://39.77.163.227:4002/rtp/239.253.254.59:8000
-#EXTINF:-1 group-title="山东联通-组播5",山东居家购物
+#EXTINF:-1 group-title="山东联通-组播4",山东居家购物
 http://39.77.163.227:4002/rtp/239.253.254.104:8000
-#EXTINF:-1 group-title="山东联通-组播5",青岛QTV1
+#EXTINF:-1 group-title="山东联通-组播4",青岛QTV1
 http://39.77.163.227:4002/rtp/239.253.254.249:8000
-#EXTINF:-1 group-title="山东联通-组播5",青岛QTV2
+#EXTINF:-1 group-title="山东联通-组播4",青岛QTV2
 http://39.77.163.227:4002/rtp/239.253.254.250:8000
-#EXTINF:-1 group-title="山东联通-组播5",青岛QTV3
+#EXTINF:-1 group-title="山东联通-组播4",青岛QTV3
 http://39.77.163.227:4002/rtp/239.253.254.251:8000
-#EXTINF:-1 group-title="山东联通-组播5",青岛QTV4
+#EXTINF:-1 group-title="山东联通-组播4",青岛QTV4
 http://39.77.163.227:4002/rtp/239.253.254.252:8000
-#EXTINF:-1 group-title="山东联通-组播5",青岛生活频道
+#EXTINF:-1 group-title="山东联通-组播4",青岛生活频道
 http://39.77.163.227:4002/rtp/239.253.254.244:8000
-#EXTINF:-1 group-title="山东联通-组播5",青岛综合频道
+#EXTINF:-1 group-title="山东联通-组播4",青岛综合频道
 http://39.77.163.227:4002/rtp/239.253.254.243:8000
-#EXTINF:-1 group-title="山东联通-组播5",莱西综合频道
+#EXTINF:-1 group-title="山东联通-组播4",莱西综合频道
 http://39.77.163.227:4002/rtp/239.253.254.247:8000
-#EXTINF:-1 group-title="山东联通-组播5",崂山电视台
+#EXTINF:-1 group-title="山东联通-组播4",崂山电视台
 http://39.77.163.227:4002/rtp/239.253.254.242:8000
-#EXTINF:-1 group-title="山东联通-组播5",平度新闻综合
+#EXTINF:-1 group-title="山东联通-组播4",平度新闻综合
 http://39.77.163.227:4002/rtp/239.253.254.248:8000
-#EXTINF:-1 group-title="山东联通-组播5",海洋频道
+#EXTINF:-1 group-title="山东联通-组播4",海洋频道
 http://39.77.163.227:4002/rtp/239.253.254.67:8000
-#EXTINF:-1 group-title="山东联通-组播5",综合1
+#EXTINF:-1 group-title="山东联通-组播4",综合1
 http://39.77.163.227:4002/rtp/239.253.254.245:8000
-#EXTINF:-1 group-title="山东联通-组播5",综合2
+#EXTINF:-1 group-title="山东联通-组播4",综合2
 http://39.77.163.227:4002/rtp/239.253.254.246:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-1综合
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-1综合
 http://39.77.163.227:4002/rtp/239.253.254.77:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-2财经
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-2财经
 http://39.77.163.227:4002/rtp/239.253.254.232:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-3综艺
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-3综艺
 http://39.77.163.227:4002/rtp/239.253.254.191:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-4中文国际
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-4中文国际
 http://39.77.163.227:4002/rtp/239.253.254.111:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-4欧洲
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-4欧洲
 http://39.77.163.227:4002/rtp/239.253.254.186:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-4美洲
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-4美洲
 http://39.77.163.227:4002/rtp/239.253.254.187:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-5体育
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-5体育
 http://39.77.163.227:4002/rtp/239.253.254.192:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-5+体育赛事
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-5+体育赛事
 http://39.77.163.227:4002/rtp/239.253.254.80:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-6电影
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-6电影
 http://39.77.163.227:4002/rtp/239.253.254.193:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-7国防军事
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-7国防军事
 http://39.77.163.227:4002/rtp/239.253.254.233:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-8电视剧
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-8电视剧
 http://39.77.163.227:4002/rtp/239.253.254.194:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-9纪录
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-9纪录
 http://39.77.163.227:4002/rtp/239.253.254.79:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-10科教
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-10科教
 http://39.77.163.227:4002/rtp/239.253.254.234:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-11戏曲
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-11戏曲
 http://39.77.163.227:4002/rtp/239.253.254.169:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-12社会与法
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-12社会与法
 http://39.77.163.227:4002/rtp/239.253.254.235:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-13新闻
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-13新闻
 http://39.77.163.227:4002/rtp/239.253.254.175:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-14少儿
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-14少儿
 http://39.77.163.227:4002/rtp/239.253.254.236:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-15音乐
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-15音乐
 http://39.77.163.227:4002/rtp/239.253.254.170:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-17农业农村
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-17农业农村
 http://39.77.163.227:4002/rtp/239.253.254.168:8000
-#EXTINF:-1 group-title="山东联通-组播5",CHC动作电影
+#EXTINF:-1 group-title="山东联通-组播4",CHC动作电影
 http://39.77.163.227:4002/rtp/239.253.254.153:8000
-#EXTINF:-1 group-title="山东联通-组播5",CHC影迷电影
+#EXTINF:-1 group-title="山东联通-组播4",CHC影迷电影
 http://39.77.163.227:4002/rtp/239.253.254.154:8000
-#EXTINF:-1 group-title="山东联通-组播5",CHC家庭影院
+#EXTINF:-1 group-title="山东联通-组播4",CHC家庭影院
 http://39.77.163.227:4002/rtp/239.253.254.152:8000
-#EXTINF:-1 group-title="山东联通-组播5",湖南卫视
+#EXTINF:-1 group-title="山东联通-组播4",湖南卫视
 http://39.77.163.227:4002/rtp/239.253.254.82:8000
-#EXTINF:-1 group-title="山东联通-组播5",江苏卫视
+#EXTINF:-1 group-title="山东联通-组播4",江苏卫视
 http://39.77.163.227:4002/rtp/239.253.254.83:8000
-#EXTINF:-1 group-title="山东联通-组播5",湖北卫视
+#EXTINF:-1 group-title="山东联通-组播4",湖北卫视
 http://39.77.163.227:4002/rtp/239.253.254.88:8000
-#EXTINF:-1 group-title="山东联通-组播5",浙江卫视
+#EXTINF:-1 group-title="山东联通-组播4",浙江卫视
 http://39.77.163.227:4002/rtp/239.253.254.84:8000
-#EXTINF:-1 group-title="山东联通-组播5",安徽卫视
+#EXTINF:-1 group-title="山东联通-组播4",安徽卫视
 http://39.77.163.227:4002/rtp/239.253.254.87:8000
-#EXTINF:-1 group-title="山东联通-组播5",北京卫视
+#EXTINF:-1 group-title="山东联通-组播4",北京卫视
 http://39.77.163.227:4002/rtp/239.253.254.85:8000
-#EXTINF:-1 group-title="山东联通-组播5",东方卫视
+#EXTINF:-1 group-title="山东联通-组播4",东方卫视
 http://39.77.163.227:4002/rtp/239.253.254.86:8000
-#EXTINF:-1 group-title="山东联通-组播5",东南卫视
+#EXTINF:-1 group-title="山东联通-组播4",东南卫视
 http://39.77.163.227:4002/rtp/239.253.254.105:8000
-#EXTINF:-1 group-title="山东联通-组播5",甘肃卫视
+#EXTINF:-1 group-title="山东联通-组播4",甘肃卫视
 http://39.77.163.227:4002/rtp/239.253.254.74:8000
-#EXTINF:-1 group-title="山东联通-组播5",广东卫视
+#EXTINF:-1 group-title="山东联通-组播4",广东卫视
 http://39.77.163.227:4002/rtp/239.253.254.90:8000
-#EXTINF:-1 group-title="山东联通-组播5",广西卫视
+#EXTINF:-1 group-title="山东联通-组播4",广西卫视
 http://39.77.163.227:4002/rtp/239.253.254.197:8000
-#EXTINF:-1 group-title="山东联通-组播5",贵州卫视
+#EXTINF:-1 group-title="山东联通-组播4",贵州卫视
 http://39.77.163.227:4002/rtp/239.253.254.113:8000
-#EXTINF:-1 group-title="山东联通-组播5",海南卫视
+#EXTINF:-1 group-title="山东联通-组播4",海南卫视
 http://39.77.163.227:4002/rtp/239.253.254.179:8000
-#EXTINF:-1 group-title="山东联通-组播5",河北卫视
+#EXTINF:-1 group-title="山东联通-组播4",河北卫视
 http://39.77.163.227:4002/rtp/239.253.254.112:8000
-#EXTINF:-1 group-title="山东联通-组播5",河南卫视
+#EXTINF:-1 group-title="山东联通-组播4",河南卫视
 http://39.77.163.227:4002/rtp/239.253.254.190:8000
-#EXTINF:-1 group-title="山东联通-组播5",黑龙江卫视
+#EXTINF:-1 group-title="山东联通-组播4",黑龙江卫视
 http://39.77.163.227:4002/rtp/239.253.254.93:8000
-#EXTINF:-1 group-title="山东联通-组播5",吉林卫视
+#EXTINF:-1 group-title="山东联通-组播4",吉林卫视
 http://39.77.163.227:4002/rtp/239.253.254.173:8000
-#EXTINF:-1 group-title="山东联通-组播5",江西卫视
+#EXTINF:-1 group-title="山东联通-组播4",江西卫视
 http://39.77.163.227:4002/rtp/239.253.254.47:8000
-#EXTINF:-1 group-title="山东联通-组播5",重庆卫视
+#EXTINF:-1 group-title="山东联通-组播4",重庆卫视
 http://39.77.163.227:4002/rtp/239.253.254.38:8000
-#EXTINF:-1 group-title="山东联通-组播5",云南卫视
+#EXTINF:-1 group-title="山东联通-组播4",云南卫视
 http://39.77.163.227:4002/rtp/239.253.254.196:8000
-#EXTINF:-1 group-title="山东联通-组播5",辽宁卫视
+#EXTINF:-1 group-title="山东联通-组播4",辽宁卫视
 http://39.77.163.227:4002/rtp/239.253.254.92:8000
-#EXTINF:-1 group-title="山东联通-组播5",青海卫视
+#EXTINF:-1 group-title="山东联通-组播4",青海卫视
 http://39.77.163.227:4002/rtp/239.253.254.195:8000
-#EXTINF:-1 group-title="山东联通-组播5",深圳卫视
+#EXTINF:-1 group-title="山东联通-组播4",深圳卫视
 http://39.77.163.227:4002/rtp/239.253.254.91:8000
-#EXTINF:-1 group-title="山东联通-组播5",四川卫视
+#EXTINF:-1 group-title="山东联通-组播4",四川卫视
 http://39.77.163.227:4002/rtp/239.253.254.180:8000
-#EXTINF:-1 group-title="山东联通-组播5",CCTV-1综合
+#EXTINF:-1 group-title="山东联通-组播4",CCTV-1综合
 http://39.77.163.227:4002/rtp/239.253.254.89:8000
-#EXTINF:-1 group-title="山东联通-组播5",上海动漫秀场
+#EXTINF:-1 group-title="山东联通-组播4",上海动漫秀场
 http://39.77.163.227:4002/rtp/239.253.254.115:8000
-#EXTINF:-1 group-title="山东联通-组播5",上海都市剧场
+#EXTINF:-1 group-title="山东联通-组播4",上海都市剧场
 http://39.77.163.227:4002/rtp/239.253.254.98:8000
-#EXTINF:-1 group-title="山东联通-组播5",上海法治天地
+#EXTINF:-1 group-title="山东联通-组播4",上海法治天地
 http://39.77.163.227:4002/rtp/239.253.254.96:8000
-#EXTINF:-1 group-title="山东联通-组播5",上海游戏风云
+#EXTINF:-1 group-title="山东联通-组播4",上海游戏风云
 http://39.77.163.227:4002/rtp/239.253.254.95:8000
-#EXTINF:-1 group-title="山东联通-组播5",上海生活时尚
+#EXTINF:-1 group-title="山东联通-组播4",上海生活时尚
 http://39.77.163.227:4002/rtp/239.253.254.99:8000
-#EXTINF:-1 group-title="山东联通-组播5",上海东方财经
+#EXTINF:-1 group-title="山东联通-组播4",上海东方财经
 http://39.77.163.227:4002/rtp/239.253.254.94:8000
-#EXTINF:-1 group-title="山东联通-组播5",上海金色学堂
+#EXTINF:-1 group-title="山东联通-组播4",上海金色学堂
 http://39.77.163.227:4002/rtp/239.253.254.101:8000
-#EXTINF:-1 group-title="山东联通-组播5",金鹰纪实
+#EXTINF:-1 group-title="山东联通-组播4",金鹰纪实
 http://39.77.163.227:4002/rtp/239.253.254.103:8000
-#EXTINF:-1 group-title="山东联通-组播5",金鹰卡通
+#EXTINF:-1 group-title="山东联通-组播4",金鹰卡通
 http://39.77.163.227:4002/rtp/239.253.254.117:8000
-#EXTINF:-1 group-title="山东联通-组播5",茶频道
+#EXTINF:-1 group-title="山东联通-组播4",茶频道
 http://39.77.163.227:4002/rtp/239.253.254.143:8000
-#EXTINF:-1 group-title="山东联通-组播5",快乐垂钓
+#EXTINF:-1 group-title="山东联通-组播4",快乐垂钓
 http://39.77.163.227:4002/rtp/239.253.254.144:8000
-#EXTINF:-1 group-title="山东联通-组播5",北京卡酷少儿
+#EXTINF:-1 group-title="山东联通-组播4",北京卡酷少儿
 http://39.77.163.227:4002/rtp/239.253.254.66:8000
-#EXTINF:-1 group-title="山东联通-组播5",河南梨园频道
+#EXTINF:-1 group-title="山东联通-组播4",河南梨园频道
 http://39.77.163.227:4002/rtp/239.253.254.139:8000
-#EXTINF:-1 group-title="山东联通-组播5",河南文物宝库
+#EXTINF:-1 group-title="山东联通-组播4",河南文物宝库
 http://39.77.163.227:4002/rtp/239.253.254.141:8000
-#EXTINF:-1 group-title="山东联通-组播5",河南武术世界
+#EXTINF:-1 group-title="山东联通-组播4",河南武术世界
 http://39.77.163.227:4002/rtp/239.253.254.140:8000
-#EXTINF:-1 group-title="山东联通-组播5",CETV1
+#EXTINF:-1 group-title="山东联通-组播4",CETV1
 http://39.77.163.227:4002/rtp/239.253.254.110:8000
-#EXTINF:-1 group-title="山东联通-组播5",CETV4
+#EXTINF:-1 group-title="山东联通-组播4",CETV4
 http://39.77.163.227:4002/rtp/239.253.254.116:8000
-#EXTINF:-1 group-title="山东联通-组播5",CGTN英语
+#EXTINF:-1 group-title="山东联通-组播4",CGTN英语
 http://39.77.163.227:4002/rtp/239.253.254.189:8000
-#EXTINF:-1 group-title="山东联通-组播5",CGTN纪录
+#EXTINF:-1 group-title="山东联通-组播4",CGTN纪录
 http://39.77.163.227:4002/rtp/239.253.254.188:8000
-#EXTINF:-1 group-title="山东联通-组播5",CGTN西班牙语
+#EXTINF:-1 group-title="山东联通-组播4",CGTN西班牙语
 http://39.77.163.227:4002/rtp/239.253.254.182:8000
-#EXTINF:-1 group-title="山东联通-组播5",CGTN法语
+#EXTINF:-1 group-title="山东联通-组播4",CGTN法语
 http://39.77.163.227:4002/rtp/239.253.254.183:8000
-#EXTINF:-1 group-title="山东联通-组播5",CGTN阿拉伯语
+#EXTINF:-1 group-title="山东联通-组播4",CGTN阿拉伯语
 http://39.77.163.227:4002/rtp/239.253.254.184:8000
-#EXTINF:-1 group-title="山东联通-组播5",CGTN俄语
+#EXTINF:-1 group-title="山东联通-组播4",CGTN俄语
 http://39.77.163.227:4002/rtp/239.253.254.185:8000
-#EXTINF:-1 group-title="山东联通-组播5",魅力足球
+#EXTINF:-1 group-title="山东联通-组播4",魅力足球
 http://39.77.163.227:4002/rtp/239.253.254.100:8000
-#EXTINF:-1 group-title="山东联通-组播5",中国交通
+#EXTINF:-1 group-title="山东联通-组播4",中国交通
 http://39.77.163.227:4002/rtp/239.253.254.177:8000
-#EXTINF:-1 group-title="山东联通-组播5",精彩影视
+#EXTINF:-1 group-title="山东联通-组播4",精彩影视
 http://39.77.163.227:4002/rtp/239.253.254.142:8000
-#EXTINF:-1 group-title="山东联通-组播5",青岛李沧
+#EXTINF:-1 group-title="山东联通-组播4",青岛李沧
 http://39.77.163.227:4002/rtp/239.253.254.253:8000
-#EXTINF:-1 group-title="山东联通-组播6",山东卫视
-http://39.77.26.162:4002/rtp/239.253.254.78:8000
-#EXTINF:-1 group-title="山东联通-组播6",山东新闻频道
-http://39.77.26.162:4002/rtp/239.253.254.23:8000
-#EXTINF:-1 group-title="山东联通-组播6",山东综艺频道
-http://39.77.26.162:4002/rtp/239.253.254.159:8000
-#EXTINF:-1 group-title="山东联通-组播6",山东农科频道
-http://39.77.26.162:4002/rtp/239.253.254.24:8000
-#EXTINF:-1 group-title="山东联通-组播6",山东齐鲁频道
-http://39.77.26.162:4002/rtp/239.253.254.114:8000
-#EXTINF:-1 group-title="山东联通-组播6",山东少儿频道
-http://39.77.26.162:4002/rtp/239.253.254.25:8000
-#EXTINF:-1 group-title="山东联通-组播6",山东生活频道
-http://39.77.26.162:4002/rtp/239.253.254.151:8000
-#EXTINF:-1 group-title="山东联通-组播6",山东文旅频道
-http://39.77.26.162:4002/rtp/239.253.254.160:8000
-#EXTINF:-1 group-title="山东联通-组播6",山东体育休闲
-http://39.77.26.162:4002/rtp/239.253.254.22:8000
-#EXTINF:-1 group-title="山东联通-组播6",山东教育卫视
-http://39.77.26.162:4002/rtp/239.253.254.59:8000
-#EXTINF:-1 group-title="山东联通-组播6",山东居家购物
-http://39.77.26.162:4002/rtp/239.253.254.104:8000
-#EXTINF:-1 group-title="山东联通-组播6",青岛QTV1
-http://39.77.26.162:4002/rtp/239.253.254.249:8000
-#EXTINF:-1 group-title="山东联通-组播6",青岛QTV2
-http://39.77.26.162:4002/rtp/239.253.254.250:8000
-#EXTINF:-1 group-title="山东联通-组播6",青岛QTV3
-http://39.77.26.162:4002/rtp/239.253.254.251:8000
-#EXTINF:-1 group-title="山东联通-组播6",青岛QTV4
-http://39.77.26.162:4002/rtp/239.253.254.252:8000
-#EXTINF:-1 group-title="山东联通-组播6",青岛生活频道
-http://39.77.26.162:4002/rtp/239.253.254.244:8000
-#EXTINF:-1 group-title="山东联通-组播6",青岛综合频道
-http://39.77.26.162:4002/rtp/239.253.254.243:8000
-#EXTINF:-1 group-title="山东联通-组播6",莱西综合频道
-http://39.77.26.162:4002/rtp/239.253.254.247:8000
-#EXTINF:-1 group-title="山东联通-组播6",崂山电视台
-http://39.77.26.162:4002/rtp/239.253.254.242:8000
-#EXTINF:-1 group-title="山东联通-组播6",平度新闻综合
-http://39.77.26.162:4002/rtp/239.253.254.248:8000
-#EXTINF:-1 group-title="山东联通-组播6",海洋频道
-http://39.77.26.162:4002/rtp/239.253.254.67:8000
-#EXTINF:-1 group-title="山东联通-组播6",综合1
-http://39.77.26.162:4002/rtp/239.253.254.245:8000
-#EXTINF:-1 group-title="山东联通-组播6",综合2
-http://39.77.26.162:4002/rtp/239.253.254.246:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-1综合
-http://39.77.26.162:4002/rtp/239.253.254.77:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-2财经
-http://39.77.26.162:4002/rtp/239.253.254.232:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-3综艺
-http://39.77.26.162:4002/rtp/239.253.254.191:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-4中文国际
-http://39.77.26.162:4002/rtp/239.253.254.111:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-4欧洲
-http://39.77.26.162:4002/rtp/239.253.254.186:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-4美洲
-http://39.77.26.162:4002/rtp/239.253.254.187:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-5体育
-http://39.77.26.162:4002/rtp/239.253.254.192:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-5+体育赛事
-http://39.77.26.162:4002/rtp/239.253.254.80:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-6电影
-http://39.77.26.162:4002/rtp/239.253.254.193:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-7国防军事
-http://39.77.26.162:4002/rtp/239.253.254.233:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-8电视剧
-http://39.77.26.162:4002/rtp/239.253.254.194:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-9纪录
-http://39.77.26.162:4002/rtp/239.253.254.79:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-10科教
-http://39.77.26.162:4002/rtp/239.253.254.234:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-11戏曲
-http://39.77.26.162:4002/rtp/239.253.254.169:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-12社会与法
-http://39.77.26.162:4002/rtp/239.253.254.235:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-13新闻
-http://39.77.26.162:4002/rtp/239.253.254.175:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-14少儿
-http://39.77.26.162:4002/rtp/239.253.254.236:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-15音乐
-http://39.77.26.162:4002/rtp/239.253.254.170:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-17农业农村
-http://39.77.26.162:4002/rtp/239.253.254.168:8000
-#EXTINF:-1 group-title="山东联通-组播6",CHC动作电影
-http://39.77.26.162:4002/rtp/239.253.254.153:8000
-#EXTINF:-1 group-title="山东联通-组播6",CHC影迷电影
-http://39.77.26.162:4002/rtp/239.253.254.154:8000
-#EXTINF:-1 group-title="山东联通-组播6",CHC家庭影院
-http://39.77.26.162:4002/rtp/239.253.254.152:8000
-#EXTINF:-1 group-title="山东联通-组播6",湖南卫视
-http://39.77.26.162:4002/rtp/239.253.254.82:8000
-#EXTINF:-1 group-title="山东联通-组播6",江苏卫视
-http://39.77.26.162:4002/rtp/239.253.254.83:8000
-#EXTINF:-1 group-title="山东联通-组播6",湖北卫视
-http://39.77.26.162:4002/rtp/239.253.254.88:8000
-#EXTINF:-1 group-title="山东联通-组播6",浙江卫视
-http://39.77.26.162:4002/rtp/239.253.254.84:8000
-#EXTINF:-1 group-title="山东联通-组播6",安徽卫视
-http://39.77.26.162:4002/rtp/239.253.254.87:8000
-#EXTINF:-1 group-title="山东联通-组播6",北京卫视
-http://39.77.26.162:4002/rtp/239.253.254.85:8000
-#EXTINF:-1 group-title="山东联通-组播6",东方卫视
-http://39.77.26.162:4002/rtp/239.253.254.86:8000
-#EXTINF:-1 group-title="山东联通-组播6",东南卫视
-http://39.77.26.162:4002/rtp/239.253.254.105:8000
-#EXTINF:-1 group-title="山东联通-组播6",甘肃卫视
-http://39.77.26.162:4002/rtp/239.253.254.74:8000
-#EXTINF:-1 group-title="山东联通-组播6",广东卫视
-http://39.77.26.162:4002/rtp/239.253.254.90:8000
-#EXTINF:-1 group-title="山东联通-组播6",广西卫视
-http://39.77.26.162:4002/rtp/239.253.254.197:8000
-#EXTINF:-1 group-title="山东联通-组播6",贵州卫视
-http://39.77.26.162:4002/rtp/239.253.254.113:8000
-#EXTINF:-1 group-title="山东联通-组播6",海南卫视
-http://39.77.26.162:4002/rtp/239.253.254.179:8000
-#EXTINF:-1 group-title="山东联通-组播6",河北卫视
-http://39.77.26.162:4002/rtp/239.253.254.112:8000
-#EXTINF:-1 group-title="山东联通-组播6",河南卫视
-http://39.77.26.162:4002/rtp/239.253.254.190:8000
-#EXTINF:-1 group-title="山东联通-组播6",黑龙江卫视
-http://39.77.26.162:4002/rtp/239.253.254.93:8000
-#EXTINF:-1 group-title="山东联通-组播6",吉林卫视
-http://39.77.26.162:4002/rtp/239.253.254.173:8000
-#EXTINF:-1 group-title="山东联通-组播6",江西卫视
-http://39.77.26.162:4002/rtp/239.253.254.47:8000
-#EXTINF:-1 group-title="山东联通-组播6",重庆卫视
-http://39.77.26.162:4002/rtp/239.253.254.38:8000
-#EXTINF:-1 group-title="山东联通-组播6",云南卫视
-http://39.77.26.162:4002/rtp/239.253.254.196:8000
-#EXTINF:-1 group-title="山东联通-组播6",辽宁卫视
-http://39.77.26.162:4002/rtp/239.253.254.92:8000
-#EXTINF:-1 group-title="山东联通-组播6",青海卫视
-http://39.77.26.162:4002/rtp/239.253.254.195:8000
-#EXTINF:-1 group-title="山东联通-组播6",深圳卫视
-http://39.77.26.162:4002/rtp/239.253.254.91:8000
-#EXTINF:-1 group-title="山东联通-组播6",四川卫视
-http://39.77.26.162:4002/rtp/239.253.254.180:8000
-#EXTINF:-1 group-title="山东联通-组播6",CCTV-1综合
-http://39.77.26.162:4002/rtp/239.253.254.89:8000
-#EXTINF:-1 group-title="山东联通-组播6",上海动漫秀场
-http://39.77.26.162:4002/rtp/239.253.254.115:8000
-#EXTINF:-1 group-title="山东联通-组播6",上海都市剧场
-http://39.77.26.162:4002/rtp/239.253.254.98:8000
-#EXTINF:-1 group-title="山东联通-组播6",上海法治天地
-http://39.77.26.162:4002/rtp/239.253.254.96:8000
-#EXTINF:-1 group-title="山东联通-组播6",上海游戏风云
-http://39.77.26.162:4002/rtp/239.253.254.95:8000
-#EXTINF:-1 group-title="山东联通-组播6",上海生活时尚
-http://39.77.26.162:4002/rtp/239.253.254.99:8000
-#EXTINF:-1 group-title="山东联通-组播6",上海东方财经
-http://39.77.26.162:4002/rtp/239.253.254.94:8000
-#EXTINF:-1 group-title="山东联通-组播6",上海金色学堂
-http://39.77.26.162:4002/rtp/239.253.254.101:8000
-#EXTINF:-1 group-title="山东联通-组播6",金鹰纪实
-http://39.77.26.162:4002/rtp/239.253.254.103:8000
-#EXTINF:-1 group-title="山东联通-组播6",金鹰卡通
-http://39.77.26.162:4002/rtp/239.253.254.117:8000
-#EXTINF:-1 group-title="山东联通-组播6",茶频道
-http://39.77.26.162:4002/rtp/239.253.254.143:8000
-#EXTINF:-1 group-title="山东联通-组播6",快乐垂钓
-http://39.77.26.162:4002/rtp/239.253.254.144:8000
-#EXTINF:-1 group-title="山东联通-组播6",北京卡酷少儿
-http://39.77.26.162:4002/rtp/239.253.254.66:8000
-#EXTINF:-1 group-title="山东联通-组播6",河南梨园频道
-http://39.77.26.162:4002/rtp/239.253.254.139:8000
-#EXTINF:-1 group-title="山东联通-组播6",河南文物宝库
-http://39.77.26.162:4002/rtp/239.253.254.141:8000
-#EXTINF:-1 group-title="山东联通-组播6",河南武术世界
-http://39.77.26.162:4002/rtp/239.253.254.140:8000
-#EXTINF:-1 group-title="山东联通-组播6",CETV1
-http://39.77.26.162:4002/rtp/239.253.254.110:8000
-#EXTINF:-1 group-title="山东联通-组播6",CETV4
-http://39.77.26.162:4002/rtp/239.253.254.116:8000
-#EXTINF:-1 group-title="山东联通-组播6",CGTN英语
-http://39.77.26.162:4002/rtp/239.253.254.189:8000
-#EXTINF:-1 group-title="山东联通-组播6",CGTN纪录
-http://39.77.26.162:4002/rtp/239.253.254.188:8000
-#EXTINF:-1 group-title="山东联通-组播6",CGTN西班牙语
-http://39.77.26.162:4002/rtp/239.253.254.182:8000
-#EXTINF:-1 group-title="山东联通-组播6",CGTN法语
-http://39.77.26.162:4002/rtp/239.253.254.183:8000
-#EXTINF:-1 group-title="山东联通-组播6",CGTN阿拉伯语
-http://39.77.26.162:4002/rtp/239.253.254.184:8000
-#EXTINF:-1 group-title="山东联通-组播6",CGTN俄语
-http://39.77.26.162:4002/rtp/239.253.254.185:8000
-#EXTINF:-1 group-title="山东联通-组播6",魅力足球
-http://39.77.26.162:4002/rtp/239.253.254.100:8000
-#EXTINF:-1 group-title="山东联通-组播6",中国交通
-http://39.77.26.162:4002/rtp/239.253.254.177:8000
-#EXTINF:-1 group-title="山东联通-组播6",精彩影视
-http://39.77.26.162:4002/rtp/239.253.254.142:8000
-#EXTINF:-1 group-title="山东联通-组播6",青岛李沧
-http://39.77.26.162:4002/rtp/239.253.254.253:8000
 #EXTINF:-1 group-title="广东联通-组播1",广东卫视
 http://58.253.171.52:8188/udp/239.0.1.1:5001
 #EXTINF:-1 group-title="广东联通-组播1",深圳卫视
@@ -17149,224 +16761,224 @@ http://113.58.7.33:8188/rtp/239.254.96.58:7448
 #EXTINF:-1 group-title="海南联通-组播1",CGTN英语
 http://113.58.7.33:8188/rtp/239.254.96.16:7112
 #EXTINF:-1 group-title="河南联通-组播1",河南卫视
-http://219.156.35.133:4022/rtp/225.1.4.98:1127
+http://42.237.212.193:4022/rtp/225.1.4.98:1127
 #EXTINF:-1 group-title="河南联通-组播1",河南都市频道
-http://219.156.35.133:4022/rtp/225.1.4.52:1081
+http://42.237.212.193:4022/rtp/225.1.4.52:1081
 #EXTINF:-1 group-title="河南联通-组播1",河南民生频道
-http://219.156.35.133:4022/rtp/225.1.4.53:1082
+http://42.237.212.193:4022/rtp/225.1.4.53:1082
 #EXTINF:-1 group-title="河南联通-组播1",河南法治频道
-http://219.156.35.133:4022/rtp/225.1.4.54:1083
+http://42.237.212.193:4022/rtp/225.1.4.54:1083
 #EXTINF:-1 group-title="河南联通-组播1",河南电视剧频道
-http://219.156.35.133:4022/rtp/225.1.4.55:1084
+http://42.237.212.193:4022/rtp/225.1.4.55:1084
 #EXTINF:-1 group-title="河南联通-组播1",河南新闻频道
-http://219.156.35.133:4022/rtp/225.1.4.56:1085
+http://42.237.212.193:4022/rtp/225.1.4.56:1085
 #EXTINF:-1 group-title="河南联通-组播1",河南公共频道
-http://219.156.35.133:4022/rtp/225.1.4.58:1087
+http://42.237.212.193:4022/rtp/225.1.4.58:1087
 #EXTINF:-1 group-title="河南联通-组播1",河南乡村频道
-http://219.156.35.133:4022/rtp/225.1.4.120:1149
+http://42.237.212.193:4022/rtp/225.1.4.120:1149
 #EXTINF:-1 group-title="河南联通-组播1",河南收藏天下
-http://219.156.35.133:4022/rtp/225.1.4.100:1129
+http://42.237.212.193:4022/rtp/225.1.4.100:1129
 #EXTINF:-1 group-title="河南联通-组播1",河南戏曲频道
-http://219.156.35.133:4022/rtp/225.1.4.99:1128
+http://42.237.212.193:4022/rtp/225.1.4.99:1128
 #EXTINF:-1 group-title="河南联通-组播1",河南中华功夫
-http://219.156.35.133:4022/rtp/225.1.4.101:1130
+http://42.237.212.193:4022/rtp/225.1.4.101:1130
 #EXTINF:-1 group-title="河南联通-组播1",河南移动电视
-http://219.156.35.133:4022/rtp/225.1.5.40:1350
+http://42.237.212.193:4022/rtp/225.1.5.40:1350
 #EXTINF:-1 group-title="河南联通-组播1",河南欢腾购物
-http://219.156.35.133:4022/rtp/225.1.4.57:1086
+http://42.237.212.193:4022/rtp/225.1.4.57:1086
 #EXTINF:-1 group-title="河南联通-组播1",河南IPTV导视
-http://219.156.35.133:4022/rtp/225.1.4.194:1244
+http://42.237.212.193:4022/rtp/225.1.4.194:1244
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-1综合
-http://219.156.35.133:4022/rtp/225.1.4.73:1102
+http://42.237.212.193:4022/rtp/225.1.4.73:1102
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-2财经
-http://219.156.35.133:4022/rtp/225.1.4.74:1103
+http://42.237.212.193:4022/rtp/225.1.4.74:1103
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-3综艺
-http://219.156.35.133:4022/rtp/225.1.4.158:1194
+http://42.237.212.193:4022/rtp/225.1.4.158:1194
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-4中文国际
-http://219.156.35.133:4022/rtp/225.1.5.30:1333
+http://42.237.212.193:4022/rtp/225.1.5.30:1333
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-5体育
-http://219.156.35.133:4022/rtp/225.1.4.159:1195
+http://42.237.212.193:4022/rtp/225.1.4.159:1195
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-5+体育赛事
-http://219.156.35.133:4022/rtp/225.1.4.75:1104
+http://42.237.212.193:4022/rtp/225.1.4.75:1104
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-6电影
-http://219.156.35.133:4022/rtp/225.1.4.160:1196
+http://42.237.212.193:4022/rtp/225.1.4.160:1196
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-7国防军事
-http://219.156.35.133:4022/rtp/225.1.4.76:1105
+http://42.237.212.193:4022/rtp/225.1.4.76:1105
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-8电视剧
-http://219.156.35.133:4022/rtp/225.1.4.161:1197
+http://42.237.212.193:4022/rtp/225.1.4.161:1197
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-9纪录
-http://219.156.35.133:4022/rtp/225.1.4.77:1106
+http://42.237.212.193:4022/rtp/225.1.4.77:1106
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-10科教
-http://219.156.35.133:4022/rtp/225.1.4.78:1107
+http://42.237.212.193:4022/rtp/225.1.4.78:1107
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-11戏曲
-http://219.156.35.133:4022/rtp/225.1.4.215:1268
+http://42.237.212.193:4022/rtp/225.1.4.215:1268
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-12社会与法
-http://219.156.35.133:4022/rtp/225.1.4.79:1108
+http://42.237.212.193:4022/rtp/225.1.4.79:1108
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-13新闻
-http://219.156.35.133:4022/rtp/225.1.4.113:1293
+http://42.237.212.193:4022/rtp/225.1.4.113:1293
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-14少儿
-http://219.156.35.133:4022/rtp/225.1.4.80:1109
+http://42.237.212.193:4022/rtp/225.1.4.80:1109
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-15音乐
-http://219.156.35.133:4022/rtp/225.1.4.216:1269
+http://42.237.212.193:4022/rtp/225.1.4.216:1269
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-17农业农村
-http://219.156.35.133:4022/rtp/225.1.4.226:2506
+http://42.237.212.193:4022/rtp/225.1.4.226:2506
 #EXTINF:-1 group-title="河南联通-组播1",CHC家庭影院
-http://219.156.35.133:4022/rtp/225.1.4.209:1262
+http://42.237.212.193:4022/rtp/225.1.4.209:1262
 #EXTINF:-1 group-title="河南联通-组播1",CHC动作电影
-http://219.156.35.133:4022/rtp/225.1.4.208:1261
+http://42.237.212.193:4022/rtp/225.1.4.208:1261
 #EXTINF:-1 group-title="河南联通-组播1",CHC影迷电影
-http://219.156.35.133:4022/rtp/225.1.4.207:1260
+http://42.237.212.193:4022/rtp/225.1.4.207:1260
 #EXTINF:-1 group-title="河南联通-组播1",湖南卫视
-http://219.156.35.133:4022/rtp/225.1.4.82:1111
+http://42.237.212.193:4022/rtp/225.1.4.82:1111
 #EXTINF:-1 group-title="河南联通-组播1",江苏卫视
-http://219.156.35.133:4022/rtp/225.1.4.83:1112
+http://42.237.212.193:4022/rtp/225.1.4.83:1112
 #EXTINF:-1 group-title="河南联通-组播1",浙江卫视
-http://219.156.35.133:4022/rtp/225.1.4.84:1113
+http://42.237.212.193:4022/rtp/225.1.4.84:1113
 #EXTINF:-1 group-title="河南联通-组播1",北京卫视
-http://219.156.35.133:4022/rtp/225.1.4.81:1110
+http://42.237.212.193:4022/rtp/225.1.4.81:1110
 #EXTINF:-1 group-title="河南联通-组播1",东方卫视
-http://219.156.35.133:4022/rtp/225.1.4.85:1114
+http://42.237.212.193:4022/rtp/225.1.4.85:1114
 #EXTINF:-1 group-title="河南联通-组播1",天津卫视
-http://219.156.35.133:4022/rtp/225.1.4.86:1115
+http://42.237.212.193:4022/rtp/225.1.4.86:1115
 #EXTINF:-1 group-title="河南联通-组播1",山东卫视
-http://219.156.35.133:4022/rtp/225.1.4.88:1117
+http://42.237.212.193:4022/rtp/225.1.4.88:1117
 #EXTINF:-1 group-title="河南联通-组播1",安徽卫视
-http://219.156.35.133:4022/rtp/225.1.4.87:1116
+http://42.237.212.193:4022/rtp/225.1.4.87:1116
 #EXTINF:-1 group-title="河南联通-组播1",深圳卫视
-http://219.156.35.133:4022/rtp/225.1.4.90:1119
+http://42.237.212.193:4022/rtp/225.1.4.90:1119
 #EXTINF:-1 group-title="河南联通-组播1",江西卫视
-http://219.156.35.133:4022/rtp/225.1.4.139:1305
+http://42.237.212.193:4022/rtp/225.1.4.139:1305
 #EXTINF:-1 group-title="河南联通-组播1",湖北卫视
-http://219.156.35.133:4022/rtp/225.1.4.89:1118
+http://42.237.212.193:4022/rtp/225.1.4.89:1118
 #EXTINF:-1 group-title="河南联通-组播1",四川卫视
-http://219.156.35.133:4022/rtp/225.1.4.151:1306
+http://42.237.212.193:4022/rtp/225.1.4.151:1306
 #EXTINF:-1 group-title="河南联通-组播1",黑龙江卫视
-http://219.156.35.133:4022/rtp/225.1.4.91:1120
+http://42.237.212.193:4022/rtp/225.1.4.91:1120
 #EXTINF:-1 group-title="河南联通-组播1",云南卫视
-http://219.156.35.133:4022/rtp/225.1.4.152:1307
+http://42.237.212.193:4022/rtp/225.1.4.152:1307
 #EXTINF:-1 group-title="河南联通-组播1",贵州卫视
-http://219.156.35.133:4022/rtp/225.1.4.122:1302
+http://42.237.212.193:4022/rtp/225.1.4.122:1302
 #EXTINF:-1 group-title="河南联通-组播1",辽宁卫视
-http://219.156.35.133:4022/rtp/225.1.4.167:1208
+http://42.237.212.193:4022/rtp/225.1.4.167:1208
 #EXTINF:-1 group-title="河南联通-组播1",东南卫视
-http://219.156.35.133:4022/rtp/225.1.4.228:1274
+http://42.237.212.193:4022/rtp/225.1.4.228:1274
 #EXTINF:-1 group-title="河南联通-组播1",海南卫视
-http://219.156.35.133:4022/rtp/225.1.4.195:1310
+http://42.237.212.193:4022/rtp/225.1.4.195:1310
 #EXTINF:-1 group-title="河南联通-组播1",重庆卫视
-http://219.156.35.133:4022/rtp/225.1.4.157:1308
+http://42.237.212.193:4022/rtp/225.1.4.157:1308
 #EXTINF:-1 group-title="河南联通-组播1",广东卫视
-http://219.156.35.133:4022/rtp/225.1.4.166:1207
+http://42.237.212.193:4022/rtp/225.1.4.166:1207
 #EXTINF:-1 group-title="河南联通-组播1",广西卫视
-http://219.156.35.133:4022/rtp/225.1.4.31:1060
+http://42.237.212.193:4022/rtp/225.1.4.31:1060
 #EXTINF:-1 group-title="河南联通-组播1",河北卫视
-http://219.156.35.133:4022/rtp/225.1.4.123:1304
+http://42.237.212.193:4022/rtp/225.1.4.123:1304
 #EXTINF:-1 group-title="河南联通-组播1",吉林卫视
-http://219.156.35.133:4022/rtp/225.1.4.174:1309
+http://42.237.212.193:4022/rtp/225.1.4.174:1309
 #EXTINF:-1 group-title="河南联通-组播1",山西卫视
-http://219.156.35.133:4022/rtp/225.1.4.38:1067
+http://42.237.212.193:4022/rtp/225.1.4.38:1067
 #EXTINF:-1 group-title="河南联通-组播1",陕西卫视
-http://219.156.35.133:4022/rtp/225.1.4.39:1068
+http://42.237.212.193:4022/rtp/225.1.4.39:1068
 #EXTINF:-1 group-title="河南联通-组播1",甘肃卫视
-http://219.156.35.133:4022/rtp/225.1.4.42:1071
+http://42.237.212.193:4022/rtp/225.1.4.42:1071
 #EXTINF:-1 group-title="河南联通-组播1",青海卫视
-http://219.156.35.133:4022/rtp/225.1.4.44:1073
+http://42.237.212.193:4022/rtp/225.1.4.44:1073
 #EXTINF:-1 group-title="河南联通-组播1",内蒙古卫视
-http://219.156.35.133:4022/rtp/225.1.4.45:1074
+http://42.237.212.193:4022/rtp/225.1.4.45:1074
 #EXTINF:-1 group-title="河南联通-组播1",宁夏卫视
-http://219.156.35.133:4022/rtp/225.1.4.43:1072
+http://42.237.212.193:4022/rtp/225.1.4.43:1072
 #EXTINF:-1 group-title="河南联通-组播1",西藏卫视
-http://219.156.35.133:4022/rtp/225.1.4.46:1075
+http://42.237.212.193:4022/rtp/225.1.4.46:1075
 #EXTINF:-1 group-title="河南联通-组播1",厦门卫视
-http://219.156.35.133:4022/rtp/225.1.4.95:1124
+http://42.237.212.193:4022/rtp/225.1.4.95:1124
 #EXTINF:-1 group-title="河南联通-组播1",新疆卫视
-http://219.156.35.133:4022/rtp/225.1.4.47:1076
+http://42.237.212.193:4022/rtp/225.1.4.47:1076
 #EXTINF:-1 group-title="河南联通-组播1",三沙卫视
-http://219.156.35.133:4022/rtp/225.1.4.234:1280
+http://42.237.212.193:4022/rtp/225.1.4.234:1280
 #EXTINF:-1 group-title="河南联通-组播1",兵团卫视
-http://219.156.35.133:4022/rtp/225.1.4.97:1126
+http://42.237.212.193:4022/rtp/225.1.4.97:1126
 #EXTINF:-1 group-title="河南联通-组播1",山东教育卫视
-http://219.156.35.133:4022/rtp/225.1.4.164:1205
+http://42.237.212.193:4022/rtp/225.1.4.164:1205
 #EXTINF:-1 group-title="河南联通-组播1",金鹰卡通
-http://219.156.35.133:4022/rtp/225.1.4.49:1078
+http://42.237.212.193:4022/rtp/225.1.4.49:1078
 #EXTINF:-1 group-title="河南联通-组播1",金鹰纪实
-http://219.156.35.133:4022/rtp/225.1.4.172:1711
+http://42.237.212.193:4022/rtp/225.1.4.172:1711
 #EXTINF:-1 group-title="河南联通-组播1",嘉佳卡通
-http://219.156.35.133:4022/rtp/225.1.4.92:1121
+http://42.237.212.193:4022/rtp/225.1.4.92:1121
 #EXTINF:-1 group-title="河南联通-组播1",卡酷少儿
-http://219.156.35.133:4022/rtp/225.1.4.48:1077
+http://42.237.212.193:4022/rtp/225.1.4.48:1077
 #EXTINF:-1 group-title="河南联通-组播1",新动漫
-http://219.156.35.133:4022/rtp/225.1.4.212:1265
+http://42.237.212.193:4022/rtp/225.1.4.212:1265
 #EXTINF:-1 group-title="河南联通-组播1",CETV1
-http://219.156.35.133:4022/rtp/225.1.4.173:1712
+http://42.237.212.193:4022/rtp/225.1.4.173:1712
 #EXTINF:-1 group-title="河南联通-组播1",CETV2
-http://219.156.35.133:4022/rtp/225.1.4.165:1206
+http://42.237.212.193:4022/rtp/225.1.4.165:1206
 #EXTINF:-1 group-title="河南联通-组播1",CETV4
-http://219.156.35.133:4022/rtp/225.1.4.171:1710
+http://42.237.212.193:4022/rtp/225.1.4.171:1710
 #EXTINF:-1 group-title="河南联通-组播1",IPTV相声小品
-http://219.156.35.133:4022/rtp/225.1.4.186:1235
+http://42.237.212.193:4022/rtp/225.1.4.186:1235
 #EXTINF:-1 group-title="河南联通-组播1",IPTV音乐
-http://219.156.35.133:4022/rtp/225.1.4.184:1224
+http://42.237.212.193:4022/rtp/225.1.4.184:1224
 #EXTINF:-1 group-title="河南联通-组播1",IPTV生活
-http://219.156.35.133:4022/rtp/225.1.4.176:1225
+http://42.237.212.193:4022/rtp/225.1.4.176:1225
 #EXTINF:-1 group-title="河南联通-组播1",IPTV好学生
-http://219.156.35.133:4022/rtp/225.1.4.177:1226
+http://42.237.212.193:4022/rtp/225.1.4.177:1226
 #EXTINF:-1 group-title="河南联通-组播1",IPTV国学
-http://219.156.35.133:4022/rtp/225.1.4.178:1227
+http://42.237.212.193:4022/rtp/225.1.4.178:1227
 #EXTINF:-1 group-title="河南联通-组播1",IPTV早教
-http://219.156.35.133:4022/rtp/225.1.4.179:1228
+http://42.237.212.193:4022/rtp/225.1.4.179:1228
 #EXTINF:-1 group-title="河南联通-组播1",IPTV军事
-http://219.156.35.133:4022/rtp/225.1.4.181:1230
+http://42.237.212.193:4022/rtp/225.1.4.181:1230
 #EXTINF:-1 group-title="河南联通-组播1",IPTV美妆
-http://219.156.35.133:4022/rtp/225.1.4.182:1231
+http://42.237.212.193:4022/rtp/225.1.4.182:1231
 #EXTINF:-1 group-title="河南联通-组播1",IPTV地理
-http://219.156.35.133:4022/rtp/225.1.4.183:1232
+http://42.237.212.193:4022/rtp/225.1.4.183:1232
 #EXTINF:-1 group-title="河南联通-组播1",IPTV足球
-http://219.156.35.133:4022/rtp/225.1.4.200:1250
+http://42.237.212.193:4022/rtp/225.1.4.200:1250
 #EXTINF:-1 group-title="河南联通-组播1",IPTV野外
-http://219.156.35.133:4022/rtp/225.1.4.187:1236
+http://42.237.212.193:4022/rtp/225.1.4.187:1236
 #EXTINF:-1 group-title="河南联通-组播1",IPTV法治
-http://219.156.35.133:4022/rtp/225.1.4.188:1237
+http://42.237.212.193:4022/rtp/225.1.4.188:1237
 #EXTINF:-1 group-title="河南联通-组播1",IPTV综艺
-http://219.156.35.133:4022/rtp/225.1.4.204:1252
+http://42.237.212.193:4022/rtp/225.1.4.204:1252
 #EXTINF:-1 group-title="河南联通-组播1",IPTV体育
-http://219.156.35.133:4022/rtp/225.1.4.168:1220
+http://42.237.212.193:4022/rtp/225.1.4.168:1220
 #EXTINF:-1 group-title="河南联通-组播1",IPTV收视指南
-http://219.156.35.133:4022/rtp/225.1.4.50:1079
+http://42.237.212.193:4022/rtp/225.1.4.50:1079
 #EXTINF:-1 group-title="河南联通-组播1",华数经典电影
-http://219.156.35.133:4022/rtp/225.1.4.175:1233
+http://42.237.212.193:4022/rtp/225.1.4.175:1233
 #EXTINF:-1 group-title="河南联通-组播1",华数精选
-http://219.156.35.133:4022/rtp/225.1.4.253:1299
+http://42.237.212.193:4022/rtp/225.1.4.253:1299
 #EXTINF:-1 group-title="河南联通-组播1",华数谍战剧场
-http://219.156.35.133:4022/rtp/225.1.4.185:1240
+http://42.237.212.193:4022/rtp/225.1.4.185:1240
 #EXTINF:-1 group-title="河南联通-组播1",华数少儿动画
-http://219.156.35.133:4022/rtp/225.1.4.189:1238
+http://42.237.212.193:4022/rtp/225.1.4.189:1238
 #EXTINF:-1 group-title="河南联通-组播1",华数热播剧场
-http://219.156.35.133:4022/rtp/225.1.4.190:1239
+http://42.237.212.193:4022/rtp/225.1.4.190:1239
 #EXTINF:-1 group-title="河南联通-组播1",华数魅力时尚
-http://219.156.35.133:4022/rtp/225.1.4.205:1253
+http://42.237.212.193:4022/rtp/225.1.4.205:1253
 #EXTINF:-1 group-title="河南联通-组播1",华数爱电影
-http://219.156.35.133:4022/rtp/225.1.4.6:1035
+http://42.237.212.193:4022/rtp/225.1.4.6:1035
 #EXTINF:-1 group-title="河南联通-组播1",爱大剧
-http://219.156.35.133:4022/rtp/225.1.4.8:1037
+http://42.237.212.193:4022/rtp/225.1.4.8:1037
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-4欧洲
-http://219.156.35.133:4022/rtp/225.1.5.31:1342
+http://42.237.212.193:4022/rtp/225.1.5.31:1342
 #EXTINF:-1 group-title="河南联通-组播1",CCTV-4美洲
-http://219.156.35.133:4022/rtp/225.1.5.32:1343
+http://42.237.212.193:4022/rtp/225.1.5.32:1343
 #EXTINF:-1 group-title="河南联通-组播1",CGTN英语
-http://219.156.35.133:4022/rtp/225.1.5.34:1344
+http://42.237.212.193:4022/rtp/225.1.5.34:1344
 #EXTINF:-1 group-title="河南联通-组播1",CGTN纪录
-http://219.156.35.133:4022/rtp/225.1.5.35:1345
+http://42.237.212.193:4022/rtp/225.1.5.35:1345
 #EXTINF:-1 group-title="河南联通-组播1",CGTN西班牙语
-http://219.156.35.133:4022/rtp/225.1.5.36:1346
+http://42.237.212.193:4022/rtp/225.1.5.36:1346
 #EXTINF:-1 group-title="河南联通-组播1",CGTN法语
-http://219.156.35.133:4022/rtp/225.1.5.37:1347
+http://42.237.212.193:4022/rtp/225.1.5.37:1347
 #EXTINF:-1 group-title="河南联通-组播1",CGTN阿拉伯语
-http://219.156.35.133:4022/rtp/225.1.5.38:1348
+http://42.237.212.193:4022/rtp/225.1.5.38:1348
 #EXTINF:-1 group-title="河南联通-组播1",CGTN俄语
-http://219.156.35.133:4022/rtp/225.1.5.39:1349
+http://42.237.212.193:4022/rtp/225.1.5.39:1349
 #EXTINF:-1 group-title="河南联通-组播1",爱上-4K
-http://219.156.35.133:4022/rtp/225.1.4.162:1204
+http://42.237.212.193:4022/rtp/225.1.4.162:1204
 #EXTINF:-1 group-title="河南联通-组播1",河南卫视
-http://219.156.35.133:4022/rtp/225.1.4.254:1300
+http://42.237.212.193:4022/rtp/225.1.4.254:1300
 #EXTINF:-1 group-title="河南联通-组播1",国学频道
-http://219.156.35.133:4022/rtp/225.1.4.196:1311
+http://42.237.212.193:4022/rtp/225.1.4.196:1311
